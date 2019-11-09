@@ -45,9 +45,9 @@ for i in range(1, len(numberVeh)):
 counter #müssen mindestens 100 sein
 startTime_dic
 '''
-#Behilfswerte erstellen:
-startTime_dic = {   0: [251, 600], 
-                    1: [260, 1020]} #Startzeiten in Minuten umrechnen (von 0 hoch) / 4h 11min = 60*4 + 11 = 251 Timesteps
+#Behilfswerte
+startTime_dic = {   0: [251, 600, 1440], 
+                    1: [260, 1020, 1440]} #Startzeiten in Minuten umrechnen (von 0 hoch) / 4h 11min = 60*4 + 11 = 251 Timesteps // 1440 am Ende, damit Loop in def vehicle nicht out of range is
 StartTime = startTime_dic
 
 ###Listen von Haltestellen (from/to): automatisieren (offen)
@@ -84,7 +84,9 @@ def vehicle(env, name, vehID, vehStatus, depotID, startTime, fromStopID, toStopI
                     if (ToStopID[vehID][k] == DepotID[vehID]):
                         status = 0   
             print("Drive ends here, Vehicle %d back in Depot %d. Clock: %f"%(vehID, DepotID[vehID], env.now))
-            yield env.timeout(1440)
+            yield env.timeout(StartTime[vehID][j+1]-env.now)
+        yield env.timeout(1000)
+        print("End of the Day. Every Vehicle is back in Depot")
 
         
 #Simulationsumgebung initialisieren      
