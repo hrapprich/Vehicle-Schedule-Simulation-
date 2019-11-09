@@ -1,5 +1,15 @@
 #Sprint1
 
+#ToDos:
+# - StartTimes der Teilumläufe jedes Fahrzeugs in Dictionary abspeichern
+# - Haltestellen (From/To) extrahieren (in welcher Form macht das Sinn (auch Dic?))
+# - Fahrtzeiten zwischen den Haltestellen errechen (Arr-Dep) und abspeichern
+
+# - kleine Störung einbauen (bei timeout macht wahrscheinlich am meisten Sinn)
+# - Abhängigkeiten zwischen den Teilumläufen schaffen
+
+# - Überlegen wie man clever die Fahrer (DutyID) einbaut
+
 #Import Packages
 import simpy
 import pandas as pd
@@ -49,12 +59,12 @@ startTime_dic
 startTime_dic = {   0: [251, 600, 1440], 
                     1: [260, 1020, 1440]} #Startzeiten in Minuten umrechnen (von 0 hoch) / 4h 11min = 60*4 + 11 = 251 Timesteps // 1440 am Ende, damit Loop in def vehicle nicht out of range is
 StartTime = startTime_dic
+len(StartTime)
 
 ###Listen von Haltestellen (from/to): automatisieren (offen)
 Veh1_fromStop = list(range(1,11))
 Veh2_fromStop = list(range(50,61))
 FromStopID = [Veh1_fromStop,Veh2_fromStop]
-
 
 Veh1_toStop = list(range(11,20)) + [DepotID[0]]
 Veh2_toStop = list(range(61,70)) + [DepotID[1]]
@@ -72,7 +82,7 @@ DriveDuration = [Veh1_drive_duration, Veh2_drive_duration]
 def vehicle(env, name, vehID, vehStatus, depotID, startTime, fromStopID, toStopID, driveDuration):#Eigenschaften von jedem Fahrzeug
     while True:
         print("%s. VehID %d. VehStatus %d. DepotID: %d. StartTime: %d. FromStopID: %d. ToStopID: %d. DriveDuration: %d. Clock: %f " % (name, vehID, vehStatus, depotID, startTime, fromStopID, toStopID, driveDuration, env.now))
-        for j in range(0,2): #Anzahl Teilumläufe des Fahrzeugs
+        for j in range(0,len(StartTime)): #Anzahl Teilumläufe des Fahrzeugs
             time_untilStart = StartTime[vehID][j] - env.now #Startzeit des jeweiligen Umlaufs
             yield env.timeout(time_untilStart) #Timeout bis Start des Umlaufes
             status = 1 #Wenn Startzeit erreicht, Fahrzeug im Umlauf
@@ -98,6 +108,8 @@ for i in range(0,2):#Anzahl von Fahrzeugen
 
 #Simulation starten und Laufzeit festlegen
 env.run(until = 1440) #Ein Tag simulieren: in Minuten ausdrücken. 24h = 1440min 
+
+#Wenn Simulation mit 100 Fahrzeugen Print-Ausgaben abstellen -> Daten in .csv extrahieren für Asuwertung
 
 
 #The run process is automatically started when Car is instantiated (S.6)
