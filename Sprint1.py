@@ -75,8 +75,12 @@ Veh1_drive_duration = [5,5,5,5,5,5,5,5,5,5]
 Veh2_drive_duration = [10,5,10,5,10,5,10,5,10,5]
 DriveDuration = [Veh1_drive_duration, Veh2_drive_duration]
 
-#########Notizen#############
-#Teilumläufe erstmal auf = 1 reduzieren
+#Störungen generieren: factorX
+import numpy
+
+
+
+
 
 #Prozesse und Events von Objekt Vehicle
 def vehicle(env, name, vehID, vehStatus, depotID, startTime, fromStopID, toStopID, driveDuration):#Eigenschaften von jedem Fahrzeug
@@ -89,8 +93,9 @@ def vehicle(env, name, vehID, vehStatus, depotID, startTime, fromStopID, toStopI
             print("%s. Status %d. Clock: %f" %(name, status, env.now))
             while (status == 1):
                 for k in range(len(ToStopID[vehID])):
-                    print("%s drives from %d to %d. Clock: %f" %(name, FromStopID[vehID][k], ToStopID[vehID][k], env.now))
-                    yield env.timeout(DriveDuration[vehID][k])
+                    factorX = numpy.random.choice(numpy.arange(0,5), p=[0.4, 0.1, 0.05, 0.05, 0.4]) #Wahrscheinlichkeiten von Störungen
+                    print("%s drives from %d to %d. Clock: %f. Abweichung vom Plan: %d" %(name, FromStopID[vehID][k], ToStopID[vehID][k], env.now, factorX))
+                    yield env.timeout(DriveDuration[vehID][k] + factorX)
                     if (ToStopID[vehID][k] == DepotID[vehID]):
                         status = 0   
             print("Drive ends here, Vehicle %d back in Depot %d. Clock: %f"%(vehID, DepotID[vehID], env.now))
