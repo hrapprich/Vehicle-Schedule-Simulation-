@@ -38,6 +38,10 @@ for x in range(0, count_row):
 df["EndTime"] = EndTime
 df["StartTime"] = StartTime
 
+df.StartTime[0]
+df.EndTime[0]
+
+
 
 
 ###Werkstatt für Ausprägungen /#Ausprägungen der Eigenschaftenn bei Initialisierung
@@ -75,10 +79,10 @@ for i in range(1, len(numberVeh)+1):
     startTimes_Block = startTimes_Block + [1440] #Add to every list a 1440 as last element for simulation loop (timeout)
     startTime_dic.update({(i-1): startTimes_Block})
 
-StartTime = startTime_dic
-StartTime
+StartTime_dic = startTime_dic
+StartTime_dic
 
-print("Jedes Fahrzeug fährt mindestens einmal aus dem Depot: %s" %(len(StartTime) == len(numberVeh)))
+print("Jedes Fahrzeug fährt mindestens einmal aus dem Depot: %s" %(len(StartTime_dic) == len(numberVeh)))
 
 '''
 #Behilfswerte
@@ -145,8 +149,8 @@ print("Die Anzahl der Fahrtzeitlisten ist gleich der Anzahl der Fahrzeuge: %s."%
 def vehicle(env, name, vehID, vehStatus, depotID, startTime, fromStopID, toStopID, driveDuration):#Eigenschaften von jedem Fahrzeug
     while True:
         print("%s. VehID %d. VehStatus %d. DepotID: %d. StartTime: %d. FromStopID: %d. ToStopID: %d. DriveDuration: %d. Clock: %f " % (name, vehID, vehStatus, depotID, startTime, fromStopID, toStopID, driveDuration, env.now))
-        for j in range(0,len(StartTime)-1): #Anzahl Teilumläufe des Fahrzeugs
-            time_untilStart = StartTime[vehID-1][j] - env.now #Startzeit des jeweiligen Umlaufs
+        for j in range(0,len(StartTime_dic)-1): #Anzahl Teilumläufe des Fahrzeugs
+            time_untilStart = StartTime_dic[vehID-1][j] - env.now #Startzeit des jeweiligen Umlaufs
             yield env.timeout(time_untilStart) #Timeout bis Start des Umlaufes
             status = 1 #Wenn Startzeit erreicht, Fahrzeug im Umlauf
             print("%s. Status %d. Clock: %f" %(name, status, env.now))
@@ -157,7 +161,7 @@ def vehicle(env, name, vehID, vehStatus, depotID, startTime, fromStopID, toStopI
                     if (ToStopID[vehID-1][k] == DepotID[vehID-1]):
                         status = 0   
             print("Drive ends here, Vehicle %d back from Drive Nr.%d in Depot %d. Clock: %f"%(vehID, j+1, DepotID[vehID-1], env.now))
-            yield env.timeout(StartTime[vehID-1][j+1]-env.now)
+            yield env.timeout(StartTime_dic[vehID-1][j+1]-env.now)
         yield env.timeout(100000)
         print("End of the Day. Every Vehicle is back in Depot")
 
@@ -167,7 +171,7 @@ env = simpy.Environment()
 
 #Initialisierung von Fahrzeugen
 for i in range(1,len(numberVeh)+1):#Anzahl von Fahrzeugen
-    env.process(vehicle(env, "Vehicle:%d"%i , i, VehStatus, DepotID[i-1], StartTime[i-1][0], FromStopID[i-1][0], ToStopID[i-1][0], DriveDuration[i-1][0]))#Inputdaten Eigenschaften Fahrzeugen
+    env.process(vehicle(env, "Vehicle:%d"%i , i, VehStatus, DepotID[i-1], StartTime_dic[i-1][0], FromStopID[i-1][0], ToStopID[i-1][0], DriveDuration[i-1][0]))#Inputdaten Eigenschaften Fahrzeugen
 #Problem: BlockID fängt bei 1 an. Alle Listen und Dictionarys fangen immer bei 0 an. Mismatch
 
 #Simulation starten und Laufzeit festlegen
