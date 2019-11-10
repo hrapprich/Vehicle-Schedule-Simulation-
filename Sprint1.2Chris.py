@@ -137,6 +137,8 @@ for i in range(1, len(numberVeh)+1):
     DriveDuration.append(DifTime)
 print("Die Anzahl der Fahrtzeitlisten ist gleich der Anzahl der Fahrzeuge: %s."%(len(DriveDuration) == len(numberVeh)))
 
+DriveDuration[0]
+ToStopID[0]
 #################Test########################
 
 #####################################################
@@ -149,19 +151,32 @@ print("Die Anzahl der Fahrtzeitlisten ist gleich der Anzahl der Fahrzeuge: %s."%
 def vehicle(env, name, vehID, vehStatus, depotID, startTime, fromStopID, toStopID, driveDuration):#Eigenschaften von jedem Fahrzeug
     while True:
         print("%s. VehID %d. VehStatus %d. DepotID: %d. StartTime: %d. FromStopID: %d. ToStopID: %d. DriveDuration: %d. Clock: %f " % (name, vehID, vehStatus, depotID, startTime, fromStopID, toStopID, driveDuration, env.now))
+        counter = 0
+        
         for j in range(0,len(StartTime_dic)-1): #Anzahl Teilumläufe des Fahrzeugs
             time_untilStart = StartTime_dic[vehID-1][j] - env.now #Startzeit des jeweiligen Umlaufs
             yield env.timeout(time_untilStart) #Timeout bis Start des Umlaufes
             status = 1 #Wenn Startzeit erreicht, Fahrzeug im Umlauf
             print("%s. Status %d. Clock: %f" %(name, status, env.now))
+
+            print(DepotID[vehID-1])
+
             while (status == 1):
-                for k in range(len(ToStopID[vehID-1])):
-                    print("%s drives from %d to %d. Clock: %f." %(name, FromStopID[vehID-1][k], ToStopID[vehID-1][k], env.now))
-                    yield env.timeout(DriveDuration[vehID-1][k])
-                    if (ToStopID[vehID-1][k] == DepotID[vehID-1]):
-                        status = 0   
-            print("Drive ends here, Vehicle %d back from Drive Nr.%d in Depot %d. Clock: %f"%(vehID, j+1, DepotID[vehID-1], env.now))
-            yield env.timeout(StartTime_dic[vehID-1][j+1]-env.now)
+                cache_counter = 0
+                for k in range(0,len(ToStopID[vehID-1])):
+                    print(ToStopID[vehID-1][k+counter])
+                    if (ToStopID[vehID-1][k+counter] == DepotID[vehID-1]):
+                        cache_counter += 1
+                        status = 0 
+                        print("Fahrt sollte hier beendet werden")
+                    else: 
+                        print("%s drives from %d to %d. Clock: %f." %(name, FromStopID[vehID-1][k+counter], ToStopID[vehID-1][k+counter], env.now))
+                        cache_counter += 1
+                        yield env.timeout(DriveDuration[vehID-1][k+counter])     
+            else: 
+                print("Drive ends here, Vehicle %d back from Drive Nr.%d in Depot %d. Clock: %f"%(vehID, j+1, DepotID[vehID-1], env.now))
+                counter = counter + cache_counter
+                yield env.timeout(StartTime_dic[vehID-1][j+1]-env.now)
         yield env.timeout(100000)
         print("End of the Day. Every Vehicle is back in Depot")
 
@@ -170,7 +185,7 @@ def vehicle(env, name, vehID, vehStatus, depotID, startTime, fromStopID, toStopI
 env = simpy.Environment()
 
 #Initialisierung von Fahrzeugen
-for i in range(1,len(numberVeh)+1):#Anzahl von Fahrzeugen
+for i in range(1,2):#Anzahl von Fahrzeugen = len(numberVeh)+1
     env.process(vehicle(env, "Vehicle:%d"%i , i, VehStatus, DepotID[i-1], StartTime_dic[i-1][0], FromStopID[i-1][0], ToStopID[i-1][0], DriveDuration[i-1][0]))#Inputdaten Eigenschaften Fahrzeugen
 #Problem: BlockID fängt bei 1 an. Alle Listen und Dictionarys fangen immer bei 0 an. Mismatch
 
