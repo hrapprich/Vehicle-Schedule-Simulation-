@@ -1,9 +1,8 @@
 #Sprint1
 
 #ToDos:
-# - StartTimes der Teilumläufe jedes Fahrzeugs in Dictionary abspeichern
-# - Haltestellen (From/To) extrahieren (in welcher Form macht das Sinn (auch Dic?))
-# - Fahrtzeiten zwischen den Haltestellen errechen (Arr-Dep) und abspeichern
+#-Error bei mehr als 5 Fahrzeugen. timeout-Duration ist negativ?!
+#-Daten nicht per Print-Befehl ausgeben lassen, sondern in .csv abspeichern
 
 # - kleine Störung einbauen (bei timeout macht wahrscheinlich am meisten Sinn)
 # - Abhängigkeiten zwischen den Teilumläufen schaffen
