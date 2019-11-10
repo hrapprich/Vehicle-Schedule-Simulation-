@@ -163,18 +163,16 @@ def vehicle(env, name, vehID, vehStatus, depotID, startTime, fromStopID, toStopI
             while (status == 1):
                 cache_counter = 0
                 for k in range(0,len(ToStopID[vehID-1])):
-                    print(ToStopID[vehID-1][k+counter])
                     if (ToStopID[vehID-1][k+counter] == DepotID[vehID-1]):
                         cache_counter += 1
                         status = 0 
-                        print("Fahrt sollte hier beendet werden")
                         break
                     else: 
                         print("%s drives from %d to %d. Clock: %f." %(name, FromStopID[vehID-1][k+counter], ToStopID[vehID-1][k+counter], env.now))
                         cache_counter += 1
                         yield env.timeout(DriveDuration[vehID-1][k+counter])     
              
-            print("Drive ends here, Vehicle %d back from Drive Nr.%d in Depot %d. Clock: %f"%(vehID, j+1, DepotID[vehID-1], env.now))
+            print("Drive ends here, Vehicle %d comes back from Drive Nr.%d from Stop %d in Depot %d. Clock: %f"%(vehID, j+1, FromStopID[vehID-1][k+counter],  DepotID[vehID-1], env.now))
             counter = counter + cache_counter
             yield env.timeout(StartTime_dic[vehID-1][j+1]-env.now)
         yield env.timeout(100000)
@@ -185,7 +183,7 @@ def vehicle(env, name, vehID, vehStatus, depotID, startTime, fromStopID, toStopI
 env = simpy.Environment()
 
 #Initialisierung von Fahrzeugen
-for i in range(1,2):#Anzahl von Fahrzeugen = len(numberVeh)+1
+for i in range(1,len(numberVeh)+1):#Anzahl von Fahrzeugen = len(numberVeh)+1
     env.process(vehicle(env, "Vehicle:%d"%i , i, VehStatus, DepotID[i-1], StartTime_dic[i-1][0], FromStopID[i-1][0], ToStopID[i-1][0], DriveDuration[i-1][0]))#Inputdaten Eigenschaften Fahrzeugen
 #Problem: BlockID fängt bei 1 an. Alle Listen und Dictionarys fangen immer bei 0 an. Mismatch
 
