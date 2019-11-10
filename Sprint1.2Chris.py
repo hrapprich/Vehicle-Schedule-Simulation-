@@ -154,13 +154,12 @@ def vehicle(env, name, vehID, vehStatus, depotID, startTime, fromStopID, toStopI
         counter = 0
         
         for j in range(0,len(StartTime_dic)-1): #Anzahl Teilumläufe des Fahrzeugs
+            
             time_untilStart = StartTime_dic[vehID-1][j] - env.now #Startzeit des jeweiligen Umlaufs
             yield env.timeout(time_untilStart) #Timeout bis Start des Umlaufes
             status = 1 #Wenn Startzeit erreicht, Fahrzeug im Umlauf
             print("%s. Status %d. Clock: %f" %(name, status, env.now))
-
-            print(DepotID[vehID-1])
-
+            
             while (status == 1):
                 cache_counter = 0
                 for k in range(0,len(ToStopID[vehID-1])):
@@ -169,14 +168,15 @@ def vehicle(env, name, vehID, vehStatus, depotID, startTime, fromStopID, toStopI
                         cache_counter += 1
                         status = 0 
                         print("Fahrt sollte hier beendet werden")
+                        break
                     else: 
                         print("%s drives from %d to %d. Clock: %f." %(name, FromStopID[vehID-1][k+counter], ToStopID[vehID-1][k+counter], env.now))
                         cache_counter += 1
                         yield env.timeout(DriveDuration[vehID-1][k+counter])     
-            else: 
-                print("Drive ends here, Vehicle %d back from Drive Nr.%d in Depot %d. Clock: %f"%(vehID, j+1, DepotID[vehID-1], env.now))
-                counter = counter + cache_counter
-                yield env.timeout(StartTime_dic[vehID-1][j+1]-env.now)
+             
+            print("Drive ends here, Vehicle %d back from Drive Nr.%d in Depot %d. Clock: %f"%(vehID, j+1, DepotID[vehID-1], env.now))
+            counter = counter + cache_counter
+            yield env.timeout(StartTime_dic[vehID-1][j+1]-env.now)
         yield env.timeout(100000)
         print("End of the Day. Every Vehicle is back in Depot")
 
