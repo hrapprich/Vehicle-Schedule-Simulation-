@@ -183,7 +183,7 @@ def vehicle(env, name, vehID, vehStatus, depotID, startTime, fromStopID, toStopI
 env = simpy.Environment()
 
 #Initialisierung von Fahrzeugen
-for i in range(1,3):#Anzahl von Fahrzeugen = len(numberVeh)+1
+for i in range(1,6):#Anzahl von Fahrzeugen = len(numberVeh)+1
     env.process(vehicle(env, "Vehicle:%d"%i , i, VehStatus, DepotID[i-1], StartTime_dic[i-1][0], FromStopID[i-1][0], ToStopID[i-1][0], DriveDuration[i-1][0]))#Inputdaten Eigenschaften Fahrzeugen
 #Problem: BlockID fängt bei 1 an. Alle Listen und Dictionarys fangen immer bei 0 an. Mismatch
 
