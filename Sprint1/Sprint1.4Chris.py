@@ -181,7 +181,7 @@ def vehicle(env, name, vehID, vehStatus, depotID, startTime, fromStopID, toStopI
                 for k in range(0,len(ToStopID[vehID-1])):
                     
                     #Einstellen des Störfaktors
-                    delayTime_perDrive = stoerfaktor(1) 
+                    delayTime_perDrive = stoerfaktor(2) 
                     delayTime = delayTime + delayTime_perDrive #Aufsummieren der Verspätungen im Teilumlauf
 
                     if (ToStopID[vehID-1][k+counter] == DepotID[vehID-1]):
