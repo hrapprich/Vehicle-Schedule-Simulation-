@@ -3,9 +3,11 @@
 
 #Störung eingebaut und Teilumläufe verknüpft (simple Abhängigkeit, noch ausbaufähig ;) )
 #Print-Ausgaben werden automatisch in Text-File geschrieben (TrackingList)
+#-Daten nicht per Print-Befehl ausgeben lassen, sondern in .csv abspeichern (Umweg über .txt)
 
 #ToDos:
-#-Daten nicht per Print-Befehl ausgeben lassen, sondern in .csv abspeichern
+
+# - Komplexere Abhängigkeiten
 # - Überlegen wie man clever die Fahrer (DutyID) einbaut
 
 #Import Packages
@@ -186,14 +188,14 @@ def vehicle(env, name, vehID, vehStatus, depotID, startTime, fromStopID, toStopI
                         cache_counter += 1
                         status = 0 
                         #Daten für CSV
-                        drive_continue = "yes"
+                        drive_continue = "no"
                         print(vehID, FromStopID[vehID-1][k+counter], ToStopID[vehID-1][k+counter], env.now, env.now-delayTime, (env.now - (env.now-delayTime)), drive_continue, file = open("DelayCSV.txt", "a"))
                         break
                     else: 
                         print("%s drives from %d to %d. Delay: %d. Clock: %f." %(name, FromStopID[vehID-1][k+counter], ToStopID[vehID-1][k+counter], delayTime, env.now), file = open("TrackingList.txt", "a"))
                         
                         #Daten für CSV-Output
-                        drive_continue = "no"
+                        drive_continue = "yes"
                         print(vehID, FromStopID[vehID-1][k+counter], ToStopID[vehID-1][k+counter], env.now, env.now-delayTime, (env.now - (env.now-delayTime)) ,drive_continue, file = open("DelayCSV.txt", "a")) 
                         
                         cache_counter += 1
