@@ -1,0 +1,2001 @@
+Vehicle:1. VehID 1. VehStatus 0. DepotID: 167. StartTime: 251.
+Vehicle:2. VehID 2. VehStatus 0. DepotID: 162. StartTime: 256.
+Vehicle:3. VehID 3. VehStatus 0. DepotID: 168. StartTime: 270.
+Vehicle:4. VehID 4. VehStatus 0. DepotID: 161. StartTime: 273.
+Vehicle:5. VehID 5. VehStatus 0. DepotID: 163. StartTime: 274.
+Vehicle:6. VehID 6. VehStatus 0. DepotID: 160. StartTime: 276.
+Vehicle:7. VehID 7. VehStatus 0. DepotID: 164. StartTime: 278.
+Vehicle:8. VehID 8. VehStatus 0. DepotID: 166. StartTime: 281.
+Vehicle:9. VehID 9. VehStatus 0. DepotID: 168. StartTime: 796.
+Vehicle:10. VehID 10. VehStatus 0. DepotID: 160. StartTime: 289.
+Vehicle:11. VehID 11. VehStatus 0. DepotID: 165. StartTime: 290.
+Vehicle:12. VehID 12. VehStatus 0. DepotID: 168. StartTime: 290.
+Vehicle:13. VehID 13. VehStatus 0. DepotID: 166. StartTime: 291.
+Vehicle:14. VehID 14. VehStatus 0. DepotID: 163. StartTime: 291.
+Vehicle:15. VehID 15. VehStatus 0. DepotID: 168. StartTime: 295.
+Vehicle:16. VehID 16. VehStatus 0. DepotID: 163. StartTime: 295.
+Vehicle:17. VehID 17. VehStatus 0. DepotID: 165. StartTime: 296.
+Vehicle:18. VehID 18. VehStatus 0. DepotID: 168. StartTime: 298.
+Vehicle:19. VehID 19. VehStatus 0. DepotID: 162. StartTime: 300.
+Vehicle:20. VehID 20. VehStatus 0. DepotID: 162. StartTime: 304.
+Vehicle:21. VehID 21. VehStatus 0. DepotID: 162. StartTime: 308.
+Vehicle:22. VehID 22. VehStatus 0. DepotID: 168. StartTime: 313.
+Vehicle:23. VehID 23. VehStatus 0. DepotID: 160. StartTime: 313.
+Vehicle:24. VehID 24. VehStatus 0. DepotID: 160. StartTime: 315.
+Vehicle:25. VehID 25. VehStatus 0. DepotID: 162. StartTime: 316.
+Vehicle:26. VehID 26. VehStatus 0. DepotID: 163. StartTime: 318.
+Vehicle:27. VehID 27. VehStatus 0. DepotID: 168. StartTime: 318.
+Vehicle:28. VehID 28. VehStatus 0. DepotID: 168. StartTime: 323.
+Vehicle:29. VehID 29. VehStatus 0. DepotID: 162. StartTime: 324.
+Vehicle:30. VehID 30. VehStatus 0. DepotID: 163. StartTime: 326.
+Vehicle:31. VehID 31. VehStatus 0. DepotID: 165. StartTime: 327.
+Vehicle:32. VehID 32. VehStatus 0. DepotID: 166. StartTime: 330.
+Vehicle:33. VehID 33. VehStatus 0. DepotID: 162. StartTime: 330.
+Vehicle:34. VehID 34. VehStatus 0. DepotID: 169. StartTime: 332.
+Vehicle:35. VehID 35. VehStatus 0. DepotID: 161. StartTime: 333.
+Vehicle:36. VehID 36. VehStatus 0. DepotID: 168. StartTime: 333.
+Vehicle:37. VehID 37. VehStatus 0. DepotID: 161. StartTime: 333.
+Vehicle:38. VehID 38. VehStatus 0. DepotID: 168. StartTime: 334.
+Vehicle:39. VehID 39. VehStatus 0. DepotID: 162. StartTime: 334.
+Vehicle:40. VehID 40. VehStatus 0. DepotID: 160. StartTime: 336.
+Vehicle:41. VehID 41. VehStatus 0. DepotID: 166. StartTime: 336.
+Vehicle:42. VehID 42. VehStatus 0. DepotID: 167. StartTime: 337.
+Vehicle:43. VehID 43. VehStatus 0. DepotID: 160. StartTime: 337.
+Vehicle:44. VehID 44. VehStatus 0. DepotID: 162. StartTime: 339.
+Vehicle:45. VehID 45. VehStatus 0. DepotID: 168. StartTime: 341.
+Vehicle:46. VehID 46. VehStatus 0. DepotID: 167. StartTime: 342.
+Vehicle:47. VehID 47. VehStatus 0. DepotID: 160. StartTime: 343.
+Vehicle:48. VehID 48. VehStatus 0. DepotID: 168. StartTime: 343.
+Vehicle:49. VehID 49. VehStatus 0. DepotID: 165. StartTime: 343.
+Vehicle:50. VehID 50. VehStatus 0. DepotID: 163. StartTime: 343.
+Vehicle:51. VehID 51. VehStatus 0. DepotID: 163. StartTime: 345.
+Vehicle:52. VehID 52. VehStatus 0. DepotID: 163. StartTime: 348.
+Vehicle:53. VehID 53. VehStatus 0. DepotID: 163. StartTime: 348.
+Vehicle:54. VehID 54. VehStatus 0. DepotID: 163. StartTime: 348.
+Vehicle:55. VehID 55. VehStatus 0. DepotID: 165. StartTime: 348.
+Vehicle:56. VehID 56. VehStatus 0. DepotID: 168. StartTime: 349.
+Vehicle:57. VehID 57. VehStatus 0. DepotID: 163. StartTime: 352.
+Vehicle:58. VehID 58. VehStatus 0. DepotID: 166. StartTime: 352.
+Vehicle:59. VehID 59. VehStatus 0. DepotID: 160. StartTime: 355.
+Vehicle:60. VehID 60. VehStatus 0. DepotID: 168. StartTime: 360.
+Vehicle:61. VehID 61. VehStatus 0. DepotID: 162. StartTime: 362.
+Vehicle:62. VehID 62. VehStatus 0. DepotID: 168. StartTime: 362.
+Vehicle:63. VehID 63. VehStatus 0. DepotID: 168. StartTime: 363.
+Vehicle:64. VehID 64. VehStatus 0. DepotID: 168. StartTime: 364.
+Vehicle:65. VehID 65. VehStatus 0. DepotID: 168. StartTime: 370.
+Vehicle:66. VehID 66. VehStatus 0. DepotID: 168. StartTime: 370.
+Vehicle:67. VehID 67. VehStatus 0. DepotID: 161. StartTime: 370.
+Vehicle:68. VehID 68. VehStatus 0. DepotID: 168. StartTime: 371.
+Vehicle:69. VehID 69. VehStatus 0. DepotID: 164. StartTime: 372.
+Vehicle:70. VehID 70. VehStatus 0. DepotID: 168. StartTime: 373.
+Vehicle:71. VehID 71. VehStatus 0. DepotID: 160. StartTime: 376.
+Vehicle:72. VehID 72. VehStatus 0. DepotID: 168. StartTime: 378.
+Vehicle:73. VehID 73. VehStatus 0. DepotID: 163. StartTime: 378.
+Vehicle:74. VehID 74. VehStatus 0. DepotID: 168. StartTime: 379.
+Vehicle:75. VehID 75. VehStatus 0. DepotID: 166. StartTime: 380.
+Vehicle:76. VehID 76. VehStatus 0. DepotID: 161. StartTime: 380.
+Vehicle:77. VehID 77. VehStatus 0. DepotID: 168. StartTime: 903.
+Vehicle:78. VehID 78. VehStatus 0. DepotID: 160. StartTime: 381.
+Vehicle:79. VehID 79. VehStatus 0. DepotID: 165. StartTime: 390.
+Vehicle:80. VehID 80. VehStatus 0. DepotID: 161. StartTime: 393.
+Vehicle:81. VehID 81. VehStatus 0. DepotID: 168. StartTime: 394.
+Vehicle:82. VehID 82. VehStatus 0. DepotID: 168. StartTime: 395.
+Vehicle:83. VehID 83. VehStatus 0. DepotID: 160. StartTime: 403.
+Vehicle:84. VehID 84. VehStatus 0. DepotID: 163. StartTime: 404.
+Vehicle:85. VehID 85. VehStatus 0. DepotID: 169. StartTime: 406.
+Vehicle:86. VehID 86. VehStatus 0. DepotID: 164. StartTime: 425.
+Vehicle:87. VehID 87. VehStatus 0. DepotID: 168. StartTime: 440.
+Vehicle:88. VehID 88. VehStatus 0. DepotID: 164. StartTime: 450.
+Vehicle:89. VehID 89. VehStatus 0. DepotID: 168. StartTime: 453.
+Vehicle:90. VehID 90. VehStatus 0. DepotID: 164. StartTime: 474.
+Vehicle:91. VehID 91. VehStatus 0. DepotID: 168. StartTime: 497.
+Vehicle:92. VehID 92. VehStatus 0. DepotID: 168. StartTime: 498.
+Vehicle:93. VehID 93. VehStatus 0. DepotID: 169. StartTime: 506.
+Vehicle:94. VehID 94. VehStatus 0. DepotID: 168. StartTime: 520.
+Vehicle:95. VehID 95. VehStatus 0. DepotID: 165. StartTime: 870.
+Vehicle:96. VehID 96. VehStatus 0. DepotID: 163. StartTime: 944.
+Vehicle:97. VehID 97. VehStatus 0. DepotID: 163. StartTime: 948.
+Vehicle:98. VehID 98. VehStatus 0. DepotID: 162. StartTime: 969.
+Vehicle:99. VehID 99. VehStatus 0. DepotID: 169. StartTime: 1004.
+Vehicle:100. VehID 100. VehStatus 0. DepotID: 161. StartTime: 1025.
+Vehicle:1. Status 1. Clock: 251.000000
+Vehicle:1 drives from 167 to 114. Delay: 10. Clock: 251.000000.
+Vehicle:2. Status 1. Clock: 256.000000
+Vehicle:2 drives from 162 to 23. Delay: 5. Clock: 256.000000.
+Vehicle:3. Status 1. Clock: 270.000000
+Vehicle:3 drives from 168 to 5. Delay: 5. Clock: 270.000000.
+Vehicle:4. Status 1. Clock: 273.000000
+Vehicle:4 drives from 161 to 18. Delay: 5. Clock: 273.000000.
+Vehicle:5. Status 1. Clock: 274.000000
+Vehicle:5 drives from 163 to 131. Delay: 10. Clock: 274.000000.
+Vehicle:1 drives from 114 to 29. Delay: 10. Clock: 275.000000.
+Vehicle:6. Status 1. Clock: 276.000000
+Vehicle:6 drives from 160 to 22. Delay: 5. Clock: 276.000000.
+Vehicle:7. Status 1. Clock: 278.000000
+Vehicle:7 drives from 164 to 60. Delay: 5. Clock: 278.000000.
+Vehicle:8. Status 1. Clock: 281.000000
+Vehicle:8 drives from 166 to 101. Delay: 5. Clock: 281.000000.
+Vehicle:6 drives from 22 to 0. Delay: 5. Clock: 285.000000.
+Vehicle:7 drives from 60 to 71. Delay: 15. Clock: 288.000000.
+Vehicle:10. Status 1. Clock: 289.000000
+Vehicle:10 drives from 160 to 143. Delay: 10. Clock: 289.000000.
+Vehicle:11. Status 1. Clock: 290.000000
+Vehicle:11 drives from 165 to 20. Delay: 10. Clock: 290.000000.
+Vehicle:12. Status 1. Clock: 290.000000
+Vehicle:12 drives from 168 to 135. Delay: 10. Clock: 290.000000.
+Vehicle:2 drives from 23 to 9. Delay: 10. Clock: 290.000000.
+Vehicle:13. Status 1. Clock: 291.000000
+Vehicle:13 drives from 166 to 23. Delay: 5. Clock: 291.000000.
+Vehicle:14. Status 1. Clock: 291.000000
+Vehicle:14 drives from 163 to 9. Delay: 10. Clock: 291.000000.
+Vehicle:4 drives from 18 to 16. Delay: 15. Clock: 293.000000.
+Vehicle:15. Status 1. Clock: 295.000000
+Vehicle:15 drives from 168 to 136. Delay: 5. Clock: 295.000000.
+Vehicle:16. Status 1. Clock: 295.000000
+Vehicle:16 drives from 163 to 1. Delay: 0. Clock: 295.000000.
+Vehicle:17. Status 1. Clock: 296.000000
+Vehicle:17 drives from 165 to 27. Delay: 0. Clock: 296.000000.
+Vehicle:18. Status 1. Clock: 298.000000
+Vehicle:18 drives from 168 to 80. Delay: 0. Clock: 298.000000.
+Vehicle:19. Status 1. Clock: 300.000000
+Vehicle:19 drives from 162 to 71. Delay: 5. Clock: 300.000000.
+Vehicle:3 drives from 5 to 16. Delay: 15. Clock: 300.000000.
+Vehicle:11 drives from 20 to 21. Delay: 15. Clock: 300.000000.
+Vehicle:6 drives from 0 to 1. Delay: 15. Clock: 302.000000.
+Vehicle:20. Status 1. Clock: 304.000000
+Vehicle:20 drives from 162 to 32. Delay: 5. Clock: 304.000000.
+Vehicle:12 drives from 135 to 4. Delay: 15. Clock: 305.000000.
+Vehicle:13 drives from 23 to 7. Delay: 10. Clock: 305.000000.
+Vehicle:16 drives from 1 to 31. Delay: 0. Clock: 307.000000.
+Vehicle:21. Status 1. Clock: 308.000000
+Vehicle:21 drives from 162 to 53. Delay: 0. Clock: 308.000000.
+Vehicle:10 drives from 143 to 10. Delay: 10. Clock: 310.000000.
+Vehicle:15 drives from 136 to 137. Delay: 15. Clock: 310.000000.
+Vehicle:22. Status 1. Clock: 313.000000
+Vehicle:22 drives from 168 to 33. Delay: 10. Clock: 313.000000.
+Vehicle:23. Status 1. Clock: 313.000000
+Vehicle:23 drives from 160 to 114. Delay: 10. Clock: 313.000000.
+Vehicle:14 drives from 9 to 19. Delay: 20. Clock: 313.000000.
+Vehicle:19 drives from 71 to 72. Delay: 10. Clock: 313.000000.
+Vehicle:24. Status 1. Clock: 315.000000
+Vehicle:24 drives from 160 to 0. Delay: 5. Clock: 315.000000.
+Vehicle:18 drives from 80 to 29. Delay: 0. Clock: 315.000000.
+Vehicle:25. Status 1. Clock: 316.000000
+Vehicle:25 drives from 162 to 104. Delay: 0. Clock: 316.000000.
+Vehicle:26. Status 1. Clock: 318.000000
+Vehicle:26 drives from 163 to 29. Delay: 5. Clock: 318.000000.
+Vehicle:27. Status 1. Clock: 318.000000
+Vehicle:27 drives from 168 to 4. Delay: 0. Clock: 318.000000.
+Vehicle:8 drives from 101 to 16. Delay: 10. Clock: 322.000000.
+Vehicle:28. Status 1. Clock: 323.000000
+Vehicle:28 drives from 168 to 107. Delay: 0. Clock: 323.000000.
+Vehicle:5 drives from 131 to 9. Delay: 10. Clock: 323.000000.
+Vehicle:29. Status 1. Clock: 324.000000
+Vehicle:29 drives from 162 to 66. Delay: 0. Clock: 324.000000.
+Vehicle:17 drives from 27 to 28. Delay: 0. Clock: 324.000000.
+Vehicle:21 drives from 53 to 4. Delay: 0. Clock: 325.000000.
+Vehicle:18 drives from 29 to 29. Delay: 0. Clock: 325.000000.
+Vehicle:30. Status 1. Clock: 326.000000
+Vehicle:30 drives from 163 to 8. Delay: 10. Clock: 326.000000.
+Vehicle:31. Status 1. Clock: 327.000000
+Vehicle:31 drives from 165 to 20. Delay: 0. Clock: 327.000000.
+Vehicle:15 drives from 137 to 112. Delay: 15. Clock: 327.000000.
+Vehicle:25 drives from 104 to 69. Delay: 10. Clock: 327.000000.
+Vehicle:31 drives from 20 to 21. Delay: 5. Clock: 327.000000.
+Vehicle:32. Status 1. Clock: 330.000000
+Vehicle:32 drives from 166 to 134. Delay: 5. Clock: 330.000000.
+Vehicle:33. Status 1. Clock: 330.000000
+Vehicle:33 drives from 162 to 32. Delay: 10. Clock: 330.000000.
+Vehicle:1 drives from 29 to 97. Delay: 10. Clock: 330.000000.
+Vehicle:27 drives from 4 to 12. Delay: 0. Clock: 330.000000.
+Vehicle:29 drives from 66 to 1. Delay: 0. Clock: 330.000000.
+Vehicle:18 drives from 29 to 4. Delay: 10. Clock: 330.000000.
+Vehicle:34. Status 1. Clock: 332.000000
+Vehicle:34 drives from 169 to 126. Delay: 10. Clock: 332.000000.
+Vehicle:11 drives from 21 to 111. Delay: 25. Clock: 332.000000.
+Vehicle:35. Status 1. Clock: 333.000000
+Vehicle:35 drives from 161 to 74. Delay: 5. Clock: 333.000000.
+Vehicle:36. Status 1. Clock: 333.000000
+Vehicle:36 drives from 168 to 6. Delay: 10. Clock: 333.000000.
+Vehicle:37. Status 1. Clock: 333.000000
+Vehicle:37 drives from 161 to 18. Delay: 5. Clock: 333.000000.
+Vehicle:20 drives from 32 to 82. Delay: 10. Clock: 333.000000.
+Vehicle:38. Status 1. Clock: 334.000000
+Vehicle:38 drives from 168 to 145. Delay: 0. Clock: 334.000000.
+Vehicle:39. Status 1. Clock: 334.000000
+Vehicle:39 drives from 162 to 32. Delay: 0. Clock: 334.000000.
+Vehicle:13 drives from 7 to 4. Delay: 20. Clock: 334.000000.
+Vehicle:22 drives from 33 to 17. Delay: 10. Clock: 335.000000.
+Vehicle:24 drives from 0 to 109. Delay: 5. Clock: 335.000000.
+Vehicle:26 drives from 29 to 46. Delay: 15. Clock: 335.000000.
+Vehicle:40. Status 1. Clock: 336.000000
+Vehicle:40 drives from 160 to 22. Delay: 0. Clock: 336.000000.
+Vehicle:41. Status 1. Clock: 336.000000
+Vehicle:41 drives from 166 to 23. Delay: 0. Clock: 336.000000.
+Vehicle:23 drives from 114 to 29. Delay: 20. Clock: 336.000000.
+Vehicle:42. Status 1. Clock: 337.000000
+Vehicle:42 drives from 167 to 116. Delay: 0. Clock: 337.000000.
+Vehicle:43. Status 1. Clock: 337.000000
+Vehicle:43 drives from 160 to 96. Delay: 10. Clock: 337.000000.
+Vehicle:44. Status 1. Clock: 339.000000
+Vehicle:44 drives from 162 to 28. Delay: 10. Clock: 339.000000.
+Vehicle:16 drives from 31 to 10. Delay: 5. Clock: 340.000000.
+Vehicle:27 drives from 12 to 67. Delay: 0. Clock: 340.000000.
+Vehicle:35 drives from 74 to 2. Delay: 5. Clock: 340.000000.
+Vehicle:40 drives from 22 to 0. Delay: 5. Clock: 340.000000.
+Vehicle:27 drives from 67 to 6. Delay: 5. Clock: 340.000000.
+Vehicle:45. Status 1. Clock: 341.000000
+Vehicle:45 drives from 25 to 4. Delay: 10. Clock: 341.000000.
+Vehicle:46. Status 1. Clock: 342.000000
+Vehicle:46 drives from 167 to 41. Delay: 0. Clock: 342.000000.
+Vehicle:47. Status 1. Clock: 343.000000
+Vehicle:47 drives from 160 to 46. Delay: 0. Clock: 343.000000.
+Vehicle:48. Status 1. Clock: 343.000000
+Vehicle:48 drives from 168 to 147. Delay: 5. Clock: 343.000000.
+Vehicle:49. Status 1. Clock: 343.000000
+Vehicle:49 drives from 165 to 51. Delay: 0. Clock: 343.000000.
+Vehicle:50. Status 1. Clock: 343.000000
+Vehicle:50 drives from 163 to 33. Delay: 0. Clock: 343.000000.
+Vehicle:15 drives from 112 to 112. Delay: 20. Clock: 343.000000.
+Vehicle:31 drives from 21 to 111. Delay: 5. Clock: 344.000000.
+Vehicle:51. Status 1. Clock: 345.000000
+Vehicle:51 drives from 163 to 143. Delay: 10. Clock: 345.000000.
+Vehicle:2 drives from 9 to 1. Delay: 20. Clock: 345.000000.
+Vehicle:41 drives from 23 to 9. Delay: 10. Clock: 345.000000.
+Vehicle:38 drives from 145 to 4. Delay: 10. Clock: 347.000000.
+Vehicle:42 drives from 116 to 9. Delay: 5. Clock: 347.000000.
+Vehicle:47 drives from 46 to 33. Delay: 0. Clock: 347.000000.
+Vehicle:52. Status 1. Clock: 348.000000
+Vehicle:52 drives from 163 to 6. Delay: 10. Clock: 348.000000.
+Vehicle:53. Status 1. Clock: 348.000000
+Vehicle:53 drives from 163 to 29. Delay: 10. Clock: 348.000000.
+Vehicle:54. Status 1. Clock: 348.000000
+Vehicle:54 drives from 163 to 4. Delay: 10. Clock: 348.000000.
+Vehicle:55. Status 1. Clock: 348.000000
+Vehicle:55 drives from 165 to 56. Delay: 10. Clock: 348.000000.
+Vehicle:4 drives from 16 to 120. Delay: 20. Clock: 348.000000.
+Vehicle:12 drives from 4 to 4. Delay: 25. Clock: 348.000000.
+Vehicle:28 drives from 107 to 61. Delay: 0. Clock: 348.000000.
+Vehicle:32 drives from 134 to 47. Delay: 5. Clock: 348.000000.
+Vehicle:56. Status 1. Clock: 349.000000
+Vehicle:56 drives from 168 to 1. Delay: 0. Clock: 349.000000.
+Vehicle:3 drives from 16 to 3. Delay: 15. Clock: 349.000000.
+Vehicle:31 drives from 111 to 111. Delay: 10. Clock: 349.000000.
+Vehicle:6 drives from 1 to 9. Delay: 15. Clock: 351.000000.
+Vehicle:1 drives from 97 to 97. Delay: 15. Clock: 351.000000.
+Vehicle:57. Status 1. Clock: 352.000000
+Vehicle:57 drives from 163 to 0. Delay: 10. Clock: 352.000000.
+Vehicle:58. Status 1. Clock: 352.000000
+Vehicle:58 drives from 166 to 60. Delay: 10. Clock: 352.000000.
+Vehicle:37 drives from 18 to 16. Delay: 5. Clock: 353.000000.
+Vehicle:59. Status 1. Clock: 355.000000
+Vehicle:59 drives from 160 to 139. Delay: 0. Clock: 355.000000.
+Vehicle:21 drives from 4 to 6. Delay: 10. Clock: 355.000000.
+Vehicle:34 drives from 126 to 8. Delay: 20. Clock: 355.000000.
+Vehicle:36 drives from 6 to 80. Delay: 20. Clock: 355.000000.
+Vehicle:45 drives from 4 to 6. Delay: 20. Clock: 355.000000.
+Vehicle:49 drives from 51 to 52. Delay: 0. Clock: 355.000000.
+Vehicle:50 drives from 33 to 18. Delay: 0. Clock: 355.000000.
+Vehicle:28 drives from 61 to 78. Delay: 0. Clock: 356.000000.
+Vehicle:11 drives from 111 to 111. Delay: 25. Clock: 357.000000.
+Vehicle:44 drives from 28 to 27. Delay: 20. Clock: 357.000000.
+Vehicle:40 drives from 0 to 1. Delay: 5. Clock: 357.000000.
+Vehicle:28 drives from 78 to 78. Delay: 10. Clock: 357.000000.
+Vehicle:7 drives from 71 to 71. Delay: 15. Clock: 358.000000.
+Vehicle:39 drives from 32 to 82. Delay: 10. Clock: 358.000000.
+Vehicle:48 drives from 147 to 30. Delay: 5. Clock: 358.000000.
+Vehicle:60. Status 1. Clock: 360.000000
+Vehicle:60 drives from 168 to 120. Delay: 10. Clock: 360.000000.
+Vehicle:27 drives from 6 to 29. Delay: 15. Clock: 360.000000.
+Vehicle:46 drives from 41 to 29. Delay: 5. Clock: 361.000000.
+Vehicle:56 drives from 1 to 31. Delay: 5. Clock: 361.000000.
+Vehicle:61. Status 1. Clock: 362.000000
+Vehicle:61 drives from 162 to 71. Delay: 10. Clock: 362.000000.
+Vehicle:62. Status 1. Clock: 362.000000
+Vehicle:62 drives from 168 to 103. Delay: 0. Clock: 362.000000.
+Vehicle:19 drives from 72 to 85. Delay: 15. Clock: 362.000000.
+Vehicle:63. Status 1. Clock: 363.000000
+Vehicle:63 drives from 168 to 4. Delay: 10. Clock: 363.000000.
+Vehicle:18 drives from 4 to 4. Delay: 10. Clock: 363.000000.
+Vehicle:64. Status 1. Clock: 364.000000
+Vehicle:64 drives from 168 to 145. Delay: 5. Clock: 364.000000.
+Vehicle:33 drives from 32 to 43. Delay: 10. Clock: 364.000000.
+Vehicle:15 drives from 112 to 6. Delay: 25. Clock: 364.000000.
+Vehicle:10 drives from 10 to 10. Delay: 10. Clock: 365.000000.
+Vehicle:21 drives from 6 to 53. Delay: 20. Clock: 365.000000.
+Vehicle:2 drives from 1 to 1. Delay: 25. Clock: 366.000000.
+Vehicle:6 drives from 9 to 9. Delay: 20. Clock: 367.000000.
+Vehicle:1 drives from 97 to 39. Delay: 25. Clock: 367.000000.
+Vehicle:17 drives from 28 to 28. Delay: 10. Clock: 368.000000.
+Vehicle:30 drives from 8 to 9. Delay: 15. Clock: 369.000000.
+Vehicle:65. Status 1. Clock: 370.000000
+Vehicle:65 drives from 168 to 14. Delay: 5. Clock: 370.000000.
+Vehicle:66. Status 1. Clock: 370.000000
+Vehicle:66 drives from 168 to 97. Delay: 5. Clock: 370.000000.
+Vehicle:67. Status 1. Clock: 370.000000
+Vehicle:67 drives from 161 to 18. Delay: 10. Clock: 370.000000.
+Vehicle:43 drives from 96 to 1. Delay: 10. Clock: 370.000000.
+Vehicle:52 drives from 6 to 55. Delay: 20. Clock: 370.000000.
+Vehicle:53 drives from 29 to 46. Delay: 20. Clock: 370.000000.
+Vehicle:54 drives from 4 to 15. Delay: 10. Clock: 370.000000.
+Vehicle:3 drives from 3 to 3. Delay: 25. Clock: 370.000000.
+Vehicle:68. Status 1. Clock: 371.000000
+Vehicle:68 drives from 168 to 75. Delay: 0. Clock: 371.000000.
+Vehicle:69. Status 1. Clock: 372.000000
+Vehicle:69 drives from 164 to 60. Delay: 5. Clock: 372.000000.
+Vehicle:8 drives from 16 to 9. Delay: 10. Clock: 372.000000.
+Vehicle:70. Status 1. Clock: 373.000000
+Vehicle:70 drives from 168 to 6. Delay: 0. Clock: 373.000000.
+Vehicle:13 drives from 4 to 1. Delay: 30. Clock: 373.000000.
+Vehicle:4 drives from 120 to 120. Delay: 20. Clock: 373.000000.
+Vehicle:32 drives from 47 to 47. Delay: 10. Clock: 373.000000.
+Vehicle:31 drives from 111 to 20. Delay: 15. Clock: 373.000000.
+Vehicle:25 drives from 69 to 69. Delay: 20. Clock: 375.000000.
+Vehicle:45 drives from 6 to 6. Delay: 25. Clock: 375.000000.
+Vehicle:7 drives from 71 to 60. Delay: 25. Clock: 375.000000.
+Vehicle:27 drives from 29 to 29. Delay: 15. Clock: 375.000000.
+Vehicle:71. Status 1. Clock: 376.000000
+Vehicle:71 drives from 160 to 94. Delay: 5. Clock: 376.000000.
+Vehicle:5 drives from 9 to 4. Delay: 20. Clock: 376.000000.
+Vehicle:59 drives from 139 to 141. Delay: 5. Clock: 376.000000.
+Vehicle:28 drives from 78 to 60. Delay: 15. Clock: 376.000000.
+Vehicle:60 drives from 120 to 6. Delay: 20. Clock: 377.000000.
+Vehicle:19 drives from 85 to 85. Delay: 15. Clock: 377.000000.
+Vehicle:72. Status 1. Clock: 378.000000
+Vehicle:72 drives from 168 to 6. Delay: 10. Clock: 378.000000.
+Vehicle:73. Status 1. Clock: 378.000000
+Vehicle:73 drives from 163 to 33. Delay: 5. Clock: 378.000000.
+Vehicle:14 drives from 19 to 134. Delay: 20. Clock: 378.000000.
+Vehicle:24 drives from 109 to 109. Delay: 15. Clock: 378.000000.
+Vehicle:74. Status 1. Clock: 379.000000
+Vehicle:74 drives from 168 to 144. Delay: 5. Clock: 379.000000.
+Vehicle:55 drives from 56 to 51. Delay: 15. Clock: 379.000000.
+Vehicle:75. Status 1. Clock: 380.000000
+Vehicle:75 drives from 166 to 47. Delay: 5. Clock: 380.000000.
+Vehicle:76. Status 1. Clock: 380.000000
+Vehicle:76 drives from 161 to 101. Delay: 0. Clock: 380.000000.
+Vehicle:38 drives from 4 to 6. Delay: 15. Clock: 380.000000.
+Vehicle:12 drives from 4 to 15. Delay: 25. Clock: 380.000000.
+Vehicle:48 drives from 30 to 35. Delay: 15. Clock: 380.000000.
+Vehicle:61 drives from 71 to 60. Delay: 10. Clock: 380.000000.
+Vehicle:18 drives from 4 to 12. Delay: 15. Clock: 380.000000.
+Vehicle:78. Status 1. Clock: 381.000000
+Vehicle:78 drives from 160 to 123. Delay: 10. Clock: 381.000000.
+Vehicle:62 drives from 103 to 6. Delay: 10. Clock: 381.000000.
+Vehicle:64 drives from 145 to 4. Delay: 10. Clock: 382.000000.
+Vehicle:69 drives from 60 to 78. Delay: 15. Clock: 382.000000.
+Vehicle:29 drives from 1 to 124. Delay: 0. Clock: 383.000000.
+Vehicle:11 drives from 111 to 20. Delay: 25. Clock: 383.000000.
+Vehicle:8 drives from 9 to 9. Delay: 10. Clock: 383.000000.
+Vehicle:20 drives from 82 to 49. Delay: 20. Clock: 384.000000.
+Vehicle:35 drives from 2 to 108. Delay: 15. Clock: 385.000000.
+Vehicle:51 drives from 143 to 10. Delay: 20. Clock: 385.000000.
+Vehicle:36 drives from 80 to 80. Delay: 30. Clock: 385.000000.
+Vehicle:63 drives from 4 to 79. Delay: 10. Clock: 385.000000.
+Vehicle:65 drives from 14 to 64. Delay: 5. Clock: 385.000000.
+Vehicle:66 drives from 97 to 39. Delay: 15. Clock: 385.000000.
+Vehicle:70 drives from 6 to 53. Delay: 10. Clock: 385.000000.
+Vehicle:32 drives from 47 to 48. Delay: 15. Clock: 385.000000.
+Vehicle:75 drives from 47 to 9. Delay: 15. Clock: 385.000000.
+Vehicle:57 drives from 0 to 109. Delay: 15. Clock: 387.000000.
+Vehicle:17 drives from 28 to 27. Delay: 15. Clock: 387.000000.
+Vehicle:34 drives from 8 to 8. Delay: 20. Clock: 389.000000.
+Vehicle:68 drives from 75 to 4. Delay: 0. Clock: 389.000000.
+Vehicle:79. Status 1. Clock: 390.000000
+Vehicle:79 drives from 165 to 43. Delay: 5. Clock: 390.000000.
+Vehicle:16 drives from 10 to 96. Delay: 15. Clock: 390.000000.
+Vehicle:10 drives from 10 to 0. Delay: 20. Clock: 391.000000.
+Vehicle:80. Status 1. Clock: 393.000000
+Vehicle:80 drives from 161 to 74. Delay: 5. Clock: 393.000000.
+Vehicle:42 drives from 9 to 9. Delay: 10. Clock: 393.000000.
+Vehicle:6 drives from 9 to 19. Delay: 20. Clock: 393.000000.
+Vehicle:76 drives from 101 to 16. Delay: 10. Clock: 393.000000.
+Vehicle:81. Status 1. Clock: 394.000000
+Vehicle:81 drives from 168 to 145. Delay: 10. Clock: 394.000000.
+Vehicle:50 drives from 18 to 18. Delay: 5. Clock: 394.000000.
+Vehicle:82. Status 1. Clock: 395.000000
+Vehicle:82 drives from 9 to 1. Delay: 0. Clock: 395.000000.
+Vehicle:49 drives from 52 to 52. Delay: 0. Clock: 395.000000.
+Vehicle:67 drives from 18 to 16. Delay: 15. Clock: 395.000000.
+Vehicle:27 drives from 29 to 4. Delay: 25. Clock: 395.000000.
+Vehicle:71 drives from 94 to 95. Delay: 15. Clock: 395.000000.
+Vehicle:73 drives from 33 to 46. Delay: 10. Clock: 395.000000.
+Vehicle:38 drives from 6 to 6. Delay: 15. Clock: 395.000000.
+Vehicle:78 drives from 123 to 10. Delay: 20. Clock: 395.000000.
+Vehicle:79 drives from 43 to 32. Delay: 10. Clock: 395.000000.
+Vehicle:40 drives from 1 to 1. Delay: 10. Clock: 396.000000.
+Vehicle:82 drives from 1 to 1. Delay: 10. Clock: 396.000000.
+Vehicle:4 drives from 120 to 6. Delay: 25. Clock: 397.000000.
+Vehicle:37 drives from 16 to 33. Delay: 15. Clock: 398.000000.
+Vehicle:8 drives from 9 to 19. Delay: 10. Clock: 398.000000.
+Vehicle:58 drives from 60 to 61. Delay: 20. Clock: 399.000000.
+Vehicle:56 drives from 31 to 10. Delay: 15. Clock: 399.000000.
+Vehicle:23 drives from 29 to 33. Delay: 20. Clock: 400.000000.
+Vehicle:41 drives from 9 to 75. Delay: 20. Clock: 400.000000.
+Vehicle:47 drives from 33 to 29. Delay: 0. Clock: 400.000000.
+Vehicle:15 drives from 6 to 6. Delay: 35. Clock: 400.000000.
+Vehicle:5 drives from 4 to 77. Delay: 25. Clock: 400.000000.
+Vehicle:72 drives from 6 to 75. Delay: 20. Clock: 400.000000.
+Vehicle:80 drives from 74 to 6. Delay: 10. Clock: 400.000000.
+Vehicle:22 drives from 17 to 17. Delay: 20. Clock: 401.000000.
+Vehicle:59 drives from 141 to 37. Delay: 5. Clock: 401.000000.
+Vehicle:26 drives from 46 to 46. Delay: 15. Clock: 402.000000.
+Vehicle:83. Status 1. Clock: 403.000000
+Vehicle:83 drives from 160 to 46. Delay: 5. Clock: 403.000000.
+Vehicle:19 drives from 85 to 71. Delay: 25. Clock: 403.000000.
+Vehicle:29 drives from 124 to 124. Delay: 10. Clock: 403.000000.
+Vehicle:84. Status 1. Clock: 404.000000
+Vehicle:84 drives from 163 to 1. Delay: 5. Clock: 404.000000.
+Vehicle:2 drives from 1 to 154. Delay: 30. Clock: 404.000000.
+Vehicle:3 drives from 3 to 4. Delay: 35. Clock: 404.000000.
+Vehicle:33 drives from 43 to 51. Delay: 20. Clock: 405.000000.
+Vehicle:31 drives from 20 to 20. Delay: 15. Clock: 405.000000.
+Vehicle:45 drives from 6 to 75. Delay: 35. Clock: 405.000000.
+Vehicle:18 drives from 12 to 67. Delay: 25. Clock: 405.000000.
+Vehicle:16 drives from 96 to 96. Delay: 15. Clock: 405.000000.
+Vehicle:47 drives from 29 to 46. Delay: 10. Clock: 405.000000.
+Vehicle:85. Status 1. Clock: 406.000000
+Vehicle:85 drives from 169 to 126. Delay: 0. Clock: 406.000000.
+Vehicle:20 drives from 49 to 49. Delay: 25. Clock: 406.000000.
+Vehicle:25 drives from 69 to 70. Delay: 20. Clock: 407.000000.
+Vehicle:49 drives from 52 to 51. Delay: 5. Clock: 407.000000.
+Vehicle:82 drives from 1 to 10. Delay: 10. Clock: 407.000000.
+Vehicle:13 drives from 1 to 1. Delay: 35. Clock: 408.000000.
+Vehicle:63 drives from 79 to 79. Delay: 15. Clock: 408.000000.
+Vehicle:50 drives from 18 to 17. Delay: 5. Clock: 408.000000.
+Vehicle:39 drives from 82 to 66. Delay: 15. Clock: 409.000000.
+Vehicle:48 drives from 35 to 35. Delay: 20. Clock: 409.000000.
+Vehicle:1 drives from 39 to 39. Delay: 35. Clock: 410.000000.
+Vehicle:60 drives from 6 to 23. Delay: 20. Clock: 410.000000.
+Vehicle:34 drives from 8 to 133. Delay: 20. Clock: 410.000000.
+Vehicle:55 drives from 51 to 51. Delay: 15. Clock: 411.000000.
+Vehicle:83 drives from 46 to 33. Delay: 10. Clock: 412.000000.
+Vehicle:42 drives from 9 to 156. Delay: 15. Clock: 413.000000.
+Vehicle:40 drives from 1 to 121. Delay: 20. Clock: 413.000000.
+Vehicle:44 drives from 27 to 28. Delay: 25. Clock: 414.000000.
+Vehicle:21 drives from 53 to 53. Delay: 20. Clock: 414.000000.
+Vehicle:74 drives from 144 to 123. Delay: 5. Clock: 414.000000.
+Vehicle:71 drives from 95 to 131. Delay: 15. Clock: 414.000000.
+Vehicle:37 drives from 33 to 33. Delay: 15. Clock: 414.000000.
+Vehicle:54 drives from 15 to 15. Delay: 10. Clock: 415.000000.
+Vehicle:64 drives from 4 to 4. Delay: 15. Clock: 415.000000.
+Vehicle:68 drives from 4 to 29. Delay: 5. Clock: 415.000000.
+Vehicle:38 drives from 6 to 80. Delay: 15. Clock: 415.000000.
+Vehicle:29 drives from 124 to 2. Delay: 20. Clock: 415.000000.
+Vehicle:14 drives from 134 to 134. Delay: 20. Clock: 417.000000.
+Vehicle:35 drives from 108 to 108. Delay: 15. Clock: 417.000000.
+Vehicle:36 drives from 80 to 29. Delay: 30. Clock: 417.000000.
+Vehicle:81 drives from 145 to 4. Delay: 10. Clock: 417.000000.
+Vehicle:66 drives from 39 to 4. Delay: 25. Clock: 418.000000.
+Vehicle:65 drives from 64 to 13. Delay: 15. Clock: 419.000000.
+Vehicle:85 drives from 126 to 132. Delay: 10. Clock: 419.000000.
+Vehicle:46 drives from 29 to 33. Delay: 5. Clock: 420.000000.
+Vehicle:24 drives from 109 to 0. Delay: 15. Clock: 420.000000.
+Vehicle:26 drives from 46 to 29. Delay: 25. Clock: 420.000000.
+Vehicle:84 drives from 1 to 10. Delay: 15. Clock: 421.000000.
+Vehicle:68 drives from 29 to 29. Delay: 15. Clock: 421.000000.
+Vehicle:30 drives from 9 to 9. Delay: 15. Clock: 423.000000.
+Vehicle:70 drives from 53 to 53. Delay: 15. Clock: 424.000000.
+Vehicle:23 drives from 33 to 33. Delay: 20. Clock: 424.000000.
+Vehicle:39 drives from 66 to 66. Delay: 20. Clock: 424.000000.
+Vehicle:86. Status 1. Clock: 425.000000
+Vehicle:86 drives from 164 to 60. Delay: 5. Clock: 425.000000.
+Vehicle:62 drives from 6 to 2. Delay: 20. Clock: 425.000000.
+Vehicle:11 drives from 20 to 27. Delay: 30. Clock: 425.000000.
+Vehicle:33 drives from 51 to 51. Delay: 25. Clock: 425.000000.
+Vehicle:63 drives from 79 to 6. Delay: 15. Clock: 425.000000.
+Vehicle:79 drives from 32 to 32. Delay: 20. Clock: 428.000000.
+Vehicle:55 drives from 51 to 52. Delay: 20. Clock: 428.000000.
+Vehicle:46 drives from 33 to 33. Delay: 5. Clock: 429.000000.
+Vehicle:32 drives from 48 to 6. Delay: 25. Clock: 430.000000.
+Vehicle:75 drives from 9 to 9. Delay: 20. Clock: 430.000000.
+Vehicle:18 drives from 67 to 6. Delay: 35. Clock: 430.000000.
+Vehicle:74 drives from 123 to 10. Delay: 15. Clock: 430.000000.
+Vehicle:52 drives from 55 to 49. Delay: 30. Clock: 431.000000.
+Vehicle:20 drives from 49 to 32. Delay: 30. Clock: 432.000000.
+Vehicle:48 drives from 35 to 6. Delay: 25. Clock: 432.000000.
+Vehicle:41 drives from 75 to 75. Delay: 25. Clock: 433.000000.
+Vehicle:71 drives from 131 to 131. Delay: 20. Clock: 433.000000.
+Vehicle:12 drives from 15 to 15. Delay: 35. Clock: 434.000000.
+Vehicle:43 drives from 1 to 88. Delay: 20. Clock: 435.000000.
+Vehicle:4 drives from 6 to 5. Delay: 30. Clock: 435.000000.
+Vehicle:21 drives from 53 to 4. Delay: 20. Clock: 435.000000.
+Vehicle:54 drives from 15 to 16. Delay: 15. Clock: 435.000000.
+Vehicle:64 drives from 4 to 6. Delay: 20. Clock: 435.000000.
+Vehicle:65 drives from 13 to 14. Delay: 15. Clock: 435.000000.
+Vehicle:86 drives from 60 to 86. Delay: 15. Clock: 435.000000.
+Vehicle:46 drives from 33 to 118. Delay: 5. Clock: 435.000000.
+Vehicle:53 drives from 46 to 148. Delay: 20. Clock: 436.000000.
+Drive ends here, Vehicle 78 comes back from Drive Nr.1 from Stop 10 in Depot 160. Clock: 437.000000
+Vehicle:31 drives from 20 to 21. Delay: 25. Clock: 437.000000.
+Vehicle:5 drives from 77 to 25. Delay: 25. Clock: 438.000000.
+Vehicle:17 drives from 27 to 28. Delay: 20. Clock: 439.000000.
+Vehicle:50 drives from 17 to 17. Delay: 5. Clock: 439.000000.
+Vehicle:14 drives from 134 to 47. Delay: 25. Clock: 439.000000.
+Vehicle:35 drives from 108 to 15. Delay: 25. Clock: 439.000000.
+Vehicle:87. Status 1. Clock: 440.000000
+Vehicle:87 drives from 168 to 44. Delay: 0. Clock: 440.000000.
+Vehicle:59 drives from 37 to 92. Delay: 15. Clock: 440.000000.
+Vehicle:68 drives from 29 to 4. Delay: 25. Clock: 440.000000.
+Vehicle:30 drives from 9 to 129. Delay: 20. Clock: 440.000000.
+Vehicle:70 drives from 53 to 4. Delay: 20. Clock: 440.000000.
+Vehicle:69 drives from 78 to 78. Delay: 15. Clock: 442.000000.
+Vehicle:38 drives from 80 to 29. Delay: 15. Clock: 442.000000.
+Vehicle:27 drives from 4 to 4. Delay: 35. Clock: 443.000000.
+Vehicle:51 drives from 10 to 46. Delay: 30. Clock: 445.000000.
+Drive ends here, Vehicle 57 comes back from Drive Nr.1 from Stop 109 in Depot 163. Clock: 445.000000
+Vehicle:15 drives from 6 to 24. Delay: 35. Clock: 445.000000.
+Vehicle:13 drives from 1 to 47. Delay: 45. Clock: 445.000000.
+Vehicle:61 drives from 60 to 60. Delay: 10. Clock: 446.000000.
+Vehicle:76 drives from 16 to 4. Delay: 15. Clock: 446.000000.
+Vehicle:72 drives from 75 to 75. Delay: 25. Clock: 446.000000.
+Vehicle:39 drives from 66 to 1. Delay: 25. Clock: 446.000000.
+Vehicle:42 drives from 156 to 89. Delay: 20. Clock: 448.000000.
+Vehicle:23 drives from 33 to 34. Delay: 25. Clock: 448.000000.
+Vehicle:88. Status 1. Clock: 450.000000
+Vehicle:88 drives from 164 to 60. Delay: 5. Clock: 450.000000.
+Vehicle:67 drives from 16 to 88. Delay: 15. Clock: 450.000000.
+Vehicle:49 drives from 51 to 51. Delay: 15. Clock: 450.000000.
+Vehicle:60 drives from 23 to 82. Delay: 20. Clock: 450.000000.
+Vehicle:34 drives from 133 to 68. Delay: 30. Clock: 450.000000.
+Vehicle:81 drives from 4 to 4. Delay: 10. Clock: 450.000000.
+Vehicle:50 drives from 17 to 18. Delay: 5. Clock: 450.000000.
+Vehicle:7 drives from 60 to 60. Delay: 25. Clock: 451.000000.
+Vehicle:3 drives from 4 to 4. Delay: 40. Clock: 452.000000.
+Vehicle:89. Status 1. Clock: 453.000000
+Vehicle:89 drives from 168 to 4. Delay: 5. Clock: 453.000000.
+Drive ends here, Vehicle 8 comes back from Drive Nr.1 from Stop 19 in Depot 166. Clock: 453.000000
+Drive ends here, Vehicle 19 comes back from Drive Nr.1 from Stop 71 in Depot 162. Clock: 454.000000
+Vehicle:63 drives from 6 to 29. Delay: 15. Clock: 454.000000.
+Vehicle:71 drives from 131 to 9. Delay: 30. Clock: 454.000000.
+Vehicle:16 drives from 96 to 1. Delay: 15. Clock: 455.000000.
+Vehicle:37 drives from 33 to 76. Delay: 25. Clock: 455.000000.
+Vehicle:29 drives from 2 to 36. Delay: 20. Clock: 455.000000.
+Vehicle:33 drives from 51 to 56. Delay: 25. Clock: 455.000000.
+Vehicle:43 drives from 88 to 89. Delay: 30. Clock: 455.000000.
+Vehicle:73 drives from 46 to 68. Delay: 10. Clock: 456.000000.
+Vehicle:22 drives from 17 to 16. Delay: 30. Clock: 456.000000.
+Vehicle:79 drives from 32 to 43. Delay: 25. Clock: 456.000000.
+Vehicle:10 drives from 0 to 1. Delay: 25. Clock: 457.000000.
+Vehicle:6 drives from 19 to 158. Delay: 30. Clock: 458.000000.
+Vehicle:62 drives from 2 to 2. Delay: 20. Clock: 458.000000.
+Vehicle:75 drives from 9 to 19. Delay: 25. Clock: 458.000000.
+Vehicle:56 drives from 10 to 10. Delay: 25. Clock: 459.000000.
+Vehicle:85 drives from 132 to 133. Delay: 20. Clock: 459.000000.
+Vehicle:41 drives from 75 to 4. Delay: 25. Clock: 459.000000.
+Vehicle:69 drives from 78 to 60. Delay: 20. Clock: 459.000000.
+Vehicle:80 drives from 6 to 6. Delay: 15. Clock: 460.000000.
+Vehicle:1 drives from 39 to 40. Delay: 35. Clock: 460.000000.
+Vehicle:36 drives from 29 to 29. Delay: 35. Clock: 460.000000.
+Vehicle:32 drives from 6 to 6. Delay: 25. Clock: 460.000000.
+Vehicle:87 drives from 44 to 33. Delay: 0. Clock: 460.000000.
+Vehicle:61 drives from 60 to 61. Delay: 10. Clock: 460.000000.
+Vehicle:88 drives from 60 to 61. Delay: 5. Clock: 460.000000.
+Vehicle:25 drives from 70 to 104. Delay: 20. Clock: 462.000000.
+Vehicle:66 drives from 4 to 4. Delay: 35. Clock: 463.000000.
+Vehicle:52 drives from 49 to 49. Delay: 40. Clock: 465.000000.
+Vehicle:76 drives from 4 to 4. Delay: 20. Clock: 465.000000.
+Vehicle:81 drives from 4 to 77. Delay: 20. Clock: 465.000000.
+Vehicle:45 drives from 75 to 75. Delay: 40. Clock: 466.000000.
+Vehicle:67 drives from 88 to 88. Delay: 15. Clock: 466.000000.
+Vehicle:40 drives from 121 to 23. Delay: 30. Clock: 467.000000.
+Vehicle:74 drives from 10 to 10. Delay: 20. Clock: 467.000000.
+Vehicle:59 drives from 92 to 92. Delay: 25. Clock: 467.000000.
+Vehicle:53 drives from 148 to 148. Delay: 30. Clock: 468.000000.
+Vehicle:49 drives from 51 to 52. Delay: 20. Clock: 468.000000.
+Vehicle:28 drives from 60 to 60. Delay: 20. Clock: 469.000000.
+Vehicle:63 drives from 29 to 29. Delay: 25. Clock: 469.000000.
+Vehicle:12 drives from 15 to 16. Delay: 35. Clock: 470.000000.
+Drive ends here, Vehicle 46 comes back from Drive Nr.1 from Stop 118 in Depot 167. Clock: 470.000000
+Vehicle:38 drives from 29 to 6. Delay: 25. Clock: 470.000000.
+Vehicle:89 drives from 4 to 6. Delay: 15. Clock: 470.000000.
+Drive ends here, Vehicle 24 comes back from Drive Nr.1 from Stop 0 in Depot 160. Clock: 471.000000
+Vehicle:82 drives from 10 to 96. Delay: 20. Clock: 472.000000.
+Vehicle:90. Status 1. Clock: 474.000000
+Vehicle:90 drives from 164 to 60. Delay: 5. Clock: 474.000000.
+Drive ends here, Vehicle 47 comes back from Drive Nr.1 from Stop 46 in Depot 160. Clock: 474.000000
+Vehicle:5 drives from 25 to 25. Delay: 25. Clock: 474.000000.
+Vehicle:72 drives from 75 to 4. Delay: 30. Clock: 474.000000.
+Vehicle:83 drives from 33 to 6. Delay: 10. Clock: 475.000000.
+Vehicle:65 drives from 14 to 14. Delay: 20. Clock: 478.000000.
+Vehicle:42 drives from 89 to 89. Delay: 30. Clock: 478.000000.
+Vehicle:73 drives from 68 to 68. Delay: 10. Clock: 478.000000.
+Vehicle:31 drives from 21 to 111. Delay: 25. Clock: 479.000000.
+Vehicle:18 drives from 6 to 29. Delay: 45. Clock: 480.000000.
+Vehicle:80 drives from 6 to 4. Delay: 20. Clock: 480.000000.
+Vehicle:50 drives from 18 to 18. Delay: 5. Clock: 482.000000.
+Vehicle:44 drives from 28 to 49. Delay: 35. Clock: 483.000000.
+Vehicle:11 drives from 27 to 27. Delay: 40. Clock: 483.000000.
+Vehicle:30 drives from 129 to 36. Delay: 30. Clock: 483.000000.
+Vehicle:64 drives from 6 to 29. Delay: 25. Clock: 484.000000.
+Vehicle:14 drives from 47 to 47. Delay: 25. Clock: 484.000000.
+Vehicle:25 drives from 104 to 104. Delay: 25. Clock: 484.000000.
+Vehicle:90 drives from 60 to 61. Delay: 5. Clock: 484.000000.
+Vehicle:48 drives from 6 to 3. Delay: 25. Clock: 485.000000.
+Vehicle:21 drives from 4 to 6. Delay: 30. Clock: 485.000000.
+Vehicle:27 drives from 4 to 12. Delay: 45. Clock: 485.000000.
+Vehicle:67 drives from 88 to 89. Delay: 15. Clock: 485.000000.
+Vehicle:2 drives from 154 to 71. Delay: 35. Clock: 486.000000.
+Vehicle:20 drives from 32 to 32. Delay: 35. Clock: 486.000000.
+Vehicle:68 drives from 4 to 9. Delay: 30. Clock: 487.000000.
+Vehicle:55 drives from 52 to 28. Delay: 30. Clock: 488.000000.
+Vehicle:4 drives from 5 to 5. Delay: 30. Clock: 488.000000.
+Vehicle:62 drives from 2 to 63. Delay: 20. Clock: 488.000000.
+Vehicle:35 drives from 15 to 15. Delay: 25. Clock: 490.000000.
+Vehicle:70 drives from 4 to 6. Delay: 30. Clock: 490.000000.
+Vehicle:32 drives from 6 to 58. Delay: 30. Clock: 490.000000.
+Vehicle:87 drives from 33 to 23. Delay: 5. Clock: 490.000000.
+Vehicle:83 drives from 6 to 58. Delay: 15. Clock: 490.000000.
+Vehicle:82 drives from 96 to 96. Delay: 20. Clock: 492.000000.
+Vehicle:84 drives from 10 to 96. Delay: 15. Clock: 493.000000.
+Vehicle:86 drives from 86 to 51. Delay: 25. Clock: 493.000000.
+Vehicle:50 drives from 18 to 16. Delay: 5. Clock: 493.000000.
+Drive ends here, Vehicle 54 comes back from Drive Nr.1 from Stop 16 in Depot 163. Clock: 494.000000
+Vehicle:34 drives from 68 to 68. Delay: 30. Clock: 494.000000.
+Vehicle:7 drives from 60 to 61. Delay: 25. Clock: 494.000000.
+Vehicle:29 drives from 36 to 36. Delay: 20. Clock: 494.000000.
+Vehicle:28 drives from 60 to 61. Delay: 20. Clock: 494.000000.
+Vehicle:23 drives from 34 to 54. Delay: 30. Clock: 495.000000.
+Vehicle:3 drives from 4 to 5. Delay: 45. Clock: 495.000000.
+Vehicle:76 drives from 4 to 12. Delay: 20. Clock: 495.000000.
+Vehicle:63 drives from 29 to 30. Delay: 35. Clock: 495.000000.
+Vehicle:51 drives from 46 to 46. Delay: 40. Clock: 496.000000.
+Vehicle:38 drives from 6 to 6. Delay: 30. Clock: 496.000000.
+Vehicle:91. Status 1. Clock: 497.000000
+Vehicle:91 drives from 168 to 0. Delay: 10. Clock: 497.000000.
+Vehicle:6 drives from 158 to 73. Delay: 35. Clock: 497.000000.
+Vehicle:92. Status 1. Clock: 498.000000
+Vehicle:92 drives from 168 to 29. Delay: 5. Clock: 498.000000.
+Vehicle:56 drives from 10 to 0. Delay: 35. Clock: 498.000000.
+Vehicle:81 drives from 77 to 77. Delay: 25. Clock: 498.000000.
+Vehicle:85 drives from 133 to 0. Delay: 30. Clock: 500.000000.
+Vehicle:36 drives from 29 to 30. Delay: 45. Clock: 500.000000.
+Vehicle:66 drives from 4 to 12. Delay: 40. Clock: 500.000000.
+Vehicle:5 drives from 25 to 15. Delay: 30. Clock: 500.000000.
+Vehicle:65 drives from 14 to 64. Delay: 30. Clock: 500.000000.
+Vehicle:33 drives from 56 to 56. Delay: 30. Clock: 501.000000.
+Vehicle:15 drives from 24 to 24. Delay: 35. Clock: 502.000000.
+Vehicle:17 drives from 28 to 49. Delay: 20. Clock: 503.000000.
+Vehicle:59 drives from 92 to 31. Delay: 30. Clock: 504.000000.
+Vehicle:31 drives from 111 to 111. Delay: 35. Clock: 504.000000.
+Drive ends here, Vehicle 26 comes back from Drive Nr.1 from Stop 29 in Depot 163. Clock: 505.000000
+Vehicle:79 drives from 43 to 43. Delay: 35. Clock: 505.000000.
+Vehicle:73 drives from 68 to 15. Delay: 15. Clock: 505.000000.
+Vehicle:93. Status 1. Clock: 506.000000
+Vehicle:93 drives from 169 to 126. Delay: 0. Clock: 506.000000.
+Vehicle:58 drives from 61 to 66. Delay: 20. Clock: 508.000000.
+Vehicle:84 drives from 96 to 96. Delay: 15. Clock: 508.000000.
+Vehicle:45 drives from 75 to 4. Delay: 45. Clock: 509.000000.
+Vehicle:64 drives from 29 to 29. Delay: 25. Clock: 509.000000.
+Drive ends here, Vehicle 43 comes back from Drive Nr.1 from Stop 89 in Depot 160. Clock: 510.000000
+Drive ends here, Vehicle 41 comes back from Drive Nr.1 from Stop 4 in Depot 166. Clock: 510.000000
+Vehicle:14 drives from 47 to 48. Delay: 25. Clock: 510.000000.
+Vehicle:30 drives from 36 to 36. Delay: 40. Clock: 513.000000.
+Vehicle:89 drives from 6 to 29. Delay: 25. Clock: 514.000000.
+Vehicle:87 drives from 23 to 23. Delay: 5. Clock: 514.000000.
+Vehicle:60 drives from 82 to 66. Delay: 30. Clock: 515.000000.
+Vehicle:25 drives from 104 to 69. Delay: 30. Clock: 515.000000.
+Vehicle:21 drives from 6 to 6. Delay: 35. Clock: 515.000000.
+Vehicle:92 drives from 29 to 4. Delay: 15. Clock: 515.000000.
+Vehicle:10 drives from 1 to 25. Delay: 35. Clock: 516.000000.
+Vehicle:40 drives from 23 to 23. Delay: 30. Clock: 516.000000.
+Vehicle:62 drives from 63 to 63. Delay: 20. Clock: 516.000000.
+Vehicle:35 drives from 15 to 62. Delay: 30. Clock: 517.000000.
+Drive ends here, Vehicle 37 comes back from Drive Nr.1 from Stop 76 in Depot 161. Clock: 518.000000
+Vehicle:1 drives from 40 to 102. Delay: 40. Clock: 518.000000.
+Vehicle:61 drives from 61 to 99. Delay: 10. Clock: 518.000000.
+Vehicle:93 drives from 126 to 115. Delay: 0. Clock: 519.000000.
+Vehicle:94. Status 1. Clock: 520.000000
+Vehicle:94 drives from 168 to 54. Delay: 0. Clock: 520.000000.
+Vehicle:13 drives from 47 to 47. Delay: 55. Clock: 520.000000.
+Vehicle:80 drives from 4 to 88. Delay: 25. Clock: 520.000000.
+Vehicle:4 drives from 5 to 6. Delay: 35. Clock: 520.000000.
+Vehicle:70 drives from 6 to 3. Delay: 30. Clock: 520.000000.
+Vehicle:44 drives from 49 to 32. Delay: 40. Clock: 522.000000.
+Vehicle:20 drives from 32 to 82. Delay: 35. Clock: 522.000000.
+Vehicle:68 drives from 9 to 9. Delay: 35. Clock: 522.000000.
+Vehicle:55 drives from 28 to 28. Delay: 40. Clock: 522.000000.
+Vehicle:88 drives from 61 to 52. Delay: 10. Clock: 523.000000.
+Vehicle:11 drives from 27 to 28. Delay: 45. Clock: 524.000000.
+Vehicle:48 drives from 3 to 3. Delay: 30. Clock: 524.000000.
+Vehicle:87 drives from 23 to 47. Delay: 10. Clock: 524.000000.
+Vehicle:16 drives from 1 to 4. Delay: 25. Clock: 525.000000.
+Vehicle:52 drives from 49 to 59. Delay: 45. Clock: 525.000000.
+Vehicle:18 drives from 29 to 29. Delay: 50. Clock: 525.000000.
+Vehicle:2 drives from 71 to 60. Delay: 45. Clock: 525.000000.
+Vehicle:23 drives from 54 to 54. Delay: 30. Clock: 525.000000.
+Vehicle:81 drives from 77 to 6. Delay: 35. Clock: 525.000000.
+Vehicle:42 drives from 89 to 16. Delay: 35. Clock: 526.000000.
+Vehicle:39 drives from 1 to 3. Delay: 25. Clock: 527.000000.
+Vehicle:83 drives from 58 to 58. Delay: 15. Clock: 527.000000.
+Vehicle:82 drives from 96 to 1. Delay: 20. Clock: 527.000000.
+Vehicle:34 drives from 68 to 92. Delay: 35. Clock: 527.000000.
+Vehicle:17 drives from 49 to 49. Delay: 20. Clock: 527.000000.
+Vehicle:49 drives from 52 to 32. Delay: 30. Clock: 528.000000.
+Drive ends here, Vehicle 93 comes back from Drive Nr.1 from Stop 115 in Depot 169. Clock: 528.000000
+Vehicle:72 drives from 4 to 29. Delay: 30. Clock: 530.000000.
+Vehicle:67 drives from 89 to 89. Delay: 15. Clock: 530.000000.
+Vehicle:76 drives from 12 to 2. Delay: 30. Clock: 530.000000.
+Vehicle:38 drives from 6 to 45. Delay: 35. Clock: 530.000000.
+Vehicle:71 drives from 9 to 1. Delay: 35. Clock: 532.000000.
+Vehicle:91 drives from 0 to 109. Delay: 15. Clock: 532.000000.
+Drive ends here, Vehicle 75 comes back from Drive Nr.1 from Stop 19 in Depot 166. Clock: 533.000000
+Vehicle:74 drives from 10 to 0. Delay: 20. Clock: 533.000000.
+Vehicle:84 drives from 96 to 1. Delay: 20. Clock: 534.000000.
+Vehicle:73 drives from 15 to 15. Delay: 15. Clock: 535.000000.
+Vehicle:64 drives from 29 to 149. Delay: 30. Clock: 535.000000.
+Vehicle:94 drives from 54 to 33. Delay: 10. Clock: 535.000000.
+Vehicle:86 drives from 51 to 51. Delay: 35. Clock: 537.000000.
+Vehicle:58 drives from 66 to 66. Delay: 30. Clock: 537.000000.
+Vehicle:50 drives from 16 to 33. Delay: 5. Clock: 538.000000.
+Vehicle:62 drives from 63 to 2. Delay: 20. Clock: 538.000000.
+Vehicle:6 drives from 73 to 73. Delay: 40. Clock: 539.000000.
+Vehicle:89 drives from 29 to 29. Delay: 35. Clock: 539.000000.
+Vehicle:61 drives from 99 to 99. Delay: 15. Clock: 541.000000.
+Vehicle:88 drives from 52 to 52. Delay: 20. Clock: 541.000000.
+Vehicle:32 drives from 58 to 58. Delay: 35. Clock: 542.000000.
+Vehicle:29 drives from 36 to 9. Delay: 20. Clock: 542.000000.
+Vehicle:15 drives from 24 to 4. Delay: 35. Clock: 542.000000.
+Vehicle:22 drives from 16 to 1. Delay: 40. Clock: 543.000000.
+Vehicle:50 drives from 33 to 33. Delay: 5. Clock: 544.000000.
+Vehicle:53 drives from 148 to 9. Delay: 40. Clock: 545.000000.
+Vehicle:27 drives from 12 to 67. Delay: 45. Clock: 545.000000.
+Vehicle:51 drives from 46 to 29. Delay: 40. Clock: 545.000000.
+Vehicle:85 drives from 0 to 0. Delay: 30. Clock: 545.000000.
+Vehicle:79 drives from 43 to 32. Delay: 45. Clock: 545.000000.
+Vehicle:60 drives from 66 to 66. Delay: 40. Clock: 545.000000.
+Vehicle:83 drives from 58 to 4. Delay: 15. Clock: 547.000000.
+Vehicle:12 drives from 16 to 1. Delay: 45. Clock: 549.000000.
+Vehicle:33 drives from 56 to 51. Delay: 35. Clock: 549.000000.
+Vehicle:19. Status 1. Clock: 549.000000
+Vehicle:19 drives from 162 to 28. Delay: 0. Clock: 549.000000.
+Vehicle:80 drives from 88 to 5. Delay: 35. Clock: 550.000000.
+Vehicle:10 drives from 25 to 25. Delay: 45. Clock: 551.000000.
+Vehicle:67 drives from 89 to 16. Delay: 20. Clock: 551.000000.
+Vehicle:92 drives from 4 to 4. Delay: 15. Clock: 552.000000.
+Vehicle:87 drives from 47 to 47. Delay: 10. Clock: 552.000000.
+Vehicle:40 drives from 23 to 9. Delay: 40. Clock: 554.000000.
+Vehicle:16 drives from 4 to 4. Delay: 30. Clock: 554.000000.
+Vehicle:66 drives from 12 to 35. Delay: 45. Clock: 555.000000.
+Vehicle:30 drives from 36 to 9. Delay: 50. Clock: 555.000000.
+Vehicle:21 drives from 6 to 24. Delay: 35. Clock: 555.000000.
+Vehicle:19 drives from 28 to 27. Delay: 10. Clock: 557.000000.
+Vehicle:63 drives from 30 to 6. Delay: 40. Clock: 558.000000.
+Vehicle:1 drives from 102 to 102. Delay: 50. Clock: 558.000000.
+Vehicle:39 drives from 3 to 3. Delay: 35. Clock: 558.000000.
+Vehicle:73 drives from 15 to 62. Delay: 25. Clock: 558.000000.
+Drive ends here, Vehicle 69 comes back from Drive Nr.1 from Stop 60 in Depot 164. Clock: 559.000000
+Vehicle:65 drives from 64 to 13. Delay: 40. Clock: 559.000000.
+Vehicle:48 drives from 3 to 4. Delay: 40. Clock: 559.000000.
+Vehicle:61 drives from 99 to 82. Delay: 15. Clock: 560.000000.
+Vehicle:72 drives from 29 to 29. Delay: 30. Clock: 561.000000.
+Vehicle:87 drives from 47 to 48. Delay: 10. Clock: 563.000000.
+Vehicle:70 drives from 3 to 7. Delay: 40. Clock: 564.000000.
+Drive ends here, Vehicle 14 comes back from Drive Nr.1 from Stop 48 in Depot 163. Clock: 565.000000
+Vehicle:68 drives from 9 to 156. Delay: 40. Clock: 565.000000.
+Vehicle:62 drives from 2 to 2. Delay: 30. Clock: 566.000000.
+Vehicle:31 drives from 111 to 20. Delay: 35. Clock: 567.000000.
+Vehicle:55 drives from 28 to 27. Delay: 45. Clock: 567.000000.
+Vehicle:94 drives from 33 to 1. Delay: 20. Clock: 567.000000.
+Vehicle:88 drives from 52 to 51. Delay: 30. Clock: 567.000000.
+Vehicle:90 drives from 61 to 66. Delay: 15. Clock: 568.000000.
+Vehicle:35 drives from 62 to 108. Delay: 35. Clock: 568.000000.
+Vehicle:76 drives from 2 to 2. Delay: 30. Clock: 568.000000.
+Vehicle:71 drives from 1 to 1. Delay: 35. Clock: 568.000000.
+Vehicle:3 drives from 5 to 5. Delay: 55. Clock: 570.000000.
+Vehicle:5 drives from 15 to 15. Delay: 30. Clock: 570.000000.
+Vehicle:23 drives from 54 to 33. Delay: 30. Clock: 570.000000.
+Vehicle:58 drives from 66 to 1. Delay: 35. Clock: 571.000000.
+Vehicle:36 drives from 30 to 35. Delay: 50. Clock: 573.000000.
+Vehicle:81 drives from 6 to 29. Delay: 35. Clock: 574.000000.
+Vehicle:89 drives from 29 to 30. Delay: 35. Clock: 575.000000.
+Vehicle:50 drives from 33 to 18. Delay: 15. Clock: 575.000000.
+Vehicle:92 drives from 4 to 6. Delay: 20. Clock: 575.000000.
+Vehicle:64 drives from 149 to 150. Delay: 30. Clock: 576.000000.
+Vehicle:17 drives from 49 to 32. Delay: 20. Clock: 577.000000.
+Vehicle:49 drives from 32 to 32. Delay: 40. Clock: 578.000000.
+Vehicle:56 drives from 0 to 1. Delay: 35. Clock: 579.000000.
+Drive ends here, Vehicle 59 comes back from Drive Nr.1 from Stop 31 in Depot 160. Clock: 580.000000
+Vehicle:45 drives from 4 to 4. Delay: 45. Clock: 580.000000.
+Vehicle:18 drives from 29 to 4. Delay: 60. Clock: 580.000000.
+Vehicle:32 drives from 58 to 4. Delay: 35. Clock: 582.000000.
+Drive ends here, Vehicle 25 comes back from Drive Nr.1 from Stop 69 in Depot 162. Clock: 583.000000
+Vehicle:22 drives from 1 to 116. Delay: 40. Clock: 583.000000.
+Vehicle:38 drives from 45 to 45. Delay: 45. Clock: 584.000000.
+Vehicle:93. Status 1. Clock: 584.000000
+Vehicle:93 drives from 169 to 126. Delay: 5. Clock: 584.000000.
+Vehicle:20 drives from 82 to 73. Delay: 40. Clock: 585.000000.
+Vehicle:91 drives from 109 to 109. Delay: 20. Clock: 585.000000.
+Vehicle:16 drives from 4 to 6. Delay: 30. Clock: 585.000000.
+Vehicle:44 drives from 32 to 32. Delay: 40. Clock: 586.000000.
+Vehicle:6 drives from 73 to 9. Delay: 40. Clock: 586.000000.
+Vehicle:29 drives from 9 to 73. Delay: 20. Clock: 586.000000.
+Vehicle:60 drives from 66 to 19. Delay: 50. Clock: 588.000000.
+Vehicle:94 drives from 1 to 1. Delay: 30. Clock: 588.000000.
+Vehicle:7 drives from 61 to 78. Delay: 30. Clock: 590.000000.
+Vehicle:86 drives from 51 to 56. Delay: 45. Clock: 590.000000.
+Vehicle:27 drives from 67 to 67. Delay: 55. Clock: 590.000000.
+Vehicle:83 drives from 4 to 9. Delay: 25. Clock: 590.000000.
+Vehicle:90 drives from 66 to 66. Delay: 20. Clock: 592.000000.
+Drive ends here, Vehicle 61 comes back from Drive Nr.1 from Stop 82 in Depot 162. Clock: 593.000000
+Vehicle:42 drives from 16 to 33. Delay: 40. Clock: 594.000000.
+Vehicle:12 drives from 1 to 82. Delay: 45. Clock: 594.000000.
+Vehicle:39 drives from 3 to 4. Delay: 45. Clock: 594.000000.
+Vehicle:4 drives from 6 to 29. Delay: 35. Clock: 595.000000.
+Vehicle:72 drives from 29 to 118. Delay: 40. Clock: 595.000000.
+Vehicle:62 drives from 2 to 2. Delay: 40. Clock: 598.000000.
+Vehicle:74 drives from 0 to 1. Delay: 30. Clock: 599.000000.
+Vehicle:63 drives from 6 to 6. Delay: 50. Clock: 599.000000.
+Vehicle:10 drives from 25 to 26. Delay: 45. Clock: 600.000000.
+Vehicle:65 drives from 13 to 14. Delay: 50. Clock: 600.000000.
+Vehicle:33 drives from 51 to 51. Delay: 35. Clock: 601.000000.
+Vehicle:82 drives from 1 to 9. Delay: 25. Clock: 602.000000.
+Vehicle:93 drives from 126 to 115. Delay: 10. Clock: 602.000000.
+Vehicle:28 drives from 61 to 24. Delay: 30. Clock: 603.000000.
+Vehicle:67 drives from 16 to 1. Delay: 30. Clock: 604.000000.
+Vehicle:19 drives from 27 to 28. Delay: 20. Clock: 604.000000.
+Vehicle:73 drives from 62 to 18. Delay: 35. Clock: 604.000000.
+Vehicle:35 drives from 108 to 108. Delay: 40. Clock: 604.000000.
+Drive ends here, Vehicle 34 comes back from Drive Nr.1 from Stop 92 in Depot 169. Clock: 605.000000
+Vehicle:15 drives from 4 to 6. Delay: 35. Clock: 605.000000.
+Vehicle:85 drives from 0 to 37. Delay: 30. Clock: 605.000000.
+Vehicle:66 drives from 35 to 35. Delay: 55. Clock: 606.000000.
+Vehicle:87 drives from 48 to 30. Delay: 15. Clock: 606.000000.
+Drive ends here, Vehicle 84 comes back from Drive Nr.1 from Stop 1 in Depot 163. Clock: 609.000000
+Vehicle:81 drives from 29 to 29. Delay: 35. Clock: 609.000000.
+Vehicle:52 drives from 59 to 27. Delay: 50. Clock: 610.000000.
+Vehicle:1 drives from 102 to 39. Delay: 55. Clock: 610.000000.
+Vehicle:5 drives from 15 to 6. Delay: 30. Clock: 610.000000.
+Vehicle:79 drives from 32 to 32. Delay: 45. Clock: 611.000000.
+Vehicle:48 drives from 4 to 4. Delay: 40. Clock: 612.000000.
+Vehicle:13 drives from 47 to 9. Delay: 60. Clock: 613.000000.
+Vehicle:11 drives from 28 to 55. Delay: 45. Clock: 613.000000.
+Vehicle:90 drives from 66 to 19. Delay: 20. Clock: 613.000000.
+Vehicle:70 drives from 7 to 7. Delay: 45. Clock: 614.000000.
+Vehicle:31 drives from 20 to 20. Delay: 40. Clock: 614.000000.
+Vehicle:92 drives from 6 to 6. Delay: 25. Clock: 615.000000.
+Vehicle:21 drives from 24 to 24. Delay: 35. Clock: 616.000000.
+Vehicle:71 drives from 1 to 82. Delay: 45. Clock: 619.000000.
+Vehicle:91 drives from 109 to 0. Delay: 30. Clock: 620.000000.
+Vehicle:83 drives from 9 to 9. Delay: 30. Clock: 620.000000.
+Drive ends here, Vehicle 53 comes back from Drive Nr.1 from Stop 9 in Depot 163. Clock: 621.000000
+Vehicle:17 drives from 32 to 32. Delay: 25. Clock: 621.000000.
+Vehicle:7 drives from 78 to 78. Delay: 35. Clock: 621.000000.
+Vehicle:93 drives from 115 to 126. Delay: 20. Clock: 621.000000.
+Vehicle:23 drives from 33 to 33. Delay: 35. Clock: 622.000000.
+Vehicle:76 drives from 2 to 63. Delay: 30. Clock: 623.000000.
+Vehicle:94 drives from 1 to 31. Delay: 35. Clock: 623.000000.
+Vehicle:64 drives from 150 to 150. Delay: 40. Clock: 624.000000.
+Vehicle:68 drives from 156 to 22. Delay: 50. Clock: 625.000000.
+Vehicle:87 drives from 30 to 4. Delay: 25. Clock: 625.000000.
+Vehicle:2 drives from 60 to 60. Delay: 55. Clock: 626.000000.
+Vehicle:44 drives from 32 to 82. Delay: 50. Clock: 627.000000.
+Vehicle:82 drives from 9 to 9. Delay: 35. Clock: 628.000000.
+Vehicle:29 drives from 73 to 73. Delay: 30. Clock: 629.000000.
+Vehicle:80 drives from 5 to 5. Delay: 35. Clock: 630.000000.
+Vehicle:45 drives from 4 to 6. Delay: 45. Clock: 630.000000.
+Vehicle:4 drives from 29 to 29. Delay: 45. Clock: 630.000000.
+Vehicle:8. Status 1. Clock: 633.000000
+Vehicle:8 drives from 166 to 73. Delay: 0. Clock: 633.000000.
+Vehicle:67 drives from 1 to 1. Delay: 35. Clock: 634.000000.
+Vehicle:30 drives from 9 to 47. Delay: 60. Clock: 635.000000.
+Vehicle:88 drives from 51 to 51. Delay: 35. Clock: 635.000000.
+Drive ends here, Vehicle 16 comes back from Drive Nr.1 from Stop 6 in Depot 163. Clock: 635.000000
+Vehicle:42 drives from 33 to 118. Delay: 45. Clock: 635.000000.
+Vehicle:36 drives from 35 to 6. Delay: 55. Clock: 637.000000.
+Vehicle:50 drives from 18 to 18. Delay: 25. Clock: 637.000000.
+Vehicle:89 drives from 30 to 78. Delay: 45. Clock: 638.000000.
+Vehicle:49 drives from 32 to 82. Delay: 40. Clock: 638.000000.
+Vehicle:3 drives from 5 to 16. Delay: 65. Clock: 640.000000.
+Vehicle:33 drives from 51 to 56. Delay: 45. Clock: 640.000000.
+Vehicle:15 drives from 6 to 6. Delay: 45. Clock: 640.000000.
+Vehicle:8 drives from 73 to 82. Delay: 10. Clock: 641.000000.
+Vehicle:51 drives from 29 to 29. Delay: 40. Clock: 645.000000.
+Drive ends here, Vehicle 32 comes back from Drive Nr.1 from Stop 4 in Depot 166. Clock: 645.000000
+Vehicle:38 drives from 45 to 29. Delay: 45. Clock: 645.000000.
+Vehicle:28 drives from 24 to 24. Delay: 35. Clock: 645.000000.
+Vehicle:81 drives from 29 to 30. Delay: 35. Clock: 645.000000.
+Vehicle:92 drives from 6 to 3. Delay: 35. Clock: 645.000000.
+Vehicle:40 drives from 9 to 4. Delay: 50. Clock: 646.000000.
+Vehicle:17 drives from 32 to 82. Delay: 25. Clock: 647.000000.
+Vehicle:56 drives from 1 to 25. Delay: 45. Clock: 648.000000.
+Vehicle:55 drives from 27 to 27. Delay: 50. Clock: 649.000000.
+Vehicle:27 drives from 67 to 6. Delay: 55. Clock: 650.000000.
+Vehicle:63 drives from 6 to 91. Delay: 55. Clock: 650.000000.
+Vehicle:73 drives from 18 to 16. Delay: 45. Clock: 650.000000.
+Vehicle:93 drives from 126 to 126. Delay: 25. Clock: 651.000000.
+Vehicle:87 drives from 4 to 6. Delay: 30. Clock: 651.000000.
+Vehicle:20 drives from 73 to 73. Delay: 45. Clock: 652.000000.
+Vehicle:39 drives from 4 to 4. Delay: 45. Clock: 652.000000.
+Vehicle:21 drives from 24 to 4. Delay: 40. Clock: 652.000000.
+Vehicle:35 drives from 108 to 15. Delay: 50. Clock: 654.000000.
+Vehicle:48 drives from 4 to 6. Delay: 45. Clock: 655.000000.
+Drive ends here, Vehicle 86 comes back from Drive Nr.1 from Stop 56 in Depot 164. Clock: 656.000000
+Vehicle:31 drives from 20 to 21. Delay: 50. Clock: 657.000000.
+Vehicle:11 drives from 55 to 55. Delay: 50. Clock: 661.000000.
+Vehicle:7 drives from 78 to 60. Delay: 40. Clock: 661.000000.
+Vehicle:76 drives from 63 to 63. Delay: 40. Clock: 661.000000.
+Vehicle:29 drives from 73 to 82. Delay: 35. Clock: 661.000000.
+Vehicle:58 drives from 1 to 87. Delay: 35. Clock: 662.000000.
+Vehicle:79 drives from 32 to 43. Delay: 45. Clock: 662.000000.
+Vehicle:18 drives from 4 to 4. Delay: 60. Clock: 663.000000.
+Vehicle:74 drives from 1 to 47. Delay: 30. Clock: 663.000000.
+Vehicle:83 drives from 9 to 19. Delay: 30. Clock: 663.000000.
+Vehicle:22 drives from 116 to 116. Delay: 45. Clock: 666.000000.
+Vehicle:25. Status 1. Clock: 666.000000
+Vehicle:25 drives from 162 to 49. Delay: 5. Clock: 666.000000.
+Vehicle:66 drives from 35 to 6. Delay: 65. Clock: 667.000000.
+Vehicle:72 drives from 118 to 44. Delay: 40. Clock: 668.000000.
+Drive ends here, Vehicle 19 comes back from Drive Nr.2 from Stop 28 in Depot 162. Clock: 668.000000
+Vehicle:50 drives from 18 to 16. Delay: 35. Clock: 668.000000.
+Vehicle:52 drives from 27 to 28. Delay: 55. Clock: 669.000000.
+Vehicle:62 drives from 2 to 2. Delay: 45. Clock: 670.000000.
+Vehicle:23 drives from 33 to 46. Delay: 45. Clock: 670.000000.
+Vehicle:80 drives from 5 to 6. Delay: 45. Clock: 670.000000.
+Vehicle:6 drives from 9 to 4. Delay: 50. Clock: 671.000000.
+Vehicle:67 drives from 1 to 31. Delay: 45. Clock: 673.000000.
+Vehicle:70 drives from 7 to 4. Delay: 45. Clock: 674.000000.
+Vehicle:88 drives from 51 to 56. Delay: 35. Clock: 675.000000.
+Vehicle:90 drives from 19 to 73. Delay: 20. Clock: 676.000000.
+Vehicle:10 drives from 26 to 113. Delay: 45. Clock: 677.000000.
+Vehicle:25 drives from 49 to 32. Delay: 5. Clock: 677.000000.
+Vehicle:65 drives from 14 to 14. Delay: 55. Clock: 678.000000.
+Vehicle:82 drives from 9 to 47. Delay: 35. Clock: 679.000000.
+Vehicle:5 drives from 6 to 6. Delay: 40. Clock: 680.000000.
+Vehicle:4 drives from 29 to 135. Delay: 50. Clock: 680.000000.
+Vehicle:60 drives from 19 to 73. Delay: 55. Clock: 681.000000.
+Vehicle:91 drives from 0 to 46. Delay: 35. Clock: 686.000000.
+Vehicle:85 drives from 37 to 38. Delay: 30. Clock: 689.000000.
+Vehicle:1 drives from 39 to 40. Delay: 55. Clock: 690.000000.
+Vehicle:15 drives from 6 to 90. Delay: 45. Clock: 690.000000.
+Vehicle:94 drives from 31 to 10. Delay: 40. Clock: 691.000000.
+Vehicle:56 drives from 25 to 25. Delay: 50. Clock: 693.000000.
+Vehicle:37. Status 1. Clock: 693.000000
+Vehicle:37 drives from 161 to 74. Delay: 0. Clock: 693.000000.
+Vehicle:92 drives from 3 to 3. Delay: 40. Clock: 694.000000.
+Vehicle:12 drives from 82 to 66. Delay: 45. Clock: 695.000000.
+Vehicle:64 drives from 150 to 9. Delay: 40. Clock: 695.000000.
+Drive ends here, Vehicle 45 comes back from Drive Nr.1 from Stop 6 in Depot 168. Clock: 695.000000
+Vehicle:8 drives from 82 to 66. Delay: 15. Clock: 695.000000.
+Vehicle:37 drives from 74 to 2. Delay: 0. Clock: 695.000000.
+Vehicle:90 drives from 73 to 9. Delay: 20. Clock: 696.000000.
+Vehicle:28 drives from 24 to 4. Delay: 35. Clock: 697.000000.
+Vehicle:68 drives from 22 to 22. Delay: 50. Clock: 699.000000.
+Vehicle:93 drives from 126 to 115. Delay: 35. Clock: 699.000000.
+Vehicle:40 drives from 4 to 12. Delay: 50. Clock: 700.000000.
+Vehicle:17 drives from 82 to 49. Delay: 25. Clock: 700.000000.
+Vehicle:39 drives from 4 to 35. Delay: 50. Clock: 700.000000.
+Vehicle:13 drives from 9 to 1. Delay: 70. Clock: 701.000000.
+Vehicle:58 drives from 87 to 87. Delay: 40. Clock: 702.000000.
+Vehicle:76 drives from 63 to 2. Delay: 40. Clock: 703.000000.
+Drive ends here, Vehicle 44 comes back from Drive Nr.1 from Stop 82 in Depot 162. Clock: 705.000000
+Vehicle:51 drives from 29 to 30. Delay: 40. Clock: 705.000000.
+Vehicle:33 drives from 56 to 56. Delay: 45. Clock: 706.000000.
+Vehicle:20 drives from 73 to 100. Delay: 45. Clock: 706.000000.
+Vehicle:25 drives from 32 to 32. Delay: 10. Clock: 706.000000.
+Vehicle:81 drives from 30 to 4. Delay: 45. Clock: 708.000000.
+Vehicle:72 drives from 44 to 44. Delay: 45. Clock: 709.000000.
+Drive ends here, Vehicle 42 comes back from Drive Nr.1 from Stop 118 in Depot 167. Clock: 710.000000
+Vehicle:38 drives from 29 to 6. Delay: 55. Clock: 710.000000.
+Vehicle:87 drives from 6 to 29. Delay: 40. Clock: 710.000000.
+Vehicle:8 drives from 66 to 66. Delay: 20. Clock: 710.000000.
+Vehicle:89 drives from 78 to 78. Delay: 50. Clock: 711.000000.
+Vehicle:11 drives from 55 to 4. Delay: 50. Clock: 714.000000.
+Vehicle:30 drives from 47 to 47. Delay: 65. Clock: 715.000000.
+Vehicle:22 drives from 116 to 9. Delay: 50. Clock: 715.000000.
+Vehicle:25 drives from 32 to 82. Delay: 20. Clock: 717.000000.
+Vehicle:49 drives from 82 to 56. Delay: 40. Clock: 719.000000.
+Vehicle:31 drives from 21 to 111. Delay: 50. Clock: 719.000000.
+Vehicle:71 drives from 82 to 104. Delay: 55. Clock: 720.000000.
+Vehicle:36 drives from 6 to 6. Delay: 60. Clock: 720.000000.
+Vehicle:27 drives from 6 to 4. Delay: 55. Clock: 720.000000.
+Vehicle:21 drives from 4 to 1. Delay: 45. Clock: 720.000000.
+Vehicle:48 drives from 6 to 6. Delay: 50. Clock: 720.000000.
+Vehicle:85 drives from 38 to 38. Delay: 30. Clock: 720.000000.
+Vehicle:10 drives from 113 to 113. Delay: 50. Clock: 722.000000.
+Vehicle:74 drives from 47 to 47. Delay: 30. Clock: 725.000000.
+Vehicle:6 drives from 4 to 15. Delay: 55. Clock: 725.000000.
+Vehicle:5 drives from 6 to 55. Delay: 50. Clock: 725.000000.
+Vehicle:17 drives from 49 to 49. Delay: 30. Clock: 727.000000.
+Vehicle:35 drives from 15 to 15. Delay: 55. Clock: 730.000000.
+Vehicle:18 drives from 4 to 6. Delay: 65. Clock: 730.000000.
+Drive ends here, Vehicle 88 comes back from Drive Nr.1 from Stop 56 in Depot 164. Clock: 731.000000
+Vehicle:63 drives from 91 to 58. Delay: 65. Clock: 732.000000.
+Vehicle:8 drives from 66 to 19. Delay: 25. Clock: 733.000000.
+Vehicle:2 drives from 60 to 78. Delay: 55. Clock: 734.000000.
+Vehicle:91 drives from 46 to 46. Delay: 40. Clock: 734.000000.
+Vehicle:79 drives from 43 to 43. Delay: 45. Clock: 735.000000.
+Vehicle:65 drives from 14 to 64. Delay: 60. Clock: 735.000000.
+Vehicle:37 drives from 2 to 4. Delay: 10. Clock: 735.000000.
+Vehicle:82 drives from 47 to 151. Delay: 40. Clock: 736.000000.
+Vehicle:60 drives from 73 to 9. Delay: 65. Clock: 736.000000.
+Vehicle:73 drives from 16 to 4. Delay: 50. Clock: 738.000000.
+Vehicle:92 drives from 3 to 4. Delay: 45. Clock: 739.000000.
+Drive ends here, Vehicle 29 comes back from Drive Nr.1 from Stop 82 in Depot 162. Clock: 740.000000
+Vehicle:70 drives from 4 to 6. Delay: 50. Clock: 740.000000.
+Vehicle:4 drives from 135 to 4. Delay: 50. Clock: 740.000000.
+Vehicle:12 drives from 66 to 66. Delay: 45. Clock: 740.000000.
+Vehicle:14. Status 1. Clock: 740.000000
+Vehicle:14 drives from 163 to 109. Delay: 10. Clock: 740.000000.
+Vehicle:83 drives from 19 to 23. Delay: 40. Clock: 743.000000.
+Vehicle:50 drives from 16 to 6. Delay: 45. Clock: 743.000000.
+Vehicle:62 drives from 2 to 2. Delay: 45. Clock: 743.000000.
+Drive ends here, Vehicle 93 comes back from Drive Nr.2 from Stop 115 in Depot 169. Clock: 743.000000
+Vehicle:56 drives from 25 to 15. Delay: 50. Clock: 745.000000.
+Vehicle:58 drives from 87 to 87. Delay: 40. Clock: 745.000000.
+Vehicle:3 drives from 16 to 88. Delay: 75. Clock: 749.000000.
+Vehicle:87 drives from 29 to 29. Delay: 40. Clock: 750.000000.
+Vehicle:67 drives from 31 to 10. Delay: 55. Clock: 751.000000.
+Vehicle:76 drives from 2 to 2. Delay: 50. Clock: 751.000000.
+Vehicle:15 drives from 90 to 90. Delay: 45. Clock: 753.000000.
+Vehicle:81 drives from 4 to 4. Delay: 50. Clock: 754.000000.
+Vehicle:80 drives from 6 to 6. Delay: 50. Clock: 755.000000.
+Vehicle:68 drives from 22 to 0. Delay: 60. Clock: 755.000000.
+Vehicle:85 drives from 38 to 31. Delay: 35. Clock: 755.000000.
+Vehicle:64 drives from 9 to 1. Delay: 45. Clock: 756.000000.
+Vehicle:74 drives from 47 to 57. Delay: 35. Clock: 756.000000.
+Vehicle:55 drives from 27 to 28. Delay: 50. Clock: 759.000000.
+Vehicle:66 drives from 6 to 4. Delay: 65. Clock: 760.000000.
+Vehicle:28 drives from 4 to 6. Delay: 40. Clock: 760.000000.
+Vehicle:37 drives from 4 to 6. Delay: 15. Clock: 760.000000.
+Vehicle:90 drives from 9 to 9. Delay: 20. Clock: 761.000000.
+Vehicle:89 drives from 78 to 60. Delay: 60. Clock: 762.000000.
+Drive ends here, Vehicle 40 comes back from Drive Nr.1 from Stop 12 in Depot 160. Clock: 765.000000
+Vehicle:25 drives from 82 to 28. Delay: 30. Clock: 765.000000.
+Vehicle:14 drives from 109 to 0. Delay: 15. Clock: 765.000000.
+Vehicle:23 drives from 46 to 46. Delay: 45. Clock: 766.000000.
+Vehicle:38 drives from 6 to 6. Delay: 55. Clock: 766.000000.
+Vehicle:52 drives from 28 to 66. Delay: 55. Clock: 768.000000.
+Vehicle:33 drives from 56 to 51. Delay: 50. Clock: 769.000000.
+Vehicle:20 drives from 100 to 49. Delay: 55. Clock: 769.000000.
+Vehicle:31 drives from 111 to 111. Delay: 50. Clock: 769.000000.
+Vehicle:1 drives from 40 to 102. Delay: 60. Clock: 770.000000.
+Vehicle:39 drives from 35 to 35. Delay: 60. Clock: 770.000000.
+Vehicle:21 drives from 1 to 10. Delay: 50. Clock: 770.000000.
+Vehicle:13 drives from 1 to 1. Delay: 80. Clock: 772.000000.
+Vehicle:51 drives from 30 to 6. Delay: 40. Clock: 773.000000.
+Vehicle:10 drives from 113 to 16. Delay: 60. Clock: 773.000000.
+Vehicle:17 drives from 49 to 59. Delay: 35. Clock: 773.000000.
+Vehicle:48 drives from 6 to 3. Delay: 50. Clock: 775.000000.
+Vehicle:91 drives from 46 to 29. Delay: 50. Clock: 775.000000.
+Vehicle:94 drives from 10 to 10. Delay: 45. Clock: 776.000000.
+Vehicle:27 drives from 4 to 4. Delay: 55. Clock: 776.000000.
+Vehicle:82 drives from 151 to 47. Delay: 45. Clock: 776.000000.
+Vehicle:72 drives from 44 to 29. Delay: 55. Clock: 778.000000.
+Vehicle:7 drives from 60 to 60. Delay: 45. Clock: 779.000000.
+Vehicle:90 drives from 9 to 19. Delay: 25. Clock: 783.000000.
+Vehicle:49 drives from 56 to 56. Delay: 50. Clock: 784.000000.
+Vehicle:36 drives from 6 to 75. Delay: 60. Clock: 785.000000.
+Vehicle:79 drives from 43 to 32. Delay: 50. Clock: 785.000000.
+Vehicle:29. Status 1. Clock: 785.000000
+Vehicle:29 drives from 162 to 66. Delay: 0. Clock: 785.000000.
+Vehicle:30 drives from 47 to 57. Delay: 75. Clock: 786.000000.
+Vehicle:71 drives from 104 to 104. Delay: 55. Clock: 786.000000.
+Vehicle:12 drives from 66 to 1. Delay: 55. Clock: 786.000000.
+Vehicle:70 drives from 6 to 6. Delay: 60. Clock: 790.000000.
+Vehicle:83 drives from 23 to 23. Delay: 40. Clock: 790.000000.
+Vehicle:87 drives from 29 to 30. Delay: 40. Clock: 791.000000.
+Vehicle:29 drives from 66 to 1. Delay: 10. Clock: 791.000000.
+Vehicle:32. Status 1. Clock: 791.000000
+Vehicle:32 drives from 166 to 29. Delay: 5. Clock: 791.000000.
+Vehicle:73 drives from 4 to 4. Delay: 50. Clock: 792.000000.
+Vehicle:50 drives from 6 to 6. Delay: 55. Clock: 793.000000.
+Vehicle:35 drives from 15 to 6. Delay: 60. Clock: 795.000000.
+Vehicle:37 drives from 6 to 88. Delay: 25. Clock: 795.000000.
+Vehicle:16. Status 1. Clock: 795.000000
+Vehicle:16 drives from 163 to 6. Delay: 5. Clock: 795.000000.
+Vehicle:9. Status 1. Clock: 796.000000
+Vehicle:9 drives from 168 to 9. Delay: 0. Clock: 796.000000.
+Vehicle:63 drives from 58 to 58. Delay: 75. Clock: 797.000000.
+Vehicle:92 drives from 4 to 4. Delay: 55. Clock: 797.000000.
+Vehicle:25 drives from 28 to 28. Delay: 40. Clock: 798.000000.
+Vehicle:26. Status 1. Clock: 798.000000
+Vehicle:26 drives from 163 to 33. Delay: 0. Clock: 798.000000.
+Vehicle:58 drives from 87 to 42. Delay: 45. Clock: 800.000000.
+Vehicle:28 drives from 6 to 90. Delay: 50. Clock: 800.000000.
+Vehicle:19. Status 1. Clock: 800.000000
+Vehicle:19 drives from 162 to 71. Delay: 5. Clock: 800.000000.
+Vehicle:8 drives from 19 to 73. Delay: 30. Clock: 801.000000.
+Vehicle:64 drives from 1 to 1. Delay: 55. Clock: 802.000000.
+Vehicle:76 drives from 2 to 74. Delay: 50. Clock: 803.000000.
+Vehicle:15 drives from 90 to 19. Delay: 55. Clock: 803.000000.
+Vehicle:53. Status 1. Clock: 804.000000
+Vehicle:53 drives from 163 to 50. Delay: 10. Clock: 804.000000.
+Vehicle:11 drives from 4 to 6. Delay: 60. Clock: 805.000000.
+Vehicle:81 drives from 4 to 79. Delay: 60. Clock: 805.000000.
+Vehicle:41. Status 1. Clock: 805.000000
+Vehicle:41 drives from 166 to 23. Delay: 5. Clock: 805.000000.
+Vehicle:74 drives from 57 to 1. Delay: 40. Clock: 808.000000.
+Vehicle:9 drives from 9 to 57. Delay: 0. Clock: 808.000000.
+Vehicle:22 drives from 9 to 4. Delay: 55. Clock: 809.000000.
+Vehicle:80 drives from 6 to 100. Delay: 55. Clock: 810.000000.
+Vehicle:26 drives from 33 to 76. Delay: 0. Clock: 810.000000.
+Vehicle:59. Status 1. Clock: 810.000000
+Vehicle:59 drives from 160 to 133. Delay: 5. Clock: 810.000000.
+Vehicle:16 drives from 6 to 50. Delay: 5. Clock: 812.000000.
+Vehicle:19 drives from 71 to 60. Delay: 10. Clock: 813.000000.
+Vehicle:54. Status 1. Clock: 813.000000
+Vehicle:54 drives from 163 to 6. Delay: 0. Clock: 813.000000.
+Vehicle:51 drives from 6 to 6. Delay: 40. Clock: 814.000000.
+Vehicle:18 drives from 6 to 29. Delay: 65. Clock: 815.000000.
+Vehicle:23 drives from 46 to 29. Delay: 50. Clock: 815.000000.
+Vehicle:32 drives from 29 to 46. Delay: 10. Clock: 815.000000.
+Vehicle:5 drives from 55 to 55. Delay: 55. Clock: 816.000000.
+Vehicle:14 drives from 0 to 0. Delay: 20. Clock: 816.000000.
+Vehicle:41 drives from 23 to 9. Delay: 10. Clock: 819.000000.
+Vehicle:59 drives from 133 to 81. Delay: 10. Clock: 819.000000.
+Vehicle:6 drives from 15 to 74. Delay: 65. Clock: 820.000000.
+Vehicle:4 drives from 4 to 33. Delay: 50. Clock: 820.000000.
+Vehicle:82 drives from 47 to 48. Delay: 45. Clock: 821.000000.
+Vehicle:65 drives from 64 to 13. Delay: 65. Clock: 824.000000.
+Vehicle:37 drives from 88 to 88. Delay: 35. Clock: 824.000000.
+Vehicle:53 drives from 50 to 6. Delay: 20. Clock: 824.000000.
+Vehicle:40. Status 1. Clock: 824.000000
+Vehicle:40 drives from 160 to 10. Delay: 10. Clock: 824.000000.
+Vehicle:3 drives from 88 to 88. Delay: 85. Clock: 825.000000.
+Vehicle:38 drives from 6 to 45. Delay: 60. Clock: 825.000000.
+Vehicle:54 drives from 6 to 58. Delay: 5. Clock: 825.000000.
+Vehicle:62 drives from 2 to 2. Delay: 50. Clock: 826.000000.
+Vehicle:66 drives from 4 to 4. Delay: 75. Clock: 826.000000.
+Vehicle:52 drives from 66 to 1. Delay: 55. Clock: 826.000000.
+Vehicle:7 drives from 60 to 78. Delay: 55. Clock: 829.000000.
+Vehicle:68 drives from 0 to 1. Delay: 65. Clock: 830.000000.
+Vehicle:1 drives from 102 to 102. Delay: 70. Clock: 830.000000.
+Vehicle:8 drives from 73 to 9. Delay: 30. Clock: 831.000000.
+Vehicle:31 drives from 111 to 20. Delay: 60. Clock: 833.000000.
+Vehicle:85 drives from 31 to 0. Delay: 45. Clock: 835.000000.
+Vehicle:27 drives from 4 to 65. Delay: 55. Clock: 835.000000.
+Vehicle:33 drives from 51 to 51. Delay: 55. Clock: 836.000000.
+Vehicle:39 drives from 35 to 6. Delay: 70. Clock: 837.000000.
+Vehicle:48 drives from 3 to 3. Delay: 60. Clock: 839.000000.
+Vehicle:56 drives from 15 to 15. Delay: 50. Clock: 840.000000.
+Vehicle:20 drives from 49 to 49. Delay: 65. Clock: 845.000000.
+Drive ends here, Vehicle 60 comes back from Drive Nr.1 from Stop 9 in Depot 168. Clock: 846.000000
+GAME OVER. Vehicle 60 does not reach next StartTime. Every drive afterwards is cancelled #BVG
+Vehicle:25 drives from 28 to 27. Delay: 45. Clock: 847.000000.
+Vehicle:17 drives from 59 to 28. Delay: 45. Clock: 848.000000.
+Vehicle:94 drives from 10 to 0. Delay: 55. Clock: 848.000000.
+Vehicle:74 drives from 1 to 33. Delay: 50. Clock: 848.000000.
+Vehicle:26 drives from 76 to 101. Delay: 10. Clock: 848.000000.
+Vehicle:59 drives from 81 to 81. Delay: 15. Clock: 848.000000.
+Vehicle:2 drives from 78 to 78. Delay: 55. Clock: 849.000000.
+Vehicle:49 drives from 56 to 51. Delay: 55. Clock: 849.000000.
+Vehicle:71 drives from 104 to 69. Delay: 55. Clock: 850.000000.
+Vehicle:67 drives from 10 to 96. Delay: 65. Clock: 851.000000.
+Vehicle:57. Status 1. Clock: 851.000000
+Vehicle:57 drives from 163 to 1. Delay: 0. Clock: 851.000000.
+Vehicle:54 drives from 58 to 58. Delay: 5. Clock: 852.000000.
+Vehicle:55 drives from 28 to 28. Delay: 55. Clock: 853.000000.
+Vehicle:13 drives from 1 to 31. Delay: 80. Clock: 853.000000.
+Vehicle:70 drives from 6 to 90. Delay: 70. Clock: 855.000000.
+Vehicle:73 drives from 4 to 6. Delay: 60. Clock: 855.000000.
+Vehicle:92 drives from 4 to 35. Delay: 65. Clock: 855.000000.
+Vehicle:58 drives from 42 to 42. Delay: 45. Clock: 855.000000.
+Vehicle:51 drives from 6 to 91. Delay: 45. Clock: 855.000000.
+Vehicle:29 drives from 1 to 6. Delay: 15. Clock: 857.000000.
+Vehicle:90 drives from 19 to 52. Delay: 30. Clock: 858.000000.
+Vehicle:79 drives from 32 to 32. Delay: 60. Clock: 858.000000.
+Vehicle:9 drives from 57 to 23. Delay: 5. Clock: 858.000000.
+Vehicle:40 drives from 10 to 0. Delay: 15. Clock: 858.000000.
+Vehicle:87 drives from 30 to 6. Delay: 45. Clock: 859.000000.
+Vehicle:50 drives from 6 to 58. Delay: 55. Clock: 860.000000.
+Vehicle:37 drives from 88 to 5. Delay: 40. Clock: 860.000000.
+Vehicle:72 drives from 29 to 29. Delay: 65. Clock: 862.000000.
+Vehicle:54 drives from 58 to 4. Delay: 5. Clock: 862.000000.
+Vehicle:57 drives from 1 to 31. Delay: 5. Clock: 863.000000.
+Vehicle:10 drives from 16 to 1. Delay: 60. Clock: 864.000000.
+Vehicle:64 drives from 1 to 82. Delay: 60. Clock: 864.000000.
+Vehicle:9 drives from 23 to 23. Delay: 15. Clock: 864.000000.
+Vehicle:11 drives from 6 to 6. Delay: 70. Clock: 865.000000.
+Vehicle:14 drives from 0 to 109. Delay: 30. Clock: 867.000000.
+Vehicle:28 drives from 90 to 1. Delay: 60. Clock: 868.000000.
+Vehicle:22 drives from 4 to 4. Delay: 60. Clock: 868.000000.
+Vehicle:26 drives from 101 to 101. Delay: 20. Clock: 868.000000.
+Vehicle:83 drives from 23 to 47. Delay: 40. Clock: 869.000000.
+Vehicle:95. Status 1. Clock: 870.000000
+Vehicle:95 drives from 165 to 43. Delay: 0. Clock: 870.000000.
+Vehicle:95 drives from 43 to 32. Delay: 10. Clock: 870.000000.
+Vehicle:36 drives from 75 to 75. Delay: 60. Clock: 871.000000.
+Vehicle:75. Status 1. Clock: 873.000000
+Vehicle:75 drives from 166 to 73. Delay: 10. Clock: 873.000000.
+Vehicle:5 drives from 55 to 4. Delay: 55. Clock: 874.000000.
+Vehicle:59 drives from 81 to 15. Delay: 15. Clock: 874.000000.
+Vehicle:21 drives from 10 to 10. Delay: 60. Clock: 875.000000.
+Vehicle:4 drives from 33 to 33. Delay: 60. Clock: 875.000000.
+Vehicle:15 drives from 19 to 73. Delay: 65. Clock: 876.000000.
+Vehicle:63 drives from 58 to 4. Delay: 75. Clock: 877.000000.
+Vehicle:29 drives from 6 to 6. Delay: 20. Clock: 877.000000.
+Vehicle:30 drives from 57 to 7. Delay: 85. Clock: 878.000000.
+Vehicle:81 drives from 79 to 79. Delay: 65. Clock: 878.000000.
+Vehicle:62 drives from 2 to 63. Delay: 55. Clock: 878.000000.
+Vehicle:19 drives from 60 to 60. Delay: 20. Clock: 879.000000.
+Vehicle:32 drives from 46 to 46. Delay: 15. Clock: 879.000000.
+Vehicle:16 drives from 50 to 50. Delay: 10. Clock: 880.000000.
+Vehicle:18 drives from 29 to 29. Delay: 65. Clock: 880.000000.
+Vehicle:85 drives from 0 to 0. Delay: 55. Clock: 880.000000.
+Vehicle:41 drives from 9 to 9. Delay: 15. Clock: 881.000000.
+Vehicle:80 drives from 100 to 7. Delay: 60. Clock: 884.000000.
+Vehicle:91 drives from 29 to 4. Delay: 50. Clock: 885.000000.
+Vehicle:65 drives from 13 to 14. Delay: 70. Clock: 890.000000.
+Vehicle:75 drives from 73 to 82. Delay: 10. Clock: 891.000000.
+Drive ends here, Vehicle 76 comes back from Drive Nr.1 from Stop 74 in Depot 161. Clock: 892.000000
+GAME OVER. Vehicle 76 does not reach next StartTime. Every drive afterwards is cancelled #BVG
+Vehicle:33 drives from 51 to 52. Delay: 60. Clock: 893.000000.
+Vehicle:89 drives from 60 to 60. Delay: 70. Clock: 894.000000.
+Vehicle:9 drives from 23 to 9. Delay: 20. Clock: 894.000000.
+Vehicle:35 drives from 6 to 6. Delay: 65. Clock: 895.000000.
+Vehicle:56 drives from 15 to 6. Delay: 50. Clock: 895.000000.
+Vehicle:54 drives from 4 to 6. Delay: 5. Clock: 895.000000.
+Vehicle:32 drives from 46 to 29. Delay: 15. Clock: 895.000000.
+Vehicle:82 drives from 48 to 6. Delay: 50. Clock: 896.000000.
+Vehicle:12 drives from 1 to 4. Delay: 65. Clock: 897.000000.
+Vehicle:53 drives from 6 to 29. Delay: 30. Clock: 898.000000.
+Vehicle:74 drives from 33 to 18. Delay: 55. Clock: 898.000000.
+Vehicle:41 drives from 9 to 57. Delay: 20. Clock: 898.000000.
+Vehicle:59 drives from 15 to 133. Delay: 25. Clock: 900.000000.
+Vehicle:54 drives from 6 to 6. Delay: 5. Clock: 900.000000.
+Vehicle:57 drives from 31 to 10. Delay: 15. Clock: 901.000000.
+Vehicle:45. Status 1. Clock: 902.000000
+Vehicle:45 drives from 168 to 75. Delay: 0. Clock: 902.000000.
+Vehicle:77. Status 1. Clock: 903.000000
+Vehicle:77 drives from 168 to 6. Delay: 0. Clock: 903.000000.
+Vehicle:6 drives from 74 to 74. Delay: 70. Clock: 903.000000.
+Vehicle:95 drives from 32 to 32. Delay: 15. Clock: 903.000000.
+Vehicle:86. Status 1. Clock: 903.000000
+Vehicle:86 drives from 164 to 73. Delay: 0. Clock: 903.000000.
+Vehicle:48 drives from 3 to 4. Delay: 65. Clock: 904.000000.
+Vehicle:2 drives from 78 to 107. Delay: 65. Clock: 905.000000.
+Vehicle:87 drives from 6 to 6. Delay: 45. Clock: 905.000000.
+Vehicle:16 drives from 50 to 25. Delay: 15. Clock: 905.000000.
+Vehicle:8 drives from 9 to 88. Delay: 40. Clock: 906.000000.
+Drive ends here, Vehicle 31 comes back from Drive Nr.1 from Stop 20 in Depot 165. Clock: 910.000000
+GAME OVER. Vehicle 31 does not reach next StartTime. Every drive afterwards is cancelled #BVG
+Vehicle:27 drives from 65 to 65. Delay: 55. Clock: 910.000000.
+Vehicle:58 drives from 42 to 29. Delay: 45. Clock: 910.000000.
+Vehicle:54 drives from 6 to 58. Delay: 10. Clock: 910.000000.
+Vehicle:20 drives from 49 to 59. Delay: 65. Clock: 913.000000.
+Vehicle:17 drives from 28 to 28. Delay: 55. Clock: 913.000000.
+Vehicle:26 drives from 101 to 16. Delay: 20. Clock: 915.000000.
+Vehicle:29 drives from 6 to 90. Delay: 25. Clock: 915.000000.
+Vehicle:77 drives from 6 to 42. Delay: 10. Clock: 915.000000.
+Vehicle:67 drives from 96 to 96. Delay: 75. Clock: 916.000000.
+Vehicle:84. Status 1. Clock: 916.000000
+Vehicle:84 drives from 163 to 9. Delay: 10. Clock: 916.000000.
+Vehicle:38 drives from 45 to 45. Delay: 60. Clock: 917.000000.
+Vehicle:90 drives from 52 to 52. Delay: 30. Clock: 917.000000.
+Vehicle:40 drives from 0 to 1. Delay: 20. Clock: 919.000000.
+Vehicle:44. Status 1. Clock: 919.000000
+Vehicle:44 drives from 162 to 49. Delay: 0. Clock: 919.000000.
+Vehicle:3 drives from 88 to 89. Delay: 95. Clock: 920.000000.
+Vehicle:45 drives from 75 to 4. Delay: 5. Clock: 920.000000.
+Vehicle:43. Status 1. Clock: 920.000000
+Vehicle:43 drives from 160 to 0. Delay: 0. Clock: 920.000000.
+Vehicle:49 drives from 51 to 51. Delay: 65. Clock: 921.000000.
+Vehicle:1 drives from 102 to 39. Delay: 80. Clock: 923.000000.
+Vehicle:10 drives from 1 to 1. Delay: 65. Clock: 924.000000.
+Vehicle:23 drives from 29 to 29. Delay: 55. Clock: 925.000000.
+Vehicle:44 drives from 49 to 59. Delay: 5. Clock: 925.000000.
+Vehicle:79 drives from 32 to 43. Delay: 70. Clock: 926.000000.
+Vehicle:95 drives from 32 to 43. Delay: 20. Clock: 926.000000.
+Vehicle:93. Status 1. Clock: 926.000000
+Vehicle:93 drives from 169 to 126. Delay: 5. Clock: 926.000000.
+Vehicle:51 drives from 91 to 58. Delay: 55. Clock: 927.000000.
+Vehicle:83 drives from 47 to 47. Delay: 50. Clock: 927.000000.
+Vehicle:47. Status 1. Clock: 927.000000
+Vehicle:47 drives from 160 to 0. Delay: 0. Clock: 927.000000.
+Vehicle:53 drives from 29 to 29. Delay: 35. Clock: 928.000000.
+Vehicle:68 drives from 1 to 33. Delay: 70. Clock: 929.000000.
+Vehicle:25 drives from 27 to 28. Delay: 55. Clock: 929.000000.
+Vehicle:72 drives from 29 to 4. Delay: 75. Clock: 930.000000.
+Vehicle:22 drives from 4 to 26. Delay: 60. Clock: 930.000000.
+Vehicle:36 drives from 75 to 4. Delay: 65. Clock: 934.000000.
+Vehicle:66 drives from 4 to 26. Delay: 75. Clock: 935.000000.
+Vehicle:39 drives from 6 to 29. Delay: 70. Clock: 935.000000.
+Vehicle:14 drives from 109 to 109. Delay: 30. Clock: 935.000000.
+Vehicle:91 drives from 4 to 4. Delay: 60. Clock: 935.000000.
+Vehicle:43 drives from 0 to 37. Delay: 5. Clock: 935.000000.
+Drive ends here, Vehicle 52 comes back from Drive Nr.1 from Stop 1 in Depot 163. Clock: 937.000000
+GAME OVER. Vehicle 52 does not reach next StartTime. Every drive afterwards is cancelled #BVG
+Vehicle:50 drives from 58 to 58. Delay: 65. Clock: 937.000000.
+Vehicle:84 drives from 9 to 57. Delay: 10. Clock: 938.000000.
+Vehicle:92 drives from 35 to 35. Delay: 70. Clock: 940.000000.
+Vehicle:11 drives from 6 to 100. Delay: 75. Clock: 940.000000.
+Vehicle:28 drives from 1 to 10. Delay: 65. Clock: 940.000000.
+Vehicle:15 drives from 73 to 9. Delay: 75. Clock: 941.000000.
+Vehicle:62 drives from 63 to 63. Delay: 55. Clock: 941.000000.
+Vehicle:86 drives from 73 to 100. Delay: 10. Clock: 941.000000.
+Vehicle:54 drives from 58 to 58. Delay: 15. Clock: 942.000000.
+Vehicle:47 drives from 0 to 109. Delay: 5. Clock: 942.000000.
+Vehicle:71 drives from 69 to 52. Delay: 65. Clock: 943.000000.
+Vehicle:70 drives from 90 to 90. Delay: 75. Clock: 943.000000.
+Vehicle:42. Status 1. Clock: 943.000000
+Vehicle:42 drives from 167 to 54. Delay: 5. Clock: 943.000000.
+Vehicle:96. Status 1. Clock: 944.000000
+Vehicle:96 drives from 163 to 65. Delay: 10. Clock: 944.000000.
+Vehicle:7 drives from 78 to 78. Delay: 65. Clock: 944.000000.
+Vehicle:73 drives from 6 to 6. Delay: 65. Clock: 944.000000.
+Vehicle:77 drives from 42 to 42. Delay: 10. Clock: 944.000000.
+Vehicle:93 drives from 126 to 115. Delay: 10. Clock: 944.000000.
+Drive ends here, Vehicle 37 comes back from Drive Nr.2 from Stop 5 in Depot 161. Clock: 945.000000
+Vehicle:4 drives from 33 to 18. Delay: 70. Clock: 945.000000.
+Vehicle:81 drives from 79 to 6. Delay: 70. Clock: 945.000000.
+Vehicle:80 drives from 7 to 7. Delay: 65. Clock: 945.000000.
+Vehicle:75 drives from 82 to 66. Delay: 15. Clock: 945.000000.
+Vehicle:55 drives from 28 to 27. Delay: 55. Clock: 947.000000.
+Vehicle:8 drives from 88 to 88. Delay: 50. Clock: 947.000000.
+Vehicle:97. Status 1. Clock: 948.000000
+Vehicle:97 drives from 163 to 1. Delay: 10. Clock: 948.000000.
+Vehicle:21 drives from 10 to 0. Delay: 70. Clock: 948.000000.
+Vehicle:94 drives from 0 to 1. Delay: 65. Clock: 949.000000.
+Vehicle:85 drives from 0 to 37. Delay: 60. Clock: 950.000000.
+Vehicle:82 drives from 6 to 6. Delay: 50. Clock: 951.000000.
+Vehicle:87 drives from 6 to 45. Delay: 55. Clock: 951.000000.
+Vehicle:45 drives from 4 to 4. Delay: 15. Clock: 951.000000.
+Vehicle:18 drives from 29 to 4. Delay: 65. Clock: 955.000000.
+Drive ends here, Vehicle 59 comes back from Drive Nr.2 from Stop 133 in Depot 160. Clock: 956.000000
+Vehicle:29 drives from 90 to 90. Delay: 30. Clock: 958.000000.
+Vehicle:42 drives from 54 to 33. Delay: 5. Clock: 960.000000.
+Vehicle:75 drives from 66 to 66. Delay: 25. Clock: 960.000000.
+Vehicle:57 drives from 10 to 96. Delay: 25. Clock: 961.000000.
+Vehicle:54 drives from 58 to 4. Delay: 15. Clock: 962.000000.
+Vehicle:93 drives from 115 to 126. Delay: 20. Clock: 963.000000.
+Vehicle:35 drives from 6 to 24. Delay: 75. Clock: 965.000000.
+Vehicle:53 drives from 29 to 41. Delay: 45. Clock: 965.000000.
+Vehicle:88. Status 1. Clock: 965.000000
+Vehicle:88 drives from 164 to 60. Delay: 10. Clock: 965.000000.
+Vehicle:37. Status 1. Clock: 965.000000
+Vehicle:37 drives from 161 to 17. Delay: 0. Clock: 965.000000.
+Vehicle:13 drives from 31 to 10. Delay: 85. Clock: 966.000000.
+Vehicle:9 drives from 9 to 3. Delay: 25. Clock: 966.000000.
+Vehicle:12 drives from 4 to 4. Delay: 65. Clock: 966.000000.
+Vehicle:96 drives from 65 to 6. Delay: 15. Clock: 967.000000.
+Drive ends here, Vehicle 41 comes back from Drive Nr.2 from Stop 57 in Depot 166. Clock: 968.000000
+Vehicle:98. Status 1. Clock: 969.000000
+Vehicle:98 drives from 162 to 69. Delay: 0. Clock: 969.000000.
+Vehicle:89 drives from 60 to 61. Delay: 70. Clock: 969.000000.
+Vehicle:86 drives from 100 to 78. Delay: 15. Clock: 969.000000.
+Vehicle:5 drives from 4 to 29. Delay: 60. Clock: 970.000000.
+Vehicle:32 drives from 29 to 29. Delay: 25. Clock: 970.000000.
+Vehicle:16 drives from 25 to 50. Delay: 20. Clock: 970.000000.
+Vehicle:44 drives from 59 to 51. Delay: 15. Clock: 970.000000.
+Vehicle:95 drives from 43 to 43. Delay: 30. Clock: 970.000000.
+Vehicle:77 drives from 42 to 29. Delay: 10. Clock: 970.000000.
+Vehicle:97 drives from 1 to 10. Delay: 20. Clock: 970.000000.
+Vehicle:30 drives from 7 to 7. Delay: 90. Clock: 971.000000.
+Vehicle:45 drives from 4 to 6. Delay: 20. Clock: 971.000000.
+Vehicle:17 drives from 28 to 59. Delay: 60. Clock: 973.000000.
+Vehicle:40 drives from 1 to 6. Delay: 20. Clock: 973.000000.
+Vehicle:63 drives from 4 to 6. Delay: 85. Clock: 975.000000.
+Vehicle:58 drives from 29 to 45. Delay: 55. Clock: 975.000000.
+Vehicle:26 drives from 16 to 1. Delay: 30. Clock: 975.000000.
+Vehicle:61. Status 1. Clock: 976.000000
+Vehicle:61 drives from 162 to 78. Delay: 0. Clock: 976.000000.
+Vehicle:27 drives from 65 to 6. Delay: 65. Clock: 977.000000.
+Vehicle:90 drives from 52 to 51. Delay: 35. Clock: 977.000000.
+Vehicle:98 drives from 69 to 70. Delay: 0. Clock: 977.000000.
+Vehicle:2 drives from 107 to 78. Delay: 75. Clock: 978.000000.
+Vehicle:83 drives from 47 to 48. Delay: 55. Clock: 978.000000.
+Vehicle:64 drives from 82 to 66. Delay: 60. Clock: 980.000000.
+Vehicle:6 drives from 74 to 2. Delay: 80. Clock: 980.000000.
+Vehicle:38 drives from 45 to 29. Delay: 65. Clock: 980.000000.
+Vehicle:14 drives from 109 to 0. Delay: 35. Clock: 980.000000.
+Vehicle:88 drives from 60 to 61. Delay: 15. Clock: 980.000000.
+Vehicle:48 drives from 4 to 6. Delay: 65. Clock: 982.000000.
+Vehicle:51 drives from 58 to 58. Delay: 65. Clock: 982.000000.
+Vehicle:56 drives from 6 to 50. Delay: 50. Clock: 985.000000.
+Vehicle:23 drives from 29 to 4. Delay: 55. Clock: 985.000000.
+Vehicle:47 drives from 109 to 109. Delay: 15. Clock: 985.000000.
+Vehicle:37 drives from 17 to 18. Delay: 10. Clock: 985.000000.
+Vehicle:57 drives from 96 to 96. Delay: 35. Clock: 986.000000.
+Vehicle:42 drives from 33 to 25. Delay: 10. Clock: 987.000000.
+Vehicle:65 drives from 14 to 4. Delay: 80. Clock: 988.000000.
+Vehicle:75 drives from 66 to 19. Delay: 30. Clock: 988.000000.
+Vehicle:24. Status 1. Clock: 989.000000
+Vehicle:24 drives from 160 to 93. Delay: 10. Clock: 989.000000.
+Vehicle:49 drives from 51 to 56. Delay: 75. Clock: 990.000000.
+Vehicle:61 drives from 78 to 107. Delay: 5. Clock: 990.000000.
+Vehicle:78. Status 1. Clock: 991.000000
+Vehicle:78 drives from 160 to 68. Delay: 0. Clock: 991.000000.
+Vehicle:74 drives from 18 to 18. Delay: 60. Clock: 992.000000.
+Vehicle:33 drives from 52 to 49. Delay: 70. Clock: 993.000000.
+Vehicle:29 drives from 90 to 19. Delay: 40. Clock: 993.000000.
+Vehicle:93 drives from 126 to 126. Delay: 20. Clock: 993.000000.
+Vehicle:41. Status 1. Clock: 993.000000
+Vehicle:41 drives from 166 to 73. Delay: 0. Clock: 993.000000.
+Vehicle:19 drives from 60 to 71. Delay: 30. Clock: 994.000000.
+Vehicle:43 drives from 37 to 38. Delay: 15. Clock: 994.000000.
+Vehicle:9 drives from 3 to 3. Delay: 30. Clock: 997.000000.
+Vehicle:84 drives from 57 to 23. Delay: 20. Clock: 998.000000.
+Vehicle:62 drives from 63 to 2. Delay: 60. Clock: 998.000000.
+Vehicle:40 drives from 6 to 6. Delay: 25. Clock: 998.000000.
+Vehicle:42 drives from 25 to 25. Delay: 20. Clock: 998.000000.
+Vehicle:46. Status 1. Clock: 998.000000
+Vehicle:46 drives from 167 to 44. Delay: 10. Clock: 998.000000.
+Vehicle:68 drives from 33 to 33. Delay: 75. Clock: 999.000000.
+Vehicle:16 drives from 50 to 50. Delay: 20. Clock: 999.000000.
+Vehicle:91 drives from 4 to 26. Delay: 65. Clock: 1000.000000.
+Vehicle:32 drives from 29 to 46. Delay: 35. Clock: 1000.000000.
+Vehicle:77 drives from 29 to 6. Delay: 10. Clock: 1000.000000.
+Vehicle:41 drives from 73 to 82. Delay: 0. Clock: 1001.000000.
+Vehicle:86 drives from 78 to 78. Delay: 20. Clock: 1003.000000.
+Vehicle:61 drives from 107 to 78. Delay: 10. Clock: 1003.000000.
+Vehicle:59. Status 1. Clock: 1003.000000
+Vehicle:59 drives from 160 to 46. Delay: 10. Clock: 1003.000000.
+Vehicle:99. Status 1. Clock: 1004.000000
+Vehicle:99 drives from 169 to 126. Delay: 5. Clock: 1004.000000.
+Vehicle:39 drives from 29 to 29. Delay: 70. Clock: 1005.000000.
+Vehicle:54 drives from 4 to 4. Delay: 15. Clock: 1005.000000.
+Vehicle:95 drives from 43 to 32. Delay: 35. Clock: 1005.000000.
+Vehicle:26 drives from 1 to 1. Delay: 30. Clock: 1005.000000.
+Vehicle:78 drives from 68 to 15. Delay: 0. Clock: 1005.000000.
+Vehicle:82 drives from 6 to 42. Delay: 60. Clock: 1006.000000.
+Vehicle:50 drives from 58 to 4. Delay: 70. Clock: 1007.000000.
+Vehicle:44 drives from 51 to 51. Delay: 15. Clock: 1007.000000.
+Vehicle:7 drives from 78 to 107. Delay: 70. Clock: 1010.000000.
+Vehicle:73 drives from 6 to 91. Delay: 75. Clock: 1010.000000.
+Vehicle:96 drives from 6 to 4. Delay: 20. Clock: 1010.000000.
+Vehicle:43 drives from 38 to 38. Delay: 15. Clock: 1010.000000.
+Vehicle:46 drives from 44 to 33. Delay: 15. Clock: 1010.000000.
+Vehicle:45 drives from 6 to 6. Delay: 20. Clock: 1011.000000.
+Vehicle:77 drives from 6 to 6. Delay: 20. Clock: 1011.000000.
+Vehicle:71 drives from 52 to 52. Delay: 70. Clock: 1012.000000.
+Vehicle:98 drives from 70 to 104. Delay: 0. Clock: 1012.000000.
+Vehicle:67 drives from 96 to 1. Delay: 75. Clock: 1014.000000.
+Vehicle:98 drives from 104 to 104. Delay: 10. Clock: 1014.000000.
+Vehicle:47 drives from 109 to 0. Delay: 25. Clock: 1015.000000.
+Vehicle:22 drives from 26 to 93. Delay: 70. Clock: 1017.000000.
+Vehicle:92 drives from 35 to 6. Delay: 75. Clock: 1017.000000.
+Vehicle:59 drives from 46 to 33. Delay: 10. Clock: 1017.000000.
+Vehicle:20 drives from 59 to 32. Delay: 70. Clock: 1018.000000.
+Vehicle:84 drives from 23 to 23. Delay: 20. Clock: 1019.000000.
+Vehicle:10 drives from 1 to 10. Delay: 65. Clock: 1020.000000.
+Vehicle:79 drives from 43 to 43. Delay: 70. Clock: 1020.000000.
+Vehicle:37 drives from 18 to 108. Delay: 15. Clock: 1020.000000.
+Vehicle:42 drives from 25 to 15. Delay: 25. Clock: 1020.000000.
+Vehicle:78 drives from 15 to 15. Delay: 10. Clock: 1020.000000.
+Vehicle:24 drives from 93 to 6. Delay: 10. Clock: 1021.000000.
+Vehicle:61 drives from 78 to 78. Delay: 20. Clock: 1021.000000.
+Vehicle:99 drives from 126 to 115. Delay: 5. Clock: 1022.000000.
+Vehicle:70 drives from 90 to 19. Delay: 80. Clock: 1023.000000.
+Vehicle:44 drives from 51 to 52. Delay: 20. Clock: 1023.000000.
+Vehicle:100. Status 1. Clock: 1025.000000
+Vehicle:100 drives from 161 to 17. Delay: 5. Clock: 1025.000000.
+Vehicle:36 drives from 4 to 6. Delay: 75. Clock: 1025.000000.
+Vehicle:8 drives from 88 to 5. Delay: 60. Clock: 1025.000000.
+Vehicle:87 drives from 45 to 45. Delay: 55. Clock: 1025.000000.
+Vehicle:54 drives from 4 to 6. Delay: 20. Clock: 1025.000000.
+Vehicle:72 drives from 4 to 4. Delay: 75. Clock: 1027.000000.
+Vehicle:1 drives from 39 to 39. Delay: 90. Clock: 1028.000000.
+Vehicle:25 drives from 28 to 83. Delay: 55. Clock: 1028.000000.
+Vehicle:16 drives from 50 to 25. Delay: 30. Clock: 1028.000000.
+Vehicle:81 drives from 6 to 6. Delay: 80. Clock: 1029.000000.
+Vehicle:43 drives from 38 to 31. Delay: 20. Clock: 1030.000000.
+Vehicle:98 drives from 104 to 69. Delay: 15. Clock: 1030.000000.
+Vehicle:5 drives from 29 to 29. Delay: 70. Clock: 1031.000000.
+Vehicle:96 drives from 4 to 4. Delay: 30. Clock: 1031.000000.
+Vehicle:11 drives from 100 to 69. Delay: 75. Clock: 1034.000000.
+Vehicle:12 drives from 4 to 6. Delay: 75. Clock: 1035.000000.
+Vehicle:40 drives from 6 to 58. Delay: 30. Clock: 1035.000000.
+Vehicle:99 drives from 115 to 126. Delay: 5. Clock: 1036.000000.
+Vehicle:66 drives from 26 to 113. Delay: 85. Clock: 1037.000000.
+Vehicle:55 drives from 27 to 28. Delay: 55. Clock: 1039.000000.
+Vehicle:58 drives from 45 to 45. Delay: 55. Clock: 1039.000000.
+Vehicle:9 drives from 3 to 4. Delay: 35. Clock: 1039.000000.
+Vehicle:64 drives from 66 to 66. Delay: 60. Clock: 1040.000000.
+Vehicle:26 drives from 1 to 50. Delay: 40. Clock: 1041.000000.
+Vehicle:18 drives from 4 to 29. Delay: 65. Clock: 1042.000000.
+Vehicle:57 drives from 96 to 1. Delay: 40. Clock: 1044.000000.
+Vehicle:3 drives from 89 to 89. Delay: 95. Clock: 1045.000000.
+Vehicle:97 drives from 10 to 10. Delay: 30. Clock: 1045.000000.
+Vehicle:41 drives from 82 to 66. Delay: 0. Clock: 1045.000000.
+Vehicle:78 drives from 15 to 68. Delay: 20. Clock: 1045.000000.
+Vehicle:41 drives from 66 to 66. Delay: 5. Clock: 1045.000000.
+Vehicle:37 drives from 108 to 108. Delay: 20. Clock: 1046.000000.
+Vehicle:48 drives from 6 to 6. Delay: 75. Clock: 1047.000000.
+Vehicle:86 drives from 78 to 60. Delay: 30. Clock: 1047.000000.
+Vehicle:94 drives from 1 to 90. Delay: 65. Clock: 1048.000000.
+Vehicle:90 drives from 51 to 51. Delay: 45. Clock: 1050.000000.
+Vehicle:77 drives from 6 to 75. Delay: 25. Clock: 1050.000000.
+Vehicle:100 drives from 17 to 122. Delay: 15. Clock: 1050.000000.
+Vehicle:14 drives from 0 to 97. Delay: 40. Clock: 1051.000000.
+Vehicle:29 drives from 19 to 23. Delay: 50. Clock: 1051.000000.
+Vehicle:99 drives from 126 to 126. Delay: 15. Clock: 1051.000000.
+Vehicle:51 drives from 58 to 4. Delay: 70. Clock: 1052.000000.
+Vehicle:88 drives from 61 to 78. Delay: 25. Clock: 1053.000000.
+Vehicle:41 drives from 66 to 19. Delay: 10. Clock: 1053.000000.
+Vehicle:80 drives from 7 to 4. Delay: 65. Clock: 1054.000000.
+Vehicle:53 drives from 41 to 41. Delay: 45. Clock: 1054.000000.
+Vehicle:93 drives from 126 to 115. Delay: 25. Clock: 1054.000000.
+Vehicle:84 drives from 23 to 9. Delay: 30. Clock: 1054.000000.
+Vehicle:46 drives from 33 to 29. Delay: 20. Clock: 1055.000000.
+Vehicle:45 drives from 6 to 42. Delay: 30. Clock: 1056.000000.
+Vehicle:61 drives from 78 to 60. Delay: 30. Clock: 1056.000000.
+Vehicle:28 drives from 10 to 10. Delay: 65. Clock: 1060.000000.
+Vehicle:63 drives from 6 to 6. Delay: 90. Clock: 1060.000000.
+Vehicle:15 drives from 9 to 9. Delay: 75. Clock: 1061.000000.
+Vehicle:2 drives from 78 to 78. Delay: 80. Clock: 1061.000000.
+Vehicle:75 drives from 19 to 73. Delay: 35. Clock: 1061.000000.
+Vehicle:95 drives from 32 to 32. Delay: 45. Clock: 1061.000000.
+Drive ends here, Vehicle 4 comes back from Drive Nr.1 from Stop 18 in Depot 161. Clock: 1062.000000
+GAME OVER. Vehicle 4 does not reach next StartTime. Every drive afterwards is cancelled #BVG
+Vehicle:23 drives from 4 to 9. Delay: 65. Clock: 1062.000000.
+Vehicle:74 drives from 18 to 16. Delay: 60. Clock: 1063.000000.
+Vehicle:21 drives from 0 to 98. Delay: 70. Clock: 1064.000000.
+Vehicle:85 drives from 37 to 38. Delay: 60. Clock: 1064.000000.
+Vehicle:38 drives from 29 to 6. Delay: 65. Clock: 1065.000000.
+Vehicle:24 drives from 6 to 3. Delay: 20. Clock: 1065.000000.
+Vehicle:96 drives from 4 to 6. Delay: 30. Clock: 1065.000000.
+Vehicle:35 drives from 24 to 7. Delay: 75. Clock: 1066.000000.
+Vehicle:83 drives from 48 to 4. Delay: 60. Clock: 1066.000000.
+Vehicle:62 drives from 2 to 2. Delay: 70. Clock: 1066.000000.
+Vehicle:33 drives from 49 to 32. Delay: 80. Clock: 1067.000000.
+Vehicle:17 drives from 59 to 32. Delay: 70. Clock: 1068.000000.
+Vehicle:30 drives from 7 to 4. Delay: 100. Clock: 1069.000000.
+Vehicle:27 drives from 6 to 6. Delay: 65. Clock: 1070.000000.
+Vehicle:54 drives from 6 to 6. Delay: 30. Clock: 1074.000000.
+Drive ends here, Vehicle 100 comes back from Drive Nr.1 from Stop 122 in Depot 161. Clock: 1074.000000
+Vehicle:47 drives from 0 to 0. Delay: 25. Clock: 1076.000000.
+Vehicle:68 drives from 33 to 34. Delay: 80. Clock: 1078.000000.
+Vehicle:65 drives from 4 to 4. Delay: 85. Clock: 1079.000000.
+Vehicle:19 drives from 71 to 69. Delay: 30. Clock: 1079.000000.
+Vehicle:88 drives from 78 to 78. Delay: 25. Clock: 1079.000000.
+Vehicle:59 drives from 33 to 29. Delay: 15. Clock: 1080.000000.
+Vehicle:78 drives from 68 to 0. Delay: 30. Clock: 1080.000000.
+Vehicle:46 drives from 29 to 30. Delay: 30. Clock: 1080.000000.
+Vehicle:44 drives from 52 to 49. Delay: 20. Clock: 1083.000000.
+Drive ends here, Vehicle 98 comes back from Drive Nr.1 from Stop 69 in Depot 162. Clock: 1083.000000
+Vehicle:82 drives from 42 to 42. Delay: 65. Clock: 1085.000000.
+Vehicle:49 drives from 56 to 56. Delay: 75. Clock: 1086.000000.
+Vehicle:71 drives from 52 to 51. Delay: 80. Clock: 1087.000000.
+Vehicle:40 drives from 58 to 58. Delay: 40. Clock: 1087.000000.
+Vehicle:9 drives from 4 to 4. Delay: 40. Clock: 1087.000000.
+Vehicle:7 drives from 107 to 78. Delay: 80. Clock: 1088.000000.
+Vehicle:25 drives from 83 to 83. Delay: 55. Clock: 1088.000000.
+Vehicle:97 drives from 10 to 0. Delay: 30. Clock: 1088.000000.
+Drive ends here, Vehicle 93 comes back from Drive Nr.3 from Stop 115 in Depot 169. Clock: 1088.000000
+GAME OVER. Vehicle 93 does not reach next StartTime. Every drive afterwards is cancelled #BVG
+Vehicle:32 drives from 46 to 46. Delay: 35. Clock: 1089.000000.
+Vehicle:20 drives from 32 to 32. Delay: 75. Clock: 1089.000000.
+Vehicle:99 drives from 126 to 115. Delay: 20. Clock: 1089.000000.
+Vehicle:42 drives from 15 to 16. Delay: 35. Clock: 1090.000000.
+Vehicle:91 drives from 26 to 113. Delay: 70. Clock: 1092.000000.
+Vehicle:56 drives from 50 to 50. Delay: 50. Clock: 1093.000000.
+Vehicle:37 drives from 108 to 15. Delay: 30. Clock: 1094.000000.
+Drive ends here, Vehicle 6 comes back from Drive Nr.1 from Stop 2 in Depot 160. Clock: 1095.000000
+GAME OVER. Vehicle 6 does not reach next StartTime. Every drive afterwards is cancelled #BVG
+Vehicle:39 drives from 29 to 30. Delay: 80. Clock: 1095.000000.
+Vehicle:79 drives from 43 to 32. Delay: 70. Clock: 1095.000000.
+Drive ends here, Vehicle 43 comes back from Drive Nr.2 from Stop 31 in Depot 160. Clock: 1095.000000
+Vehicle:58 drives from 45 to 29. Delay: 65. Clock: 1095.000000.
+Vehicle:13 drives from 10 to 96. Delay: 90. Clock: 1096.000000.
+Vehicle:87 drives from 45 to 29. Delay: 55. Clock: 1096.000000.
+Vehicle:75 drives from 73 to 9. Delay: 45. Clock: 1096.000000.
+Vehicle:22 drives from 93 to 16. Delay: 80. Clock: 1097.000000.
+Vehicle:90 drives from 51 to 52. Delay: 45. Clock: 1098.000000.
+Vehicle:24 drives from 3 to 3. Delay: 30. Clock: 1099.000000.
+Vehicle:36 drives from 6 to 6. Delay: 85. Clock: 1100.000000.
+Vehicle:59 drives from 29 to 125. Delay: 25. Clock: 1100.000000.
+Vehicle:77 drives from 75 to 75. Delay: 25. Clock: 1101.000000.
+Vehicle:89 drives from 61 to 69. Delay: 70. Clock: 1104.000000.
+Vehicle:64 drives from 66 to 1. Delay: 60. Clock: 1104.000000.
+Vehicle:50 drives from 4 to 4. Delay: 70. Clock: 1105.000000.
+Vehicle:5 drives from 29 to 46. Delay: 70. Clock: 1105.000000.
+Vehicle:45 drives from 42 to 42. Delay: 35. Clock: 1105.000000.
+Vehicle:54 drives from 6 to 91. Delay: 35. Clock: 1105.000000.
+Vehicle:41 drives from 19 to 73. Delay: 20. Clock: 1106.000000.
+Vehicle:44 drives from 49 to 32. Delay: 30. Clock: 1107.000000.
+Vehicle:18 drives from 29 to 29. Delay: 75. Clock: 1108.000000.
+Vehicle:29 drives from 23 to 23. Delay: 60. Clock: 1108.000000.
+Vehicle:72 drives from 4 to 12. Delay: 80. Clock: 1110.000000.
+Vehicle:73 drives from 91 to 58. Delay: 75. Clock: 1112.000000.
+Vehicle:95 drives from 32 to 43. Delay: 55. Clock: 1112.000000.
+Vehicle:19 drives from 69 to 69. Delay: 40. Clock: 1112.000000.
+Vehicle:16 drives from 25 to 25. Delay: 30. Clock: 1113.000000.
+Vehicle:14 drives from 97 to 97. Delay: 40. Clock: 1113.000000.
+Vehicle:100. Status 1. Clock: 1113.000000
+Vehicle:100 drives from 161 to 18. Delay: 5. Clock: 1113.000000.
+Vehicle:96 drives from 6 to 33. Delay: 30. Clock: 1115.000000.
+Vehicle:78 drives from 0 to 0. Delay: 40. Clock: 1118.000000.
+Drive ends here, Vehicle 99 comes back from Drive Nr.1 from Stop 115 in Depot 169. Clock: 1118.000000
+Vehicle:53 drives from 41 to 29. Delay: 50. Clock: 1119.000000.
+Vehicle:92 drives from 6 to 4. Delay: 80. Clock: 1120.000000.
+Vehicle:70 drives from 19 to 73. Delay: 85. Clock: 1121.000000.
+Vehicle:66 drives from 113 to 113. Delay: 85. Clock: 1122.000000.
+Vehicle:81 drives from 6 to 121. Delay: 90. Clock: 1125.000000.
+Vehicle:48 drives from 6 to 4. Delay: 85. Clock: 1125.000000.
+Vehicle:94 drives from 90 to 90. Delay: 70. Clock: 1125.000000.
+Vehicle:85 drives from 38 to 38. Delay: 70. Clock: 1125.000000.
+Vehicle:47 drives from 0 to 37. Delay: 35. Clock: 1125.000000.
+Vehicle:88 drives from 78 to 60. Delay: 35. Clock: 1125.000000.
+Vehicle:32 drives from 46 to 29. Delay: 35. Clock: 1125.000000.
+Vehicle:41 drives from 73 to 9. Delay: 20. Clock: 1126.000000.
+Vehicle:11 drives from 69 to 69. Delay: 75. Clock: 1129.000000.
+Drive ends here, Vehicle 86 comes back from Drive Nr.2 from Stop 60 in Depot 164. Clock: 1129.000000
+Vehicle:77 drives from 75 to 4. Delay: 25. Clock: 1129.000000.
+Vehicle:8 drives from 5 to 5. Delay: 70. Clock: 1130.000000.
+Vehicle:1 drives from 39 to 142. Delay: 90. Clock: 1130.000000.
+Vehicle:83 drives from 4 to 12. Delay: 65. Clock: 1130.000000.
+Vehicle:9 drives from 4 to 6. Delay: 40. Clock: 1130.000000.
+Vehicle:38 drives from 6 to 6. Delay: 65. Clock: 1131.000000.
+Vehicle:23 drives from 9 to 9. Delay: 70. Clock: 1132.000000.
+Vehicle:40 drives from 58 to 4. Delay: 40. Clock: 1132.000000.
+Vehicle:100 drives from 18 to 16. Delay: 15. Clock: 1133.000000.
+Vehicle:24 drives from 3 to 4. Delay: 30. Clock: 1134.000000.
+Vehicle:84 drives from 9 to 25. Delay: 35. Clock: 1136.000000.
+Vehicle:55 drives from 28 to 52. Delay: 65. Clock: 1138.000000.
+Vehicle:28 drives from 10 to 22. Delay: 70. Clock: 1138.000000.
+Vehicle:15 drives from 9 to 19. Delay: 85. Clock: 1138.000000.
+Vehicle:62 drives from 2 to 2. Delay: 75. Clock: 1138.000000.
+Vehicle:46 drives from 30 to 39. Delay: 30. Clock: 1138.000000.
+Vehicle:12 drives from 6 to 6. Delay: 80. Clock: 1139.000000.
+Vehicle:57 drives from 1 to 9. Delay: 40. Clock: 1139.000000.
+Vehicle:17 drives from 32 to 32. Delay: 80. Clock: 1139.000000.
+Vehicle:10 drives from 10 to 10. Delay: 70. Clock: 1140.000000.
+Vehicle:26 drives from 50 to 50. Delay: 45. Clock: 1140.000000.
+Vehicle:80 drives from 4 to 6. Delay: 75. Clock: 1140.000000.
+Vehicle:21 drives from 98 to 9. Delay: 70. Clock: 1140.000000.
+Vehicle:27 drives from 6 to 91. Delay: 65. Clock: 1140.000000.
+Vehicle:3 drives from 89 to 16. Delay: 105. Clock: 1141.000000.
+Vehicle:51 drives from 4 to 29. Delay: 80. Clock: 1145.000000.
+Vehicle:25 drives from 83 to 71. Delay: 55. Clock: 1145.000000.
+Vehicle:37 drives from 15 to 15. Delay: 35. Clock: 1145.000000.
+Vehicle:67 drives from 1 to 4. Delay: 80. Clock: 1146.000000.
+Vehicle:56 drives from 50 to 6. Delay: 55. Clock: 1146.000000.
+Vehicle:96 drives from 33 to 33. Delay: 35. Clock: 1149.000000.
+Vehicle:16 drives from 25 to 15. Delay: 40. Clock: 1150.000000.
+Vehicle:35 drives from 7 to 7. Delay: 75. Clock: 1151.000000.
+Vehicle:63 drives from 6 to 42. Delay: 95. Clock: 1155.000000.
+Vehicle:59 drives from 125 to 2. Delay: 25. Clock: 1156.000000.
+Vehicle:45 drives from 42 to 29. Delay: 45. Clock: 1156.000000.
+Vehicle:14 drives from 97 to 39. Delay: 45. Clock: 1160.000000.
+Vehicle:44 drives from 32 to 32. Delay: 35. Clock: 1161.000000.
+Vehicle:91 drives from 113 to 113. Delay: 70. Clock: 1162.000000.
+Vehicle:78 drives from 0 to 109. Delay: 45. Clock: 1162.000000.
+Vehicle:97 drives from 0 to 1. Delay: 30. Clock: 1164.000000.
+Vehicle:65 drives from 4 to 6. Delay: 85. Clock: 1165.000000.
+Vehicle:74 drives from 16 to 33. Delay: 65. Clock: 1166.000000.
+Vehicle:82 drives from 42 to 29. Delay: 75. Clock: 1166.000000.
+Vehicle:2 drives from 78 to 60. Delay: 85. Clock: 1167.000000.
+Vehicle:54 drives from 91 to 58. Delay: 45. Clock: 1167.000000.
+Vehicle:61 drives from 60 to 60. Delay: 30. Clock: 1169.000000.
+Vehicle:42 drives from 16 to 33. Delay: 45. Clock: 1169.000000.
+Vehicle:33 drives from 32 to 32. Delay: 80. Clock: 1171.000000.
+Vehicle:87 drives from 29 to 29. Delay: 55. Clock: 1171.000000.
+Vehicle:19 drives from 69 to 70. Delay: 45. Clock: 1172.000000.
+Vehicle:84 drives from 25 to 25. Delay: 35. Clock: 1172.000000.
+Vehicle:7 drives from 78 to 78. Delay: 80. Clock: 1176.000000.
+Vehicle:24 drives from 4 to 29. Delay: 30. Clock: 1177.000000.
+Vehicle:49 drives from 56 to 51. Delay: 75. Clock: 1179.000000.
+Vehicle:68 drives from 34 to 54. Delay: 85. Clock: 1180.000000.
+Vehicle:58 drives from 29 to 29. Delay: 75. Clock: 1180.000000.
+Vehicle:50 drives from 4 to 6. Delay: 75. Clock: 1180.000000.
+Drive ends here, Vehicle 77 comes back from Drive Nr.1 from Stop 4 in Depot 168. Clock: 1180.000000
+GAME OVER. Vehicle 77 does not reach next StartTime. Every drive afterwards is cancelled #BVG
+Vehicle:57 drives from 9 to 9. Delay: 40. Clock: 1180.000000.
+Vehicle:89 drives from 69 to 70. Delay: 80. Clock: 1181.000000.
+Vehicle:90 drives from 52 to 66. Delay: 55. Clock: 1183.000000.
+Vehicle:37 drives from 15 to 62. Delay: 40. Clock: 1183.000000.
+Vehicle:29 drives from 23 to 9. Delay: 65. Clock: 1184.000000.
+Vehicle:96 drives from 33 to 18. Delay: 40. Clock: 1185.000000.
+Vehicle:79 drives from 32 to 32. Delay: 70. Clock: 1186.000000.
+Vehicle:13 drives from 96 to 96. Delay: 100. Clock: 1186.000000.
+Vehicle:75 drives from 9 to 9. Delay: 55. Clock: 1186.000000.
+Vehicle:26 drives from 50 to 25. Delay: 50. Clock: 1186.000000.
+Vehicle:73 drives from 58 to 58. Delay: 80. Clock: 1187.000000.
+Vehicle:100 drives from 16 to 33. Delay: 25. Clock: 1188.000000.
+Drive ends here, Vehicle 30 comes back from Drive Nr.1 from Stop 4 in Depot 163. Clock: 1190.000000
+GAME OVER. Vehicle 30 does not reach next StartTime. Every drive afterwards is cancelled #BVG
+Vehicle:36 drives from 6 to 75. Delay: 95. Clock: 1190.000000.
+Vehicle:18 drives from 29 to 4. Delay: 80. Clock: 1190.000000.
+Drive ends here, Vehicle 9 comes back from Drive Nr.1 from Stop 6 in Depot 168. Clock: 1190.000000
+GAME OVER. Vehicle 9 does not reach next StartTime. Every drive afterwards is cancelled #BVG
+Vehicle:46 drives from 39 to 39. Delay: 35. Clock: 1190.000000.
+Vehicle:41 drives from 9 to 9. Delay: 25. Clock: 1191.000000.
+Drive ends here, Vehicle 95 comes back from Drive Nr.1 from Stop 43 in Depot 165. Clock: 1195.000000
+Vehicle:44 drives from 32 to 82. Delay: 45. Clock: 1197.000000.
+Vehicle:85 drives from 38 to 31. Delay: 75. Clock: 1200.000000.
+Vehicle:38 drives from 6 to 45. Delay: 65. Clock: 1200.000000.
+Vehicle:40 drives from 4 to 4. Delay: 40. Clock: 1200.000000.
+Vehicle:92 drives from 4 to 4. Delay: 80. Clock: 1201.000000.
+Vehicle:39 drives from 30 to 6. Delay: 90. Clock: 1203.000000.
+Vehicle:23 drives from 9 to 19. Delay: 75. Clock: 1203.000000.
+Vehicle:59 drives from 2 to 2. Delay: 30. Clock: 1203.000000.
+Vehicle:71 drives from 51 to 51. Delay: 85. Clock: 1205.000000.
+Vehicle:72 drives from 12 to 67. Delay: 90. Clock: 1205.000000.
+Vehicle:8 drives from 5 to 16. Delay: 75. Clock: 1205.000000.
+Vehicle:70 drives from 73 to 9. Delay: 90. Clock: 1206.000000.
+Vehicle:55 drives from 52 to 52. Delay: 70. Clock: 1207.000000.
+Drive ends here, Vehicle 25 comes back from Drive Nr.2 from Stop 71 in Depot 162. Clock: 1207.000000
+GAME OVER. Vehicle 25 does not reach next StartTime. Every drive afterwards is cancelled #BVG
+Vehicle:20 drives from 32 to 28. Delay: 80. Clock: 1208.000000.
+Vehicle:94 drives from 90 to 19. Delay: 75. Clock: 1208.000000.
+Vehicle:24 drives from 29 to 29. Delay: 35. Clock: 1208.000000.
+Vehicle:83 drives from 12 to 25. Delay: 65. Clock: 1210.000000.
+Vehicle:11 drives from 69 to 70. Delay: 75. Clock: 1212.000000.
+Vehicle:54 drives from 58 to 58. Delay: 45. Clock: 1212.000000.
+Vehicle:47 drives from 37 to 38. Delay: 35. Clock: 1214.000000.
+Vehicle:100 drives from 33 to 33. Delay: 30. Clock: 1214.000000.
+Vehicle:22 drives from 16 to 33. Delay: 80. Clock: 1215.000000.
+Vehicle:80 drives from 6 to 6. Delay: 75. Clock: 1215.000000.
+Vehicle:42 drives from 33 to 33. Delay: 45. Clock: 1215.000000.
+Vehicle:64 drives from 1 to 75. Delay: 60. Clock: 1217.000000.
+Vehicle:41 drives from 9 to 19. Delay: 30. Clock: 1218.000000.
+Vehicle:12 drives from 6 to 42. Delay: 85. Clock: 1220.000000.
+Vehicle:45 drives from 29 to 67. Delay: 50. Clock: 1221.000000.
+Vehicle:53 drives from 29 to 1. Delay: 50. Clock: 1222.000000.
+Vehicle:32 drives from 29 to 29. Delay: 40. Clock: 1222.000000.
+Drive ends here, Vehicle 88 comes back from Drive Nr.2 from Stop 60 in Depot 164. Clock: 1223.000000
+Vehicle:10 drives from 10 to 0. Delay: 80. Clock: 1223.000000.
+Vehicle:14 drives from 39 to 39. Delay: 45. Clock: 1223.000000.
+Vehicle:51 drives from 29 to 29. Delay: 80. Clock: 1226.000000.
+Vehicle:97 drives from 1 to 1. Delay: 35. Clock: 1228.000000.
+Vehicle:5 drives from 46 to 0. Delay: 80. Clock: 1229.000000.
+Vehicle:48 drives from 4 to 4. Delay: 85. Clock: 1230.000000.
+Vehicle:17 drives from 32 to 82. Delay: 80. Clock: 1230.000000.
+Vehicle:67 drives from 4 to 4. Delay: 90. Clock: 1230.000000.
+Vehicle:61 drives from 60 to 71. Delay: 30. Clock: 1230.000000.
+Vehicle:46 drives from 39 to 40. Delay: 35. Clock: 1230.000000.
+Vehicle:87 drives from 29 to 30. Delay: 60. Clock: 1231.000000.
+Vehicle:27 drives from 91 to 58. Delay: 70. Clock: 1232.000000.
+Vehicle:74 drives from 33 to 33. Delay: 70. Clock: 1232.000000.
+Vehicle:91 drives from 113 to 6. Delay: 80. Clock: 1233.000000.
+Vehicle:16 drives from 15 to 15. Delay: 40. Clock: 1235.000000.
+Vehicle:84 drives from 25 to 15. Delay: 45. Clock: 1235.000000.
+Vehicle:1 drives from 142 to 97. Delay: 95. Clock: 1236.000000.
+Vehicle:66 drives from 113 to 16. Delay: 90. Clock: 1238.000000.
+Vehicle:28 drives from 22 to 22. Delay: 80. Clock: 1239.000000.
+Vehicle:21 drives from 9 to 1. Delay: 80. Clock: 1239.000000.
+Vehicle:90 drives from 66 to 1. Delay: 55. Clock: 1241.000000.
+Vehicle:57 drives from 9 to 116. Delay: 50. Clock: 1243.000000.
+Vehicle:75 drives from 9 to 19. Delay: 60. Clock: 1243.000000.
+Vehicle:37 drives from 62 to 108. Delay: 45. Clock: 1244.000000.
+Vehicle:78 drives from 109 to 109. Delay: 55. Clock: 1245.000000.
+Vehicle:40 drives from 4 to 6. Delay: 45. Clock: 1245.000000.
+Vehicle:24 drives from 29 to 4. Delay: 40. Clock: 1245.000000.
+Vehicle:47 drives from 38 to 38. Delay: 40. Clock: 1250.000000.
+Vehicle:62 drives from 2 to 2. Delay: 85. Clock: 1251.000000.
+Vehicle:33 drives from 32 to 82. Delay: 85. Clock: 1252.000000.
+Vehicle:19 drives from 70 to 49. Delay: 45. Clock: 1252.000000.
+Vehicle:81 drives from 121 to 103. Delay: 95. Clock: 1253.000000.
+Vehicle:35 drives from 7 to 4. Delay: 80. Clock: 1254.000000.
+Vehicle:56 drives from 6 to 6. Delay: 65. Clock: 1255.000000.
+Vehicle:58 drives from 29 to 30. Delay: 85. Clock: 1260.000000.
+Vehicle:82 drives from 29 to 4. Delay: 80. Clock: 1261.000000.
+Vehicle:79 drives from 32 to 43. Delay: 75. Clock: 1262.000000.
+Vehicle:54 drives from 58 to 4. Delay: 45. Clock: 1262.000000.
+Vehicle:68 drives from 54 to 54. Delay: 90. Clock: 1265.000000.
+Vehicle:32 drives from 29 to 4. Delay: 45. Clock: 1265.000000.
+Vehicle:96 drives from 18 to 18. Delay: 45. Clock: 1267.000000.
+Vehicle:63 drives from 42 to 42. Delay: 95. Clock: 1269.000000.
+Vehicle:65 drives from 6 to 29. Delay: 95. Clock: 1270.000000.
+Vehicle:44 drives from 82 to 69. Delay: 45. Clock: 1270.000000.
+Vehicle:100 drives from 33 to 18. Delay: 30. Clock: 1270.000000.
+Vehicle:42 drives from 33 to 118. Delay: 50. Clock: 1270.000000.
+Vehicle:14 drives from 39 to 142. Delay: 45. Clock: 1270.000000.
+Vehicle:49 drives from 51 to 51. Delay: 75. Clock: 1271.000000.
+Vehicle:59 drives from 2 to 0. Delay: 30. Clock: 1271.000000.
+Vehicle:73 drives from 58 to 4. Delay: 80. Clock: 1272.000000.
+Vehicle:15 drives from 19 to 73. Delay: 90. Clock: 1273.000000.
+Vehicle:53 drives from 1 to 1. Delay: 60. Clock: 1276.000000.
+Drive ends here, Vehicle 3 comes back from Drive Nr.1 from Stop 16 in Depot 168. Clock: 1279.000000
+GAME OVER. Vehicle 3 does not reach next StartTime. Every drive afterwards is cancelled #BVG
+Vehicle:16 drives from 15 to 6. Delay: 50. Clock: 1280.000000.
+Vehicle:45 drives from 67 to 6. Delay: 50. Clock: 1281.000000.
+Vehicle:7 drives from 78 to 60. Delay: 85. Clock: 1282.000000.
+Vehicle:55 drives from 52 to 51. Delay: 75. Clock: 1282.000000.
+Vehicle:50 drives from 6 to 25. Delay: 85. Clock: 1284.000000.
+Vehicle:38 drives from 45 to 45. Delay: 75. Clock: 1284.000000.
+Vehicle:92 drives from 4 to 35. Delay: 90. Clock: 1285.000000.
+Vehicle:83 drives from 25 to 26. Delay: 75. Clock: 1285.000000.
+Vehicle:26 drives from 25 to 88. Delay: 60. Clock: 1286.000000.
+Vehicle:97 drives from 1 to 47. Delay: 45. Clock: 1287.000000.
+Vehicle:46 drives from 40 to 102. Delay: 40. Clock: 1288.000000.
+Vehicle:64 drives from 75 to 75. Delay: 65. Clock: 1290.000000.
+Vehicle:37 drives from 108 to 108. Delay: 45. Clock: 1290.000000.
+Vehicle:18 drives from 4 to 4. Delay: 80. Clock: 1292.000000.
+Vehicle:71 drives from 51 to 52. Delay: 90. Clock: 1293.000000.
+Vehicle:39 drives from 6 to 6. Delay: 100. Clock: 1294.000000.
+Vehicle:72 drives from 67 to 67. Delay: 95. Clock: 1295.000000.
+Vehicle:80 drives from 6 to 24. Delay: 85. Clock: 1295.000000.
+Vehicle:47 drives from 38 to 31. Delay: 50. Clock: 1295.000000.
+Vehicle:89 drives from 70 to 69. Delay: 85. Clock: 1296.000000.
+Vehicle:22 drives from 33 to 33. Delay: 85. Clock: 1296.000000.
+Drive ends here, Vehicle 41 comes back from Drive Nr.3 from Stop 19 in Depot 166. Clock: 1298.000000
+Vehicle:29 drives from 9 to 1. Delay: 65. Clock: 1301.000000.
+Vehicle:94 drives from 19 to 73. Delay: 85. Clock: 1301.000000.
+Vehicle:27 drives from 58 to 58. Delay: 75. Clock: 1302.000000.
+Vehicle:74 drives from 33 to 76. Delay: 70. Clock: 1303.000000.
+Vehicle:13 drives from 96 to 1. Delay: 100. Clock: 1307.000000.
+ENDE IM GELÄNDE. Wenn Vehicle:13 noch nicht im Depot ist, dann fährt es noch heute...
+Vehicle:24 drives from 4 to 4. Delay: 45. Clock: 1307.000000.
+Vehicle:19 drives from 49 to 49. Delay: 50. Clock: 1308.000000.
+Vehicle:51 drives from 29 to 30. Delay: 80. Clock: 1310.000000.
+Vehicle:36 drives from 75 to 75. Delay: 95. Clock: 1311.000000.
+Drive ends here, Vehicle 61 comes back from Drive Nr.2 from Stop 71 in Depot 162. Clock: 1315.000000
+Vehicle:78 drives from 109 to 0. Delay: 60. Clock: 1315.000000.
+Vehicle:44 drives from 69 to 69. Delay: 50. Clock: 1318.000000.
+Vehicle:59 drives from 0 to 0. Delay: 35. Clock: 1318.000000.
+Vehicle:87 drives from 30 to 4. Delay: 60. Clock: 1319.000000.
+Vehicle:40 drives from 6 to 1. Delay: 50. Clock: 1319.000000.
+Vehicle:85 drives from 31 to 0. Delay: 85. Clock: 1320.000000.
+Vehicle:28 drives from 22 to 31. Delay: 90. Clock: 1320.000000.
+Vehicle:21 drives from 1 to 1. Delay: 90. Clock: 1320.000000.
+Vehicle:11 drives from 70 to 56. Delay: 75. Clock: 1322.000000.
+Vehicle:5 drives from 0 to 0. Delay: 90. Clock: 1322.000000.
+Vehicle:96 drives from 18 to 16. Delay: 50. Clock: 1323.000000.
+Vehicle:2 drives from 60 to 60. Delay: 95. Clock: 1324.000000.
+Vehicle:8 drives from 16 to 25. Delay: 85. Clock: 1324.000000.
+Vehicle:20 drives from 28 to 55. Delay: 80. Clock: 1324.000000.
+Vehicle:12 drives from 42 to 29. Delay: 90. Clock: 1324.000000.
+Vehicle:48 drives from 4 to 35. Delay: 90. Clock: 1325.000000.
+Vehicle:84 drives from 15 to 15. Delay: 50. Clock: 1325.000000.
+Vehicle:56 drives from 6 to 24. Delay: 65. Clock: 1325.000000.
+Vehicle:23 drives from 19 to 73. Delay: 85. Clock: 1328.000000.
+Vehicle:46 drives from 102 to 102. Delay: 45. Clock: 1328.000000.
+Vehicle:67 drives from 4 to 79. Delay: 100. Clock: 1330.000000.
+ENDE IM GELÄNDE. Wenn Vehicle:67 noch nicht im Depot ist, dann fährt es noch heute...
+Vehicle:54 drives from 4 to 109. Delay: 55. Clock: 1330.000000.
+Vehicle:57 drives from 116 to 116. Delay: 50. Clock: 1331.000000.
+Drive ends here, Vehicle 14 comes back from Drive Nr.2 from Stop 142 in Depot 163. Clock: 1331.000000
+GAME OVER. Vehicle 14 does not reach next StartTime. Every drive afterwards is cancelled #BVG
+Vehicle:1 drives from 97 to 97. Delay: 95. Clock: 1332.000000.
+ENDE IM GELÄNDE. Wenn Vehicle:1 noch nicht im Depot ist, dann fährt es noch heute...
+Vehicle:32 drives from 4 to 9. Delay: 55. Clock: 1332.000000.
+Vehicle:62 drives from 2 to 63. Delay: 90. Clock: 1338.000000.
+Vehicle:91 drives from 6 to 29. Delay: 90. Clock: 1340.000000.
+Vehicle:70 drives from 9 to 4. Delay: 90. Clock: 1341.000000.
+Vehicle:82 drives from 4 to 4. Delay: 80. Clock: 1341.000000.
+Vehicle:26 drives from 88 to 88. Delay: 60. Clock: 1346.000000.
+Vehicle:81 drives from 103 to 103. Delay: 105. Clock: 1348.000000.
+ENDE IM GELÄNDE. Wenn Vehicle:81 noch nicht im Depot ist, dann fährt es noch heute...
+Vehicle:10 drives from 0 to 1. Delay: 85. Clock: 1349.000000.
+ENDE IM GELÄNDE. Wenn Vehicle:10 noch nicht im Depot ist, dann fährt es noch heute...
+Vehicle:53 drives from 1 to 47. Delay: 60. Clock: 1349.000000.
+Vehicle:37 drives from 108 to 15. Delay: 55. Clock: 1349.000000.
+Drive ends here, Vehicle 42 comes back from Drive Nr.2 from Stop 118 in Depot 167. Clock: 1350.000000
+GAME OVER. Vehicle 42 does not reach next StartTime. Every drive afterwards is cancelled #BVG
+Vehicle:49 drives from 51 to 56. Delay: 85. Clock: 1350.000000.
+ENDE IM GELÄNDE. Wenn Vehicle:49 noch nicht im Depot ist, dann fährt es noch heute...
+Vehicle:17 drives from 82 to 49. Delay: 85. Clock: 1351.000000.
+Vehicle:45 drives from 6 to 6. Delay: 50. Clock: 1351.000000.
+Vehicle:90 drives from 1 to 45. Delay: 55. Clock: 1352.000000.
+Drive ends here, Vehicle 75 comes back from Drive Nr.2 from Stop 19 in Depot 166. Clock: 1353.000000
+Vehicle:35 drives from 4 to 2. Delay: 90. Clock: 1355.000000.
+ENDE IM GELÄNDE. Wenn Vehicle:35 noch nicht im Depot ist, dann fährt es noch heute...
+Drive ends here, Vehicle 100 comes back from Drive Nr.2 from Stop 18 in Depot 161. Clock: 1355.000000
+Vehicle:59 drives from 0 to 139. Delay: 40. Clock: 1358.000000.
+Vehicle:66 drives from 16 to 1. Delay: 90. Clock: 1359.000000.
+ENDE IM GELÄNDE. Wenn Vehicle:66 noch nicht im Depot ist, dann fährt es noch heute...
+Vehicle:24 drives from 4 to 12. Delay: 55. Clock: 1360.000000.
+Vehicle:97 drives from 47 to 48. Delay: 45. Clock: 1362.000000.
+Vehicle:15 drives from 73 to 73. Delay: 95. Clock: 1363.000000.
+ENDE IM GELÄNDE. Wenn Vehicle:15 noch nicht im Depot ist, dann fährt es noch heute...
+Vehicle:64 drives from 75 to 4. Delay: 75. Clock: 1364.000000.
+ENDE IM GELÄNDE. Wenn Vehicle:64 noch nicht im Depot ist, dann fährt es noch heute...
+Drive ends here, Vehicle 33 comes back from Drive Nr.1 from Stop 82 in Depot 162. Clock: 1365.000000
+GAME OVER. Vehicle 33 does not reach next StartTime. Every drive afterwards is cancelled #BVG
+Vehicle:79 drives from 43 to 43. Delay: 85. Clock: 1365.000000.
+ENDE IM GELÄNDE. Wenn Vehicle:79 noch nicht im Depot ist, dann fährt es noch heute...
+Vehicle:65 drives from 29 to 29. Delay: 100. Clock: 1365.000000.
+ENDE IM GELÄNDE. Wenn Vehicle:65 noch nicht im Depot ist, dann fährt es noch heute...
+Vehicle:29 drives from 1 to 1. Delay: 75. Clock: 1367.000000.
+ENDE IM GELÄNDE. Wenn Vehicle:29 noch nicht im Depot ist, dann fährt es noch heute...
+Vehicle:19 drives from 49 to 32. Delay: 60. Clock: 1367.000000.
+ENDE IM GELÄNDE. Wenn Vehicle:19 noch nicht im Depot ist, dann fährt es noch heute...
+Vehicle:68 drives from 54 to 33. Delay: 95. Clock: 1370.000000.
+ENDE IM GELÄNDE. Wenn Vehicle:68 noch nicht im Depot ist, dann fährt es noch heute...
+Vehicle:16 drives from 6 to 29. Delay: 55. Clock: 1370.000000.
+Vehicle:58 drives from 30 to 6. Delay: 85. Clock: 1373.000000.
+ENDE IM GELÄNDE. Wenn Vehicle:58 noch nicht im Depot ist, dann fährt es noch heute...
+Vehicle:50 drives from 25 to 25. Delay: 90. Clock: 1373.000000.
+ENDE IM GELÄNDE. Wenn Vehicle:50 noch nicht im Depot ist, dann fährt es noch heute...
+Vehicle:40 drives from 1 to 1. Delay: 55. Clock: 1373.000000.
+Drive ends here, Vehicle 73 comes back from Drive Nr.1 from Stop 4 in Depot 163. Clock: 1375.000000
+GAME OVER. Vehicle 73 does not reach next StartTime. Every drive afterwards is cancelled #BVG
+Vehicle:38 drives from 45 to 29. Delay: 75. Clock: 1375.000000.
+ENDE IM GELÄNDE. Wenn Vehicle:38 noch nicht im Depot ist, dann fährt es noch heute...
+Vehicle:46 drives from 102 to 39. Delay: 50. Clock: 1375.000000.
+ENDE IM GELÄNDE. Wenn Vehicle:46 noch nicht im Depot ist, dann fährt es noch heute...
+Vehicle:44 drives from 69 to 70. Delay: 60. Clock: 1377.000000.
+ENDE IM GELÄNDE. Wenn Vehicle:44 noch nicht im Depot ist, dann fährt es noch heute...
+Vehicle:63 drives from 42 to 29. Delay: 105. Clock: 1380.000000.
+ENDE IM GELÄNDE. Wenn Vehicle:63 noch nicht im Depot ist, dann fährt es noch heute...
+Vehicle:18 drives from 4 to 6. Delay: 90. Clock: 1380.000000.
+ENDE IM GELÄNDE. Wenn Vehicle:18 noch nicht im Depot ist, dann fährt es noch heute...
+Vehicle:87 drives from 4 to 4. Delay: 70. Clock: 1380.000000.
+ENDE IM GELÄNDE. Wenn Vehicle:87 noch nicht im Depot ist, dann fährt es noch heute...
+Vehicle:84 drives from 15 to 16. Delay: 60. Clock: 1380.000000.
+ENDE IM GELÄNDE. Wenn Vehicle:84 noch nicht im Depot ist, dann fährt es noch heute...
+Vehicle:27 drives from 58 to 4. Delay: 85. Clock: 1382.000000.
+ENDE IM GELÄNDE. Wenn Vehicle:27 noch nicht im Depot ist, dann fährt es noch heute...
+Vehicle:94 drives from 73 to 9. Delay: 95. Clock: 1386.000000.
+ENDE IM GELÄNDE. Wenn Vehicle:94 noch nicht im Depot ist, dann fährt es noch heute...
+Vehicle:57 drives from 116 to 9. Delay: 60. Clock: 1387.000000.
+ENDE IM GELÄNDE. Wenn Vehicle:57 noch nicht im Depot ist, dann fährt es noch heute...
+Drive ends here, Vehicle 47 comes back from Drive Nr.2 from Stop 31 in Depot 160. Clock: 1390.000000
+Vehicle:22 drives from 33 to 76. Delay: 95. Clock: 1391.000000.
+ENDE IM GELÄNDE. Wenn Vehicle:22 noch nicht im Depot ist, dann fährt es noch heute...
+Vehicle:83 drives from 26 to 113. Delay: 75. Clock: 1392.000000.
+ENDE IM GELÄNDE. Wenn Vehicle:83 noch nicht im Depot ist, dann fährt es noch heute...
+Vehicle:32 drives from 9 to 9. Delay: 60. Clock: 1392.000000.
+ENDE IM GELÄNDE. Wenn Vehicle:32 noch nicht im Depot ist, dann fährt es noch heute...
+Vehicle:89 drives from 69 to 69. Delay: 85. Clock: 1394.000000.
+ENDE IM GELÄNDE. Wenn Vehicle:89 noch nicht im Depot ist, dann fährt es noch heute...
+Vehicle:55 drives from 51 to 51. Delay: 85. Clock: 1395.000000.
+ENDE IM GELÄNDE. Wenn Vehicle:55 noch nicht im Depot ist, dann fährt es noch heute...
+Vehicle:92 drives from 35 to 35. Delay: 100. Clock: 1395.000000.
+ENDE IM GELÄNDE. Wenn Vehicle:92 noch nicht im Depot ist, dann fährt es noch heute...
+Vehicle:54 drives from 109 to 109. Delay: 65. Clock: 1404.000000.
+ENDE IM GELÄNDE. Wenn Vehicle:54 noch nicht im Depot ist, dann fährt es noch heute...
+Vehicle:85 drives from 0 to 0. Delay: 85. Clock: 1405.000000.
+ENDE IM GELÄNDE. Wenn Vehicle:85 noch nicht im Depot ist, dann fährt es noch heute...
+Vehicle:80 drives from 24 to 24. Delay: 95. Clock: 1406.000000.
+ENDE IM GELÄNDE. Wenn Vehicle:80 noch nicht im Depot ist, dann fährt es noch heute...
+Vehicle:45 drives from 6 to 58. Delay: 55. Clock: 1406.000000.
+ENDE IM GELÄNDE. Wenn Vehicle:45 noch nicht im Depot ist, dann fährt es noch heute...
+Vehicle:20 drives from 55 to 55. Delay: 85. Clock: 1407.000000.
+ENDE IM GELÄNDE. Wenn Vehicle:20 noch nicht im Depot ist, dann fährt es noch heute...
+Vehicle:36 drives from 75 to 4. Delay: 105. Clock: 1409.000000.
+ENDE IM GELÄNDE. Wenn Vehicle:36 noch nicht im Depot ist, dann fährt es noch heute...
+Vehicle:39 drives from 6 to 55. Delay: 110. Clock: 1410.000000.
+ENDE IM GELÄNDE. Wenn Vehicle:39 noch nicht im Depot ist, dann fährt es noch heute...
+Vehicle:72 drives from 67 to 6. Delay: 95. Clock: 1410.000000.
+ENDE IM GELÄNDE. Wenn Vehicle:72 noch nicht im Depot ist, dann fährt es noch heute...
+Vehicle:8 drives from 25 to 25. Delay: 90. Clock: 1410.000000.
+ENDE IM GELÄNDE. Wenn Vehicle:8 noch nicht im Depot ist, dann fährt es noch heute...
+Vehicle:26 drives from 88 to 5. Delay: 60. Clock: 1410.000000.
+ENDE IM GELÄNDE. Wenn Vehicle:26 noch nicht im Depot ist, dann fährt es noch heute...
+Vehicle:74 drives from 76 to 76. Delay: 75. Clock: 1411.000000.
+ENDE IM GELÄNDE. Wenn Vehicle:74 noch nicht im Depot ist, dann fährt es noch heute...
+Drive ends here, Vehicle 78 comes back from Drive Nr.2 from Stop 0 in Depot 160. Clock: 1411.000000
+Vehicle:11 drives from 56 to 56. Delay: 80. Clock: 1413.000000.
+ENDE IM GELÄNDE. Wenn Vehicle:11 noch nicht im Depot ist, dann fährt es noch heute...
+Vehicle:96 drives from 16 to 1. Delay: 50. Clock: 1413.000000.
+ENDE IM GELÄNDE. Wenn Vehicle:96 noch nicht im Depot ist, dann fährt es noch heute...
+Vehicle:23 drives from 73 to 73. Delay: 85. Clock: 1413.000000.
+ENDE IM GELÄNDE. Wenn Vehicle:23 noch nicht im Depot ist, dann fährt es noch heute...
+Drive ends here, Vehicle 59 comes back from Drive Nr.3 from Stop 139 in Depot 160. Clock: 1414.000000
+Vehicle:56 drives from 24 to 24. Delay: 75. Clock: 1416.000000.
+ENDE IM GELÄNDE. Wenn Vehicle:56 noch nicht im Depot ist, dann fährt es noch heute...
+Vehicle:5 drives from 0 to 109. Delay: 95. Clock: 1417.000000.
+ENDE IM GELÄNDE. Wenn Vehicle:5 noch nicht im Depot ist, dann fährt es noch heute...
+Vehicle:90 drives from 45 to 45. Delay: 60. Clock: 1417.000000.
+ENDE IM GELÄNDE. Wenn Vehicle:90 noch nicht im Depot ist, dann fährt es noch heute...
+Vehicle:51 drives from 30 to 6. Delay: 85. Clock: 1418.000000.
+ENDE IM GELÄNDE. Wenn Vehicle:51 noch nicht im Depot ist, dann fährt es noch heute...
+Vehicle:71 drives from 52 to 49. Delay: 90. Clock: 1423.000000.
+ENDE IM GELÄNDE. Wenn Vehicle:71 noch nicht im Depot ist, dann fährt es noch heute...
+Vehicle:21 drives from 1 to 82. Delay: 95. Clock: 1424.000000.
+ENDE IM GELÄNDE. Wenn Vehicle:21 noch nicht im Depot ist, dann fährt es noch heute...
+Vehicle:2 drives from 60 to 61. Delay: 95. Clock: 1424.000000.
+ENDE IM GELÄNDE. Wenn Vehicle:2 noch nicht im Depot ist, dann fährt es noch heute...
+Vehicle:37 drives from 15 to 15. Delay: 65. Clock: 1425.000000.
+ENDE IM GELÄNDE. Wenn Vehicle:37 noch nicht im Depot ist, dann fährt es noch heute...
+Vehicle:16 drives from 29 to 29. Delay: 55. Clock: 1425.000000.
+ENDE IM GELÄNDE. Wenn Vehicle:16 noch nicht im Depot ist, dann fährt es noch heute...
+Vehicle:82 drives from 4 to 79. Delay: 85. Clock: 1426.000000.
+ENDE IM GELÄNDE. Wenn Vehicle:82 noch nicht im Depot ist, dann fährt es noch heute...
+Vehicle:28 drives from 31 to 1. Delay: 90. Clock: 1427.000000.
+ENDE IM GELÄNDE. Wenn Vehicle:28 noch nicht im Depot ist, dann fährt es noch heute...
+Vehicle:91 drives from 29 to 33. Delay: 95. Clock: 1430.000000.
+ENDE IM GELÄNDE. Wenn Vehicle:91 noch nicht im Depot ist, dann fährt es noch heute...
+Vehicle:53 drives from 47 to 33. Delay: 65. Clock: 1430.000000.
+ENDE IM GELÄNDE. Wenn Vehicle:53 noch nicht im Depot ist, dann fährt es noch heute...
+Vehicle:24 drives from 12 to 67. Delay: 60. Clock: 1430.000000.
+ENDE IM GELÄNDE. Wenn Vehicle:24 noch nicht im Depot ist, dann fährt es noch heute...
+Vehicle:40 drives from 1 to 31. Delay: 65. Clock: 1433.000000.
+ENDE IM GELÄNDE. Wenn Vehicle:40 noch nicht im Depot ist, dann fährt es noch heute...
+Vehicle:12 drives from 29 to 6. Delay: 95. Clock: 1434.000000.
+ENDE IM GELÄNDE. Wenn Vehicle:12 noch nicht im Depot ist, dann fährt es noch heute...
+Vehicle:48 drives from 35 to 35. Delay: 100. Clock: 1435.000000.
+ENDE IM GELÄNDE. Wenn Vehicle:48 noch nicht im Depot ist, dann fährt es noch heute...
+Vehicle:70 drives from 4 to 117. Delay: 95. Clock: 1435.000000.
+ENDE IM GELÄNDE. Wenn Vehicle:70 noch nicht im Depot ist, dann fährt es noch heute...
+Vehicle:62 drives from 63 to 63. Delay: 95. Clock: 1436.000000.
+ENDE IM GELÄNDE. Wenn Vehicle:62 noch nicht im Depot ist, dann fährt es noch heute...
+Vehicle:97 drives from 48 to 29. Delay: 50. Clock: 1437.000000.
+ENDE IM GELÄNDE. Wenn Vehicle:97 noch nicht im Depot ist, dann fährt es noch heute...
+Vehicle:17 drives from 49 to 49. Delay: 90. Clock: 1438.000000.
+ENDE IM GELÄNDE. Wenn Vehicle:17 noch nicht im Depot ist, dann fährt es noch heute...
+Vehicle:7 drives from 60 to 60. Delay: 90. Clock: 1439.000000.
+ENDE IM GELÄNDE. Wenn Vehicle:7 noch nicht im Depot ist, dann fährt es noch heute...
