@@ -1,0 +1,7 @@
+git clone "URL" #Verbindung zum Repository aufnehmen
+
+git rm FILE -r  #File löschen
+
+git commit -c "COMMENT" #Update commiten
+
+git push #Aktualisieren
