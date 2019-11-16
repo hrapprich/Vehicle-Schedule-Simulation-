@@ -1,7 +1,8 @@
-#Sprint2
+# Sprint2
 
 # ToDos:
 # - Refacotring the Code (Funktionen erstellen, Code übersichtlicher gestalten)
+# - Eventliste: notieren wann Bus abfährt und wann Bus ankommt (zwei gesonderte Einträge)
 # - Komplexere Abhängigkeiten
 # - Fahrer (DutyID) einbauen
 # - Dispositives System schaffen (als LongTermGoal)
@@ -16,7 +17,7 @@ df = pd.read_csv("/home/chris/PythonProjekte/SemProjekt-1920/SimPy/tableFinal.cs
 # df.info()
 
 ####################### Daten transformieren (Zeit) ########################
-#Umrechnung der Start- & Endzeit in Minuten (für Simulationsuhr)
+# Umrechnung der Start- & Endzeit in Minuten (für Simulationsuhr)
 StartTime = []
 count_row = df.shape[0]
 for x in range(0, count_row):
@@ -34,13 +35,13 @@ for x in range(0, count_row):
 df["EndTime"] = EndTime
 df["StartTime"] = StartTime
 
-#Gesamtanzahl an Fahrzeugen ermitteln
+# Gesamtanzahl an Fahrzeugen ermitteln
 numberVeh = df["BlockID"].unique()
 numberVeh = numberVeh.tolist()  # von Array in Liste formatieren
 numberVeh = [elem for elem in numberVeh if elem >= 0]  # -1 entfernen
 print("Die Gesamtanzahl von Fahrzeugen beträgt %d." % len(numberVeh))
 
-#DepotID (jedem Fahrzeug die unique DepotID zuordnen
+# DepotID (jedem Fahrzeug die unique DepotID zuordnen
 DepotID = []
 counter = 1
 for i in range(1, len(numberVeh) + 1):
@@ -49,12 +50,12 @@ for i in range(1, len(numberVeh) + 1):
             DepotID.append(df.DepotID[j])
             counter += 1
 print("Jedes Fahrzeug besitzt eine DepotID: %s" % (
-            len(DepotID) == len(numberVeh)))  # Frage: Hat jedes Fahrzeug nur ein Depot oder kann das wechseln??
+        len(DepotID) == len(numberVeh)))  # Frage: Hat jedes Fahrzeug nur ein Depot oder kann das wechseln??
 
-#VehStatus / im Depot(0), im Umlauf (1) (bei Initialisierung steht jedes Fahrzeug im Depot)
+# VehStatus / im Depot(0), im Umlauf (1) (bei Initialisierung steht jedes Fahrzeug im Depot)
 VehStatus = 0  # Alle Fahrzeuge stehen am Anfang im Depot
 
-#StartTimes der einzelnen Fahrzeuge in jedem Teilumlauf (in Dictionary gespeichert)
+# StartTimes der einzelnen Fahrzeuge in jedem Teilumlauf (in Dictionary gespeichert)
 DepotID_plusOne = [0] + DepotID  # DepotIDListe verlängern, damit Schleife mit i funktioniert
 startTime_dic = {}
 for i in range(1, len(numberVeh) + 1):
@@ -70,8 +71,7 @@ for i in range(1, len(numberVeh) + 1):
 StartTime_dic = startTime_dic
 print("Jedes Fahrzeug fährt mindestens einmal aus dem Depot: %s" % (len(StartTime_dic) == len(numberVeh)))
 
-
-#Listen von Haltestellen (from/to) (Liste mit vielen Listen)
+# Listen von Haltestellen (from/to) (Liste mit vielen Listen)
 FromStopID = []
 ToStopID = []
 for i in range(1, len(numberVeh) + 1):
@@ -86,7 +86,7 @@ for i in range(1, len(numberVeh) + 1):
     FromStopID.append(fromStopID_cache)
     ToStopID.append(toStopID_cache)
 print("Die Anzahl der StoppointListen (from) ist gleich der Anzahl der Fahrzeuge: %s." % (
-            len(FromStopID) == len(numberVeh)))
+        len(FromStopID) == len(numberVeh)))
 print(
     "Die Anzahl der StoppointListen (to) ist gleich der Anzahl der Fahrzeuge: %s." % (len(ToStopID) == len(numberVeh)))
 
@@ -102,8 +102,9 @@ for i in range(1, len(numberVeh) + 1):
 print(
     "Die Anzahl der Fahrtzeitlisten ist gleich der Anzahl der Fahrzeuge: %s." % (len(DriveDuration) == len(numberVeh)))
 
+
 ######################## Störgenerator ##########################
-def stoerfaktor(n): #n = Eingabeparameter um Störausmaß zu steuern
+def stoerfaktor(n):  # n = Eingabeparameter um Störausmaß zu steuern
     if (n == 0):
         factorX = numpy.random.choice(numpy.arange(0, 11), p=[1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
                                                               0.0])  # Wahrscheinlichkeiten von Störungen / für jeden Teilfahrt neuen Störfaktor
@@ -116,94 +117,88 @@ def stoerfaktor(n): #n = Eingabeparameter um Störausmaß zu steuern
     return factorX
 
 
-##############################Daten für CSV-Datei###############################
-#Header für CSV-Datei
-print("vehID FromStopID ToStopID Uhrzeit(Ist) Uhrzeit(Soll) Delay Drive_Continue",
+############################## Funktionen für Objekt Vehicle ##############################
+
+def drive_outOfTime(time, delay, clock):
+    doOT = time + delay + clock >= 1440
+    return doOT
+
+
+############################## Daten für CSV-Datei ###############################
+# Header für CSV-Datei
+print("vehID Standort Dep/Arr Uhrzeit(Ist) Status(Depot/Umlauf)",
       file=open("DelayCSV.txt", "a"))
 
 
 ########################## Objekt Vehicle #########################################
-def vehicle(env, name, vehID, vehStatus, depotID, startTime, fromStopID, toStopID,
-            driveDuration):  # Eigenschaften von jedem Fahrzeug
+def vehicle(env, name, vehID, status):  # Eigenschaften von jedem Fahrzeug
     while True:
-        print("%s. VehID %d. VehStatus %d. DepotID: %d. StartTime: %d." % (name, vehID, vehStatus, depotID, startTime),
-              file=open("TrackingList.txt", "a"))
         counter = 0
         delayTime = 0  # DelayTime initialisieren (gilt für den ganze Tag des Fahrzeugs)
 
-        for j in range(0, len(StartTime_dic) - 1):  # Anzahl Teilumläufe des Fahrzeugs
+        for j in range(0, len(StartTime_dic) - 1):  # Loop der durch die einzelnen Teilumläufe führt
+            timeStartSection = StartTime_dic[vehID][j] - env.now  # Startzeit des jeweiligen Umlaufs
+            yield env.timeout(timeStartSection)  # Timeout bis Start des Teilumlaufes
+            status = 1  # Wenn Startzeit erreicht, Fahrzeug im Umlauf (Status = 1)
 
-            time_untilStart = StartTime_dic[vehID][j] - env.now  # Startzeit des jeweiligen Umlaufs
-            yield env.timeout(time_untilStart)  # Timeout bis Start des Umlaufes
-            status = 1  # Wenn Startzeit erreicht, Fahrzeug im Umlauf
-            print("%s. Status %d. Clock: %f" % (name, status, env.now), file=open("TrackingList.txt", "a"))
-
-            while (status == 1):
+            while status == 1:  # while Fahrzeug im Umlauf
                 cache_counter = 0  # wichtig, weil Start und EndHaltestellen in einer Liste, sodass counter TeilumlaufHaltestellen abgrenzt
                 for k in range(0, len(ToStopID[vehID - 1])):
 
                     # Einstellen des Störfaktors
-                    delayTime_perDrive = stoerfaktor(2)
+                    delayTime_perDrive = stoerfaktor(0)
                     delayTime = delayTime + delayTime_perDrive  # Aufsummieren der Verspätungen im Teilumlauf
 
-                    if (ToStopID[vehID - 1][k + counter] == DepotID[vehID - 1]):
-                        cache_counter += 1
+                    # Event: Bus fährt um bestimmte Uhrzeit von HS los
+                    itemDrive = 0  # Abfahrt = 0, Ankunft = 1
+                    print(vehID, FromStopID[vehID - 1][k + counter], itemDrive, env.now, status,
+                          file=open("DelayCSV.txt", "a"))
+                    #Abfrage, ob Fahrt außerhalb der Simulatinszeit liegen würde
+                    if drive_outOfTime(DriveDuration[vehID - 1][k + counter], delayTime, env.now):
+                        print(vehID, FromStopID[vehID - 1][k + counter], itemDrive, env.now, 404,
+                              file=open("DelayCSV.txt", "a"))
+                        break
+
+                    # Timeout für Fahrtdauer zur nächsten Haltestelle
+                    yield (env.timeout(DriveDuration[vehID - 1][k + counter] + delayTime))
+
+                    # Event: Bus kommt zu bestimmter Uhrzeit an HS an
+                    itemDrive = 1
+                    # Abfrage ob Bus im Depot angekommen
+                    if ToStopID[vehID - 1][k + counter] == DepotID[vehID - 1]:
                         status = 0
-                        # Daten für CSV
-                        drive_continue = "no"
-                        print(vehID, FromStopID[vehID - 1][k + counter], ToStopID[vehID - 1][k + counter], env.now,
-                              env.now - delayTime, (env.now - (env.now - delayTime)), drive_continue,
+                        cache_counter += 1
+                        print(vehID, DepotID[vehID - 1], itemDrive, env.now, status,
                               file=open("DelayCSV.txt", "a"))
                         break
                     else:
-                        print("%s drives from %d to %d. Delay: %d. Clock: %f." % (
-                        name, FromStopID[vehID - 1][k + counter], ToStopID[vehID - 1][k + counter], delayTime, env.now),
-                              file=open("TrackingList.txt", "a"))
-
-                        # Daten für CSV-Output
-                        drive_continue = "yes"
-                        print(vehID, FromStopID[vehID - 1][k + counter], ToStopID[vehID - 1][k + counter], env.now,
-                              env.now - delayTime, (env.now - (env.now - delayTime)), drive_continue,
+                        print(vehID, ToStopID[vehID - 1][k + counter], itemDrive, env.now, status,
                               file=open("DelayCSV.txt", "a"))
-
                         cache_counter += 1
-                        if (DriveDuration[vehID - 1][k + counter] + delayTime + env.now >= 1440):
-                            print("ENDE IM GELÄNDE. Wenn %s noch nicht im Depot ist, dann fährt es noch heute..." % (
-                                name), file=open("TrackingList.txt", "a"))
-                            print(vehID, 404, 404, 404, 404, 404, 404, file=open("DelayCSV.txt", "a"))
-                            yield env.timeout(DriveDuration[vehID - 1][k + counter] + delayTime)
-                        else:
-                            yield env.timeout(DriveDuration[vehID - 1][k + counter] + delayTime)
 
-            print("Drive ends here, Vehicle %d comes back from Drive Nr.%d from Stop %d in Depot %d. Clock: %f" % (
-            vehID, j + 1, FromStopID[vehID - 1][k + counter], DepotID[vehID - 1], env.now),
-                  file=open("TrackingList.txt", "a"))
+                    #Event: wenn StartTime des nächsten Umlaufes jetzt beginnt, lieber diesen Teilumlauf abbrechen
+                    #und nächsten Teilumlauf starten?
+
+            #Counter für Drive_DurationListe übertragen
             counter = counter + cache_counter
+
             # Abfrage ob AnschlussUmlauf erreicht wird
             if (StartTime_dic[vehID][j + 1] - env.now < 0):
-                print(
-                    "GAME OVER. Vehicle %d does not reach next StartTime. Every drive afterwards is cancelled #BVG" % vehID,
-                    file=open("TrackingList.txt", "a"))
                 yield env.timeout(1440)
             else:
                 yield env.timeout(abs(StartTime_dic[vehID][j + 1] - env.now))
                 delayTime = 0  # gesammelten Verspätungen hatten keinen Impact auf weiterführende Teilumläufe (RESET)
-
-        print("End of the Day. Every Vehicle is back in Depot")  # useless
-        yield env.timeout(100000)  # useless
 
 
 ########################## Simulationsumgebung ##############################
 env = simpy.Environment()
 
 # Initialisierung von Fahrzeugen
-for i in range(1, len(numberVeh) + 1):  # Anzahl von Fahrzeugen = len(numberVeh)+1
-    env.process(vehicle(env, "Vehicle:%d" % i, i, VehStatus, DepotID[i - 1], StartTime_dic[i][0], FromStopID[i - 1][0],
-                        ToStopID[i - 1][0], DriveDuration[i - 1][0]))  # Inputdaten Eigenschaften Fahrzeugen
+for i in range(1, 2):  # Anzahl von Fahrzeugen = len(numberVeh)+1
+    env.process(vehicle(env, "Vehicle:%d" % i, i, VehStatus))  # Inputdaten Eigenschaften Fahrzeugen
 # Problem: BlockID fängt bei 1 an. Alle Listen und Dictionarys fangen immer bei 0 an. Mismatch
 
 # Simulation starten und Laufzeit festlegen
 env.run(until=1440)  # Ein Tag simulieren: in Minuten ausdrücken. 24h = 1440min
 
 # Wenn Simulation mit 100 Fahrzeugen Print-Ausgaben abstellen -> Daten in .csv extrahieren für Asuwertung
-
