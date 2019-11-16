@@ -6,15 +6,17 @@
 # - Fahrer (DutyID) einbauen
 # - Dispositives System schaffen (als LongTermGoal)
 
-# Import Packages
+####################### Import Packages ###################################
 import simpy
 import pandas as pd
+import numpy
 
-# Daten einlesen & charakterisieren
+####################### Daten einlesen ####################################
 df = pd.read_csv("/home/chris/PythonProjekte/SemProjekt-1920/SimPy/tableFinal.csv", sep=";")
 # df.info()
 
-# Daten transformieren (Zeit)
+####################### Daten transformieren (Zeit) ########################
+#Umrechnung der Start- & Endzeit in Minuten (für Simulationsuhr)
 StartTime = []
 count_row = df.shape[0]
 for x in range(0, count_row):
@@ -22,7 +24,6 @@ for x in range(0, count_row):
     minutes = int(min_time[1]) * 60
     minutes = minutes + int(min_time[2])
     StartTime.append(minutes)
-
 EndTime = []
 count_row = df.shape[0]
 for x in range(0, count_row):
@@ -30,22 +31,16 @@ for x in range(0, count_row):
     minutes = int(min_time[1]) * 60
     minutes = minutes + int(min_time[2])
     EndTime.append(minutes)
-
 df["EndTime"] = EndTime
 df["StartTime"] = StartTime
 
-df.StartTime[9]
-df.EndTime[0]
-
-###Werkstatt für Ausprägungen /#Ausprägungen der Eigenschaftenn bei Initialisierung
-
-###Number of Vehicles
+#Gesamtanzahl an Fahrzeugen ermitteln
 numberVeh = df["BlockID"].unique()
 numberVeh = numberVeh.tolist()  # von Array in Liste formatieren
 numberVeh = [elem for elem in numberVeh if elem >= 0]  # -1 entfernen
 print("Die Gesamtanzahl von Fahrzeugen beträgt %d." % len(numberVeh))
 
-###DepotID
+#DepotID (jedem Fahrzeug die unique DepotID zuordnen
 DepotID = []
 counter = 1
 for i in range(1, len(numberVeh) + 1):
@@ -53,15 +48,13 @@ for i in range(1, len(numberVeh) + 1):
         if (df.BlockID[j] == i and counter == i):
             DepotID.append(df.DepotID[j])
             counter += 1
-
 print("Jedes Fahrzeug besitzt eine DepotID: %s" % (
             len(DepotID) == len(numberVeh)))  # Frage: Hat jedes Fahrzeug nur ein Depot oder kann das wechseln??
 
-###VehStatus / im Depot(0), im Umlauf (1)
+#VehStatus / im Depot(0), im Umlauf (1) (bei Initialisierung steht jedes Fahrzeug im Depot)
 VehStatus = 0  # Alle Fahrzeuge stehen am Anfang im Depot
 
-###StartTime (Dictionary mit allen Startzeiten der Teilumläufe des entsprechenden Fahrzeugs)
-
+#StartTimes der einzelnen Fahrzeuge in jedem Teilumlauf (in Dictionary gespeichert)
 DepotID_plusOne = [0] + DepotID  # DepotIDListe verlängern, damit Schleife mit i funktioniert
 startTime_dic = {}
 for i in range(1, len(numberVeh) + 1):
@@ -75,31 +68,10 @@ for i in range(1, len(numberVeh) + 1):
     startTime_dic.update({(i): startTimes_Block})
 
 StartTime_dic = startTime_dic
-StartTime_dic
-
-StartTime_dic[45]
-
 print("Jedes Fahrzeug fährt mindestens einmal aus dem Depot: %s" % (len(StartTime_dic) == len(numberVeh)))
 
-'''
-#Behilfswerte
-startTime_dic = {   0: [251, 600, 1440], 
-                    1: [260, 1020, 1440]} #Startzeiten in Minuten umrechnen (von 0 hoch) / 4h 11min = 60*4 + 11 = 251 Timesteps // 1440 am Ende, damit Loop in def vehicle nicht out of range is
-StartTime = startTime_dic
-len(StartTime)
-'''
 
-###Listen von Haltestellen (from/to): automatisieren (ready)
-'''
-Veh1_fromStop = list(range(1,11))
-Veh2_fromStop = list(range(50,61))
-FromStopID = [Veh1_fromStop,Veh2_fromStop]
-
-Veh1_toStop = list(range(11,20)) + [DepotID[0]]
-Veh2_toStop = list(range(61,70)) + [DepotID[1]]
-ToStopID = [Veh1_toStop, Veh2_toStop]
-'''
-
+#Listen von Haltestellen (from/to) (Liste mit vielen Listen)
 FromStopID = []
 ToStopID = []
 for i in range(1, len(numberVeh) + 1):
@@ -118,13 +90,7 @@ print("Die Anzahl der StoppointListen (from) ist gleich der Anzahl der Fahrzeuge
 print(
     "Die Anzahl der StoppointListen (to) ist gleich der Anzahl der Fahrzeuge: %s." % (len(ToStopID) == len(numberVeh)))
 
-# Fahrzeit zwischen den einzelnen Stationen: automatisieren (ready)
-'''
-Veh1_drive_duration = [5,5,5,5,5,5,5,5,5,5]
-Veh2_drive_duration = [10,5,10,5,10,5,10,5,10,5]
-DriveDuration = [Veh1_drive_duration, Veh2_drive_duration]
-'''
-
+# Fahrzeit zwischen den einzelnen Stationen (einfache Liste)
 DriveDuration = []
 for i in range(1, len(numberVeh) + 1):
     DifTime = []
@@ -136,17 +102,8 @@ for i in range(1, len(numberVeh) + 1):
 print(
     "Die Anzahl der Fahrtzeitlisten ist gleich der Anzahl der Fahrzeuge: %s." % (len(DriveDuration) == len(numberVeh)))
 
-DriveDuration[0]
-ToStopID[0]
-#################Test########################
-
-#####################################################
-
-# Störungen generieren: factorX
-import numpy
-
-
-def stoerfaktor(n):
+######################## Störgenerator ##########################
+def stoerfaktor(n): #n = Eingabeparameter um Störausmaß zu steuern
     if (n == 0):
         factorX = numpy.random.choice(numpy.arange(0, 11), p=[1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
                                                               0.0])  # Wahrscheinlichkeiten von Störungen / für jeden Teilfahrt neuen Störfaktor
@@ -159,12 +116,13 @@ def stoerfaktor(n):
     return factorX
 
 
-# Daten für CSV-Dateo
+##############################Daten für CSV-Datei###############################
+#Header für CSV-Datei
 print("vehID FromStopID ToStopID Uhrzeit(Ist) Uhrzeit(Soll) Delay Drive_Continue",
-      file=open("DelayCSV.txt", "a"))  # Daten für CSVFile
+      file=open("DelayCSV.txt", "a"))
 
 
-# Prozesse und Events von Objekt Vehicle
+########################## Objekt Vehicle #########################################
 def vehicle(env, name, vehID, vehStatus, depotID, startTime, fromStopID, toStopID,
             driveDuration):  # Eigenschaften von jedem Fahrzeug
     while True:
@@ -235,7 +193,7 @@ def vehicle(env, name, vehID, vehStatus, depotID, startTime, fromStopID, toStopI
         yield env.timeout(100000)  # useless
 
 
-# Simulationsumgebung initialisieren
+########################## Simulationsumgebung #############################
 env = simpy.Environment()
 
 # Initialisierung von Fahrzeugen
