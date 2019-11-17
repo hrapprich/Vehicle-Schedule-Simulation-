@@ -101,7 +101,7 @@ print(
     "Die Anzahl der Fahrtzeitlisten ist gleich der Anzahl der Fahrzeuge: %s." % (len(DriveDuration) == len(numberVeh)))
 
 
-############################## Funktionen für Objekt Vehicle ##############################
+############################## Funktionen für Objekt Vehicle #############################
 
 # Abfrage: Fahrtzeit über Simulationsdauer
 def drive_outOfTime(time, delay, clock):
