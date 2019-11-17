@@ -1,8 +1,8 @@
-# Sprint2
+# Sprint2.1
+# Neuerungen:
+# - Eventliste auf Fahrtebene (Eintrag wenn Bus abfährt & wenn Bus ankommt)
 
 # ToDos:
-# - Refacotring the Code (Funktionen erstellen, Code übersichtlicher gestalten)
-# - Eventliste: notieren wann Bus abfährt und wann Bus ankommt (zwei gesonderte Einträge)
 # - Komplexere Abhängigkeiten
 # - Fahrer (DutyID) einbauen
 # - Dispositives System schaffen (als LongTermGoal)
@@ -46,14 +46,11 @@ DepotID = []
 counter = 1
 for i in range(1, len(numberVeh) + 1):
     for j in range(0, df.shape[0]):
-        if (df.BlockID[j] == i and counter == i):
+        if df.BlockID[j] == i and counter == i:
             DepotID.append(df.DepotID[j])
             counter += 1
 print("Jedes Fahrzeug besitzt eine DepotID: %s" % (
         len(DepotID) == len(numberVeh)))  # Frage: Hat jedes Fahrzeug nur ein Depot oder kann das wechseln??
-
-# VehStatus / im Depot(0), im Umlauf (1) (bei Initialisierung steht jedes Fahrzeug im Depot)
-VehStatus = 0  # Alle Fahrzeuge stehen am Anfang im Depot
 
 # StartTimes der einzelnen Fahrzeuge in jedem Teilumlauf (in Dictionary gespeichert)
 DepotID_plusOne = [0] + DepotID  # DepotIDListe verlängern, damit Schleife mit i funktioniert
@@ -61,8 +58,8 @@ startTime_dic = {}
 for i in range(1, len(numberVeh) + 1):
     startTimes_Block = []
     for j in range(len(df)):
-        if (df.BlockID[j] == i):
-            if (df.FromStopID[j] == DepotID_plusOne[i]):
+        if df.BlockID[j] == i:
+            if df.FromStopID[j] == DepotID_plusOne[i]:
                 startTimes_Block.append(df.StartTime[j])
     startTimes_Block = startTimes_Block + [
         1440]  # Add to every list a 1440 as last element for simulation loop (timeout)
@@ -78,7 +75,7 @@ for i in range(1, len(numberVeh) + 1):
     fromStopID_cache = []
     toStopID_cache = []
     for j in range(0, df.shape[0]):
-        if (df.BlockID[j] == i):
+        if df.BlockID[j] == i:
             fromStopID_one = df.iloc[j, 3]
             fromStopID_cache.append(fromStopID_one)
             toStopID_one = df.iloc[j, 4]
@@ -95,7 +92,7 @@ DriveDuration = []
 for i in range(1, len(numberVeh) + 1):
     DifTime = []
     for j in range(0, df.shape[0]):
-        if (df.BlockID[j] == i):
+        if df.BlockID[j] == i:
             difTime = df.iloc[j, 12] - df.iloc[j, 13]
             DifTime.append(difTime)
     DriveDuration.append(DifTime)
@@ -107,13 +104,16 @@ print(
 def stoerfaktor(n):  # n = Eingabeparameter um Störausmaß zu steuern
     if (n == 0):
         factorX = numpy.random.choice(numpy.arange(0, 11), p=[1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-                                                              0.0])  # Wahrscheinlichkeiten von Störungen / für jeden Teilfahrt neuen Störfaktor
+                                                              0.0])  # Wahrscheinlichkeiten von Störungen / für jeden
+        # Teilfahrt neuen Störfaktor
     elif (n == 1):
         factorX = numpy.random.choice(numpy.arange(0, 11), p=[0.6, 0.0, 0.0, 0.0, 0.0, 0.2, 0.0, 0.0, 0.0, 0.0,
-                                                              0.2])  # Wahrscheinlichkeiten von Störungen / für jeden Teilfahrt neuen Störfaktor
+                                                              0.2])  # Wahrscheinlichkeiten von Störungen / für jeden
+        # Teilfahrt neuen Störfaktor
     elif (n == 2):
         factorX = numpy.random.choice(numpy.arange(0, 11), p=[0.33, 0.0, 0.0, 0.0, 0.0, 0.33, 0.0, 0.0, 0.0, 0.0,
-                                                              0.34])  # Wahrscheinlichkeiten von Störungen / für jeden Teilfahrt neuen Störfaktor
+                                                              0.34])  # Wahrscheinlichkeiten von Störungen / für
+        # jeden Teilfahrt neuen Störfaktor
     return factorX
 
 
@@ -131,7 +131,7 @@ print("vehID Standort Dep/Arr Uhrzeit(Ist) Status(Depot/Umlauf)",
 
 
 ########################## Objekt Vehicle #########################################
-def vehicle(env, name, vehID, status):  # Eigenschaften von jedem Fahrzeug
+def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
     while True:
         counter = 0
         delayTime = 0  # DelayTime initialisieren (gilt für den ganze Tag des Fahrzeugs)
@@ -142,7 +142,8 @@ def vehicle(env, name, vehID, status):  # Eigenschaften von jedem Fahrzeug
             status = 1  # Wenn Startzeit erreicht, Fahrzeug im Umlauf (Status = 1)
 
             while status == 1:  # while Fahrzeug im Umlauf
-                cache_counter = 0  # wichtig, weil Start und EndHaltestellen in einer Liste, sodass counter TeilumlaufHaltestellen abgrenzt
+                cache_counter = 0  # wichtig, weil Start und EndHaltestellen in einer Liste, sodass counter
+                # TeilumlaufHaltestellen abgrenzt
                 for k in range(0, len(ToStopID[vehID - 1])):
 
                     # Einstellen des Störfaktors
@@ -153,10 +154,11 @@ def vehicle(env, name, vehID, status):  # Eigenschaften von jedem Fahrzeug
                     itemDrive = 0  # Abfahrt = 0, Ankunft = 1
                     print(vehID, FromStopID[vehID - 1][k + counter], itemDrive, env.now, status,
                           file=open("DelayCSV.txt", "a"))
-                    #Abfrage, ob Fahrt außerhalb der Simulatinszeit liegen würde
+                    # Abfrage, ob Fahrt außerhalb der Simulatinszeit liegen würde
                     if drive_outOfTime(DriveDuration[vehID - 1][k + counter], delayTime, env.now):
                         print(vehID, FromStopID[vehID - 1][k + counter], itemDrive, env.now, 404,
                               file=open("DelayCSV.txt", "a"))
+                        yield env.timeout(1440)
                         break
 
                     # Timeout für Fahrtdauer zur nächsten Haltestelle
@@ -176,10 +178,10 @@ def vehicle(env, name, vehID, status):  # Eigenschaften von jedem Fahrzeug
                               file=open("DelayCSV.txt", "a"))
                         cache_counter += 1
 
-                    #Event: wenn StartTime des nächsten Umlaufes jetzt beginnt, lieber diesen Teilumlauf abbrechen
-                    #und nächsten Teilumlauf starten?
+                    # Event: wenn StartTime des nächsten Umlaufes jetzt beginnt, lieber diesen Teilumlauf abbrechen
+                    # und nächsten Teilumlauf starten?
 
-            #Counter für Drive_DurationListe übertragen
+            # Counter für Drive_DurationListe übertragen
             counter = counter + cache_counter
 
             # Abfrage ob AnschlussUmlauf erreicht wird
@@ -194,8 +196,8 @@ def vehicle(env, name, vehID, status):  # Eigenschaften von jedem Fahrzeug
 env = simpy.Environment()
 
 # Initialisierung von Fahrzeugen
-for i in range(1, 2):  # Anzahl von Fahrzeugen = len(numberVeh)+1
-    env.process(vehicle(env, "Vehicle:%d" % i, i, VehStatus))  # Inputdaten Eigenschaften Fahrzeugen
+for i in range(1, len(numberVeh)+1):  # Anzahl von Fahrzeugen = len(numberVeh)+1
+    env.process(vehicle(env, i))  # Inputdaten Eigenschaften Fahrzeugen
 # Problem: BlockID fängt bei 1 an. Alle Listen und Dictionarys fangen immer bei 0 an. Mismatch
 
 # Simulation starten und Laufzeit festlegen
