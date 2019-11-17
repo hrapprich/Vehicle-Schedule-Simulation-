@@ -101,7 +101,15 @@ print(
     "Die Anzahl der Fahrtzeitlisten ist gleich der Anzahl der Fahrzeuge: %s." % (len(DriveDuration) == len(numberVeh)))
 
 
-######################## Störgenerator ##########################
+############################## Funktionen für Objekt Vehicle ##############################
+
+# Abfrage: Fahrtzeit über Simulationsdauer
+def drive_outOfTime(time, delay, clock):
+    doOT = time + delay + clock >= 1440
+    return doOT
+
+
+# Störgenerator
 def stoerfaktor(n):  # n = Eingabeparameter um Störausmaß zu steuern
     if (n == 0):
         factorX = numpy.random.choice(numpy.arange(0, 11), p=[1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
@@ -116,13 +124,6 @@ def stoerfaktor(n):  # n = Eingabeparameter um Störausmaß zu steuern
                                                               0.34])  # Wahrscheinlichkeiten von Störungen / für
         # jeden Teilfahrt neuen Störfaktor
     return factorX
-
-
-############################## Funktionen für Objekt Vehicle ##############################
-
-def drive_outOfTime(time, delay, clock):
-    doOT = time + delay + clock >= 1440
-    return doOT
 
 
 ############################## Daten für CSV-Datei ###############################
@@ -145,7 +146,7 @@ def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
             while status == 1:  # while Fahrzeug im Umlauf
                 cache_counter = 0  # wichtig, weil Start und EndHaltestellen in einer Liste, sodass counter
                 # TeilumlaufHaltestellen abgrenzt
-                askoneTime = 0 #Variable für InputTest User Fahrtabbruch
+                askoneTime = 0  # Variable für InputTest User Fahrtabbruch
                 for k in range(0, len(ToStopID[vehID - 1])):
 
                     # Einstellen des Störfaktors
@@ -175,7 +176,7 @@ def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
                             askoneTime = 1
                         else:
                             print(vehID, FromStopID[vehID - 1][k + counter], 707, env.now, 707,
-                              file=open("TestDelayCSV.txt", "a"))
+                                  file=open("TestDelayCSV.txt", "a"))
                             status = 0
                             break  # Ausnahmen/Errors abfangen (offen)
 
