@@ -203,4 +203,3 @@ for i in range(1, len(numberVeh)+1):  # Anzahl von Fahrzeugen = len(numberVeh)+1
 # Simulation starten und Laufzeit festlegen
 env.run(until=1440)  # Ein Tag simulieren: in Minuten ausdrücken. 24h = 1440min
 
-# Wenn Simulation mit 100 Fahrzeugen Print-Ausgaben abstellen -> Daten in .csv extrahieren für Asuwertung
