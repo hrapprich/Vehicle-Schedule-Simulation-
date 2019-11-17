@@ -165,6 +165,7 @@ def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
 
                     # Abfrage, ob Fahrt ausgeführt werden soll, wenn AnschlussTeilumlauf dadurch nicht mehr erreicht
                     # werden kann
+                    # Fehler: fährt nachm Break nicht vom Depot los
                     if (DriveDuration[vehID - 1][k + counter] + delayTime + env.now) > StartTime_dic[vehID][j + 1] \
                             and askoneTime == 0:
                         print("Soll die Fahrt abgebrochen und der nächste Teilumlauf gestartet werden?")
@@ -172,6 +173,8 @@ def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
                         if int_user == 1:
                             askoneTime = 1
                         else:
+                            print(vehID, FromStopID[vehID - 1][k + counter], 707, env.now, 707,
+                              file=open("TestDelayCSV.txt", "a"))
                             status = 0
                             break  # Ausnahmen/Errors abfangen (offen)
 
