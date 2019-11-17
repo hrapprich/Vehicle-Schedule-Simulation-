@@ -1,3 +1,6 @@
+PyCharm connect with GitHub best method to update Code automatically
+
+Alternative über cmd:
 git clone "URL" #Verbindung zum Repository aufnehmen
 
 git rm FILE -r  #File löschen
