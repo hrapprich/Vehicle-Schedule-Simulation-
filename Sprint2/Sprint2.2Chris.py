@@ -1,7 +1,7 @@
 # Sprint2.2
 # Neuerungen:
 # - Eventliste auf Fahrtebene (Eintrag wenn Bus abfährt & wenn Bus ankommt)
-# - Versuch einer dispositiven Abhängigkeit
+# - Versuch einer dispositiven Abhängigkeit (Fahrtabbruch oder nicht)
 
 # ToDos:
 # - Komplexere Abhängigkeiten
