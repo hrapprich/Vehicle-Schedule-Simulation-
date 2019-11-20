@@ -2,6 +2,16 @@
 # Neuerungen:
 # - dispositive Abfrage rausgenommen
 
+# Idee für Abhängigkeit:
+# - Abfrage, wenn Startzeit des nächsten Umlaufes fast erreicht ist, aber der Umlauf noch nicht beendet ist:
+#       + Wenn Anzahl der noch anzufahrenden HS vor Ankunft am Depot kleiner X, dann Abbruch des Umlaufs und
+#           direkt zum Depot
+#       + Fahrtzeit zum Depot von der HS dann erst versuchen aus Daten zu lesen oder Annahme machen
+#           (Durchschnitt oder so)
+#       + fast erreicht = Wenn Startzeit nächster Umlauf - env.now < 20min (oder anderer Wert),
+#           dann Berechnung Fahrtzeit vor Abfahrt von jeder HS zum Depot (wenn < Starttime - env.now, dann Abbruch)
+
+
 
 # ToDos:
 # - Komplexere Abhängigkeiten
@@ -182,8 +192,6 @@ def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
                               file=open("TestDelayCSV.txt", "a"))
                         cache_counter += 1
 
-                    # Event: wenn StartTime des nächsten Umlaufes jetzt beginnt, lieber diesen Teilumlauf abbrechen
-                    # und nächsten Teilumlauf starten?
 
             # Counter für Drive_DurationListe übertragen
             counter = counter + cache_counter
