@@ -1,4 +1,4 @@
-# Sprint2.1
+# Sprint2.2
 # Neuerungen:
 # - Eventliste auf Fahrtebene (Eintrag wenn Bus abfährt & wenn Bus ankommt)
 # - Versuch einer dispositiven Abhängigkeit
@@ -14,7 +14,7 @@ import pandas as pd
 import numpy
 
 ####################### Daten einlesen ####################################
-df = pd.read_csv("/home/chris/PythonProjekte/SemProjekt-1920/SimPy/tableFinal.csv", sep=";")
+df = pd.read_csv("/home/chris/PythonProjekte/SemProjekt-1920/tableFinal.txt", sep=";")
 # df.info()
 
 ####################### Daten transformieren (Zeit) ########################

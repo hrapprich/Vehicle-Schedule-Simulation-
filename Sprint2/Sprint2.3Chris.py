@@ -1,5 +1,6 @@
-# Sprint2.1
+# Sprint2.3
 # Neuerungen:
+# - dispositive Abfrage rausgenommen
 
 
 # ToDos:
@@ -13,7 +14,7 @@ import pandas as pd
 import numpy
 
 ####################### Daten einlesen ####################################
-df = pd.read_csv("/home/chris/PythonProjekte/SemProjekt-1920/SimPy/tableFinal.csv", sep=";")
+df = pd.read_csv("/home/chris/PythonProjekte/SemProjekt-1920/tableFinal.txt", sep=";")
 # df.info()
 
 ####################### Daten transformieren (Zeit) ########################
@@ -149,7 +150,7 @@ def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
                 for k in range(0, len(ToStopID[vehID - 1])):
 
                     # Einstellen des Störfaktors
-                    delayTime_perDrive = stoerfaktor(1)
+                    delayTime_perDrive = stoerfaktor(0)
                     delayTime = delayTime + delayTime_perDrive  # Aufsummieren der Verspätungen im Teilumlauf
 
                     # Event: Bus fährt um bestimmte Uhrzeit von HS los
@@ -163,21 +164,6 @@ def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
                               file=open("TestDelayCSV.txt", "a"))
                         yield env.timeout(1440)
                         break
-
-                    # Abfrage, ob Fahrt ausgeführt werden soll, wenn AnschlussTeilumlauf dadurch nicht mehr erreicht
-                    # werden kann
-                    # Fehler: fährt nachm Break nicht vom Depot los
-                    if (DriveDuration[vehID - 1][k + counter] + delayTime + env.now) > StartTime_dic[vehID][j + 1] \
-                            and askoneTime == 0:
-                        print("Soll die Fahrt abgebrochen und der nächste Teilumlauf gestartet werden?")
-                        int_user = int(input("1 for continue the Drive. 2 for skip the drive: "))
-                        if int_user == 1:
-                            askoneTime = 1
-                        else:
-                            print(vehID, FromStopID[vehID - 1][k + counter], 707, env.now, 707,
-                                  file=open("TestDelayCSV.txt", "a"))
-                            status = 0
-                            break  # Ausnahmen/Errors abfangen (offen)
 
                     # Timeout für Fahrtdauer zur nächsten Haltestelle
                     yield (env.timeout(DriveDuration[vehID - 1][k + counter] + delayTime))
@@ -214,7 +200,7 @@ def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
 env = simpy.Environment()
 
 # Initialisierung von Fahrzeugen
-for i in range(1, 2):  # Anzahl von Fahrzeugen = len(numberVeh)+1
+for i in range(1, len(numberVeh)+1):  # Anzahl von Fahrzeugen = len(numberVeh)+1
     env.process(vehicle(env, i))  # Inputdaten Eigenschaften Fahrzeugen
     # Problem: BlockID fängt bei 1 an. Alle Listen und Dictionarys fangen immer bei 0 an. Mismatch gelöst mit (-1)
 # Simulation starten und Laufzeit festlegen
