@@ -110,6 +110,15 @@ for i in range(1, len(numberVeh) + 1):
 print(
     "Die Anzahl der Fahrtzeitlisten ist gleich der Anzahl der Fahrzeuge: %s." % (len(DriveDuration) == len(numberVeh)))
 
+############################## Daten, die für die Simulation benötigt werden, und deren Form #######################
+
+# Spalten in Dataframe: StartTime und EndTime (in Minuten)
+# Liste von der Gesamtanzahl von Fahrzeugen: numberVeh
+# Liste von Depots, von denen eins einem Fahrzeug zugeordnet ist: DepotID
+# Dictionary mit den Startzeiten jedes Teilumlaufs (Liste) von jedem Fahrzeug: StartTime_dic
+# Liste von Listen mit den Haltestellen eines jeden Fahrzeugs (über alle Teilumläufe hinweg): FromStopID & ToStopID
+# Liste von Listen mit den einzelnen Fahrtzeiten von der entsprechenden FromStopID zur entsprechen ToStopID: DriveDuration
+
 
 ############################## Funktionen für Objekt Vehicle #############################
 
