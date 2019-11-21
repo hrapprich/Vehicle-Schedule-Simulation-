@@ -1,6 +1,11 @@
 # Sprint3.1
 # Ziel: Abhängigkeit von Teilumläufen einbauen durch Abbruchbedingung
 
+#Probleme:
+# - Anzahl Haltestellen, die geskippt werden können: muss dynamisch sein (sonst out of range)
+# - Abfrage ob ein AnschlussUmlauf erreicht werden kann (auf alle Teilumläufe erweitern (momentan error)
+
+
 # Idee:
 # - Abfrage, wenn Startzeit des nächsten Umlaufes fast erreicht ist, aber der Umlauf noch nicht beendet ist:
 #       + Wenn Anzahl der noch anzufahrenden HS vor Ankunft am Depot kleiner X, dann Abbruch des Umlaufs und
@@ -9,6 +14,10 @@
 #           (Durchschnitt oder so)
 #       + fast erreicht = Wenn Startzeit nächster Umlauf - env.now < 20min (oder anderer Wert),
 #           dann Berechnung Fahrtzeit vor Abfahrt von jeder HS zum Depot (wenn < Starttime - env.now, dann Abbruch)
+
+# Bei Durchführung Error in den Daten ausgefallen:
+#   Bei VehID 9, 77, 63 sind die Teilumläufe nicht in korrekter Reihenfolge
+#   Idee: Zeiten aufsteigend sortieren bei Transformieren
 
 # ToDos:
 # - komplexere Störmuster
@@ -134,20 +143,25 @@ def stoerfaktor(n):  # n = Eingabeparameter um Störausmaß zu steuern
                                                               0.0])  # Wahrscheinlichkeiten von Störungen / für jeden
         # Teilfahrt neuen Störfaktor
     elif (n == 1):
-        factorX = numpy.random.choice(numpy.arange(0, 11), p=[0.6, 0.0, 0.0, 0.0, 0.0, 0.2, 0.0, 0.0, 0.0, 0.0,
-                                                              0.2])  # Wahrscheinlichkeiten von Störungen / für jeden
+        factorX = numpy.random.choice(numpy.arange(0, 11), p=[0.6, 0.2, 0.2, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                                                              0.0])  # Wahrscheinlichkeiten von Störungen / für jeden
         # Teilfahrt neuen Störfaktor
     elif (n == 2):
+        factorX = numpy.random.choice(numpy.arange(0, 11), p=[0.6, 0.0, 0.0, 0.2, 0.0, 0.2, 0.0, 0.0, 0.0, 0.0,
+                                                              0.0])  # Wahrscheinlichkeiten von Störungen / für jeden
+        # Teilfahrt neuen Störfaktor
+    elif (n == 3):
         factorX = numpy.random.choice(numpy.arange(0, 11), p=[0.33, 0.0, 0.0, 0.0, 0.0, 0.33, 0.0, 0.0, 0.0, 0.0,
                                                               0.34])  # Wahrscheinlichkeiten von Störungen / für
         # jeden Teilfahrt neuen Störfaktor
     return factorX
 
 
+
 ############################## Daten für CSV-Datei ###############################
 # Header für CSV-Datei
 print("vehID Standort Dep/Arr Uhrzeit(Ist) Status(Depot/Umlauf)",
-      file=open("TestDelayCSV.txt", "a"))
+      file=open("EventList.txt", "a"))
 
 
 ########################## Objekt Vehicle #########################################
@@ -168,20 +182,39 @@ def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
                 for k in range(0, len(ToStopID[vehID - 1])):
 
                     # Einstellen des Störfaktors
-                    delayTime_perDrive = stoerfaktor(0)
+                    delayTime_perDrive = stoerfaktor(2)
                     delayTime = delayTime + delayTime_perDrive  # Aufsummieren der Verspätungen im Teilumlauf
+
 
                     # Event: Bus fährt um bestimmte Uhrzeit von HS los
                     itemDrive = 0  # Abfahrt = 0, Ankunft = 1
                     print(vehID, FromStopID[vehID - 1][k + counter], itemDrive, env.now, status,
-                          file=open("TestDelayCSV.txt", "a"))
+                          file=open("EventList.txt", "a"))
 
                     # Abfrage, ob Fahrt außerhalb der Simulationszeit liegen würde
                     if drive_outOfTime(DriveDuration[vehID - 1][k + counter], delayTime, env.now):
                         print(vehID, FromStopID[vehID - 1][k + counter], itemDrive, env.now, 404,
-                              file=open("TestDelayCSV.txt", "a"))
+                              file=open("EventList.txt", "a"))
                         yield env.timeout(1440)
                         break
+
+                    """
+                    # Abfrage, ob weitere Fahrt eingestellt werden soll (Rückkehr zum Depot)
+                    factorK = 5 # Anzahl Haltestellen, die geskippt werden können
+                    Puffer = 850 # Minuten, die zum nächsten Umlauf als Puffer dienen sollen
+                    FahrtzeitDepot = 10 # Annahme Fahrtzeit von jeder HS zum Depot
+
+                    if (StartTime_dic[vehID][j + 1] - env.now) < Puffer:
+                        numberSkippedHS = (ToStopID[vehID - 1][k + counter + factorK]) == DepotID[vehID-1]
+                        if numberSkippedHS:  # kleiner 20min & max. 5 HS zum Depot
+                            print("Bus fährt direkt ins Depot um nächsten Teilumlauf rechtzeitig zu starten")
+                            yield env.timeout(FahrtzeitDepot) #Annahme: Fahrtzeit von jeder Haltestelle 10min
+                            itemDrive = 3 #Ankunft durch Abbruch
+                            status = 0 #Bus wieder im Depot
+                            print(vehID, DepotID[vehID - 1], itemDrive, env.now, status,
+                                  file=open("EventList.txt", "a"))
+                            break
+                    """
 
                     # Timeout für Fahrtdauer zur nächsten Haltestelle
                     yield (env.timeout(DriveDuration[vehID - 1][k + counter] + delayTime))
@@ -193,30 +226,34 @@ def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
                         status = 0
                         cache_counter += 1
                         print(vehID, DepotID[vehID - 1], itemDrive, env.now, status,
-                              file=open("TestDelayCSV.txt", "a"))
+                              file=open("EventList.txt", "a"))
                         break
                     else:
                         print(vehID, ToStopID[vehID - 1][k + counter], itemDrive, env.now, status,
-                              file=open("TestDelayCSV.txt", "a"))
+                              file=open("EventList.txt", "a"))
                         cache_counter += 1
 
 
             # Counter für Drive_DurationListe übertragen
             counter = counter + cache_counter
 
-            # Abfrage ob AnschlussUmlauf erreicht wird
-            if (StartTime_dic[vehID][j + 1] - env.now < 0):
-                yield env.timeout(1440)
-            else:
-                yield env.timeout(abs(StartTime_dic[vehID][j + 1] - env.now))
-                delayTime = 0  # gesammelten Verspätungen hatten keinen Impact auf weiterführende Teilumläufe (RESET)
-
+            "Ab hier gibt den Error"
+            # Abfrage ob ein AnschlussUmlauf erreicht werden kann
+            for i in range(1, len(StartTime_dic[vehID])):
+                if (StartTime_dic[vehID][j + i] - env.now) >= 0:
+                    yield env.timeout(StartTime_dic[vehID][j + i] - env.now)
+                    delayTime = 0 # gesammelten Verspätungen hatten keinen Impact auf weiterführende Teilumläufe (RESET)
+                    break
+                elif i == len(StartTime_dic[vehID]):
+                    yield env.timeout(1440)
+                else:
+                    j += 1
 
 ########################## Simulationsumgebung ##############################
 env = simpy.Environment()
 
 # Initialisierung von Fahrzeugen
-for i in range(1, len(numberVeh)+1):  # Anzahl von Fahrzeugen = len(numberVeh)+1
+for i in range(1, 2):  # Anzahl von Fahrzeugen = len(numberVeh)+1
     env.process(vehicle(env, i))  # Inputdaten Eigenschaften Fahrzeugen
     # Problem: BlockID fängt bei 1 an. Alle Listen und Dictionarys fangen immer bei 0 an. Mismatch gelöst mit (-1)
 # Simulation starten und Laufzeit festlegen
