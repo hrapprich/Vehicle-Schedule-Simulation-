@@ -1,22 +1,13 @@
 # Sprint2.3
 # Neuerungen:
 # - dispositive Abfrage rausgenommen
-
-# Idee für Abhängigkeit:
-# - Abfrage, wenn Startzeit des nächsten Umlaufes fast erreicht ist, aber der Umlauf noch nicht beendet ist:
-#       + Wenn Anzahl der noch anzufahrenden HS vor Ankunft am Depot kleiner X, dann Abbruch des Umlaufs und
-#           direkt zum Depot
-#       + Fahrtzeit zum Depot von der HS dann erst versuchen aus Daten zu lesen oder Annahme machen
-#           (Durchschnitt oder so)
-#       + fast erreicht = Wenn Startzeit nächster Umlauf - env.now < 20min (oder anderer Wert),
-#           dann Berechnung Fahrtzeit vor Abfahrt von jeder HS zum Depot (wenn < Starttime - env.now, dann Abbruch)
-
-
+# - vehID in Schleife korrigiert, übersichtlicher gestaltet
 
 # ToDos:
-# - Komplexere Abhängigkeiten
+# - Komplexere Abhängigkeiten (Break/Add)
+# - Störungsmuster
 # - Fahrer (DutyID) einbauen
-# - Dispositives System schaffen (als LongTermGoal)
+
 
 ####################### Import Packages ###################################
 import simpy
@@ -74,9 +65,10 @@ for i in range(1, len(numberVeh) + 1):
                 startTimes_Block.append(df.StartTime[j])
     startTimes_Block = startTimes_Block + [
         1440]  # Add to every list a 1440 as last element for simulation loop (timeout)
-    startTime_dic.update({(i): startTimes_Block})
+    startTime_dic.update({(i-1): startTimes_Block}) #i-1 damit Index bei 0 anfängt (wichtig für Schleife (nachträgliche Änderung!)
 
 StartTime_dic = startTime_dic
+StartTime_dic
 print("Jedes Fahrzeug fährt mindestens einmal aus dem Depot: %s" % (len(StartTime_dic) == len(numberVeh)))
 
 # Listen von Haltestellen (from/to) (Liste mit vielen Listen)
@@ -118,6 +110,8 @@ print(
 # Dictionary mit den Startzeiten jedes Teilumlaufs (Liste) von jedem Fahrzeug: StartTime_dic
 # Liste von Listen mit den Haltestellen eines jeden Fahrzeugs (über alle Teilumläufe hinweg): FromStopID & ToStopID
 # Liste von Listen mit den einzelnen Fahrtzeiten von der entsprechenden FromStopID zur entsprechen ToStopID: DriveDuration
+
+numberVeh
 
 
 ############################## Funktionen für Objekt Vehicle #############################
@@ -166,7 +160,7 @@ def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
                 cache_counter = 0  # wichtig, weil Start und EndHaltestellen in einer Liste, sodass counter
                 # TeilumlaufHaltestellen abgrenzt
                 askoneTime = 0  # Variable für InputTest User Fahrtabbruch
-                for k in range(0, len(ToStopID[vehID - 1])):
+                for k in range(0, len(ToStopID[vehID])):
 
                     # Einstellen des Störfaktors
                     delayTime_perDrive = stoerfaktor(0)
@@ -174,30 +168,30 @@ def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
 
                     # Event: Bus fährt um bestimmte Uhrzeit von HS los
                     itemDrive = 0  # Abfahrt = 0, Ankunft = 1
-                    print(vehID, FromStopID[vehID - 1][k + counter], itemDrive, env.now, status,
+                    print(vehID+1, FromStopID[vehID][k + counter], itemDrive, env.now, status,
                           file=open("TestDelayCSV.txt", "a"))
 
                     # Abfrage, ob Fahrt außerhalb der Simulationszeit liegen würde
-                    if drive_outOfTime(DriveDuration[vehID - 1][k + counter], delayTime, env.now):
-                        print(vehID, FromStopID[vehID - 1][k + counter], itemDrive, env.now, 404,
+                    if drive_outOfTime(DriveDuration[vehID][k + counter], delayTime, env.now):
+                        print(vehID+1, FromStopID[vehID][k + counter], itemDrive, env.now, 404,
                               file=open("TestDelayCSV.txt", "a"))
                         yield env.timeout(1440)
                         break
 
                     # Timeout für Fahrtdauer zur nächsten Haltestelle
-                    yield (env.timeout(DriveDuration[vehID - 1][k + counter] + delayTime))
+                    yield (env.timeout(DriveDuration[vehID][k + counter] + delayTime))
 
                     # Event: Bus kommt zu bestimmter Uhrzeit an HS an
                     itemDrive = 1
                     # Abfrage ob Bus im Depot angekommen
-                    if ToStopID[vehID - 1][k + counter] == DepotID[vehID - 1]:
+                    if ToStopID[vehID][k + counter] == DepotID[vehID]:
                         status = 0
                         cache_counter += 1
-                        print(vehID, DepotID[vehID - 1], itemDrive, env.now, status,
+                        print(vehID+1, DepotID[vehID], itemDrive, env.now, status,
                               file=open("TestDelayCSV.txt", "a"))
                         break
                     else:
-                        print(vehID, ToStopID[vehID - 1][k + counter], itemDrive, env.now, status,
+                        print(vehID+1, ToStopID[vehID][k + counter], itemDrive, env.now, status,
                               file=open("TestDelayCSV.txt", "a"))
                         cache_counter += 1
 
@@ -217,7 +211,7 @@ def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
 env = simpy.Environment()
 
 # Initialisierung von Fahrzeugen
-for i in range(1, len(numberVeh)+1):  # Anzahl von Fahrzeugen = len(numberVeh)+1
+for i in range(0, len(numberVeh)):  # Anzahl von Fahrzeugen = len(numberVeh)+1
     env.process(vehicle(env, i))  # Inputdaten Eigenschaften Fahrzeugen
     # Problem: BlockID fängt bei 1 an. Alle Listen und Dictionarys fangen immer bei 0 an. Mismatch gelöst mit (-1)
 # Simulation starten und Laufzeit festlegen
