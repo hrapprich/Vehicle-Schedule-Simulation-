@@ -37,6 +37,10 @@
 
 
 ####################### Parameter-Setting für Simulation #################################
+
+#Anzahl Fahrzeuge, die initialisiert werden sollen (für Tests nur ein Fahrzeug sinnvoll)
+#       alle Fahrzeuge: len(numberVeh) (allerdings erst später initialisiert (sind 100 :D )
+N = 100
 # Störfaktor (0,1,2,3)
 A = 0
 # Puffer (in min) (ab welcher Zeit zum nächsten Teilumlauf soll der Bus lieber abbrechen und in Depot fahren)
@@ -280,7 +284,7 @@ def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
 env = simpy.Environment()
 
 # Initialisierung von Fahrzeugen
-for i in range(0, 1):  # Anzahl von Fahrzeugen = len(numberVeh)
+for i in range(0, N):  # Anzahl von Fahrzeugen = len(numberVeh)
     env.process(vehicle(env, i))  # Inputdaten Eigenschaften Fahrzeugen
     # Problem: BlockID fängt bei 1 an. Alle Listen und Dictionarys fangen immer bei 0 an. Mismatch gelöst mit (-1)
 # Simulation starten und Laufzeit festlegen
