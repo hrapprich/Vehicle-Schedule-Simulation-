@@ -129,10 +129,14 @@ def stoerfaktor(n):  # n = Eingabeparameter um Störausmaß zu steuern
                                                               0.0])  # Wahrscheinlichkeiten von Störungen / für jeden
         # Teilfahrt neuen Störfaktor
     elif (n == 1):
-        factorX = numpy.random.choice(numpy.arange(0, 11), p=[0.6, 0.0, 0.0, 0.0, 0.0, 0.2, 0.0, 0.0, 0.0, 0.0,
-                                                              0.2])  # Wahrscheinlichkeiten von Störungen / für jeden
+        factorX = numpy.random.choice(numpy.arange(0, 11), p=[0.6, 0.2, 0.2, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                                                              0.0])  # Wahrscheinlichkeiten von Störungen / für jeden
         # Teilfahrt neuen Störfaktor
     elif (n == 2):
+        factorX = numpy.random.choice(numpy.arange(0, 11), p=[0.6, 0.0, 0.0, 0.2, 0.0, 0.2, 0.0, 0.0, 0.0, 0.0,
+                                                              0.0])  # Wahrscheinlichkeiten von Störungen / für jeden
+        # Teilfahrt neuen Störfaktor
+    elif (n == 3):
         factorX = numpy.random.choice(numpy.arange(0, 11), p=[0.33, 0.0, 0.0, 0.0, 0.0, 0.33, 0.0, 0.0, 0.0, 0.0,
                                                               0.34])  # Wahrscheinlichkeiten von Störungen / für
         # jeden Teilfahrt neuen Störfaktor
