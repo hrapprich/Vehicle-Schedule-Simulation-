@@ -225,19 +225,6 @@ def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
                             yield env.timeout(1440)
                             break
 
-
-                        # Abfrage, ob weitere Fahrt eingestellt werden soll (Rückkehr zum Depot)
-                        if (StartTime_dic[vehID][j + 1] - env.now) < 30:
-                                if lenTeilumlaeufe_dic[vehID][j] - hs_counter < 3:
-                                    print("Bus fährt direkt ins Depot um nächsten Teilumlauf rechtzeitig zu starten")
-                                    yield env.timeout(10) #Annahme: Fahrtzeit von jeder Haltestelle 10min
-                                    itemDrive = 3 #Ankunft durch Abbruch
-                                    status = 0 #Bus wieder im Depot
-                                    print(vehID, DepotID[vehID - 1], itemDrive, env.now, status,
-                                                    file=open("EventList.txt", "a"))
-                                    break
-
-
                         # Timeout für Fahrtdauer zur nächsten Haltestelle
                         yield (env.timeout(DriveDuration[vehID][k + counter] + delayTime))
 
