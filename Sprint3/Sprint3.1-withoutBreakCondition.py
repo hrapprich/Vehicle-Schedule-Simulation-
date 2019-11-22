@@ -210,7 +210,7 @@ def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
                     for k in range(0, len(ToStopID[vehID])):
 
                         # Einstellen des Störfaktors
-                        delayTime_perDrive = stoerfaktor(2)
+                        delayTime_perDrive = stoerfaktor(0)
                         delayTime = delayTime + delayTime_perDrive  # Aufsummieren der Verspätungen im Teilumlauf
 
                         # Event: Bus fährt um bestimmte Uhrzeit von HS los
@@ -251,23 +251,11 @@ def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
                 continue
 
 
-
-"""
-            for i in range(1, len(StartTime_dic[vehID])):
-                quark = StartTime_dic[vehID][j + i] - env.now
-                if quark > 0:
-                    env.timeout(StartTime_dic[vehID][j + i] - env.now)
-                    quark_cache = i
-                    break
-                elif quark == 0:
-                    yield env.timeout(1440)
-"""
-
             ########################## Simulationsumgebung ##############################
 env = simpy.Environment()
 
 # Initialisierung von Fahrzeugen
-for i in range(0, 1):  # Anzahl von Fahrzeugen = len(numberVeh)
+for i in range(0, len(numberVeh)):  # Anzahl von Fahrzeugen = len(numberVeh)
     env.process(vehicle(env, i))  # Inputdaten Eigenschaften Fahrzeugen
     # Problem: BlockID fängt bei 1 an. Alle Listen und Dictionarys fangen immer bei 0 an. Mismatch gelöst mit (-1)
 # Simulation starten und Laufzeit festlegen

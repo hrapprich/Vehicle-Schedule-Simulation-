@@ -263,18 +263,6 @@ def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
                 continue
 
 
-
-"""
-            for i in range(1, len(StartTime_dic[vehID])):
-                quark = StartTime_dic[vehID][j + i] - env.now
-                if quark > 0:
-                    env.timeout(StartTime_dic[vehID][j + i] - env.now)
-                    quark_cache = i
-                    break
-                elif quark == 0:
-                    yield env.timeout(1440)
-"""
-
             ########################## Simulationsumgebung ##############################
 env = simpy.Environment()
 
