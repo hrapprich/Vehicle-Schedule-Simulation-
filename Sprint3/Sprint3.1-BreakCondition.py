@@ -173,6 +173,7 @@ def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
         delayTime = 0  # DelayTime initialisieren (gilt für den ganze Tag des Fahrzeugs)
 
         for j in range(0, len(StartTime_dic) - 1):  # Loop der durch die einzelnen Teilumläufe führt
+            print("j zu Beginn der Schleife: %d" %(j))
             timeStartSection = StartTime_dic[vehID][j] - env.now  # Startzeit des jeweiligen Umlaufs
             yield env.timeout(timeStartSection)  # Timeout bis Start des Teilumlaufes
             status = 1  # Wenn Startzeit erreicht, Fahrzeug im Umlauf (Status = 1)
@@ -199,22 +200,24 @@ def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
                         yield env.timeout(1440)
                         break
 
-                    """
+
                     # Abfrage, ob weitere Fahrt eingestellt werden soll (Rückkehr zum Depot)
-                                       factorK = 5 # Anzahl Haltestellen, die geskippt werden können
-                                       Puffer = 850 # Minuten, die zum nächsten Umlauf als Puffer dienen sollen
-                                       FahrtzeitDepot = 10 # Annahme Fahrtzeit von jeder HS zum Depot
-                                       if (StartTime_dic[vehID][j + 1] - env.now) < Puffer:
-                                           numberSkippedHS = (ToStopID[vehID - 1][k + counter + factorK]) == DepotID[vehID-1]
-                                           if numberSkippedHS:  # kleiner 20min & max. 5 HS zum Depot
-                                               print("Bus fährt direkt ins Depot um nächsten Teilumlauf rechtzeitig zu starten")
-                                               yield env.timeout(FahrtzeitDepot) #Annahme: Fahrtzeit von jeder Haltestelle 10min
-                                               itemDrive = 3 #Ankunft durch Abbruch
-                                               status = 0 #Bus wieder im Depot
-                                               print(vehID, DepotID[vehID - 1], itemDrive, env.now, status,
-                                                     file=open("EventList.txt", "a"))
-                                               break
-                                       """
+                    factorK = 5 # Anzahl Haltestellen, die geskippt werden können
+                    Puffer = 350 # Minuten, die zum nächsten Umlauf als Puffer dienen sollen
+                    FahrtzeitDepot = 10 # Annahme Fahrtzeit von jeder HS zum Depot
+                    if j < len(StartTime_dic) - 1:
+                        if (StartTime_dic[vehID][j + 1] - env.now) < Puffer:
+                            for i in range(0,factorK):
+                                numberSkippedHS = (ToStopID[vehID - 1][k + counter + i])
+                                if  numberSkippedHS == DepotID[vehID-1]:
+                                        print("Bus fährt direkt ins Depot um nächsten Teilumlauf rechtzeitig zu starten")
+                                        yield env.timeout(FahrtzeitDepot) #Annahme: Fahrtzeit von jeder Haltestelle 10min
+                                        itemDrive = 3 #Ankunft durch Abbruch
+                                        status = 0 #Bus wieder im Depot
+                                        print(vehID, DepotID[vehID - 1], itemDrive, env.now, status,
+                                                file=open("EventList.txt", "a"))
+                                        break
+
 
                     # Timeout für Fahrtdauer zur nächsten Haltestelle
                     yield (env.timeout(DriveDuration[vehID][k + counter] + delayTime))
@@ -237,17 +240,25 @@ def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
             # Counter für Drive_DurationListe übertragen
             counter = counter + cache_counter
 
-            # Abfrage ob ein AnschlussUmlauf erreicht werden kann
-            while j <= len(StartTime_dic) - 1:
-                if (StartTime_dic[vehID][j + 1] - env.now) >= 0:
-                    yield env.timeout(StartTime_dic[vehID][j + 1] - env.now)
-                    j += 1
-                    delayTime = 0  # gesammelten Verspätungen hatten keinen Impact auf weiterführende Teilumläufe (RESET)
-                    break
-                else:
-                    j += 1
+            if StartTime_dic[vehID][j + 1] - env.now < 0:
+                yield env.timeout(1440)
+            else:
+                yield env.timeout(StartTime_dic[vehID][j + 1] - env.now)
 
-########################## Simulationsumgebung ##############################
+
+
+"""
+            for i in range(1, len(StartTime_dic[vehID])):
+                quark = StartTime_dic[vehID][j + i] - env.now
+                if quark > 0:
+                    env.timeout(StartTime_dic[vehID][j + i] - env.now)
+                    quark_cache = i
+                    break
+                elif quark == 0:
+                    yield env.timeout(1440)
+"""
+
+            ########################## Simulationsumgebung ##############################
 env = simpy.Environment()
 
 # Initialisierung von Fahrzeugen
