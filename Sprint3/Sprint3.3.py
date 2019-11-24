@@ -1,31 +1,8 @@
-# Sprint3.1
+# Sprint3.3
 
-# vehID!!! eingefügt
+# ab zeile 139 Dictionary DriveDuration
 
 
-# für Erhebung von KPI für Robustheit (Anzahl ausfallender Teilumläufe)
-
-# funktionierende Version ohne Break-Bedingung und Überprüfung, ob einer der Teilumläufe erreicht werden kann
-
-# ToDos (short view):
-# - Simulation mit verschiedenen Parametern für Puffer, max. zu skippende HS, Fahrtzeit zum Depot ausführen
-# - RobustheitsKPIs erheben mit Break-Bedinung und (!) ohne
-
-# Neuerungen:
-# - Dictionary mit Länge der einzelnen Teilumläufe jeden Fahrzeugs:
-#        - Break-Bedingung besser zu realisieren
-#        - ggf. möglich Loop umzubauen (counter & cache_counter raus)
-
-# Ziel: Abhängigkeit von Teilumläufen einbauen durch Abbruchbedingung
-
-# Idee:
-# - Abfrage, wenn Startzeit des nächsten Umlaufes fast erreicht ist, aber der Umlauf noch nicht beendet ist:
-#       + Wenn Anzahl der noch anzufahrenden HS vor Ankunft am Depot kleiner X, dann Abbruch des Umlaufs und
-#           direkt zum Depot
-#       + Fahrtzeit zum Depot von der HS dann erst versuchen aus Daten zu lesen oder Annahme machen
-#           (Durchschnitt oder so)
-#       + fast erreicht = Wenn Startzeit nächster Umlauf - env.now < 20min (oder anderer Wert),
-#           dann Berechnung Fahrtzeit vor Abfahrt von jeder HS zum Depot (wenn < Starttime - env.now, dann Abbruch)
 
 # Bei Durchführung Error in den Daten ausgefallen:
 #   Bei VehID 9, 77, 63 sind die Teilumläufe nicht in korrekter Reihenfolge
@@ -157,7 +134,7 @@ for i in range(0, len(ToStopID)):
             lencounter += 1
     lenTeilumlaeufe_dic.update({i: lenTeil})
 
-lenTeilumlaeufe_dic[81]
+############ab hier Versuch Dictionary DriveDuration zu bauen #####################
 
 len(DriveDuration)
 DriveDuration_dic = {}
@@ -255,7 +232,8 @@ def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
                               file=open("EventList.txt", "a"))
 
                         # Abfrage, ob Fahrt außerhalb der Simulationszeit liegen würde
-                        if drive_outOfTime(DriveDuration[vehID][teilumlaufnummer][fahrtnummer], delayTime, env.now):
+                        if drive_outOfTime(
+                                DriveDuration[vehID][teilumlaufnummer][fahrtnummer], delayTime, env.now):
                             print(vehID + 1, FromHS_dic[vehID][teilumlaufnummer][fahrtnummer], AbfahrtAnkunft, env.now, 404,
                                   file=open("EventList.txt", "a"))
                             yield env.timeout(1440)
