@@ -146,7 +146,7 @@ def stoerfaktor(n):  # n = Eingabeparameter um Störausmaß zu steuern
 ############################## Daten für CSV-Datei ###############################
 # Header für CSV-Datei
 print("vehID Standort Dep/Arr Uhrzeit(Ist) Status(Depot/Umlauf)",
-      file=open("TestDelayCSV.txt", "a"))
+      file=open("Eventqueue.txt", "a"))
 
 
 ########################## Objekt Vehicle #########################################
@@ -173,12 +173,12 @@ def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
                     # Event: Bus fährt um bestimmte Uhrzeit von HS los
                     itemDrive = 0  # Abfahrt = 0, Ankunft = 1
                     print(vehID+1, FromStopID[vehID][k + counter], itemDrive, env.now, status,
-                          file=open("TestDelayCSV.txt", "a"))
+                          file=open("Eventqueue.txt", "a"))
 
                     # Abfrage, ob Fahrt außerhalb der Simulationszeit liegen würde
                     if drive_outOfTime(DriveDuration[vehID][k + counter], delayTime, env.now):
                         print(vehID+1, FromStopID[vehID][k + counter], itemDrive, env.now, 404,
-                              file=open("TestDelayCSV.txt", "a"))
+                              file=open("Eventqueue.txt", "a"))
                         yield env.timeout(1440)
                         break
 
@@ -192,11 +192,11 @@ def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
                         status = 0
                         cache_counter += 1
                         print(vehID+1, DepotID[vehID], itemDrive, env.now, status,
-                              file=open("TestDelayCSV.txt", "a"))
+                              file=open("Eventqueue.txt", "a"))
                         break
                     else:
                         print(vehID+1, ToStopID[vehID][k + counter], itemDrive, env.now, status,
-                              file=open("TestDelayCSV.txt", "a"))
+                              file=open("Eventqueue.txt", "a"))
                         cache_counter += 1
 
 

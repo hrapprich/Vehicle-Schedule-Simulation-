@@ -9,22 +9,6 @@
 # - Simulation mit verschiedenen Parametern für Puffer, max. zu skippende HS, Fahrtzeit zum Depot ausführen
 # - RobustheitsKPIs erheben mit Break-Bedinung und (!) ohne
 
-#Neuerungen:
-# - Dictionary mit Länge der einzelnen Teilumläufe jeden Fahrzeugs:
-#        - Break-Bedingung besser zu realisieren
-#        - ggf. möglich Loop umzubauen (counter & cache_counter raus)
-
-# Ziel: Abhängigkeit von Teilumläufen einbauen durch Abbruchbedingung
-
-# Idee:
-# - Abfrage, wenn Startzeit des nächsten Umlaufes fast erreicht ist, aber der Umlauf noch nicht beendet ist:
-#       + Wenn Anzahl der noch anzufahrenden HS vor Ankunft am Depot kleiner X, dann Abbruch des Umlaufs und
-#           direkt zum Depot
-#       + Fahrtzeit zum Depot von der HS dann erst versuchen aus Daten zu lesen oder Annahme machen
-#           (Durchschnitt oder so)
-#       + fast erreicht = Wenn Startzeit nächster Umlauf - env.now < 20min (oder anderer Wert),
-#           dann Berechnung Fahrtzeit vor Abfahrt von jeder HS zum Depot (wenn < Starttime - env.now, dann Abbruch)
-
 # Bei Durchführung Error in den Daten ausgefallen:
 #   Bei VehID 9, 77, 63 sind die Teilumläufe nicht in korrekter Reihenfolge
 #   Idee: Zeiten aufsteigend sortieren bei Transformieren
@@ -42,12 +26,12 @@
 #       alle Fahrzeuge: len(numberVeh) (allerdings erst später initialisiert (sind 100 :D )
 N = 100
 # Störfaktor (0,1,2,3)
-A = 0
+A = 2
 # Puffer (in min) (ab welcher Zeit zum nächsten Teilumlauf soll der Bus lieber abbrechen und in Depot fahren)
 #           (danach wird geprüft, ob nicht zu viele HS ausfallen)
-B = 30
+B = 100
 # max, Anzahl an Haltestelle, die in einem Teilumlauf am Ende ausfallen dürfen
-C = 5
+C = 10
 # Fahrtzeit (in min) von HS zum Depot (momentan einfache Annahme konstanter Zeit)
 D = 10
 

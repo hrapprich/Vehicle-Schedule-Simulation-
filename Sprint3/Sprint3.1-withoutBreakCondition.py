@@ -1,4 +1,8 @@
 # Sprint3.1
+
+#vehID!!! eingefügt
+
+
 # für Erhebung von KPI für Robustheit (Anzahl ausfallender Teilumläufe)
 
 # funktionierende Version ohne Break-Bedingung und Überprüfung, ob einer der Teilumläufe erreicht werden kann
@@ -189,16 +193,19 @@ print("vehID Standort Dep/Arr Uhrzeit(Ist) Status(Depot/Umlauf)",
       file=open("EventList.txt", "a"))
 
 
+
 ########################## Objekt Vehicle #########################################
 def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
     while True:
         counter = 0
         delayTime = 0  # DelayTime initialisieren (gilt für den ganze Tag des Fahrzeugs)
 
-        for j in range(0, len(StartTime_dic) - 1):  # Loop der durch die einzelnen Teilumläufe führt
+        for j in range(0, len(StartTime_dic)-1):  # Loop der durch die einzelnen Teilumläufe führt
             try:
+
                 timeStartSection = StartTime_dic[vehID][j] - env.now  # Startzeit des jeweiligen Umlaufs
                 yield env.timeout(timeStartSection)  # Timeout bis Start des Teilumlaufes
+
                 status = 1  # Wenn Startzeit erreicht, Fahrzeug im Umlauf (Status = 1)
 
                 while status == 1:  # while Fahrzeug im Umlauf
@@ -206,7 +213,6 @@ def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
                     cache_counter = 0  # wichtig, weil Start und EndHaltestellen in einer Liste, sodass counter
                     # TeilumlaufHaltestellen abgrenzt
 
-                    hs_counter = 0 #für Abbruchbedingung
                     for k in range(0, len(ToStopID[vehID])):
 
                         # Einstellen des Störfaktors
@@ -255,7 +261,7 @@ def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
 env = simpy.Environment()
 
 # Initialisierung von Fahrzeugen
-for i in range(0, len(numberVeh)):  # Anzahl von Fahrzeugen = len(numberVeh)
+for i in range(0, 1):  # Anzahl von Fahrzeugen = len(numberVeh)
     env.process(vehicle(env, i))  # Inputdaten Eigenschaften Fahrzeugen
     # Problem: BlockID fängt bei 1 an. Alle Listen und Dictionarys fangen immer bei 0 an. Mismatch gelöst mit (-1)
 # Simulation starten und Laufzeit festlegen
