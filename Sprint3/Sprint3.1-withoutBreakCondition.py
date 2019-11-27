@@ -1,6 +1,6 @@
 # Sprint3.1
 
-#vehID!!! eingefügt
+# vehID!!! eingefügt
 
 
 # für Erhebung von KPI für Robustheit (Anzahl ausfallender Teilumläufe)
@@ -11,7 +11,7 @@
 # - Simulation mit verschiedenen Parametern für Puffer, max. zu skippende HS, Fahrtzeit zum Depot ausführen
 # - RobustheitsKPIs erheben mit Break-Bedinung und (!) ohne
 
-#Neuerungen:
+# Neuerungen:
 # - Dictionary mit Länge der einzelnen Teilumläufe jeden Fahrzeugs:
 #        - Break-Bedingung besser zu realisieren
 #        - ggf. möglich Loop umzubauen (counter & cache_counter raus)
@@ -36,7 +36,6 @@
 # - komplexere Störmuster
 # - Vorstudien mit Sprint2.1
 # - Fahrer (DutyID) einbauen / Ressourcenabhängigkeit
-
 
 
 ####################### Import Packages ###################################
@@ -95,7 +94,8 @@ for i in range(1, len(numberVeh) + 1):
                 startTimes_Block.append(df.StartTime[j])
     startTimes_Block = startTimes_Block + [
         1440]  # Add to every list a 1440 as last element for simulation loop (timeout)
-    startTime_dic.update({(i-1): startTimes_Block}) #i-1 damit Index bei 0 anfängt (wichtig für Schleife (nachträgliche Änderung!)
+    startTime_dic.update(
+        {(i - 1): startTimes_Block})  # i-1 damit Index bei 0 anfängt (wichtig für Schleife (nachträgliche Änderung!)
 
 StartTime_dic = startTime_dic
 StartTime_dic
@@ -132,12 +132,12 @@ for i in range(1, len(numberVeh) + 1):
 print(
     "Die Anzahl der Fahrtzeitlisten ist gleich der Anzahl der Fahrzeuge: %s." % (len(DriveDuration) == len(numberVeh)))
 
-#Länge der einzelnen Teilumläufe (nachträglich eingefügt)
+# Länge der einzelnen Teilumläufe (nachträglich eingefügt)
 lenTeilumlaeufe_dic = {}
 for i in range(0, len(ToStopID)):
     lenTeil = []
     lencounter = 0
-    for j in range(0,len(ToStopID[i])):
+    for j in range(0, len(ToStopID[i])):
         if ToStopID[i][j] == DepotID[i]:
             lenTeil.append(lencounter)
             lencounter = 0
@@ -145,7 +145,6 @@ for i in range(0, len(ToStopID)):
             lencounter += 1
     lenTeilumlaeufe_dic.update({i: lenTeil})
 
-lenTeilumlaeufe_dic
 
 ############################## Daten, die für die Simulation benötigt werden, und deren Form #######################
 
@@ -190,8 +189,9 @@ def stoerfaktor(n):  # n = Eingabeparameter um Störausmaß zu steuern
 ############################## Daten für CSV-Datei ###############################
 # Header für CSV-Datei
 print("vehID Standort Dep/Arr Uhrzeit(Ist) Status(Depot/Umlauf)",
-      file=open("EventList.txt", "a"))
+      file=open("Eventqueue.txt", "a"))
 
+len(StartTime_dic)
 
 
 ########################## Objekt Vehicle #########################################
@@ -200,7 +200,7 @@ def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
         counter = 0
         delayTime = 0  # DelayTime initialisieren (gilt für den ganze Tag des Fahrzeugs)
 
-        for j in range(0, len(StartTime_dic)-1):  # Loop der durch die einzelnen Teilumläufe führt
+        for j in range(0, len(StartTime_dic) - 1):  # Loop der durch die einzelnen Teilumläufe führt
             try:
 
                 timeStartSection = StartTime_dic[vehID][j] - env.now  # Startzeit des jeweiligen Umlaufs
@@ -221,13 +221,13 @@ def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
 
                         # Event: Bus fährt um bestimmte Uhrzeit von HS los
                         itemDrive = 0  # Abfahrt = 0, Ankunft = 1
-                        print(vehID+1, FromStopID[vehID][k + counter], itemDrive, env.now, status,
-                              file=open("EventList.txt", "a"))
+                        print(vehID + 1, FromStopID[vehID][k + counter], itemDrive, env.now, status,
+                              file=open("Eventqueue.txt", "a"))
 
                         # Abfrage, ob Fahrt außerhalb der Simulationszeit liegen würde
                         if drive_outOfTime(DriveDuration[vehID][k + counter], delayTime, env.now):
-                            print(vehID+1, FromStopID[vehID][k + counter], itemDrive, env.now, 404,
-                                  file=open("EventList.txt", "a"))
+                            print(vehID + 1, FromStopID[vehID][k + counter], itemDrive, env.now, 404,
+                                  file=open("Eventqueue.txt", "a"))
                             yield env.timeout(1440)
                             break
 
@@ -240,24 +240,26 @@ def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
                         if ToStopID[vehID][k + counter] == DepotID[vehID]:
                             status = 0
                             cache_counter += 1
-                            print(vehID+1, DepotID[vehID], itemDrive, env.now, status,
-                                  file=open("EventList.txt", "a"))
+                            print(vehID + 1, DepotID[vehID], itemDrive, env.now, status,
+                                  file=open("Eventqueue.txt", "a"))
                             break
                         else:
-                            print(vehID+1, ToStopID[vehID][k + counter], itemDrive, env.now, status,
-                                  file=open("EventList.txt", "a"))
+                            print(vehID + 1, ToStopID[vehID][k + counter], itemDrive, env.now, status,
+                                  file=open("Eventqueue.txt", "a"))
                             cache_counter += 1
-
 
                 # Counter für Drive_DurationListe übertragen
                 counter = counter + cache_counter
                 yield env.timeout(StartTime_dic[vehID][j + 1] - env.now)
 
             except:
+                print("Teilumlauf %d von Fahrzeug %d kann nicht erreicht werden" % (j, vehID + 1),
+                      file=open("Eventqueue.txt", "a"))
                 continue
 
-
             ########################## Simulationsumgebung ##############################
+
+
 env = simpy.Environment()
 
 # Initialisierung von Fahrzeugen

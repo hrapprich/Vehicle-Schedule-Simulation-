@@ -2,35 +2,14 @@
 
 # funktionierende Version mit Break-Bedingung und Überprüfung, ob einer der Teilumläufe erreicht werden kann
 
-# ToDos (short view):
-# - Simulation mit verschiedenen Parametern für Puffer, max. zu skippende HS, Fahrtzeit zum Depot ausführen
-# - RobustheitsKPIs erheben mit Break-Bedinung und (!) ohne
-
-#Neuerungen:
-# - Dictionary mit Länge der einzelnen Teilumläufe jeden Fahrzeugs:
-#        - Break-Bedingung besser zu realisieren
-#        - ggf. möglich Loop umzubauen (counter & cache_counter raus)
-
-# Ziel: Abhängigkeit von Teilumläufen einbauen durch Abbruchbedingung
-
-# Idee:
-# - Abfrage, wenn Startzeit des nächsten Umlaufes fast erreicht ist, aber der Umlauf noch nicht beendet ist:
-#       + Wenn Anzahl der noch anzufahrenden HS vor Ankunft am Depot kleiner X, dann Abbruch des Umlaufs und
-#           direkt zum Depot
-#       + Fahrtzeit zum Depot von der HS dann erst versuchen aus Daten zu lesen oder Annahme machen
-#           (Durchschnitt oder so)
-#       + fast erreicht = Wenn Startzeit nächster Umlauf - env.now < 20min (oder anderer Wert),
-#           dann Berechnung Fahrtzeit vor Abfahrt von jeder HS zum Depot (wenn < Starttime - env.now, dann Abbruch)
+# auftretender Error, der aber keinen Einfluss auf Output hat (so scheint es:
+#       Exception ignored in: <generator object vehicle at 0x7f92ef90e8d0>
+#       RuntimeError: generator ignored GeneratorExit
 
 # Bei Durchführung Error in den Daten ausgefallen:
 #   Bei VehID 9, 77, 63 sind die Teilumläufe nicht in korrekter Reihenfolge
 #   Idee: Zeiten aufsteigend sortieren bei Transformieren
 
-
-# ToDos:
-# - komplexere Störmuster
-# - Vorstudien mit Sprint2.1
-# - Fahrer (DutyID) einbauen / Ressourcenabhängigkeit
 
 
 
@@ -185,7 +164,7 @@ def stoerfaktor(n):  # n = Eingabeparameter um Störausmaß zu steuern
 ############################## Daten für CSV-Datei ###############################
 # Header für CSV-Datei
 print("vehID Standort Dep/Arr Uhrzeit(Ist) Status(Depot/Umlauf)",
-      file=open("EventList.txt", "a"))
+      file=open("EventqueueBC.txt", "a"))
 
 
 ########################## Objekt Vehicle #########################################
@@ -215,12 +194,12 @@ def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
                         # Event: Bus fährt um bestimmte Uhrzeit von HS los
                         itemDrive = 0  # Abfahrt = 0, Ankunft = 1
                         print(vehID+1, FromStopID[vehID][k + counter], itemDrive, env.now, status,
-                              file=open("EventList.txt", "a"))
+                              file=open("EventqueueBC.txt", "a"))
 
                         # Abfrage, ob Fahrt außerhalb der Simulationszeit liegen würde
                         if drive_outOfTime(DriveDuration[vehID][k + counter], delayTime, env.now):
                             print(vehID+1, FromStopID[vehID][k + counter], itemDrive, env.now, 404,
-                                  file=open("EventList.txt", "a"))
+                                  file=open("EventqueueBC.txt", "a"))
                             yield env.timeout(1440)
                             break
 
@@ -233,7 +212,7 @@ def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
                                     itemDrive = 3 #Ankunft durch Abbruch
                                     status = 0 #Bus wieder im Depot
                                     print(vehID, DepotID[vehID - 1], itemDrive, env.now, status,
-                                                    file=open("EventList.txt", "a"))
+                                                    file=open("EventqueueBC.txt", "a"))
                                     break
 
 
@@ -247,11 +226,11 @@ def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
                             status = 0
                             cache_counter += 1
                             print(vehID+1, DepotID[vehID], itemDrive, env.now, status,
-                                  file=open("EventList.txt", "a"))
+                                  file=open("EventqueueBC.txt", "a"))
                             break
                         else:
                             print(vehID+1, ToStopID[vehID][k + counter], itemDrive, env.now, status,
-                                  file=open("EventList.txt", "a"))
+                                  file=open("EventqueueBC.txt", "a"))
                             cache_counter += 1
 
 
@@ -267,7 +246,7 @@ def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
 env = simpy.Environment()
 
 # Initialisierung von Fahrzeugen
-for i in range(0, 1):  # Anzahl von Fahrzeugen = len(numberVeh)
+for i in range(0, len(numberVeh)):  # Anzahl von Fahrzeugen = len(numberVeh)
     env.process(vehicle(env, i))  # Inputdaten Eigenschaften Fahrzeugen
     # Problem: BlockID fängt bei 1 an. Alle Listen und Dictionarys fangen immer bei 0 an. Mismatch gelöst mit (-1)
 # Simulation starten und Laufzeit festlegen
