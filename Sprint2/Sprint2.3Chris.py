@@ -155,7 +155,7 @@ def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
         counter = 0
         delayTime = 0  # DelayTime initialisieren (gilt für den ganze Tag des Fahrzeugs)
 
-        for j in range(0, len(StartTime_dic) - 1):  # Loop der durch die einzelnen Teilumläufe führt
+        for j in range(0, len(StartTime_dic[vehID]) - 1):  # Loop der durch die einzelnen Teilumläufe führt
             timeStartSection = StartTime_dic[vehID][j] - env.now  # Startzeit des jeweiligen Umlaufs
             yield env.timeout(timeStartSection)  # Timeout bis Start des Teilumlaufes
             status = 1  # Wenn Startzeit erreicht, Fahrzeug im Umlauf (Status = 1)
