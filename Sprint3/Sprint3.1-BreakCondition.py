@@ -239,6 +239,7 @@ def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
                 yield env.timeout(StartTime_dic[vehID][j + 1] - env.now)
 
             except:
+                print("Teilumlauf %d von Fahrzeug %d wurde übersprungen" %(j, vehID))
                 continue
 
 

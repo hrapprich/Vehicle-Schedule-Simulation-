@@ -29,7 +29,7 @@ N = 100
 A = 2
 # Puffer (in min) (ab welcher Zeit zum nächsten Teilumlauf soll der Bus lieber abbrechen und in Depot fahren)
 #           (danach wird geprüft, ob nicht zu viele HS ausfallen)
-B = 100
+B = 30
 # max, Anzahl an Haltestelle, die in einem Teilumlauf am Ende ausfallen dürfen
 C = 10
 # Fahrtzeit (in min) von HS zum Depot (momentan einfache Annahme konstanter Zeit)
