@@ -99,52 +99,54 @@ print(
 
 
 
-# Dictionaries mit Fahrzeug: [TeilumlaufHS][TeilumlaufHS]... + Länge der einzelnen Teilumläufe (nachträglich eingefügt)
-lenTeilumlaeufe_dic = {}
-FromHS_dic = {}
-ToHS_dic = {}
-for i in range(0, len(ToStopID)):
-    lenTeil = []
-    FromTeil = []
-    ToTeil = []
-    lencounter = 0
-    for j in range(0, len(ToStopID[i])):
-        if ToStopID[i][j] == DepotID[i]:
-            lencounter += 1
-            lenTeil.append(lencounter)
-            lencounter = 0
-            FromHS_dic.update({i: FromTeil})
-            FromTeil = []
-            ToHS_dic.update({i: ToTeil})
-            ToTeil = []
-        else:
-            FromTeil.append(FromStopID[i])
-            ToTeil.append(ToStopID[i])
-            lencounter += 1
-    lenTeilumlaeufe_dic.update({i: lenTeil})
-
-lenTeilumlaeufe_dic[0]
-
 
 
 ############ab hier Versuch Dictionary DriveDuration zu bauen #####################
 
 DriveDuration_dic = {}
+FromHS_dic = {}
+ToHS_dic = {}
 for i in range(1,len(numberVeh) + 1):
     DifTime = []
     PartDif = []
+
+    FromHS = []
+    PartFromHS = []
+
+    ToHS = []
+    PartToHS = []
+
     for j in range(0, count_row):
         if df.BlockID[j] == i:
             difTime = df.iloc[j, 12] - df.iloc[j, 13]
+            fromhs = df.FromStopID[j]
+            tohs = df.ToStopID[j]
+
             if df.ToStopID[j] == DepotID[i-1]:
                 PartDif.append(difTime)
                 DifTime.append(PartDif)
                 PartDif = []
+
+                PartFromHS.append(fromhs)
+                FromHS.append(PartFromHS)
+                PartFromHS = []
+
+                PartToHS.append(tohs)
+                ToHS.append(PartToHS)
+                PartToHS = []
+
             else:
                 PartDif.append(difTime)
+                PartFromHS.append(fromhs)
+                PartToHS.append(tohs)
+
     DriveDuration_dic.update({i-1: DifTime})
+    FromHS_dic.update({i-1: FromHS})
+    ToHS_dic.update({i-1: ToHS})
 
 DriveDuration_dic
+FromHS_dic
+ToHS_dic
 
 
 ############################## Daten, die für die Simulation benötigt werden, und deren Form #######################
@@ -190,23 +192,21 @@ def stoerfaktor(n):  # n = Eingabeparameter um Störausmaß zu steuern
 ############################## Daten für CSV-Datei ###############################
 # Header für CSV-Datei
 print("vehID Standort Dep/Arr Uhrzeit(Ist) umlaufstatus(Depot/Umlauf)",
-      file=open("Eventqueue-test.csv", "a"))
-
-len(StartTime_dic[0])
+      file=open("Eventqueue-test.txt", "a"))
 
 ########################## Objekt Vehicle #########################################
 def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
     while True:
         delayTime = 0  # DelayTime initialisieren (gilt für den ganze Tag des Fahrzeugs)
 
-        for teilumlaufnummer in range(0, len(StartTime_dic) - 1):  # Loop der durch die einzelnen Teilumläufe führt
+        for teilumlaufnummer in range(0, len(StartTime_dic)-1):  #Loop der durch die einzelnen Teilumläufe führt
             try:
                 yield env.timeout(
                     StartTime_dic[vehID][teilumlaufnummer] - env.now)  # Timeout bis Start des Teilumlaufes
                 umlaufstatus = 1  # Wenn Startzeit erreicht, Fahrzeug im Umlauf (umlaufstatus = 1)
 
                 while umlaufstatus == 1:  # while Fahrzeug im Umlauf
-                    for fahrtnummer in range(0, len(ToHS_dic[vehID][teilumlaufnummer]) + 1):
+                    for fahrtnummer in range(0, len(FromHS_dic[vehID][teilumlaufnummer])):
 
                         # Einstellen des Störfaktors
                         delayTime_perDrive = stoerfaktor(0)
@@ -214,20 +214,20 @@ def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
 
                         # Event: Bus fährt um bestimmte Uhrzeit von HS los
                         AbfahrtAnkunft = 0  # Abfahrt = 0, Ankunft = 1
+
                         print(vehID + 1, FromHS_dic[vehID][teilumlaufnummer][fahrtnummer], AbfahrtAnkunft, env.now,
                               umlaufstatus,
-                              file=open("Eventqueue-test.csv", "a"))
-
+                              file=open("Eventqueue-test.txt", "a"))
                         # Abfrage, ob Fahrt außerhalb der Simulationszeit liegen würde
                         if drive_outOfTime(
-                                DriveDuration[vehID][teilumlaufnummer][fahrtnummer], delayTime, env.now):
+                                DriveDuration_dic[vehID][teilumlaufnummer][fahrtnummer], delayTime, env.now):
                             print(vehID + 1, FromHS_dic[vehID][teilumlaufnummer][fahrtnummer], AbfahrtAnkunft, env.now, 404,
-                                  file=open("Eventqueue-test.csv", "a"))
+                                  file=open("Eventqueue-test.txt", "a"))
                             yield env.timeout(1440)
                             break
 
                         # Timeout für Fahrtdauer zur nächsten Haltestelle
-                        yield (env.timeout(DriveDuration[vehID][teilumlaufnummer][fahrtnummer] + delayTime))
+                        yield (env.timeout(DriveDuration_dic[vehID][teilumlaufnummer][fahrtnummer] + delayTime))
 
                         # Event: Bus kommt zu bestimmter Uhrzeit an HS an
                         AbfahrtAnkunft = 1
@@ -236,18 +236,17 @@ def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
                         if ToHS_dic[vehID][teilumlaufnummer][fahrtnummer] == DepotID[vehID]:
                             umlaufstatus = 0
                             print(vehID + 1, DepotID[vehID], AbfahrtAnkunft, env.now, umlaufstatus,
-                                  file=open("Eventqueue-test.csv", "a"))
+                                  file=open("Eventqueue-test.txt", "a"))
                             break
                         else:
                             print(vehID + 1, ToHS_dic[vehID][teilumlaufnummer][fahrtnummer], AbfahrtAnkunft, env.now,
                                   umlaufstatus,
-                                  file=open("Eventqueue-test.csv", "a"))
+                                  file=open("Eventqueue-test.txt", "a"))
 
                 # Counter für Drive_DurationListe übertragen
                 yield env.timeout(StartTime_dic[vehID][teilumlaufnummer + 1] - env.now)
 
             except:
-                print("Teilumlauf %d von Fahrzeug %d wurde übersprungen" %(j, vehID))
                 continue
 
             ########################## Simulationsumgebung ##############################
