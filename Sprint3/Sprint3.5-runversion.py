@@ -97,10 +97,6 @@ print("Die Anzahl der StoppointListen (from) ist gleich der Anzahl der Fahrzeuge
 print(
     "Die Anzahl der StoppointListen (to) ist gleich der Anzahl der Fahrzeuge: %s." % (len(ToStopID) == len(numberVeh)))
 
-
-
-
-
 ############ab hier Versuch Dictionary DriveDuration zu bauen #####################
 
 DriveDuration_dic = {}
