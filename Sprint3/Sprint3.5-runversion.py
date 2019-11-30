@@ -7,9 +7,6 @@
 
 
 
-
-
-
 # Bei Durchführung Error in den Daten ausgefallen:
 #   Bei VehID 9, 77, 63 sind die Teilumläufe nicht in korrekter Reihenfolge
 #   Idee: Zeiten aufsteigend sortieren bei Transformieren
