@@ -1,6 +1,12 @@
-# Sprint3.3
+# Sprint3.5
 
-# ab zeile 139 Dictionary DriveDuration
+# Basis-Code für weitere Arbeiten
+
+#ToDos:
+#   - RuntimeError abschalten
+
+
+
 
 
 
@@ -8,11 +14,6 @@
 #   Bei VehID 9, 77, 63 sind die Teilumläufe nicht in korrekter Reihenfolge
 #   Idee: Zeiten aufsteigend sortieren bei Transformieren
 
-
-# ToDos:
-# - komplexere Störmuster
-# - Vorstudien mit Sprint2.1
-# - Fahrer (DutyID) einbauen / Ressourcenabhängigkeit
 
 
 ####################### Import Packages ###################################
@@ -188,7 +189,7 @@ def stoerfaktor(n):  # n = Eingabeparameter um Störausmaß zu steuern
 ############################## Daten für CSV-Datei ###############################
 # Header für CSV-Datei
 print("vehID Standort Dep/Arr Uhrzeit(Ist) umlaufstatus(Depot/Umlauf)",
-      file=open("Eventqueue-test.txt", "a"))
+      file=open("Eventqueue3.5.txt", "a"))
 
 ########################## Objekt Vehicle #########################################
 def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
@@ -213,12 +214,12 @@ def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
 
                         print(vehID + 1, FromHS_dic[vehID][teilumlaufnummer][fahrtnummer], AbfahrtAnkunft, env.now,
                               umlaufstatus,
-                              file=open("Eventqueue-test.txt", "a"))
+                              file=open("Eventqueue3.5.txt", "a"))
                         # Abfrage, ob Fahrt außerhalb der Simulationszeit liegen würde
                         if drive_outOfTime(
                                 DriveDuration_dic[vehID][teilumlaufnummer][fahrtnummer], delayTime, env.now):
                             print(vehID + 1, FromHS_dic[vehID][teilumlaufnummer][fahrtnummer], AbfahrtAnkunft, env.now, 404,
-                                  file=open("Eventqueue-test.txt", "a"))
+                                  file=open("Eventqueue3.5.txt", "a"))
                             yield env.timeout(1440)
                             break
 
@@ -232,12 +233,12 @@ def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
                         if ToHS_dic[vehID][teilumlaufnummer][fahrtnummer] == DepotID[vehID]:
                             umlaufstatus = 0
                             print(vehID + 1, DepotID[vehID], AbfahrtAnkunft, env.now, umlaufstatus,
-                                  file=open("Eventqueue-test.txt", "a"))
+                                  file=open("Eventqueue3.5.txt", "a"))
                             break
                         else:
                             print(vehID + 1, ToHS_dic[vehID][teilumlaufnummer][fahrtnummer], AbfahrtAnkunft, env.now,
                                   umlaufstatus,
-                                  file=open("Eventqueue-test.txt", "a"))
+                                  file=open("Eventqueue3.5.txt", "a"))
 
                 # Counter für Drive_DurationListe übertragen
                 yield env.timeout(StartTime_dic[vehID][teilumlaufnummer + 1] - env.now)
@@ -251,7 +252,7 @@ def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
 env = simpy.Environment()
 
 # Initialisierung von Fahrzeugen
-for i in range(0, 1):  # Anzahl von Fahrzeugen = len(numberVeh)
+for i in range(0, len(numberVeh)):  # Anzahl von Fahrzeugen = len(numberVeh)
     env.process(vehicle(env, i))  # Inputdaten Eigenschaften Fahrzeugen
     # Problem: BlockID fängt bei 1 an. Alle Listen und Dictionarys fangen immer bei 0 an. Mismatch gelöst mit (-1)
 # Simulation starten und Laufzeit festlegen
