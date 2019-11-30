@@ -3,7 +3,7 @@
 # Basis-Code für weitere Arbeiten
 
 #ToDos:
-#   - RuntimeError abschalten
+#   - RuntimeError abschalten (abgeschaltet :D )
 
 
 
@@ -138,21 +138,6 @@ for i in range(1,len(numberVeh) + 1):
     FromHS_dic.update({i-1: FromHS})
     ToHS_dic.update({i-1: ToHS})
 
-DriveDuration_dic
-FromHS_dic
-ToHS_dic
-
-
-############################## Daten, die für die Simulation benötigt werden, und deren Form #######################
-
-# Spalten in Dataframe: StartTime und EndTime (in Minuten)
-# Liste von der Gesamtanzahl von Fahrzeugen: numberVeh
-# Liste von Depots, von denen eins einem Fahrzeug zugeordnet ist: DepotID
-# Dictionary mit den Startzeiten jedes Teilumlaufs (Liste) von jedem Fahrzeug: StartTime_dic
-# Liste von Listen mit den Haltestellen eines jeden Fahrzeugs (über alle Teilumläufe hinweg): FromStopID & ToStopID
-# Liste von Listen mit den einzelnen Fahrtzeiten von der entsprechenden FromStopID zur entsprechen ToStopID: DriveDuration
-# Länge der einzelnen Teilumläufe in Dictionary mit Listen gespeichert
-
 
 ############################## Funktionen für Objekt Vehicle #############################
 
@@ -241,6 +226,8 @@ def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
                 yield env.timeout(StartTime_dic[vehID][teilumlaufnummer + 1] - env.now)
 
             except:
+                if env.now >= 1440: # to avoid RunTimeError: GeneratorExit
+                    return False
                 continue
 
             ########################## Simulationsumgebung ##############################

@@ -2,17 +2,15 @@
 
 # Erweiterung mit Break-Condition
 
-# nicht funktionstüchtig !
-
-
 #ToDos:
-#   - RuntimeError abschalten
+#   - Daten aufsteigend sortieren (Umläufe 9, 63, 77): sonst immer bei Abbruchbedingung dabei
 
 
 
-# Bei Durchführung Error in den Daten ausgefallen:
-#   Bei VehID 9, 77, 63 sind die Teilumläufe nicht in korrekter Reihenfolge
-#   Idee: Zeiten aufsteigend sortieren bei Transformieren
+
+        # Bei Durchführung Error in den Daten ausgefallen:
+        #   Bei VehID 9, 77, 63 sind die Teilumläufe nicht in korrekter Reihenfolge
+        #   Idee: Zeiten aufsteigend sortieren bei Transformieren
 
 
 
@@ -141,21 +139,6 @@ for i in range(1,len(numberVeh) + 1):
     FromHS_dic.update({i-1: FromHS})
     ToHS_dic.update({i-1: ToHS})
 
-DriveDuration_dic
-FromHS_dic
-ToHS_dic
-
-
-############################## Daten, die für die Simulation benötigt werden, und deren Form #######################
-
-# Spalten in Dataframe: StartTime und EndTime (in Minuten)
-# Liste von der Gesamtanzahl von Fahrzeugen: numberVeh
-# Liste von Depots, von denen eins einem Fahrzeug zugeordnet ist: DepotID
-# Dictionary mit den Startzeiten jedes Teilumlaufs (Liste) von jedem Fahrzeug: StartTime_dic
-# Liste von Listen mit den Haltestellen eines jeden Fahrzeugs (über alle Teilumläufe hinweg): FromStopID & ToStopID
-# Liste von Listen mit den einzelnen Fahrtzeiten von der entsprechenden FromStopID zur entsprechen ToStopID: DriveDuration
-# Länge der einzelnen Teilumläufe in Dictionary mit Listen gespeichert
-
 
 ############################## Funktionen für Objekt Vehicle #############################
 
@@ -166,7 +149,9 @@ def drive_outOfTime(time, delay, clock):
 
 
 # Störgenerator
-X = 1 #Störfaktor festlegen
+
+X = 0 #Störfaktor festlegen
+
 def stoerfaktor(n):  # n = Eingabeparameter um Störausmaß zu steuern
     if (n == 0):
         factorX = numpy.random.choice(numpy.arange(0, 11), p=[1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
@@ -188,9 +173,10 @@ def stoerfaktor(n):  # n = Eingabeparameter um Störausmaß zu steuern
 
 
 # Break-Condition
-puffer = 500 #ab wann überprüfen, ob Teilumlauf eingestellt werden soll
-maxskipHS = 20 # maximale Anzahl an HS, die übersprungen werden darf
+puffer = 20 #ab wann überprüfen, ob Teilumlauf eingestellt werden soll
+maxskipHS = 10 # maximale Anzahl an HS, die übersprungen werden darf
 fahrtzeitDepot = 10 # Annahme (!). Von jeder HS dauert Fahrt zum Depot 10min
+
 def BreakConditon(nextStarttime, timeNow, anzahlHS, hsNummer):
     if (nextStarttime) - timeNow <= puffer:
         if (anzahlHS - hsNummer) <= maxskipHS:
@@ -209,13 +195,14 @@ def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
 
         for teilumlaufnummer in range(0, len(StartTime_dic)-1):  #Loop der durch die einzelnen Teilumläufe führt
             try:
+
                 yield env.timeout(
                     StartTime_dic[vehID][teilumlaufnummer] - env.now)  # Timeout bis Start des Teilumlaufes
                 umlaufstatus = 1  # Wenn Startzeit erreicht, Fahrzeug im Umlauf (umlaufstatus = 1)
 
-                while umlaufstatus == 1:  # while Fahrzeug im Umlauf
+                hs_counter = 0  # Counter, an welcher HSnummer das Fahrzeug im Teilumlauf ist (für BreakCondition)
 
-                    hs_counter = 0 # Counter, an welcher HSnummer das Fahrzeug im Teilumlauf ist (für BreakCondition)
+                while umlaufstatus == 1:  # while Fahrzeug im Umlauf
 
                     for fahrtnummer in range(0, len(FromHS_dic[vehID][teilumlaufnummer])):
 
@@ -229,6 +216,7 @@ def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
                         print(vehID + 1, FromHS_dic[vehID][teilumlaufnummer][fahrtnummer], AbfahrtAnkunft, env.now,
                               umlaufstatus,
                               file=open("Eventqueue3.5-BC.txt", "a"))
+
                         # Abfrage, ob Fahrt außerhalb der Simulationszeit liegen würde
                         if drive_outOfTime(
                                 DriveDuration_dic[vehID][teilumlaufnummer][fahrtnummer], delayTime, env.now):
@@ -238,16 +226,16 @@ def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
                             break
 
                         # Abfrage, ob weitere Fahrt eingestellt werden soll (Rückkehr zum Depot)
-                        if BreakConditon(StartTime_dic[vehID][teilumlaufnummer + 1], env.now,
-                                      ToHS_dic[vehID][teilumlaufnummer], hs_counter):
-                                yield env.timeout(fahrtzeitDepot)
-                                AbfahrtAnkunft = 3  # Ankunft durch Abbruch (nur Marker für Output, damit man erkennt, was abgebrochen wurde)
-                                umlaufstatus = 0
-                                print(vehID, DepotID[vehID - 1], AbfahrtAnkunft, env.now, umlaufstatus,
-                                        file=open("Eventqueue3.5-BC.txt", "a"))
-                                break
-                        hs_counter += 1 # HSnummer hochzählen
-
+                        hs_counter += 1  # HSnummer hochzählen
+                        if ToHS_dic[vehID][teilumlaufnummer][fahrtnummer] != DepotID[vehID]: # nicht bei Fahrt, die eh zum Depot geht
+                            if BreakConditon(StartTime_dic[vehID][teilumlaufnummer + 1], env.now,
+                                          len(ToHS_dic[vehID][teilumlaufnummer]), hs_counter):
+                                    AbfahrtAnkunft = 3  # Ankunft durch Abbruch (nur Marker für Output, damit man erkennt, was abgebrochen wurde)
+                                    umlaufstatus = 0
+                                    yield env.timeout(fahrtzeitDepot)
+                                    print(vehID+1, DepotID[vehID], AbfahrtAnkunft, env.now, umlaufstatus,
+                                          file=open("Eventqueue3.5-BC.txt", "a"))
+                                    break
 
                         # Timeout für Fahrtdauer zur nächsten Haltestelle
                         yield (env.timeout(DriveDuration_dic[vehID][teilumlaufnummer][fahrtnummer] + delayTime))
@@ -270,6 +258,8 @@ def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
                 yield env.timeout(StartTime_dic[vehID][teilumlaufnummer + 1] - env.now)
 
             except:
+                if env.now >= 1440: # to avoid RunTimeError: GeneratorExit
+                    return False
                 continue
 
             ########################## Simulationsumgebung ##############################
@@ -278,7 +268,7 @@ def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
 env = simpy.Environment()
 
 # Initialisierung von Fahrzeugen
-for i in range(0, len(numberVeh)):  # Anzahl von Fahrzeugen = len(numberVeh)
+for i in range(0, 1):  # Anzahl von Fahrzeugen = len(numberVeh)
     env.process(vehicle(env, i))  # Inputdaten Eigenschaften Fahrzeugen
     # Problem: BlockID fängt bei 1 an. Alle Listen und Dictionarys fangen immer bei 0 an. Mismatch gelöst mit (-1)
 # Simulation starten und Laufzeit festlegen
