@@ -8,7 +8,7 @@
 # - momentan überspringen des nächsten teilumlaufes, wenn Bus nicht rechtzeitig im Depot (5-10 min okay Einbauen?)
 
 # Output:
-#   - letzte Fahrt eines jeden Teilumlaufs nicht ausgegeben
+#   - letzte Fahrt eines jeden Teilumlaufs nicht ausgegeben.
 
 
 # Bei Durchführung Error in den Daten ausgefallen:
