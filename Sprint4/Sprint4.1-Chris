@@ -249,7 +249,10 @@ def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
                               file=open("Eventqueue4.1.csv", "a"))
 
                         # Einstellen des Störfaktors
-                        delayTime_perDrive = stoerfaktor(3)
+                        if Journey_dic[vehID][teilumlaufnummer][fahrtnummer] == 9:
+                            delayTime_perDrive = 0
+                        else:
+                            delayTime_perDrive = stoerfaktor(3)
                         delayTime += delayTime_perDrive  # Aufsummieren der Verspätungen im Teilumlauf
 
                         # Abfrage, ob Fahrt außerhalb der Simulationszeit liegen würde
@@ -260,7 +263,6 @@ def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
 
                         # Abfrage, ob Pausenzeit
                         if Journey_dic[vehID][teilumlaufnummer][fahrtnummer] == 9:
-
                             DriveDuration_dic[vehID][teilumlaufnummer][fahrtnummer] = \
                                 DriveDuration_dic[vehID][teilumlaufnummer][fahrtnummer] - delayTime
                             if DriveDuration_dic[vehID][teilumlaufnummer][fahrtnummer] < 0:
