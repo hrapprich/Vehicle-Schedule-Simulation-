@@ -4,6 +4,9 @@
 
 # überall kleine Fehler :P
 
+# offene Frage:
+# - momentan überspringen des nächsten teilumlaufes, wenn Bus nicht rechtzeitig im Depot (5-10 min okay Einbauen?)
+
 
 # Bei Durchführung Error in den Daten ausgefallen:
 #   Bei VehID 9, 77, 63 sind die Teilumläufe nicht in korrekter Reihenfolge
@@ -238,7 +241,6 @@ def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
 
         for teilumlaufnummer in range(0, len(StartTime_dic)-1):  #Loop der durch die einzelnen Teilumläufe führt
             try:
-
                 yield env.timeout(
                     StartTime_dic[vehID][teilumlaufnummer] - env.now)  # Timeout bis Start des Teilumlaufes
                 umlaufstatus = 1  # Wenn Startzeit erreicht, Fahrzeug im Umlauf (umlaufstatus = 1)
@@ -257,7 +259,8 @@ def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
                             delayTime_perDrive = 0
                         else:
                             delayTime_perDrive = stoerfaktor(3)
-                        delayTime += delayTime_perDrive  # Aufsummieren der Verspätungen im Teilumlauf
+                        # Aufsummieren der Verspätungen im Teilumlauf
+                        delayTime += delayTime_perDrive
 
                         # Abfrage, ob Fahrt außerhalb der Simulationszeit liegen würde
                         if drive_outOfTime(
@@ -292,10 +295,6 @@ def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
                                   PartEndTime_dic[vehID][teilumlaufnummer][fahrtnummer+1],
                                   env.now, delayTime_perDrive, delayTime,
                                   file=open("Eventqueue4.1.txt", "a"))
-
-
-                #Fahrzeug bis zum nächsten Teilumlauf timeouten
-                #yield env.timeout(StartTime_dic[vehID][teilumlaufnummer + 1] - env.now)
 
             except:
                 if env.now >= 1440: # to avoid RunTimeError: GeneratorExit
