@@ -1,14 +1,10 @@
-#Sprint4.1
+#Sprint4.2
 
 # Verspätungsframework in Loop
+# Teilumläufe verknüpft
 
-# überall kleine Fehler :P
 
-# zu bearbeitende Frage in der Version:
-# - momentan überspringen des nächsten teilumlaufes, wenn Bus nicht rechtzeitig im Depot (5-10 min okay Einbauen?)
-
-# Output:
-#   - letzte Fahrt eines jeden Teilumlaufs nicht ausgegeben.
+# überall kleine Fehler im Output (Daten Schuld? Datenqualität überprüfen)
 
 
 # Bei Durchführung Error in den Daten ausgefallen:
@@ -25,7 +21,7 @@ import numpy
 df = pd.read_csv("/home/chris/PythonProjekte/SemProjekt-1920/tableFinal.txt", sep=";")
 # df.info()
 
-####################### Daten transformieren (Zeit) ########################
+####################### Daten transformieren und neue Zeitspalten in Dataframe einfügen (Zeit) ########################
 # Umrechnung der Start- & Endzeit in Minuten (für Simulationsuhr)
 StartTime = []
 count_row = df.shape[0]
@@ -44,6 +40,7 @@ for x in range(0, count_row):
 df["EndTime"] = EndTime
 df["StartTime"] = StartTime
 
+################################ Daten für Simulation erzeugen ##################################
 # Gesamtanzahl an Fahrzeugen ermitteln
 numberVeh = df["BlockID"].unique()
 numberVeh = numberVeh.tolist()  # von Array in Liste formatieren
@@ -171,7 +168,7 @@ for i in range(1, len(numberVeh) + 1):
 
     for j in range(0, count_row):
         if df.BlockID[j] == i:
-            eTime = df.iloc[j, 13]
+            eTime = df.iloc[j, 12]
 
             if df.ToStopID[j] == DepotID[i - 1]:
                 PartEndTime.append(eTime)
@@ -183,7 +180,7 @@ for i in range(1, len(numberVeh) + 1):
 
     PartEndTime_dic.update({i - 1: EndTime})
 
-    ###################Art des Journeys#############################
+    ###################Art des Journeys (ElementType)#############################
 Journey_dic = {}
 
 for i in range(1, len(numberVeh) + 1):
@@ -204,7 +201,6 @@ for i in range(1, len(numberVeh) + 1):
 
     Journey_dic.update({i - 1: Umlauf})
 
-
 ############################## Funktionen für Objekt Vehicle #############################
 
 # Abfrage: Fahrtzeit über Simulationsdauer
@@ -214,28 +210,34 @@ def drive_outOfTime(time, delay, clock):
 
 
 # Störgenerator
-def stoerfaktor(n):  # n = Eingabeparameter um Störausmaß zu steuern
-    if (n == 0):
+S = 4 # Einstellen des Störfaktors
+
+def stoerfaktor(s):  # n = Eingabeparameter um Störausmaß zu steuern
+    if (s == 0):
         factorX = numpy.random.choice(numpy.arange(0, 11), p=[1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
                                                               0.0])  # Wahrscheinlichkeiten von Störungen / für jeden
         # Teilfahrt neuen Störfaktor
-    elif (n == 1):
+    elif (s == 1):
         factorX = numpy.random.choice(numpy.arange(0, 11), p=[0.6, 0.2, 0.2, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
                                                               0.0])  # Wahrscheinlichkeiten von Störungen / für jeden
         # Teilfahrt neuen Störfaktor
-    elif (n == 2):
+    elif (s == 2):
         factorX = numpy.random.choice(numpy.arange(0, 11), p=[0.6, 0.0, 0.0, 0.2, 0.0, 0.2, 0.0, 0.0, 0.0, 0.0,
                                                               0.0])  # Wahrscheinlichkeiten von Störungen / für jeden
         # Teilfahrt neuen Störfaktor
-    elif (n == 3):
+    elif (s == 3):
         factorX = numpy.random.choice(numpy.arange(0, 11), p=[0.33, 0.0, 0.0, 0.0, 0.0, 0.33, 0.0, 0.0, 0.0, 0.0,
                                                               0.34])  # Wahrscheinlichkeiten von Störungen / für
+        # jeden Teilfahrt neuen Störfaktor
+    elif (s == 4):
+        factorX = numpy.random.choice(numpy.arange(0, 11), p=[0.0, 0.0, 0.0, 0.0, 0.0, 0.5, 0.0, 0.0, 0.0, 0.0,
+                                                              0.5])  # Wahrscheinlichkeiten von Störungen / für
         # jeden Teilfahrt neuen Störfaktor
     return factorX
 
 ############################## Daten für CSV-Datei ###############################
 # Header für CSV-Datei
-print("vehID Teilumlaufnummer Standort Uhrzeit(Soll) Uhrzeit(Ist) Fahrtverspätung Gesamtverspätung",
+print("vehID Teilumlaufnummer Standort Dep/Arr Uhrzeit(Soll) Uhrzeit(Ist) Fahrtverspätung Gesamtverspätung",
       file=open("Eventqueue4.2.txt", "a"))
 ########################## Objekt Vehicle #########################################
 def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
@@ -250,22 +252,29 @@ def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
                         StartTime_dic[vehID][teilumlaufnummer] - env.now)
                 else:
                     yield env.timeout(StartTime_dic[vehID][teilumlaufnummer] - env.now + delayTime)
+
                 umlaufstatus = 1  # Wenn Startzeit erreicht, Fahrzeug im Umlauf (umlaufstatus = 1)
 
                 while umlaufstatus == 1:  # while Fahrzeug im Umlauf
                     for fahrtnummer in range(0, len(FromHS_dic[vehID][teilumlaufnummer])):
 
+                        if Journey_dic[vehID][teilumlaufnummer][fahrtnummer] == 9:
+                            fahrtstatus = 2
+                        else:
+                            fahrtstatus = 0 # 0 = Abfahrt / 1 = Ankunft / 2 = Pause
+
                         delayTime_perDrive = 0 #für PrintAusgabe hier definiert
                         print(vehID + 1, teilumlaufnummer + 1, FromHS_dic[vehID][teilumlaufnummer][fahrtnummer],
-                              PartStartTime_dic[vehID][teilumlaufnummer][fahrtnummer], env.now,
-                              delayTime_perDrive, delayTime,
+                              fahrtstatus, PartStartTime_dic[vehID][teilumlaufnummer][fahrtnummer], env.now,
+                              "/", delayTime,
                               file=open("Eventqueue4.2.txt", "a"))
 
-                        # Einstellen des Störfaktors
+                        # Verspätung auf Fahrt ermitteln
                         if Journey_dic[vehID][teilumlaufnummer][fahrtnummer] == 9:
                             delayTime_perDrive = 0
                         else:
-                            delayTime_perDrive = stoerfaktor(3)
+                            delayTime_perDrive = stoerfaktor(S)
+
                         # Aufsummieren der Verspätungen im Teilumlauf
                         delayTime += delayTime_perDrive
 
@@ -289,18 +298,21 @@ def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
                         # Timeout für Fahrtdauer zur nächsten Haltestelle
                         yield (env.timeout(DriveDuration_dic[vehID][teilumlaufnummer][fahrtnummer] + delayTime_perDrive))
 
+                        if Journey_dic[vehID][teilumlaufnummer][fahrtnummer] == 9:
+                            fahrtstatus = 2
+                        else:
+                            fahrtstatus = 1
+
                         # Abfrage ob Bus im Depot angekommen
-                        print(ToHS_dic[vehID][teilumlaufnummer][fahrtnummer] == DepotID[vehID],
-                                  file=open("Eventqueue4.2.txt", "a"))
                         if ToHS_dic[vehID][teilumlaufnummer][fahrtnummer] == DepotID[vehID]:
-                            print(vehID + 1, teilumlaufnummer + 1, DepotID[vehID],
-                                  PartEndTime_dic[vehID][teilumlaufnummer][fahrtnummer + 1],
+                            print(vehID + 1, teilumlaufnummer + 1, ToHS_dic[vehID][teilumlaufnummer][fahrtnummer],
+                                  fahrtstatus, PartEndTime_dic[vehID][teilumlaufnummer][fahrtnummer],
                                   env.now, delayTime_perDrive, delayTime,
                                   file=open("Eventqueue4.2.txt", "a"))
                             umlaufstatus = 0
                         else:
                             print(vehID + 1, teilumlaufnummer + 1, ToHS_dic[vehID][teilumlaufnummer][fahrtnummer],
-                                  PartEndTime_dic[vehID][teilumlaufnummer][fahrtnummer+1],
+                                  fahrtstatus, PartEndTime_dic[vehID][teilumlaufnummer][fahrtnummer],
                                   env.now, delayTime_perDrive, delayTime,
                                   file=open("Eventqueue4.2.txt", "a"))
 
@@ -315,7 +327,7 @@ def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
 env = simpy.Environment()
 
 # Initialisierung von Fahrzeugen
-for i in range(0, 1):  # Anzahl von Fahrzeugen = len(numberVeh)
+for i in range(0, len(numberVeh)):  # Anzahl von Fahrzeugen = len(numberVeh)
     env.process(vehicle(env, i))  # Inputdaten Eigenschaften Fahrzeugen
 # Simulation starten und Laufzeit festlegen
 env.run(until=1440)  # Ein Tag simulieren: in Minuten ausdrücken. 24h = 1440min
