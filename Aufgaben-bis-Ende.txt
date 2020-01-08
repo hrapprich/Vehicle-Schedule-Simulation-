@@ -1,5 +1,5 @@
 offene Punkte:
-( ) Einleseroutine für gegebene Daten fertigstellen (svenno)
+(x) Einleseroutine für gegebene Daten fertigstellen (svenno)
 ( ) Dokumentation über tablefinal.csv (svenno)
 ( ) Dateninkonsistenzen ausbessern
 (x) Dokumentation über benötigte Daten für Simulation (Dictionarys beschreiben)
