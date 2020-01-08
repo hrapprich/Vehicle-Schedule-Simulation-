@@ -1,0 +1,37 @@
+
+Daten, die in entsprechender Form vorliegen müssen, damit Simulation einwandfrei funktioniert:
+
+Dictionarys:
+- FromHS_dic: {vehID: [[Starthaltestellen von Teilumlauf 1], [Starthaltestellen von Teilumlauf 2],...], ...}
+- ToHS_dic: {vehID: [[Endhaltestellen von Teilumlauf 1], [Endhaltestellen von Teilumlauf 2],...], ...}
+- PartStartTime_dic: {vehID: [[Abfahrtszeiten von HS in Teilumlauf 1], [Abfahrtszeiten von HS in Teilumlauf 2],...],...}
+- PartEndTime_dic: {vehID: [[Ankunftszeiten von HS in Teilumlauf 1], [Ankunftszeiten von HS in Teilumlauf 2],...],...}
+- DriveDuration_dic: {vehID: [[Fahrtdauer von HS zu HS in Teilumlauf 1], [Fahrtdauer von HS zu HS in Teilumlauf 2],...],...}
+- ElementID_dic: {vehID: [[ElementIDs von Teilumlauf 1], [ElementIDs von Teilumlauf 2],...],...}
+- StartTime_dic: {vehID:[Startzeiten der Teilumläufe + 1440], ...}
+
+
+weitere Daten:
+- numberVeh: Liste mit Länge = Anzahl der Fahrzeuge
+- DepotID: Liste mit Depots der einzelnen Fahrzeuge
+- ... (für Funktion Stau noch weitere Daten aus Dataframe benötigt!)
+
+
+
+Implementierung von Störungen auf drei Ebenen:
+(1) Fahrtebene (eine Fahrten ist betroffen): 
+	random-Faktor auf Drive-Duration werfen (bspw. 10% aller Werte bekommen 2min Verspätung)
+(2) Streckenebene (bestimmte Strecken/Abschnitte/Haltestellen sind betroffen): 
+	Klassen bilden: [Innenstadthaltestellen], [Knotenpunkte], [Berghaltestellen (bei Frost kritisch], [Fahrten von A nach B]...
+	BeispielAbfrage: if Endhaltestelle in [Innenstadthaltestellen] & RushHour, dann DriveDuration + x.x%
+(3) Global (alle Fahrten sind betroffen):
+	jeden Wert in Drive-Duration verändern
+		
+
+dispositive Entscheidung, ob Pufferzeiten genutzt werden sollen:
+Ideen:
+- mindestens X min. muss der Fahrer verschnaufen können
+- mindestens 10% seiner Pause muss der Fahrer verschnaufen können (aufpassen mit float-Werten!)
+
+
+
