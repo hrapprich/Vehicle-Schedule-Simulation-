@@ -7,21 +7,22 @@ from tkinter import *
 
 
 root = Tk()
-root.geometry("300x200")
-var1 = IntVar()
-c1 = Checkbutton(root, text='An diesem Tag gibt es Berufsverkehr.', variable=var1)
-var2 = IntVar()
-c2 = Checkbutton(root, text='An diesem Tag gibt es Gewitter.', variable=var2)
-var3 = IntVar()
-c3 = Checkbutton(root, text='An diesem Tag regnet es.', variable=var3)
-var4 = IntVar()
-c4 = Checkbutton(root, text='An diesem Tag scheint die Sonne.', variable=var4)
+root.geometry("400x500")
+l1 = Label(root,text='Verkehrslage',background='grey', font = "Times")
+varInStadtStau = IntVar()
+cInStadtStau = Checkbutton(root, text='Stau in der Innenstadt', variable=varInStadtStau)
+l2 = Label(root,text='Wetter',background='grey', font = "Times")
+varSturm = IntVar()
+cSturm = Checkbutton(root, text='An diesem Tag gibt es Sturm.', variable=varSturm)
+varRegen = IntVar()
+cRegen = Checkbutton(root, text='An diesem Tag regnet es.', variable=varRegen)
 button = Button(text = "Bestätigen", bg = "green", command = root.destroy)
 
-c1.pack(side='top', fill='x', padx='5', pady='5', anchor = "w")
-c2.pack(side='top', fill='x', padx='5', pady='5', anchor = "w")
-c3.pack(side='top', fill='x', padx='5', pady='5', anchor = "w")
-c4.pack(side='top', fill='x', padx='5', pady='5', anchor = "w")
+l1.pack(fill=X, padx='20', pady='5')
+cInStadtStau.pack(side='top', fill='x', padx='5', pady='5', anchor = "w")
+l2.pack(fill=X, padx='20', pady='5')
+cSturm.pack(side='top', fill='x', padx='5', pady='5', anchor = "w")
+cRegen.pack(side='top', fill='x', padx='5', pady='5', anchor = "w")
 button.pack(side='bottom', fill='y', padx='5',pady='10')
 
 mainloop()
@@ -215,6 +216,7 @@ for i in range(0, 10):  ##Anzahl an Haltestellen mit Stau
             break
 
 
+
 ############################## Funktionen fÃ¼r Objekt Vehicle #############################
 
 # Abfrage: Fahrtzeit Ã¼ber Simulationsdauer
@@ -226,15 +228,12 @@ def drive_outOfTime(time, clock):
 ############################ Störgenerator##################################
 
 def globalDisruption(driveduration):
-    if var2.get() == 1: #Gewitter
+    if varSturm.get() == 1: #Sturm
         ausmaß = 0.8 # Anteil an Fahrten, die von Störung betroffen sind
         delayonTop = 0.6 # Verspätung, die abhängig von Fahrtzeit on Top auf die Fahrtzeit raufkommt
-    elif var3.get() == 1: #Regen
+    elif varRegen.get() == 1: #Regen
         ausmaß = 0.5
         delayonTop = 0.4
-    elif var4.get() == 1: #Sonne
-        ausmaß = 0.2
-        delayonTop = 0.2
     else:
         ausmaß = 0
         delayonTop = 0
@@ -245,13 +244,18 @@ def globalDisruption(driveduration):
         delay = 0
     return delay #Type der Störung bei Ausgabe angeben (durch Input Checkbox bestimmt)(Funktion immer dieselbe)
 
+InStadthaltestellen = []
 def selectionDisruption(fromhs, tohs, driveduration, time):
-    if varInnenstadtStau.get() == 1:
-        if fromhs in Innenstadthaltestellen or tohs in Innenstadthaltestellen:
+    if varInStadtStau.get() == 1:
+        if fromhs in InStadthaltestellen or tohs in InStadthaltestellen:
             ausmaß = 1
-            delayonTop = 0.4
             if (time >= 390 and time <= 510) or (time >= 1110 and time <= 1200):
-                delayonTop = 0.8
+                delayonTop = 0.6
+            else:
+                delayonTop = 0.4
+        else:
+            ausmaß = 0
+            delayonTop = 0
     elif FromHS in Jam or ToHS in Jam:
         ausmaß = 1
         delayonTop = 0.4
@@ -299,7 +303,7 @@ def Type(weather, traffic, jam):
 # Header fÃ¼r CSV-Datei
 print(
     "vehID Teilumlaufnummer Standort Dep/Arr Uhrzeit(Soll) Uhrzeit(Ist) FahrtverspÃ¤tung GesamtverspÃ¤tung VerspÃ¤tungsursache",
-    file=open("eventqueue5.2.csv", "a"))
+    file=open("Eventqueue5.3-Chris.txt", "a"))
 
 
 ########################## Objekt Vehicle #########################################
@@ -333,7 +337,7 @@ def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
                         print(vehID + 1, teilumlaufnummer + 1, FromHS_dic[vehID][teilumlaufnummer][fahrtnummer],
                               fahrtstatus, PartStartTime_dic[vehID][teilumlaufnummer][fahrtnummer], env.now,
                               "-", delayTime, "-",
-                              file=open("eventqueue5.2.csv", "a"))
+                              file=open("Eventqueue5.3-Chris.txt", "a"))
 
                         # VerspÃ¤tung auf Fahrt ermitteln
                         delayType = ""
@@ -346,7 +350,6 @@ def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
                                                                  ToHS_dic[vehID][teilumlaufnummer][fahrtnummer],
                                                                  DriveDuration_dic[vehID][teilumlaufnummer][fahrtnummer],
                                                                  env.now)
-                            #delaySpecific = specificDisruption()
                             delayTime_perDrive = delayGlobal + delaySelection
 
                             # FÃ¼ge der Outputvariable "delayType" den Grund der VerspÃ¤tung hinzu
@@ -361,10 +364,10 @@ def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
                             yield env.timeout(1440)
                             break
 
-                        # Abfrage, ob Pausenzeit & VerspÃ¤tungszeit anpassen
+                        # Abfrage, ob Pausenzeit & Verspätungszeit anpassen
                         delayTime = breaktime(vehID, teilumlaufnummer, fahrtnummer, delayTime)
 
-                        # Timeout fÃ¼r Fahrtdauer zur nÃ¤chsten Haltestelle
+                        # Timeout für Fahrtdauer zur nächsten Haltestelle
                         yield (
                             env.timeout(DriveDuration_dic[vehID][teilumlaufnummer][fahrtnummer] + delayTime_perDrive))
 
@@ -378,13 +381,13 @@ def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
                             print(vehID + 1, teilumlaufnummer + 1, ToHS_dic[vehID][teilumlaufnummer][fahrtnummer],
                                   fahrtstatus, PartEndTime_dic[vehID][teilumlaufnummer][fahrtnummer],
                                   env.now, delayTime_perDrive, delayTime, delayType,
-                                  file=open("eventqueue5.2.csv", "a"))
+                                  file=open("Eventqueue5.3-Chris.txt", "a"))
                             umlaufstatus = 0
                         else:
                             print(vehID + 1, teilumlaufnummer + 1, ToHS_dic[vehID][teilumlaufnummer][fahrtnummer],
                                   fahrtstatus, PartEndTime_dic[vehID][teilumlaufnummer][fahrtnummer],
                                   env.now, delayTime_perDrive, delayTime, delayType,
-                                  file=open("eventqueue5.2.csv", "a"))
+                                  file=open("Eventqueue5.3-Chris.txt", "a"))
 
             except:
                 if env.now >= 1440:  # to avoid RunTimeError: GeneratorExit
