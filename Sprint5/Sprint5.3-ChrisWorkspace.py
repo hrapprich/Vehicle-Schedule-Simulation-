@@ -223,63 +223,47 @@ def drive_outOfTime(time, clock):
     return doOT
 
 
-############################ StÃ¶rgenerator##################################
-S = 5  # Einstellen des StÃ¶rfaktors
+############################ Störgenerator##################################
 
-
-def stoerfaktor(s):  # n = Eingabeparameter um StÃ¶rausmaÃ zu steuern
-    if (s == 0):
-        factorX = numpy.random.choice(numpy.arange(0, 11), p=[1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-                                                              0.0])  # Wahrscheinlichkeiten von StÃ¶rungen / fÃ¼r jeden
-        # Teilfahrt neuen StÃ¶rfaktor
-    elif (s == 1):
-        factorX = numpy.random.choice(numpy.arange(0, 11), p=[0.6, 0.2, 0.2, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-                                                              0.0])  # Wahrscheinlichkeiten von StÃ¶rungen / fÃ¼r jeden
-        # Teilfahrt neuen StÃ¶rfaktor
-    elif (s == 2):
-        factorX = numpy.random.choice(numpy.arange(0, 11), p=[0.6, 0.0, 0.0, 0.2, 0.0, 0.2, 0.0, 0.0, 0.0, 0.0,
-                                                              0.0])  # Wahrscheinlichkeiten von StÃ¶rungen / fÃ¼r jeden
-        # Teilfahrt neuen StÃ¶rfaktor
-    elif (s == 3):
-        factorX = numpy.random.choice(numpy.arange(0, 11), p=[0.33, 0.0, 0.0, 0.0, 0.0, 0.33, 0.0, 0.0, 0.0, 0.0,
-                                                              0.34])  # Wahrscheinlichkeiten von StÃ¶rungen / fÃ¼r
-        # jeden Teilfahrt neuen StÃ¶rfaktor
-    elif (s == 4):
-        factorX = numpy.random.choice(numpy.arange(0, 11), p=[0.0, 0.0, 0.0, 0.0, 0.0, 0.5, 0.0, 0.0, 0.0, 0.0,
-                                                              0.5])  # Wahrscheinlichkeiten von StÃ¶rungen / fÃ¼r
-        # jeden Teilfahrt neuen StÃ¶rfaktor
-    elif (s == 5):
-        factorX = 20
-    return factorX
-
-
-def carTraffic(time):
-    if var1.get() == 1:
-        if (time >= 390 and time <= 510) or (time >= 1110 and time <= 1200):
-            return (stoerfaktor(4))
-        ##oder ggf prozentual die duration erhÃ¶ren? (30% mehr zu den stoÃzeiten?)
-        else:
-            return (stoerfaktor(1))
+def globalDisruption(driveduration):
+    if var2.get() == 1: #Gewitter
+        ausmaß = 0.8 # Anteil an Fahrten, die von Störung betroffen sind
+        delayonTop = 0.6 # Verspätung, die abhängig von Fahrtzeit on Top auf die Fahrtzeit raufkommt
+    elif var3.get() == 1: #Regen
+        ausmaß = 0.5
+        delayonTop = 0.4
+    elif var4.get() == 1: #Sonne
+        ausmaß = 0.2
+        delayonTop = 0.2
     else:
-        return (stoerfaktor(0))
-
-
-def weather():
-    if var2.get() == 1:
-        return (stoerfaktor(4))
-    elif var3.get() == 1:
-        return (stoerfaktor(3))
-    elif var4.get() == 1:
-        return (stoerfaktor(1))
+        ausmaß = 0
+        delayonTop = 0
+    coin = numpy.random.choice(numpy.arange(0, 2), p=[1-ausmaß, ausmaß])
+    if (coin==1):
+        delay = int(driveduration*delayonTop)
     else:
-        return (stoerfaktor(0))
+        delay = 0
+    return delay #Type der Störung bei Ausgabe angeben (durch Input Checkbox bestimmt)(Funktion immer dieselbe)
 
-
-def trafficjam(FromHS, ToHS):
-    if FromHS in Jam or ToHS in Jam:
-        return (stoerfaktor(4))
+def selectionDisruption(fromhs, tohs, driveduration, time):
+    if varInnenstadtStau.get() == 1:
+        if fromhs in Innenstadthaltestellen or tohs in Innenstadthaltestellen:
+            ausmaß = 1
+            delayonTop = 0.4
+            if (time >= 390 and time <= 510) or (time >= 1110 and time <= 1200):
+                delayonTop = 0.8
+    elif FromHS in Jam or ToHS in Jam:
+        ausmaß = 1
+        delayonTop = 0.4
     else:
-        return (stoerfaktor(0))
+        ausmaß = 0
+        delayonTop = 0
+    coin = numpy.random.choice(numpy.arange(0, 2), p=[1 - ausmaß, ausmaß])
+    if (coin == 1):
+        delay = int(driveduration * delayonTop)
+    else:
+        delay = 0
+    return delay  # Type der Störung bei Ausgabe angeben (durch Input Checkbox bestimmt)(Funktion immer dieselbe)
 
 
 def breaktime(vehID, teilumlaufnummer, fahrtnummer, delayTime):
@@ -357,13 +341,16 @@ def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
                             delayTime_perDrive = 0
                             delayType = "-"
                         else:
-                            delayWeather = weather()
-                            delayCarTraffic = carTraffic(env.now)
-                            delayTrafficJam = trafficjam(FromHS_dic[vehID][teilumlaufnummer][fahrtnummer],
-                                                         ToHS_dic[vehID][teilumlaufnummer][fahrtnummer])
-                            delayTime_perDrive = delayWeather + delayCarTraffic + delayTrafficJam
+                            delayGlobal = globalDisruption(DriveDuration_dic[vehID][teilumlaufnummer][fahrtnummer])
+                            delaySelection = selectionDisruption(FromHS_dic[vehID][teilumlaufnummer][fahrtnummer],
+                                                                 ToHS_dic[vehID][teilumlaufnummer][fahrtnummer],
+                                                                 DriveDuration_dic[vehID][teilumlaufnummer][fahrtnummer],
+                                                                 env.now)
+                            #delaySpecific = specificDisruption()
+                            delayTime_perDrive = delayGlobal + delaySelection
+
                             # FÃ¼ge der Outputvariable "delayType" den Grund der VerspÃ¤tung hinzu
-                            delayType = Type(delayWeather, delayCarTraffic, delayTrafficJam)
+                            #delayType = Type(delayWeather, delayCarTraffic, delayTrafficJam)
 
                         # Aufsummieren der VerspÃ¤tungen im Teilumlauf
                         delayTime += delayTime_perDrive
@@ -410,7 +397,7 @@ def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
 env = simpy.Environment()
 
 # Initialisierung von Fahrzeugen
-for i in range(0, len(numberVeh)):  # Anzahl von Fahrzeugen = len(numberVeh)
+for i in range(0, 1):  # Anzahl von Fahrzeugen = len(numberVeh)
     env.process(vehicle(env, i))  # Inputdaten Eigenschaften Fahrzeugen
 # Simulation starten und Laufzeit festlegen
 env.run(until=1440)  # Ein Tag simulieren: in Minuten ausdrÃ¼cken. 24h = 1440min
