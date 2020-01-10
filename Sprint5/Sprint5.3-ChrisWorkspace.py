@@ -8,21 +8,39 @@ from tkinter import *
 
 root = Tk()
 root.geometry("400x500")
+l0 = Label(root,text='Globale Störungen',background='grey', font = "Times")
+varPassagieraufkommen = IntVar()
+cPassagieraufkommen = Checkbutton(root, text='erhöhtes Passagieraufkommen an einigen Haltestellen',
+                                  variable=varPassagieraufkommen)
+varVerkehrsaufkommen = IntVar()
+cVerkehrsaufkommen = Checkbutton(root, text='erhöhtes Verkehrsaufkommen an einigen Haltestellen',
+                                  variable=varVerkehrsaufkommen)
 l1 = Label(root,text='Verkehrslage',background='grey', font = "Times")
-varInStadtStau = IntVar()
-cInStadtStau = Checkbutton(root, text='Stau in der Innenstadt', variable=varInStadtStau)
+varUnfall = IntVar()
+cUnfall = Checkbutton(root, text='Unfall nahe einer Haltestelle', variable=varUnfall)
+varBaustelle = IntVar()
+cBaustelle = Checkbutton(root, text='Baustelle an bestimmter Haltestelle (hier: HS 29)', variable=varBaustelle)
 l2 = Label(root,text='Wetter',background='grey', font = "Times")
 varSturm = IntVar()
 cSturm = Checkbutton(root, text='An diesem Tag gibt es Sturm.', variable=varSturm)
 varRegen = IntVar()
 cRegen = Checkbutton(root, text='An diesem Tag regnet es.', variable=varRegen)
+l3 = Label(root,text='Specials',background='grey', font = "Times")
+varFahrzeugausfall = IntVar()
+cFahrzeugausfall = Checkbutton(root, text='Fahrzeug fällt aus (1%)', variable=varFahrzeugausfall)
 button = Button(text = "Bestätigen", bg = "green", command = root.destroy)
 
+l0.pack(fill=X, padx='20', pady='5')
+cPassagieraufkommen.pack(side='top', fill='x', padx='5', pady='5', anchor = "w")
+cVerkehrsaufkommen.pack(side='top', fill='x', padx='5', pady='5', anchor = "w")
 l1.pack(fill=X, padx='20', pady='5')
-cInStadtStau.pack(side='top', fill='x', padx='5', pady='5', anchor = "w")
+cUnfall.pack(side='top', fill='x', padx='5', pady='5', anchor = "w")
+cBaustelle.pack(side='top', fill='x', padx='5', pady='5', anchor = "w")
 l2.pack(fill=X, padx='20', pady='5')
 cSturm.pack(side='top', fill='x', padx='5', pady='5', anchor = "w")
 cRegen.pack(side='top', fill='x', padx='5', pady='5', anchor = "w")
+l3.pack(fill=X, padx='20', pady='5')
+cFahrzeugausfall.pack(side='top', fill='x', padx='5', pady='5', anchor = "w")
 button.pack(side='bottom', fill='y', padx='5',pady='10')
 
 mainloop()
@@ -53,7 +71,7 @@ df["StartTime"] = StartTime
 numberVeh = df["BlockID"].unique()
 numberVeh = numberVeh.tolist()  # von Array in Liste formatieren
 numberVeh = [elem for elem in numberVeh if elem >= 0]  # -1 entfernen
-print("Die Gesamtanzahl von Fahrzeugen betrÃ¤gt %d." % len(numberVeh))
+print("Die Gesamtanzahl von Fahrzeugen beträgt %d." % len(numberVeh))
 
 # DepotID (jedem Fahrzeug die unique DepotID zuordnen)
 DepotID = []
@@ -68,7 +86,7 @@ print("Jedes Fahrzeug wurde einem Depot zugeordnet: %s." % (
         len(DepotID) == len(numberVeh)))
 
 # StartTimes der einzelnen Fahrzeuge in jedem Teilumlauf (in Dictionary gespeichert)
-DepotID_plusOne = [0] + DepotID  # DepotIDListe verlÃ¤ngern, damit Schleife mit i funktioniert
+DepotID_plusOne = [0] + DepotID  # DepotIDListe verlängern, damit Schleife mit i funktioniert
 startTime_dic = {}
 for i in range(1, len(numberVeh) + 1):
     startTimes_Block = []
@@ -80,14 +98,14 @@ for i in range(1, len(numberVeh) + 1):
         1440]  # Add to every list a 1440 as last element for simulation loop (timeout)
     startTime_dic.update(
         {(
-                     i - 1): startTimes_Block})  # i-1 damit Index bei 0 anfÃ¤ngt (wichtig fÃ¼r Schleife (nachtrÃ¤gliche Ãnderung!)
+                     i - 1): startTimes_Block})  # i-1 damit Index bei 0 anfängt (wichtig fÃ¼r Schleife (nachträgliche Ãnderung!)
 
 StartTime_dic = startTime_dic
 
 numTU_proF = []
 for i in range(0, len(numberVeh)):
     numTU_proF.append(len(StartTime_dic[i]) - 1)
-print("Die Fahrzeuge fahren im Schnitt %d TeilumlÃ¤ufe am Tag."
+print("Die Fahrzeuge fahren im Schnitt %d Teilumläufe am Tag."
       " Das Maximum ist %d und das Minimum %d." % (sum(numTU_proF) / len(numTU_proF), max(numTU_proF), min(numTU_proF)))
 
 # Listen von Haltestellen (from/to) (Liste mit vielen Listen)
@@ -226,49 +244,84 @@ def drive_outOfTime(time, clock):
 
 
 ############################ Störgenerator##################################
-
-def globalDisruption(driveduration):
+# Ausmaß = Anteil an Fahrten, die von Störung betroffen sind
+# delayonTop = Verspätung, die abhängig von Fahrtzeit on Top auf die Fahrtzeit raufkommt
+def globalDisruption(driveduration, time):
+    delay = 0
+    delayType = ""
+    if varPassagieraufkommen.get() == 1: #Passagieraufkommen
+        ausmaß = 0.2
+        delayonTop = 0.2
+        coin = numpy.random.choice(numpy.arange(0, 2), p=[1 - ausmaß, ausmaß])
+        if (coin == 1):
+            delay += int(driveduration * delayonTop)
+            delayType += "PA"
+    if varVerkehrsaufkommen.get() == 1: #Verkehrsaufkommen
+        if fromhs in Jam or tohs in Jam:
+            if (time < 390) or (time > 1200): # Schwachverkehrszeiten
+                ausmaß = 1
+                delayonTop = 0
+                coin = numpy.random.choice(numpy.arange(0, 2), p=[1 - ausmaß, ausmaß])
+                if (coin == 1):
+                    delay += int(driveduration * delayonTop)
+                    delayType += ", VA(Schwach)"
+            if (time > 510 and time < 870) or (time > 1110 and time <= 1200): #Normalverkehrzeiten
+                ausmaß = 0.5
+                delayonTop = 0.1
+                coin = numpy.random.choice(numpy.arange(0, 2), p=[1 - ausmaß, ausmaß])
+                if (coin == 1):
+                    delay += int(driveduration * delayonTop)
+                    delayType += ", VA(Normal)"
+            if (time >= 390 and time <= 510) or (time >= 870 and time <= 1110): # Hauptverkehrszeiten
+                ausmaß = 1
+                delayonTop = 0.4
+                coin = numpy.random.choice(numpy.arange(0, 2), p=[1 - ausmaß, ausmaß])
+                if (coin == 1):
+                    delay += int(driveduration * delayonTop)
+                    delayType += ", VA(Haupt)"
     if varSturm.get() == 1: #Sturm
         ausmaß = 0.8 # Anteil an Fahrten, die von Störung betroffen sind
         delayonTop = 0.6 # Verspätung, die abhängig von Fahrtzeit on Top auf die Fahrtzeit raufkommt
-    elif varRegen.get() == 1: #Regen
+        coin = numpy.random.choice(numpy.arange(0, 2), p=[1 - ausmaß, ausmaß])
+        if (coin == 1):
+            delay += int(driveduration * delayonTop)
+            delayType += ", Sturm"
+    if varRegen.get() == 1: #Regen
         ausmaß = 0.5
-        delayonTop = 0.4
-    else:
-        ausmaß = 0
-        delayonTop = 0
-    coin = numpy.random.choice(numpy.arange(0, 2), p=[1-ausmaß, ausmaß])
-    if (coin==1):
-        delay = int(driveduration*delayonTop)
-    else:
-        delay = 0
-    return delay #Type der Störung bei Ausgabe angeben (durch Input Checkbox bestimmt)(Funktion immer dieselbe)
+        delayonTop += 0.4
+        coin = numpy.random.choice(numpy.arange(0, 2), p=[1 - ausmaß, ausmaß])
+        if (coin == 1):
+            delay += int(driveduration * delayonTop)
+            delayType += ", Regen"
+    if varFahrzeugausfall.get() == 1:
+        ausmaß = 0.01
+        delayonTop += 1000
+        coin = numpy.random.choice(numpy.arange(0, 2), p=[1 - ausmaß, ausmaß])
+        if (coin == 1):
+            delay += int(driveduration * delayonTop)
+            delayType += ", Fahrzeugausfall"
+    return delay, delayType #Type der Störung bei Ausgabe angeben (durch Input Checkbox bestimmt)(Funktion immer dieselbe)
 
-InStadthaltestellen = []
+BaustelleanbestimmterHS = [29] # Eingabe von Benutzer nutzen
 def selectionDisruption(fromhs, tohs, driveduration, time):
-    if varInStadtStau.get() == 1:
-        if fromhs in InStadthaltestellen or tohs in InStadthaltestellen:
+    delay = 0
+    delayType = ""
+    if varBaustelle.get() == 1:
+        if fromhs in BaustelleanbestimmterHS or tohs in BaustelleanbestimmterHS:
             ausmaß = 1
-            if (time >= 390 and time <= 510) or (time >= 1110 and time <= 1200):
-                delayonTop = 0.6
-            else:
-                delayonTop = 0.4
-        else:
-            ausmaß = 0
-            delayonTop = 0
-    elif FromHS in Jam or ToHS in Jam:
-        ausmaß = 1
-        delayonTop = 0.4
-    else:
-        ausmaß = 0
-        delayonTop = 0
-    coin = numpy.random.choice(numpy.arange(0, 2), p=[1 - ausmaß, ausmaß])
-    if (coin == 1):
-        delay = int(driveduration * delayonTop)
-    else:
-        delay = 0
-    return delay  # Type der Störung bei Ausgabe angeben (durch Input Checkbox bestimmt)(Funktion immer dieselbe)
-
+            delayonTop = 1
+            coin = numpy.random.choice(numpy.arange(0, 2), p=[1 - ausmaß, ausmaß])
+            if (coin == 1):
+                delay += int(driveduration * delayonTop)
+                delayType += ", Baustelle"
+    if varUnfall.get() == 1:
+        ausmaß = 0.05
+        delayonTop = 1
+        coin = numpy.random.choice(numpy.arange(0, 2), p=[1 - ausmaß, ausmaß])
+        if (coin == 1):
+            delay += int(driveduration * delayonTop)
+            delayType += ", Unfall"
+    return delay, delayType  # Type der Störung bei Ausgabe angeben (durch Input Checkbox bestimmt)(Funktion immer dieselbe)
 
 def breaktime(vehID, teilumlaufnummer, fahrtnummer, delayTime):
     if ElementID_dic[vehID][teilumlaufnummer][fahrtnummer] == 9:
@@ -281,47 +334,25 @@ def breaktime(vehID, teilumlaufnummer, fahrtnummer, delayTime):
             delayTime = 0
     return (delayTime)
 
-
-def Type(weather, traffic, jam):
-    delayType = ""
-    if weather > 0:
-        delayType += ("Wetter")
-    if traffic > 0 and delayType == "":
-        delayType += ("Verkehr")
-    elif traffic > 0 and delayType != "":
-        delayType += (",Verkehr")
-    if jam > 0 and delayType == "":
-        delayType += ("Stau")
-    elif jam > 0 and delayType != "":
-        delayType += (",Stau")
-    else:
-        delayType += ("-")
-    return (delayType)
-
-
 ############################## Daten fÃ¼r CSV-Datei ###############################
 # Header fÃ¼r CSV-Datei
 print(
-    "vehID Teilumlaufnummer Standort Dep/Arr Uhrzeit(Soll) Uhrzeit(Ist) FahrtverspÃ¤tung GesamtverspÃ¤tung VerspÃ¤tungsursache",
+    "vehID Teilumlaufnummer Standort Dep/Arr Uhrzeit(Soll) Uhrzeit(Ist) Fahrtverspätung Gesamtverspätung Verspätungsursache",
     file=open("Eventqueue5.3-Chris.txt", "a"))
 
 
 ########################## Objekt Vehicle #########################################
 def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
     while True:
-        delayTime = 0  # DelayTime initialisieren (gilt fÃ¼r den ganze Tag des Fahrzeugs)
-        delayType = ""
-        for teilumlaufnummer in range(0, len(StartTime_dic) - 1):  # Loop der durch die einzelnen TeilumlÃ¤ufe fÃ¼hrt
+        for teilumlaufnummer in range(0, len(StartTime_dic) - 1):  # Loop der durch die einzelnen Teilumläufe fÃ¼hrt
             try:
                 if StartTime_dic[vehID][teilumlaufnummer] - env.now >= 0:
                     delayTime = 0
-                    delayType = ""
                     yield env.timeout(
                         StartTime_dic[vehID][teilumlaufnummer] - env.now)
                 else:
                     yield env.timeout(0)
                     delayTime = env.now - StartTime_dic[vehID][teilumlaufnummer]
-                    delayType = ""
 
                 umlaufstatus = 1  # Wenn Startzeit erreicht, Fahrzeug im Umlauf (umlaufstatus = 1)
 
@@ -339,23 +370,24 @@ def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
                               "-", delayTime, "-",
                               file=open("Eventqueue5.3-Chris.txt", "a"))
 
-                        # VerspÃ¤tung auf Fahrt ermitteln
+                        # Verspätung auf Fahrt ermitteln
                         delayType = ""
                         if ElementID_dic[vehID][teilumlaufnummer][fahrtnummer] == 9:
                             delayTime_perDrive = 0
                             delayType = "-"
                         else:
-                            delayGlobal = globalDisruption(DriveDuration_dic[vehID][teilumlaufnummer][fahrtnummer])
-                            delaySelection = selectionDisruption(FromHS_dic[vehID][teilumlaufnummer][fahrtnummer],
-                                                                 ToHS_dic[vehID][teilumlaufnummer][fahrtnummer],
-                                                                 DriveDuration_dic[vehID][teilumlaufnummer][fahrtnummer],
-                                                                 env.now)
+                            delayGlobal, delayTypeGlobal = globalDisruption(DriveDuration_dic[vehID][teilumlaufnummer][fahrtnummer],
+                                                           env.now)
+                            delaySelection, delayTypeSelection = selectionDisruption(
+                                                                FromHS_dic[vehID][teilumlaufnummer][fahrtnummer],
+                                                                ToHS_dic[vehID][teilumlaufnummer][fahrtnummer],
+                                                                DriveDuration_dic[vehID][teilumlaufnummer][fahrtnummer],
+                                                                env.now)
+
                             delayTime_perDrive = delayGlobal + delaySelection
+                            delayType = delayTypeGlobal + " " + delayTypeSelection
 
-                            # FÃ¼ge der Outputvariable "delayType" den Grund der VerspÃ¤tung hinzu
-                            #delayType = Type(delayWeather, delayCarTraffic, delayTrafficJam)
-
-                        # Aufsummieren der VerspÃ¤tungen im Teilumlauf
+                        # Aufsummieren der Verspätungen im Teilumlauf
                         delayTime += delayTime_perDrive
 
                         # Abfrage, ob Fahrt auÃerhalb der Simulationszeit liegen wÃ¼rde
