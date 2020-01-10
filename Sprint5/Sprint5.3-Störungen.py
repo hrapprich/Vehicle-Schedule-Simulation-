@@ -8,31 +8,40 @@ from tkinter import *
 
 root = Tk()
 root.geometry("400x500")
-l0 = Label(root,text='Globale Störungen',background='grey', font = "Times")
+l0 = Label(root,text='Globale Einstellungen',background='grey', font = "Times")
 varPassagieraufkommen = IntVar()
 cPassagieraufkommen = Checkbutton(root, text='erhöhtes Passagieraufkommen an einigen Haltestellen',
                                   variable=varPassagieraufkommen)
 varVerkehrsaufkommen = IntVar()
 cVerkehrsaufkommen = Checkbutton(root, text='erhöhtes Verkehrsaufkommen an einigen Haltestellen',
                                   variable=varVerkehrsaufkommen)
+varPufferzeit = IntVar()
+cPufferzeit = Checkbutton(root, text='Pufferzeiten für Abbau von Verspätungen nutzen',
+                                  variable=varPufferzeit)
 l1 = Label(root,text='Verkehrslage',background='grey', font = "Times")
 varUnfall = IntVar()
-cUnfall = Checkbutton(root, text='Unfall nahe einer Haltestelle', variable=varUnfall)
+cUnfall = Checkbutton(root, text='Unfall nahe einer Haltestelle',
+                      variable=varUnfall)
 varBaustelle = IntVar()
-cBaustelle = Checkbutton(root, text='Baustelle an bestimmter Haltestelle (hier: HS 29)', variable=varBaustelle)
+cBaustelle = Checkbutton(root, text='Baustelle an bestimmter Haltestelle (hier: HS 29)',
+                         variable=varBaustelle)
 l2 = Label(root,text='Wetter',background='grey', font = "Times")
 varSturm = IntVar()
-cSturm = Checkbutton(root, text='An diesem Tag gibt es Sturm.', variable=varSturm)
+cSturm = Checkbutton(root, text='An diesem Tag gibt es Sturm.',
+                     variable=varSturm)
 varRegen = IntVar()
-cRegen = Checkbutton(root, text='An diesem Tag regnet es.', variable=varRegen)
+cRegen = Checkbutton(root, text='An diesem Tag regnet es.',
+                     variable=varRegen)
 l3 = Label(root,text='Specials',background='grey', font = "Times")
 varFahrzeugausfall = IntVar()
-cFahrzeugausfall = Checkbutton(root, text='Fahrzeug fällt aus (1%)', variable=varFahrzeugausfall)
+cFahrzeugausfall = Checkbutton(root, text='Fahrzeug fällt aus (1%)',
+                               variable=varFahrzeugausfall)
 button = Button(text = "Bestätigen", bg = "green", command = root.destroy)
 
 l0.pack(fill=X, padx='20', pady='5')
 cPassagieraufkommen.pack(side='top', fill='x', padx='5', pady='5', anchor = "w")
 cVerkehrsaufkommen.pack(side='top', fill='x', padx='5', pady='5', anchor = "w")
+cPufferzeit.pack(side='top', fill='x', padx='5', pady='5', anchor = "w")
 l1.pack(fill=X, padx='20', pady='5')
 cUnfall.pack(side='top', fill='x', padx='5', pady='5', anchor = "w")
 cBaustelle.pack(side='top', fill='x', padx='5', pady='5', anchor = "w")
@@ -47,8 +56,8 @@ mainloop()
 
 ####################### Daten einlesen ####################################
 df = pd.read_csv("/home/chris/PythonProjekte/SemProjekt-1920/tableFinal.txt", sep=";")
-####################### Daten transformieren und neue Zeitspalten in Dataframe einfÃ¼gen (Zeit) ########################
-# Umrechnung der Start- & Endzeit in Minuten (fÃ¼r Simulationsuhr)
+####################### Daten transformieren und neue Zeitspalten in Dataframe einfügen (Zeit) ########################
+# Umrechnung der Start- & Endzeit in Minuten (für Simulationsuhr)
 StartTime = []
 count_row = df.shape[0]
 for x in range(0, count_row):
@@ -66,7 +75,7 @@ for x in range(0, count_row):
 df["EndTime"] = EndTime
 df["StartTime"] = StartTime
 
-################################ Daten fÃ¼r Simulation erzeugen ##################################
+################################ Daten für Simulation erzeugen ##################################
 # Gesamtanzahl an Fahrzeugen ermitteln
 numberVeh = df["BlockID"].unique()
 numberVeh = numberVeh.tolist()  # von Array in Liste formatieren
@@ -98,7 +107,7 @@ for i in range(1, len(numberVeh) + 1):
         1440]  # Add to every list a 1440 as last element for simulation loop (timeout)
     startTime_dic.update(
         {(
-                     i - 1): startTimes_Block})  # i-1 damit Index bei 0 anfängt (wichtig fÃ¼r Schleife (nachträgliche Ãnderung!)
+                     i - 1): startTimes_Block})  # i-1 damit Index bei 0 anfängt (wichtig für Schleife (nachträgliche Ãnderung!)
 
 StartTime_dic = startTime_dic
 
@@ -217,7 +226,7 @@ for j in range(0, numberHS):
             count += 1
     HScount.append(count)
 
-##fÃ¼r die Annahme, dass ein Stau eher im Zentrum ist (Annahme, dass Zentrum dort ist, wo eine Haltestelle stark befahren wird)
+##für die Annahme, dass ein Stau eher im Zentrum ist (Annahme, dass Zentrum dort ist, wo eine Haltestelle stark befahren wird)
 cumulativeHS = []
 cumulative = 0
 for j in range(0, len(HScount)):
@@ -235,9 +244,9 @@ for i in range(0, 10):  ##Anzahl an Haltestellen mit Stau
 
 
 
-############################## Funktionen fÃ¼r Objekt Vehicle #############################
+############################## Funktionen für Objekt Vehicle #############################
 
-# Abfrage: Fahrtzeit Ã¼ber Simulationsdauer
+# Abfrage: Fahrtzeit über Simulationsdauer
 def drive_outOfTime(time, clock):
     doOT = time + clock > 1440
     return doOT
@@ -295,7 +304,7 @@ def globalDisruption(driveduration, time):
             delayType += ", Regen"
     if varFahrzeugausfall.get() == 1:
         ausmaß = 0.01
-        delayonTop += 1000
+        delayonTop += 1440
         coin = numpy.random.choice(numpy.arange(0, 2), p=[1 - ausmaß, ausmaß])
         if (coin == 1):
             delay += int(driveduration * delayonTop)
@@ -324,18 +333,19 @@ def selectionDisruption(fromhs, tohs, driveduration, time):
     return delay, delayType  # Type der Störung bei Ausgabe angeben (durch Input Checkbox bestimmt)(Funktion immer dieselbe)
 
 def breaktime(vehID, teilumlaufnummer, fahrtnummer, delayTime):
-    if ElementID_dic[vehID][teilumlaufnummer][fahrtnummer] == 9:
-        DriveDuration_dic[vehID][teilumlaufnummer][fahrtnummer] = \
-            DriveDuration_dic[vehID][teilumlaufnummer][fahrtnummer] - delayTime
-        if DriveDuration_dic[vehID][teilumlaufnummer][fahrtnummer] < 0:
-            delayTime = abs(DriveDuration_dic[vehID][teilumlaufnummer][fahrtnummer])
-            DriveDuration_dic[vehID][teilumlaufnummer][fahrtnummer] = 0
-        else:
-            delayTime = 0
-    return (delayTime)
+    if varPufferzeit.get() == 1:
+        if ElementID_dic[vehID][teilumlaufnummer][fahrtnummer] == 9:
+            DriveDuration_dic[vehID][teilumlaufnummer][fahrtnummer] = \
+                DriveDuration_dic[vehID][teilumlaufnummer][fahrtnummer] - delayTime
+            if DriveDuration_dic[vehID][teilumlaufnummer][fahrtnummer] < 0:
+                delayTime = abs(DriveDuration_dic[vehID][teilumlaufnummer][fahrtnummer])
+                DriveDuration_dic[vehID][teilumlaufnummer][fahrtnummer] = 0
+            else:
+                delayTime = 0
+    return delayTime
 
-############################## Daten fÃ¼r CSV-Datei ###############################
-# Header fÃ¼r CSV-Datei
+############################## Daten für CSV-Datei ###############################
+# Header für CSV-Datei
 print(
     "vehID Teilumlaufnummer Standort Dep/Arr Uhrzeit(Soll) Uhrzeit(Ist) Fahrtverspätung Gesamtverspätung Verspätungsursache",
     file=open("Eventqueue5.3-Chris.txt", "a"))
@@ -344,7 +354,7 @@ print(
 ########################## Objekt Vehicle #########################################
 def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
     while True:
-        for teilumlaufnummer in range(0, len(StartTime_dic) - 1):  # Loop der durch die einzelnen Teilumläufe fÃ¼hrt
+        for teilumlaufnummer in range(0, len(StartTime_dic) - 1):  # Loop der durch die einzelnen Teilumläufe führt
             try:
                 if StartTime_dic[vehID][teilumlaufnummer] - env.now >= 0:
                     delayTime = 0
@@ -364,7 +374,7 @@ def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
                         else:
                             fahrtstatus = 0  # 0 = Abfahrt / 1 = Ankunft / 2 = Pause
 
-                        delayTime_perDrive = 0  # fÃ¼r PrintAusgabe hier definiert
+                        delayTime_perDrive = 0  # für PrintAusgabe hier definiert
                         print(vehID + 1, teilumlaufnummer + 1, FromHS_dic[vehID][teilumlaufnummer][fahrtnummer],
                               fahrtstatus, PartStartTime_dic[vehID][teilumlaufnummer][fahrtnummer], env.now,
                               "-", delayTime, "-",
@@ -390,7 +400,7 @@ def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
                         # Aufsummieren der Verspätungen im Teilumlauf
                         delayTime += delayTime_perDrive
 
-                        # Abfrage, ob Fahrt auÃerhalb der Simulationszeit liegen wÃ¼rde
+                        # Abfrage, ob Fahrt auÃerhalb der Simulationszeit liegen würde
                         if drive_outOfTime(
                                 DriveDuration_dic[vehID][teilumlaufnummer][fahrtnummer], env.now):
                             yield env.timeout(1440)
@@ -435,4 +445,4 @@ env = simpy.Environment()
 for i in range(0, 1):  # Anzahl von Fahrzeugen = len(numberVeh)
     env.process(vehicle(env, i))  # Inputdaten Eigenschaften Fahrzeugen
 # Simulation starten und Laufzeit festlegen
-env.run(until=1440)  # Ein Tag simulieren: in Minuten ausdrÃ¼cken. 24h = 1440min
+env.run(until=1440)  # Ein Tag simulieren: in Minuten ausdrücken. 24h = 1440min
