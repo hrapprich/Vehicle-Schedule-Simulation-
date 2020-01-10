@@ -4,12 +4,13 @@ offene Punkte:
 ( ) Dateninkonsistenzen ausbessern
 (x) Dokumentation über benötigte Daten für Simulation (Dictionarys beschreiben)
 ( ) Simulationsdauer auf eine Woche ausweiten
-( ) Entscheidung dem Benutzer offen lassen: Pufferzeiten für Abbau Verspätungen nutzen oder nicht (chris)
+(x) Entscheidung dem Benutzer offen lassen: Pufferzeiten für Abbau Verspätungen nutzen oder nicht (chris)
 (x) In Output Verspätungsursache aufnehmen (vlt durch Klassifikation und Ausgabe einer Zahl)
 (x) Störungen auf drei Ebenen: Einzelfahrt, Strecke/Umkreis, Global (chris)
-( ) Stau einfügen (gehört zu Störebene Strecke)
+(x) Stau einfügen (gehört zu Störebene Strecke)
+( ) smartere Stau-Funktion mit dynamischen Vorkommen 
 (x) Verspätungen in relative Werte umwandeln
-( ) mehr und validere Störungsarten (PK3)
+(x) mehr und validere Störungsarten
 ( ) Output für KPIs (PK3)
 ( ) Am Ende auf Modularität schauen
 ( ) Auswahl in GUI welche Jahreszeit gerade ist (nicht Funktion Wetter?)
