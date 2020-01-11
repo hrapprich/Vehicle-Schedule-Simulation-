@@ -237,8 +237,8 @@ df = tableFinal
 
 
 ####################### Daten einlesen ####################################
-df = pd.read_csv("/home/chris/PythonProjekte/SemProjekt-1920/tableFinal.txt", sep=";")
-# df = pd.read_csv("tableFinal.csv", sep=";")
+#df = pd.read_csv("/home/chris/PythonProjekte/SemProjekt-1920/tableFinal.txt", sep=";")
+ df = pd.read_csv("tableFinal.csv", sep=";")
 ####################### Daten transformieren und neue Zeitspalten in Dataframe einfügen (Zeit) ########################
 # Umrechnung der Start- & Endzeit in Minuten (für Simulationsuhr)
 StartTime = []
@@ -424,7 +424,7 @@ for i in range(0, 100):  ##Anzahl an Haltestellen mit Stau
         if x <= cumulativeHS[j]:
             Jam.append(j)
             break
-
+# Jam = [29,39,114, 97, 40, 102, 142]
 ####### Funktion: Stauausbruch zu bestimmten Zeiten #########################
 def stauzeitGroup():
     staugroup = numpy.random.choice(numpy.arange(0, 3), p=[0.1, 0.25, 0.65])
@@ -502,8 +502,9 @@ def globalDisruption(driveduration, time):
             delay += int(driveduration * delayonTop)
             delayType += "PA"
     if varVerkehrsaufkommen.get() == 1: #Verkehrsaufkommen
-        if fromhs in Jam or tohs in Jam:
-            for i in stauBeginn:
+        #if fromhs in Jam or tohs in Jam:
+            i = 0
+            while i < len(stauBeginn):
                 if time >= stauBeginn[i] and time < stauEnde[i]:
                     ausmaß = 1
                     delayonTop = 0.5
@@ -511,7 +512,9 @@ def globalDisruption(driveduration, time):
                     if (coin == 1):
                         delay += int(driveduration * delayonTop)
                         delayType += ", Stau"
-                break
+                    i += 1000
+                else:
+                    i += 1
     if varSturm.get() == 1: #Sturm
         ausmaß = 0.8 # Anteil an Fahrten, die von Störung betroffen sind
         delayonTop = 0.6 # Verspätung, die abhängig von Fahrtzeit on Top auf die Fahrtzeit raufkommt
@@ -570,9 +573,8 @@ def breaktime(vehID, teilumlaufnummer, fahrtnummer, delayTime):
 
 ############################## Daten für CSV-Datei ###############################
 # Header für CSV-Datei
-print(Jam, file=open("Eventqueue5.5.csv", "a"))
-print(stauBeginn, file=open("Eventqueue5.5.csv", "a"))
-print(stauEnde, file=open("Eventqueue5.5.csv", "a"))
+#print(stauBeginn, file=open("Eventqueue5.5.csv", "a"))
+#print(stauEnde, file=open("Eventqueue5.5.csv", "a"))
 
 print(
     "vehID Teilumlaufnummer Standort Dep/Arr Uhrzeit(Soll) Uhrzeit(Ist) Fahrtverspätung Gesamtverspätung Verspätungsursache",
