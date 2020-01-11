@@ -1,8 +1,13 @@
 # -*- coding: utf-8 -*-
 """
-Created on Fri Jan 10 17:18:33 2020
 
-@author: svenr
+Damit das Tool genutzt werden kann:
+Zunächst muss simpy installiert werden. Dafür im cmd den Befehl "pip install simpy" ausführen.
+Damit die Daten eingelesen werden können:
+Bitte speichern Sie den Ordner "opti", welcher alle Daten inkludiert, am selben Ort, an dem die Pythondatei abgespeichert ist.
+Der opti Ordner muss die Unterordner "Mo_Ferien", "Mo_Schule", "Samstag" und "Sonntag" besitzen.
+In den jeweiligen Ordnern müssen eine timetable.txt, timetable-blocks.txt und eine timetable-duties.txt Datei hinterlegt sein.
+
 """
 
 ####################### Import Packages ###################################
