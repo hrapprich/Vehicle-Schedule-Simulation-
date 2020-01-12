@@ -117,7 +117,7 @@ Checkbutton3 = Checkbutton(root, text="Pufferzeiten für Abbau von Verspätungen
 Checkbutton3.grid(row=8, column=2, columnspan=7, sticky=W)
 
 varUnfall = IntVar()
-Checkbutton4 = Checkbutton(root, text="Unfall nahe einer Haltestelle", font=Text, variable=varUnfall)
+Checkbutton4 = Checkbutton(root, text="Unfall auf Strecke", font=Text, variable=varUnfall)
 Checkbutton4.grid(row=10, column=2, columnspan=5, sticky=W)
 
 label5 = Label(root, text="Baustelle an folgender Haltestelle:", font=Text).grid(row=11, column=2, columnspan=7,
