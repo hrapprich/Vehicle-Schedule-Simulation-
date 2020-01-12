@@ -8,7 +8,8 @@ offene Punkte:
 (x) In Output Verspätungsursache aufnehmen (vlt durch Klassifikation und Ausgabe einer Zahl)
 (x) Störungen auf drei Ebenen: Einzelfahrt, Strecke/Umkreis, Global (chris)
 (x) Stau einfügen (gehört zu Störebene Strecke)
-(x) smartere Stau-Funktion mit dynamischen Vorkommen 
+(x) smartere Stau-Funktion mit dynamischen Vorkommen
+(x) Staus lokalisieren
 (x) Verspätungen in relative Werte umwandeln
 (x) mehr und validere Störungsarten
 ( ) "Interface" für Störungen
