@@ -27,7 +27,7 @@ from tkinter import font
 ausmaßPA = 0.2 # 20% der Fahrten sind von Störung betroffen
 delayPA = 0.2 # Fahrtdauer verlängert sich um 20%, wenn Störung auftritt
 # Verkehrsaufkommen
-anzahlStaus = 20 # pro Simulationstag
+anzahlStaus = 50 # pro Simulationstag
 staudauerMin = 10 # wie lange hält der Stau mindestens an (in Minuten)
 staudauerMax = 50 # wie lange hält der Stau maximal an (in Minuten)
 delayStau = 0.5 # Fahrtdauer verlängert sich bei Stau um 50%
@@ -524,20 +524,6 @@ def globalDisruption(driveduration, time):
         if (coin == 1):
             delay += int(driveduration * delayonTop)
             delayType += "PA"
-    if varVerkehrsaufkommen.get() == 1:  # Verkehrsaufkommen
-        if fromhs in stauOrt or tohs in stauOrt:
-            i = 0
-            while i < len(stauBeginn):
-                if time >= stauBeginn[i] and time < stauEnde[i]:
-                    ausmaß = 1
-                    delayonTop = delayStau
-                    coin = numpy.random.choice(numpy.arange(0, 2), p=[1 - ausmaß, ausmaß])
-                    if (coin == 1):
-                        delay += int(driveduration * delayonTop)
-                        delayType += ", Stau"
-                    i += 1000
-                else:
-                    i += 1
     if varSturm.get() == 1:  # Sturm
         ausmaß = ausmaßSturm
         delayonTop = delaySturm
@@ -565,6 +551,20 @@ BaustelleanbestimmterHS = list(baustellenHS)  # Eingabe von Benutzer nutzen
 def selectionDisruption(fromhs, tohs, driveduration, time):
     delay = 0
     delayType = ""
+    if varVerkehrsaufkommen.get() == 1:  # Verkehrsaufkommen
+        if fromhs in stauOrt or tohs in stauOrt:
+            i = 0
+            while i < len(stauBeginn):
+                if time >= stauBeginn[i] and time < stauEnde[i]:
+                    ausmaß = 1
+                    delayonTop = delayStau
+                    coin = numpy.random.choice(numpy.arange(0, 2), p=[1 - ausmaß, ausmaß])
+                    if (coin == 1):
+                        delay += int(driveduration * delayonTop)
+                        delayType += ", Stau"
+                    i += 1000
+                else:
+                    i += 1
     if varBaustelle.get() == 1:
         if fromhs in BaustelleanbestimmterHS or tohs in BaustelleanbestimmterHS:
             ausmaß = 1
@@ -597,13 +597,14 @@ def breaktime(vehID, teilumlaufnummer, fahrtnummer, delayTime):
 
 
 ############################## Daten für CSV-Datei ###############################
+print("Staubeginn: ", stauBeginn)
+print("Stauende: ", stauEnde)
+print("Stauorte: ", stauOrt)
+print("Baustellen an HS: ", BaustelleanbestimmterHS)
 # Header für CSV-Datei
-print(stauBeginn, file=open("Eventqueue5.5.csv", "a"))
-print(stauEnde, file=open("Eventqueue5.5.csv", "a"))
-
 print(
     "vehID Teilumlaufnummer Standort Dep/Arr Uhrzeit(Soll) Uhrzeit(Ist) Fahrtverspätung Gesamtverspätung Verspätungsursache",
-    file=open("Eventqueue5.5.csv", "a"))
+    file=open("Eventqueue5.6.csv", "a"))
 
 
 ########################## Objekt Vehicle #########################################
@@ -633,7 +634,7 @@ def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
                         print(vehID + 1, teilumlaufnummer + 1, FromHS_dic[vehID][teilumlaufnummer][fahrtnummer],
                               fahrtstatus, PartStartTime_dic[vehID][teilumlaufnummer][fahrtnummer], env.now,
                               "-", delayTime, "-",
-                              file=open("Eventqueue5.5.csv", "a"))
+                              file=open("Eventqueue5.6.csv", "a"))
 
                         # Verspätung auf Fahrt ermitteln
                         delayType = ""
@@ -679,13 +680,13 @@ def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
                             print(vehID + 1, teilumlaufnummer + 1, ToHS_dic[vehID][teilumlaufnummer][fahrtnummer],
                                   fahrtstatus, PartEndTime_dic[vehID][teilumlaufnummer][fahrtnummer],
                                   env.now, delayTime_perDrive, delayTime, delayType,
-                                  file=open("Eventqueue5.5.csv", "a"))
+                                  file=open("Eventqueue5.6.csv", "a"))
                             umlaufstatus = 0
                         else:
                             print(vehID + 1, teilumlaufnummer + 1, ToHS_dic[vehID][teilumlaufnummer][fahrtnummer],
                                   fahrtstatus, PartEndTime_dic[vehID][teilumlaufnummer][fahrtnummer],
                                   env.now, delayTime_perDrive, delayTime, delayType,
-                                  file=open("Eventqueue5.5.csv", "a"))
+                                  file=open("Eventqueue5.6.csv", "a"))
 
             except:
                 if env.now >= 1440:  # to avoid RunTimeError: GeneratorExit
@@ -698,7 +699,7 @@ def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
 env = simpy.Environment()
 
 # Initialisierung von Fahrzeugen
-for i in range(0, 1):  # Anzahl von Fahrzeugen = len(numberVeh)
+for i in range(0, len(numberVeh)):  # Anzahl von Fahrzeugen = len(numberVeh)
     env.process(vehicle(env, i))  # Inputdaten Eigenschaften Fahrzeugen
 # Simulation starten und Laufzeit festlegen
 env.run(until=1440)  # Ein Tag simulieren: in Minuten ausdrücken. 24h = 1440min
