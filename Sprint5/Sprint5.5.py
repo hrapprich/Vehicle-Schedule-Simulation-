@@ -237,8 +237,8 @@ df = tableFinal
 
 
 ####################### Daten einlesen ####################################
-#df = pd.read_csv("/home/chris/PythonProjekte/SemProjekt-1920/tableFinal.txt", sep=";")
- df = pd.read_csv("tableFinal.csv", sep=";")
+df = pd.read_csv("/home/chris/PythonProjekte/SemProjekt-1920/tableFinal.txt", sep=";")
+# df = pd.read_csv("tableFinal.csv", sep=";")
 ####################### Daten transformieren und neue Zeitspalten in Dataframe einfügen (Zeit) ########################
 # Umrechnung der Start- & Endzeit in Minuten (für Simulationsuhr)
 StartTime = []
@@ -479,7 +479,7 @@ def stauGenerator(n):
     stauEnde = stauEndzeitCalculator(stauBeginn)
     return stauBeginn, stauEnde
 
-stauBeginn, stauEnde = stauGenerator(10)
+stauBeginn, stauEnde = stauGenerator(20)
 ############################## Funktionen für Objekt Vehicle #############################
 
 # Abfrage: Fahrtzeit über Simulationsdauer
@@ -501,20 +501,6 @@ def globalDisruption(driveduration, time):
         if (coin == 1):
             delay += int(driveduration * delayonTop)
             delayType += "PA"
-    if varVerkehrsaufkommen.get() == 1: #Verkehrsaufkommen
-        #if fromhs in Jam or tohs in Jam:
-            i = 0
-            while i < len(stauBeginn):
-                if time >= stauBeginn[i] and time < stauEnde[i]:
-                    ausmaß = 1
-                    delayonTop = 0.5
-                    coin = numpy.random.choice(numpy.arange(0, 2), p=[1 - ausmaß, ausmaß])
-                    if (coin == 1):
-                        delay += int(driveduration * delayonTop)
-                        delayType += ", Stau"
-                    i += 1000
-                else:
-                    i += 1
     if varSturm.get() == 1: #Sturm
         ausmaß = 0.8 # Anteil an Fahrten, die von Störung betroffen sind
         delayonTop = 0.6 # Verspätung, die abhängig von Fahrtzeit on Top auf die Fahrtzeit raufkommt
@@ -542,6 +528,20 @@ BaustelleanbestimmterHS = [29] # Eingabe von Benutzer nutzen
 def selectionDisruption(fromhs, tohs, driveduration, time):
     delay = 0
     delayType = ""
+    if varVerkehrsaufkommen.get() == 1: #Verkehrsaufkommen
+        #if fromhs in Jam or tohs in Jam:
+            i = 0
+            while i < len(stauBeginn):
+                if time >= stauBeginn[i] and time < stauEnde[i]:
+                    ausmaß = 1
+                    delayonTop = 0.5
+                    coin = numpy.random.choice(numpy.arange(0, 2), p=[1 - ausmaß, ausmaß])
+                    if (coin == 1):
+                        delay += int(driveduration * delayonTop)
+                        delayType += ", Stau"
+                    i += 1000
+                else:
+                    i += 1
     if varBaustelle.get() == 1:
         if fromhs in BaustelleanbestimmterHS or tohs in BaustelleanbestimmterHS:
             ausmaß = 1
@@ -573,8 +573,8 @@ def breaktime(vehID, teilumlaufnummer, fahrtnummer, delayTime):
 
 ############################## Daten für CSV-Datei ###############################
 # Header für CSV-Datei
-#print(stauBeginn, file=open("Eventqueue5.5.csv", "a"))
-#print(stauEnde, file=open("Eventqueue5.5.csv", "a"))
+print(stauBeginn, file=open("Eventqueue5.5.csv", "a"))
+print(stauEnde, file=open("Eventqueue5.5.csv", "a"))
 
 print(
     "vehID Teilumlaufnummer Standort Dep/Arr Uhrzeit(Soll) Uhrzeit(Ist) Fahrtverspätung Gesamtverspätung Verspätungsursache",
