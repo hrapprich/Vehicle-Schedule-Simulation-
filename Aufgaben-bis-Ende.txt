@@ -11,8 +11,9 @@ offene Punkte:
 (x) smartere Stau-Funktion mit dynamischen Vorkommen 
 (x) Verspätungen in relative Werte umwandeln
 (x) mehr und validere Störungsarten
+( ) "Interface" für Störungen
 ( ) Output für KPIs (PK3)
-( ) Am Ende auf Modularität schauen
+( ) Code objektorientiert gestalten
 ( ) Auswahl in GUI welche Jahreszeit gerade ist (nicht Funktion Wetter?)
 (x) GUI optimieren/verschönern
 ( ) Personaldaten konzeptionell mitdenken bzw. Schnittstelle einfügen
