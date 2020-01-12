@@ -12,7 +12,7 @@ offene Punkte:
 (x) Staus lokalisieren
 (x) Verspätungen in relative Werte umwandeln
 (x) mehr und validere Störungsarten
-( ) "Interface" für Störungen
+(x) "Interface" für Störungen
 ( ) Output für KPIs (PK3)
 ( ) Code objektorientiert gestalten
 ( ) Auswahl in GUI welche Jahreszeit gerade ist (nicht Funktion Wetter?)
