@@ -9,6 +9,11 @@ Der opti Ordner muss die Unterordner "Mo_Ferien", "Mo_Schule", "Samstag" und "So
 In den jeweiligen Ordnern müssen eine timetable.txt, timetable-blocks.txt und eine timetable-duties.txt Datei hinterlegt sein.
 
 """
+"""
+Aus Testzwecken macht es momentan keinen Unterschied welchen Datensatz man in der GUI auswählt. 
+Es wird momentan immer der Datensatz Montag-Freitag keine Ferien verwendet.
+Auch das Eingabefeld und der Regler sind momentan nicht mit dem Code verknüpft.
+"""
 
 ####################### Import Packages ###################################
 import simpy
