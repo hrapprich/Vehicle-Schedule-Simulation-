@@ -8,13 +8,15 @@ offene Punkte:
 (x) In Output Verspätungsursache aufnehmen (vlt durch Klassifikation und Ausgabe einer Zahl)
 (x) Störungen auf drei Ebenen: Einzelfahrt, Strecke/Umkreis, Global (chris)
 (x) Stau einfügen (gehört zu Störebene Strecke)
-( ) smartere Stau-Funktion mit dynamischen Vorkommen 
+(x) smartere Stau-Funktion mit dynamischen Vorkommen
+(x) Staus lokalisieren
 (x) Verspätungen in relative Werte umwandeln
 (x) mehr und validere Störungsarten
+( ) "Interface" für Störungen
 ( ) Output für KPIs (PK3)
-( ) Am Ende auf Modularität schauen
+( ) Code objektorientiert gestalten
 ( ) Auswahl in GUI welche Jahreszeit gerade ist (nicht Funktion Wetter?)
-( ) GUI optimieren/verschönern
+(x) GUI optimieren/verschönern
 ( ) Personaldaten konzeptionell mitdenken bzw. Schnittstelle einfügen
 
 
