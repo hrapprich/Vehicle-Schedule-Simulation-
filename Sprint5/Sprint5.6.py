@@ -497,20 +497,6 @@ def globalDisruption(driveduration, time):
         if (coin == 1):
             delay += int(driveduration * delayonTop)
             delayType += "PA"
-    if varVerkehrsaufkommen.get() == 1:  # Verkehrsaufkommen
-        if fromhs in stauOrt or tohs in stauOrt:
-            i = 0
-            while i < len(stauBeginn):
-                if time >= stauBeginn[i] and time < stauEnde[i]:
-                    ausmaß = 1
-                    delayonTop = 0.5
-                    coin = numpy.random.choice(numpy.arange(0, 2), p=[1 - ausmaß, ausmaß])
-                    if (coin == 1):
-                        delay += int(driveduration * delayonTop)
-                        delayType += ", Stau"
-                    i += 1000
-                else:
-                    i += 1
     if varSturm.get() == 1:  # Sturm
         ausmaß = 0.8  # Anteil an Fahrten, die von Störung betroffen sind
         delayonTop = 0.6  # Verspätung, die abhängig von Fahrtzeit on Top auf die Fahrtzeit raufkommt
@@ -541,6 +527,20 @@ BaustelleanbestimmterHS = [29]  # Eingabe von Benutzer nutzen
 def selectionDisruption(fromhs, tohs, driveduration, time):
     delay = 0
     delayType = ""
+    if varVerkehrsaufkommen.get() == 1:  # Verkehrsaufkommen
+        if fromhs in stauOrt or tohs in stauOrt:
+            i = 0
+            while i < len(stauBeginn):
+                if time >= stauBeginn[i] and time < stauEnde[i]:
+                    ausmaß = 1
+                    delayonTop = 0.5
+                    coin = numpy.random.choice(numpy.arange(0, 2), p=[1 - ausmaß, ausmaß])
+                    if (coin == 1):
+                        delay += int(driveduration * delayonTop)
+                        delayType += ", Stau"
+                    i += 1000
+                else:
+                    i += 1
     if varBaustelle.get() == 1:
         if fromhs in BaustelleanbestimmterHS or tohs in BaustelleanbestimmterHS:
             ausmaß = 1

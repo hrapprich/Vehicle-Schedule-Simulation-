@@ -19,6 +19,7 @@ import numpy
 from random import randint
 from tkinter import *
 
+
 root = Tk()
 root.geometry("300x200")
 var1 = IntVar() 
@@ -40,7 +41,7 @@ button.pack(side='bottom', fill='y', padx='5',pady='10')
 mainloop()
 
 ####################### Daten einlesen ####################################
-df = pd.read_csv("tableFinal.csv", sep=";")
+df = pd.read_csv("/home/chris/PythonProjekte/SemProjekt-1920/tableFinal.txt", sep=";")
 ####################### Daten transformieren und neue Zeitspalten in Dataframe einfügen (Zeit) ########################
 # Umrechnung der Start- & Endzeit in Minuten (für Simulationsuhr)
 StartTime = []
@@ -95,7 +96,7 @@ for i in range(1, len(numberVeh) + 1):
 
 StartTime_dic = startTime_dic
 
-numTU_proF = []
+numTU_proF = [] #Anzahl an Teilumläufen pro Fahrzeug
 for i in range(0,len(numberVeh)):
     numTU_proF.append(len(StartTime_dic[i])-1)
 print("Die Fahrzeuge fahren im Schnitt %d Teilumläufe am Tag."
@@ -195,6 +196,7 @@ for i in range(1, len(numberVeh) + 1):
     ElementID_dic.update({i - 1: Umlauf})
 
     ###################Art des Journeys#############################
+'''
 Journey_dic = {}
 
 for i in range(1,len(numberVeh) + 1):
@@ -215,7 +217,7 @@ for i in range(1,len(numberVeh) + 1):
                 Teilumlauf.append(journey)
 
     Journey_dic.update({i-1: Umlauf})
-    
+'''
     
 ############################## Funktionen für Objekt Vehicle #############################
 
@@ -223,9 +225,6 @@ for i in range(1,len(numberVeh) + 1):
 def drive_outOfTime(time, clock):
     doOT = time + clock > 1440
     return doOT
-
-
-
 
 ############################ Störgenerator##################################
 S = 5 # Einstellen des Störfaktors
@@ -256,7 +255,7 @@ def stoerfaktor(s):  # n = Eingabeparameter um Störausmaß zu steuern
     return factorX
 
 ##Verspätungen außerhalb der Simulation bilden
-
+'''
 def verspätung():
 
     for fzg in range(1,len(numberVeh) + 1):
@@ -300,7 +299,7 @@ def verspätung():
                     
 verspätung()                    
 
-
+'''
 
 def carTraffic(time):
     if var1.get() == 1:
@@ -333,7 +332,7 @@ def weather():
 ############################## Daten für CSV-Datei ###############################
 # Header für CSV-Datei
 print("vehID Teilumlaufnummer Standort Dep/Arr Uhrzeit(Soll) Uhrzeit(Ist) Fahrtverspätung Gesamtverspätung",
-      file=open("Eventqueue4.3.csv", "a"))
+      file=open("Eventqueue4.4.csv", "a"))
 ########################## Objekt Vehicle #########################################
 def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
     while True:
@@ -363,7 +362,7 @@ def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
                         print(vehID + 1, teilumlaufnummer + 1, FromHS_dic[vehID][teilumlaufnummer][fahrtnummer],
                               fahrtstatus, PartStartTime_dic[vehID][teilumlaufnummer][fahrtnummer], env.now,
                               "-", delayTime,
-                              file=open("Eventqueue4.3.csv", "a"))
+                              file=open("Eventqueue4.4.csv", "a"))
 
                         # Verspätung auf Fahrt ermitteln
                         if ElementID_dic[vehID][teilumlaufnummer][fahrtnummer] == 9:
@@ -404,21 +403,20 @@ def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
                             print(vehID + 1, teilumlaufnummer + 1, ToHS_dic[vehID][teilumlaufnummer][fahrtnummer],
                                   fahrtstatus, PartEndTime_dic[vehID][teilumlaufnummer][fahrtnummer],
                                   env.now, delayTime_perDrive, delayTime,
-                                  file=open("Eventqueue4.3.csv", "a"))
+                                  file=open("Eventqueue4.4.csv", "a"))
                             umlaufstatus = 0
                         else:
                             print(vehID + 1, teilumlaufnummer + 1, ToHS_dic[vehID][teilumlaufnummer][fahrtnummer],
                                   fahrtstatus, PartEndTime_dic[vehID][teilumlaufnummer][fahrtnummer],
                                   env.now, delayTime_perDrive, delayTime,
-                                  file=open("Eventqueue4.3.csv", "a"))
+                                  file=open("Eventqueue4.4.csv", "a"))
 
             except:
                 if env.now >= 1440: # to avoid RunTimeError: GeneratorExit
                     return False
                 continue
 
-            ########################## Simulationsumgebung ##############################
-
+########################## Simulationsumgebung ##############################
 
 env = simpy.Environment()
 

@@ -19,8 +19,6 @@ import numpy
 
 ####################### Daten einlesen ####################################
 df = pd.read_csv("/home/chris/PythonProjekte/SemProjekt-1920/tableFinal.txt", sep=";")
-# df.info()
-
 ####################### Daten transformieren und neue Zeitspalten in Dataframe einfügen (Zeit) ########################
 # Umrechnung der Start- & Endzeit in Minuten (für Simulationsuhr)
 StartTime = []
