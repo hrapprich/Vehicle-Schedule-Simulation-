@@ -273,8 +273,8 @@ df = tableFinal
 
 
 ####################### Daten einlesen ####################################
-df = pd.read_csv("/home/chris/PythonProjekte/SemProjekt-1920/tableFinal.txt", sep=";")
-# df = pd.read_csv("tableFinal.csv", sep=";")
+#df = pd.read_csv("/home/chris/PythonProjekte/SemProjekt-1920/tableFinal.txt", sep=";")
+df = pd.read_csv("tableFinal.csv", sep=";")
 ####################### Daten transformieren und neue Zeitspalten in Dataframe einfügen (Zeit) ########################
 # Umrechnung der Start- & Endzeit in Minuten (für Simulationsuhr)
 StartTime = []
