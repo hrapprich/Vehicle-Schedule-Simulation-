@@ -434,6 +434,7 @@ def stauzeitGroup():
     staugroup = numpy.random.choice(numpy.arange(0, 3), p=[0.1, 0.25, 0.65])
     return staugroup
 
+#Quelle von def choice und def spaced_choice: https://stackoverflow.com/questions/47950131/drawing-random-numbers-with-draws-in-some-pre-defined-interval-numpy-random-ch/47950676
 def choice(low, high, delta, n_samples):  # delta = wieviel abstand zwischen den Werten
     draw = numpy.random.choice(high - low - (n_samples - 1) * delta, n_samples, replace=False)
     idx = numpy.argsort(draw)
@@ -483,6 +484,7 @@ def stauStartzeitCalculator(n):
         stauStartzeiten.append(spaced_choice(i, staugroups[i]))
     stauStartzeiten = flatList(stauStartzeiten)
     return stauStartzeiten
+
 
 def stauOrtCalculator(n):
     stauOrte = []
