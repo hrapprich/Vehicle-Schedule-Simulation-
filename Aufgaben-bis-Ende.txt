@@ -4,20 +4,24 @@ offene Punkte:
 ( ) Dateninkonsistenzen ausbessern
 (x) Dokumentation über benötigte Daten für Simulation (Dictionarys beschreiben)
 ( ) Simulationsdauer auf eine Woche ausweiten
+( ) Daten für Störungen aus GUI-Eingabe ziehen
 (x) Entscheidung dem Benutzer offen lassen: Pufferzeiten für Abbau Verspätungen nutzen oder nicht (chris)
 (x) In Output Verspätungsursache aufnehmen (vlt durch Klassifikation und Ausgabe einer Zahl)
 (x) Störungen auf drei Ebenen: Einzelfahrt, Strecke/Umkreis, Global (chris)
 (x) Stau einfügen (gehört zu Störebene Strecke)
 (x) smartere Stau-Funktion mit dynamischen Vorkommen
 (x) Staus lokalisieren
+( ) Staufunktion auskommentieren
 (x) Verspätungen in relative Werte umwandeln
 (x) mehr und validere Störungsarten
 (x) "Interface" für Störungen
 ( ) Output für KPIs (PK3)
 ( ) Code objektorientiert gestalten
-( ) Auswahl in GUI welche Jahreszeit gerade ist (nicht Funktion Wetter?)
+( ) Funktionen verschachteln (Grundfunktionen (wie z.B. Stau), die von Spezialfunktionen getriggert werden)
 (x) GUI optimieren/verschönern
 ( ) Personaldaten konzeptionell mitdenken bzw. Schnittstelle einfügen
+
+( ) PK1 Paper lesen / Fokus auf Suchprozess
 
 
 
