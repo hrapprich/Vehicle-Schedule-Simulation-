@@ -1,0 +1,26 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Sat Jan 18 10:59:56 2020
+
+@author: helen
+"""
+
+
+"""
+Frequenz: 
+
+Wie oft kommt ein Bus an einer Haltestelle an? Anzahl Busse pro Haltestelle & Stunde
+
+"""
+
+####################### Import Packages ###################################
+import simpy
+import pandas as pd
+import numpy
+import random
+from random import randint
+from tkinter import *
+from tkinter import font
+
+####################### Daten einlesen ####################################
+df = pd.read_csv("tableFinal.csv", sep=";")
