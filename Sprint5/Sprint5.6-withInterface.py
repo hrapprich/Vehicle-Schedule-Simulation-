@@ -273,8 +273,8 @@ df = tableFinal
 
 
 ####################### Daten einlesen ####################################
-#df = pd.read_csv("/home/chris/PythonProjekte/SemProjekt-1920/tableFinal.txt", sep=";")
-df = pd.read_csv("tableFinal.csv", sep=";")
+df = pd.read_csv("/home/chris/PythonProjekte/SemProjekt-1920/tableFinal.txt", sep=";")
+#df = pd.read_csv("tableFinal.csv", sep=";")
 ####################### Daten transformieren und neue Zeitspalten in Dataframe einfügen (Zeit) ########################
 # Umrechnung der Start- & Endzeit in Minuten (für Simulationsuhr)
 StartTime = []
@@ -428,6 +428,7 @@ for i in range(1, len(numberVeh) + 1):
     PartStartTime_dic.update({i - 1: StartTime})
     PartEndTime_dic.update({i - 1: EndTime})
     ElementID_dic.update({i - 1: Umlauf})
+
 
 ####### Funktion: Stauausbruch zu bestimmten Zeiten #########################
 def stauzeitGroup():
