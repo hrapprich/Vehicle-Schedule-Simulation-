@@ -34,28 +34,28 @@ RushhourStart1 = 390
 RushhourEnde1 = 510
 RushhourStart2 = 870
 RushhourEnde2 = 1110
-delayRushhour = 30 # 30 Minuten Verspätung immer wenn Rushhour auf allen Fahrten (sinnvoll?)
+delayRushhour = 2
 #Event-Veranstaktungen
 eventOrte = []
 
-# Verkehrsaufkommen
+# rdmStau-Funktion
 anzahlStaus = 20 # pro Simulationstag
 staudauerMin = 10 # wie lange hält der Stau mindestens an (in Minuten)
 staudauerMax = 50 # wie lange hält der Stau maximal an (in Minuten)
 delayStau = 0.5 # Fahrtdauer verlängert sich bei Stau um 50%
 # Sturm
 ausmaßSturm = 0.8 # 80 % der Fahrten sind von Störung betroffen
-delaySturm = 0.6 # Fahrtdauer verlänget sich Sturm um 60%
+delaySturm = 0.4 # Fahrtdauer verlänget sich Sturm um 60%
 # Regen
 ausmaßRegen = 0.5 # 50 % der Fahrten sind von Störung betroffen
-delayRegen = 0.4 # Fahrtdauer verlänget sich Sturm um 40%
+delayRegen = 0.1 # Fahrtdauer verlänget sich Sturm um 40%
 # Fahrzeugausfall
 ausmaßAusfall = 0.01 # 1% Wahrscheinlichkeit, dass Fahrzeug ausfällt (delay = 1440)
 # Baustelle an bestimmten Haltestellen
 baustellenHS = 29, 167, 83
 delayBaustelle = 1 # Fahrtdauer bei Baustelle verdoppelt sich
 # Unfall
-ausmaßUnfall = 0.05 # 5% Wahrscheinlichkeit, dass Unfall während passiert (Fahrzeug nicht beteiligt)
+ausmaßUnfall = 0.05 # 5% Wahrscheinlichkeit, dass Unfall während der Fahrt passiert (Fahrzeug nicht beteiligt)
 delayUnfall = round(random.uniform(0.5,2),2) # Fahrtdauer bei Unfall variiert zwischen 0.5 & 2
 
 ######################## GUI Design #############################################
@@ -108,11 +108,6 @@ Sonntag = IntVar()
 Checkbutton4 = Checkbutton(root, text="Sonntag", font=Text, variable=Sonntag)
 Checkbutton4.grid(row=4, column=2, columnspan=5, sticky=W)
 
-varPassagieraufkommen = IntVar()
-Checkbutton1 = Checkbutton(root, text="Erhöhtes Passagieraufkommen an einigen Haltestellen", font=Text,
-                           variable=varPassagieraufkommen)
-Checkbutton1.grid(row=6, column=2, columnspan=7, sticky=W)
-
 varRdmStaus = IntVar()
 Checkbutton2 = Checkbutton(root, text="Random Staus verstreut über das Fahrplannetz", font=Text,
                            variable=varRdmStaus)
@@ -131,8 +126,6 @@ label5 = Label(root, text="Baustelle an folgender Haltestelle:", font=Text).grid
                                                                                  sticky=W)
 varBaustelle = IntVar()
 e1 = Entry(root).grid(row=11, column=7, sticky=W)
-# Checkbutton5 = Checkbutton(root, text = "Baustelle an bestimmter Haltestelle (hier: HS 29)", font = Text, variable = varBaustelle)
-# Checkbutton5.grid(row = 11, column = 4, columnspan=1, sticky=W)
 
 varSturm = IntVar()
 Checkbutton6 = Checkbutton(root, text="An diesem Tag gibt es Sturm.", font=Text, variable=varSturm)
@@ -450,6 +443,7 @@ def delayCalculator(ausmaß, driveduration, delayonTop):
     if (coin == 1):
         delayperDisruption = int(driveduration * delayonTop)
     return delayperDisruption
+
 def rushhour(time):
     if time >= RushhourStart1 and time <= RushhourEnde1: # Fahrtzeit liegt in RushHour
         return True
@@ -589,6 +583,12 @@ stauBeginn, stauEnde, stauOrt = stauGenerator(anzahlStaus)
 # Ausmaß = Anteil an Fahrten, die von Störung betroffen sind
 # delayonTop = Verspätung, die abhängig von Fahrtzeit on Top auf die Fahrtzeit raufkommt
 
+# Werte müssen in die GUi aufgenommen werden (für Testzwecke hier entspannter zum Einstellen)
+varWeather = 1
+varEvent = 0 #Event-Funktion noch nicht funktionstüchtig
+varBaustelle = 0
+varUnfall = 0
+
 
 def passengerDisruption(time, driveduration, startHS, endHS): # Funktion für die Verlängerung der Haltezeit
     delay = 0
@@ -606,10 +606,7 @@ def passengerDisruption(time, driveduration, startHS, endHS): # Funktion für di
         delayType += delayTypeEvent
     return delay, delayType
 
-varWeather = 1
-varEvent = 0 #Event-Funktion noch nicht funktionstüchtig
-varBaustelle = 1
-varUnfall = 1
+
 
 def trafficDisruption(startHS, endHS, driveduration, time):
     delay = 0
@@ -668,10 +665,6 @@ def breaktime(vehID, teilumlaufnummer, fahrtnummer, delayTime):
 
 
 ############################## Daten für CSV-Datei ###############################
-print("Staubeginn: ", stauBeginn)
-print("Stauende: ", stauEnde)
-print("Stauorte: ", stauOrt)
-print("Baustellen an HS: ", BaustellenListe)
 # Header für CSV-Datei
 print(
     "vehID Teilumlaufnummer Standort Dep/Arr Uhrzeit(Soll) Uhrzeit(Ist) Fahrtverspätung Gesamtverspätung Verspätungsursache",
@@ -698,6 +691,8 @@ def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
 
                         if ElementID_dic[vehID][teilumlaufnummer][fahrtnummer] == 9:
                             fahrtstatus = 2
+                            delayPassenger = 0
+                            delayTypePassenger = "-"
                         else:
                             fahrtstatus = 0  # 0 = Abfahrt / 1 = Ankunft / 2 = Pause
 
@@ -706,26 +701,27 @@ def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
                                                                 FromHS_dic[vehID][teilumlaufnummer][fahrtnummer],
                                                                 ToHS_dic[vehID][teilumlaufnummer][fahrtnummer])
 
-                            delayTime += delayPassenger
-                            yield env.timeout(delayPassenger)
+                            delayTime_perStop = delayPassenger
+                            delayType = delayTypePassenger
+
+                        delayTime += delayPassenger
+                        yield env.timeout(delayPassenger)
 
                         print(vehID + 1, teilumlaufnummer + 1, FromHS_dic[vehID][teilumlaufnummer][fahrtnummer],
                               fahrtstatus, PartStartTime_dic[vehID][teilumlaufnummer][fahrtnummer], env.now,
-                              delayPassenger, delayTime, delayTypePassenger,
+                              delayTime_perStop, delayTime, delayType,
                               file=open("Eventqueue5.7.csv", "a"))
 
                         # Verspätung auf Fahrt ermitteln
-                        delayType = ""
                         if ElementID_dic[vehID][teilumlaufnummer][fahrtnummer] == 9:
                             delayTime_perDrive = 0
                             delayType = "-"
                         else:
-
                             delayTraffic, delayTypeTraffic = trafficDisruption(
-                                FromHS_dic[vehID][teilumlaufnummer][fahrtnummer],
-                                ToHS_dic[vehID][teilumlaufnummer][fahrtnummer],
-                                DriveDuration_dic[vehID][teilumlaufnummer][fahrtnummer],
-                                env.now)
+                                                                FromHS_dic[vehID][teilumlaufnummer][fahrtnummer],
+                                                                ToHS_dic[vehID][teilumlaufnummer][fahrtnummer],
+                                                                DriveDuration_dic[vehID][teilumlaufnummer][fahrtnummer],
+                                                                env.now)
 
                             delayTime_perDrive = delayTraffic
                             delayType = delayTypeTraffic
