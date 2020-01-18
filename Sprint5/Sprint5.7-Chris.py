@@ -36,7 +36,9 @@ RushhourStart2 = 870
 RushhourEnde2 = 1110
 delayRushhour = 2
 #Event-Veranstaktungen
-eventOrte = []
+eventOrte = [39]
+
+#Ab zeile 593 kann man die weiteren Funktionen aktivieren (müssten dann später in die GUI)
 
 # rdmStau-Funktion
 anzahlStaus = 20 # pro Simulationstag
@@ -470,6 +472,8 @@ def weather(driveduration):
     return delay, delayType
 
 def event(startHS, endHS):
+    delay = 0
+    delayType = ""
     if startHS in eventOrte or endHS in eventOrte:
         delay = 12
         delayType = "|Event|"
@@ -477,12 +481,15 @@ def event(startHS, endHS):
 
 BaustellenListe = list(baustellenHS)  # Eingabe von Benutzer nutzen
 def baustelle(startHS, endHS):
+    delayonTop = 0
+    delayType = ""
     if startHS in BaustellenListe or endHS in BaustellenListe:
         delayonTop = 10
         delayType = "|Baustelle|"
     return delayonTop, delayType
 
 def unfall(driveduration):
+    delayType = ""
     delayactiveU = delayCalculator(ausmaßUnfall, driveduration, delayUnfall)
     delay = delayactiveU
     if delayactiveU > 0:
@@ -585,9 +592,9 @@ stauBeginn, stauEnde, stauOrt = stauGenerator(anzahlStaus)
 
 # Werte müssen in die GUi aufgenommen werden (für Testzwecke hier entspannter zum Einstellen)
 varWeather = 1
-varEvent = 0 #Event-Funktion noch nicht funktionstüchtig
-varBaustelle = 0
-varUnfall = 0
+varEvent = 1 #Event-Funktion noch nicht funktionstüchtig
+varBaustelle = 1
+varUnfall = 1
 
 
 def passengerDisruption(time, driveduration, startHS, endHS): # Funktion für die Verlängerung der Haltezeit
@@ -771,7 +778,7 @@ def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
 env = simpy.Environment()
 
 # Initialisierung von Fahrzeugen
-for i in range(0, 1):  # Anzahl von Fahrzeugen = len(numberVeh)
+for i in range(0, len(numberVeh)):  # Anzahl von Fahrzeugen = len(numberVeh)
     env.process(vehicle(env, i))  # Inputdaten Eigenschaften Fahrzeugen
 # Simulation starten und Laufzeit festlegen
 env.run(until=1440)  # Ein Tag simulieren: in Minuten ausdrücken. 24h = 1440min
