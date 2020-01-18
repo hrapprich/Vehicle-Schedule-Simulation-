@@ -1,0 +1,27 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Thu Jan 16 17:28:31 2020
+
+@author: helen
+"""
+
+"""
+Gewichtete ∅ Distanz: 
+
+Gibt Auskunft über die Verteilung der Pufferzeiten entlang der Strecke 
+
+Robustheit eines Fahrplans erhöht, wenn die Pufferzeiten eher zu Beginn der 
+Strecke eingeplant werden (WAD < 0,5) 
+"""
+
+####################### Import Packages ###################################
+import simpy
+import pandas as pd
+import numpy
+import random
+from random import randint
+from tkinter import *
+from tkinter import font
+
+####################### Daten einlesen ####################################
+df = pd.read_csv("tableFinal.csv", sep=";")
