@@ -28,11 +28,18 @@ from tkinter import font
 # Ausmaß = Anteil an Fahrten, die von der Störung betroffen sind
 # Delay = Verspätung (relativ zur Fahrtdauer der Fahrt), die zur Fahrtdauer hinzukommt
 
-# Passagieraufkommen
-ausmaßPA = 0.2 # 20% der Fahrten sind von Störung betroffen
-delayPA = 0.2 # Fahrtdauer verlängert sich um 20%, wenn Störung auftritt
+## neue Variablen
+#Rushhour-Funktion
+RushhourStart1 = 390
+RushhourEnde1 = 510
+RushhourStart2 = 870
+RushhourEnde2 = 1110
+delayRushhour = 30 # 30 Minuten Verspätung immer wenn Rushhour auf allen Fahrten (sinnvoll?)
+#Event-Veranstaktungen
+eventOrte = []
+
 # Verkehrsaufkommen
-anzahlStaus = 50 # pro Simulationstag
+anzahlStaus = 20 # pro Simulationstag
 staudauerMin = 10 # wie lange hält der Stau mindestens an (in Minuten)
 staudauerMax = 50 # wie lange hält der Stau maximal an (in Minuten)
 delayStau = 0.5 # Fahrtdauer verlängert sich bei Stau um 50%
@@ -106,9 +113,9 @@ Checkbutton1 = Checkbutton(root, text="Erhöhtes Passagieraufkommen an einigen H
                            variable=varPassagieraufkommen)
 Checkbutton1.grid(row=6, column=2, columnspan=7, sticky=W)
 
-varVerkehrsaufkommen = IntVar()
-Checkbutton2 = Checkbutton(root, text="Erhöhtes Verkehrsaufkommen an einigen Haltestellen", font=Text,
-                           variable=varVerkehrsaufkommen)
+varRdmStaus = IntVar()
+Checkbutton2 = Checkbutton(root, text="Random Staus verstreut über das Fahrplannetz", font=Text,
+                           variable=varRdmStaus)
 Checkbutton2.grid(row=7, column=2, columnspan=7, sticky=W)
 
 varPufferzeit = IntVar()
@@ -429,6 +436,75 @@ for i in range(1, len(numberVeh) + 1):
     PartEndTime_dic.update({i - 1: EndTime})
     ElementID_dic.update({i - 1: Umlauf})
 
+############################## Funktionen für Objekt Vehicle #############################
+
+# Abfrage: Fahrtzeit über Simulationsdauer
+def drive_outOfTime(time, clock):
+    doOT = time + clock > 1440
+    return doOT
+
+########################### Funktionen für Störungen ##############################################
+def delayCalculator(ausmaß, driveduration, delayonTop):
+    delayperDisruption = 0
+    coin = numpy.random.choice(numpy.arange(0, 2), p=[1 - ausmaß, ausmaß])
+    if (coin == 1):
+        delayperDisruption = int(driveduration * delayonTop)
+    return delayperDisruption
+def rushhour(time):
+    if time >= RushhourStart1 and time <= RushhourEnde1: # Fahrtzeit liegt in RushHour
+        return True
+    elif time >= RushhourStart2 and time <= RushhourEnde2:
+        return True
+    else:
+        return False
+
+def weather(driveduration):
+    delay = 0
+    delayType = ""
+    if varSturm.get() == 1: # Störungen durch Sturm
+        ausmaß = ausmaßSturm
+        delayactiveS = delayCalculator(ausmaß, driveduration, delaySturm)
+        delay += delayactiveS
+        if delayactiveS > 0:
+            delayType += "|Sturm|"
+    if varRegen.get() == 1:  # Störungen durch Regen
+        ausmaß = ausmaßRegen
+        delayactiveR = delayCalculator(ausmaß, driveduration, delayRegen)
+        delay += delayactiveR
+        if delayactiveR > 0:
+            delayType += "|Regen|"
+    return delay, delayType
+
+def event(startHS, endHS):
+    if startHS in eventOrte or endHS in eventOrte:
+        delay = 12
+        delayType = "|Event|"
+    return delay, delayType
+
+BaustellenListe = list(baustellenHS)  # Eingabe von Benutzer nutzen
+def baustelle(startHS, endHS):
+    if startHS in BaustellenListe or endHS in BaustellenListe:
+        delayonTop = 10
+        delayType = "|Baustelle|"
+    return delayonTop, delayType
+
+def unfall(driveduration):
+    delayactiveU = delayCalculator(ausmaßUnfall, driveduration, delayUnfall)
+    delay = delayactiveU
+    if delayactiveU > 0:
+        delayType = "|Unfall|"
+    return delay, delayType
+
+def fahrzeugausfall():
+    delay = 0
+    delayType = ""
+    coin = numpy.random.choice(numpy.arange(0, 2), p=[1 - ausmaßAusfall, ausmaßAusfall])
+    if (coin == 1):
+        delay = 1440
+        delayType = "|Fahrzeugausfall|"
+    return delay, delayType
+
+############# crazy Staufunktion ##############
 
 ####### Funktion: Stauausbruch zu bestimmten Zeiten #########################
 def stauzeitGroup():
@@ -507,59 +583,57 @@ def stauGenerator(n):
     return stauBeginn, stauEnde, stauOrt
 
 stauBeginn, stauEnde, stauOrt = stauGenerator(anzahlStaus)
-#print("Staubeginn: ", stauBeginn)
-#print("StauEnde: ", stauEnde)
-#print("Stauort: ", stauOrt)
-
-############################## Funktionen für Objekt Vehicle #############################
-
-# Abfrage: Fahrtzeit über Simulationsdauer
-def drive_outOfTime(time, clock):
-    doOT = time + clock > 1440
-    return doOT
 
 
 ############################ Störgenerator##################################
 # Ausmaß = Anteil an Fahrten, die von Störung betroffen sind
 # delayonTop = Verspätung, die abhängig von Fahrtzeit on Top auf die Fahrtzeit raufkommt
-def globalDisruption(driveduration, time):
-    delay = 0
-    delayType = ""
-    if varPassagieraufkommen.get() == 1:  # Passagieraufkommen
-        ausmaß = ausmaßPA
-        delayonTop = delayPA
-        coin = numpy.random.choice(numpy.arange(0, 2), p=[1 - ausmaß, ausmaß])
-        if (coin == 1):
-            delay += int(driveduration * delayonTop)
-            delayType += "PA"
-    if varSturm.get() == 1:  # Sturm
-        ausmaß = ausmaßSturm
-        delayonTop = delaySturm
-        coin = numpy.random.choice(numpy.arange(0, 2), p=[1 - ausmaß, ausmaß])
-        if (coin == 1):
-            delay += int(driveduration * delayonTop)
-            delayType += ", Sturm"
-    if varRegen.get() == 1:  # Regen
-        ausmaß = ausmaßRegen
-        delayonTop = delayRegen
-        coin = numpy.random.choice(numpy.arange(0, 2), p=[1 - ausmaß, ausmaß])
-        if (coin == 1):
-            delay += int(driveduration * delayonTop)
-            delayType += ", Regen"
-    if varFahrzeugausfall.get() == 1:
-        ausmaß = ausmaßAusfall
-        coin = numpy.random.choice(numpy.arange(0, 2), p=[1 - ausmaß, ausmaß])
-        if (coin == 1):
-            delay = 1440
-            delayType += ", Fahrzeugausfall"
-    return delay, delayType  # Type der Störung bei Ausgabe angeben (durch Input Checkbox bestimmt)(Funktion immer dieselbe)
 
 
-BaustelleanbestimmterHS = list(baustellenHS)  # Eingabe von Benutzer nutzen
-def selectionDisruption(fromhs, tohs, driveduration, time):
+def passengerDisruption(time, driveduration, startHS, endHS): # Funktion für die Verlängerung der Haltezeit
     delay = 0
     delayType = ""
-    if varVerkehrsaufkommen.get() == 1:  # Verkehrsaufkommen
+    if rushhour(time):
+        delay += delayRushhour
+        delayType += "|Hauptverkehrszeit|"
+    if varWeather == 1:
+        delayWeather, delayTypeWeather = weather(driveduration)
+        delay += delayWeather
+        delayType += delayTypeWeather
+    if varEvent == 1:
+        delayEvent, delayTypeEvent = event(startHS, endHS)
+        delay += delayEvent
+        delayType += delayTypeEvent
+    return delay, delayType
+
+varWeather = 1
+varEvent = 0 #Event-Funktion noch nicht funktionstüchtig
+varBaustelle = 1
+varUnfall = 1
+
+def trafficDisruption(startHS, endHS, driveduration, time):
+    delay = 0
+    delayType = ""
+    if rushhour(time):
+        delay += delayRushhour
+        delayType += "|Hauptverkehrszeit|"
+    if varWeather == 1:
+        delayWeather, delayTypeWeather = weather(driveduration)
+        delay += delayWeather
+        delayType += delayTypeWeather
+    if varEvent == 1:
+        delayEvent, delayTypeEvent = event(startHS, endHS)
+        delay += delayEvent
+        delayType += delayTypeEvent
+    if varBaustelle == 1:
+        delayBau, delayTypeBau = baustelle(startHS, endHS)
+        delay += delayBau
+        delayType += delayTypeBau
+    if varUnfall == 1:
+        delayUnfall, delayTypeUnfall = unfall(driveduration)
+        delay += delayUnfall
+        delayType += delayTypeUnfall
+    if varRdmStaus.get() == 1:  # Verkehrsaufkommen
         if fromhs in stauOrt or tohs in stauOrt:
             i = 0
             while i < len(stauBeginn):
@@ -569,26 +643,15 @@ def selectionDisruption(fromhs, tohs, driveduration, time):
                     coin = numpy.random.choice(numpy.arange(0, 2), p=[1 - ausmaß, ausmaß])
                     if (coin == 1):
                         delay += int(driveduration * delayonTop)
-                        delayType += ", Stau"
+                        delayType += "|rdmStau|"
                     i += 1000
                 else:
                     i += 1
-    if varBaustelle.get() == 1:
-        if fromhs in BaustelleanbestimmterHS or tohs in BaustelleanbestimmterHS:
-            ausmaß = 1
-            delayonTop = delayBaustelle
-            coin = numpy.random.choice(numpy.arange(0, 2), p=[1 - ausmaß, ausmaß])
-            if (coin == 1):
-                delay += int(driveduration * delayonTop)
-                delayType += ", Baustelle"
-    if varUnfall.get() == 1:
-        ausmaß = ausmaßUnfall
-        delayonTop = delayUnfall
-        coin = numpy.random.choice(numpy.arange(0, 2), p=[1 - ausmaß, ausmaß])
-        if (coin == 1):
-            delay += int(driveduration * delayonTop)
-            delayType += ", Unfall"
-    return delay, delayType  # Type der Störung bei Ausgabe angeben (durch Input Checkbox bestimmt)(Funktion immer dieselbe)
+    if varFahrzeugausfall.get() == 1:
+        delayAusfall, delayTypeAusfall = fahrzeugausfall()
+        delay += delayAusfall
+        delayType += delayTypeAusfall
+    return delay, delayType
 
 
 def breaktime(vehID, teilumlaufnummer, fahrtnummer, delayTime):
@@ -608,11 +671,11 @@ def breaktime(vehID, teilumlaufnummer, fahrtnummer, delayTime):
 print("Staubeginn: ", stauBeginn)
 print("Stauende: ", stauEnde)
 print("Stauorte: ", stauOrt)
-print("Baustellen an HS: ", BaustelleanbestimmterHS)
+print("Baustellen an HS: ", BaustellenListe)
 # Header für CSV-Datei
 print(
     "vehID Teilumlaufnummer Standort Dep/Arr Uhrzeit(Soll) Uhrzeit(Ist) Fahrtverspätung Gesamtverspätung Verspätungsursache",
-    file=open("Eventqueue5.6.csv", "a"))
+    file=open("Eventqueue5.7.csv", "a"))
 
 
 ########################## Objekt Vehicle #########################################
@@ -638,11 +701,18 @@ def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
                         else:
                             fahrtstatus = 0  # 0 = Abfahrt / 1 = Ankunft / 2 = Pause
 
-                        delayTime_perDrive = 0  # für PrintAusgabe hier definiert
+                            delayPassenger, delayTypePassenger = passengerDisruption(env.now,
+                                                                DriveDuration_dic[vehID][teilumlaufnummer][fahrtnummer],
+                                                                FromHS_dic[vehID][teilumlaufnummer][fahrtnummer],
+                                                                ToHS_dic[vehID][teilumlaufnummer][fahrtnummer])
+
+                            delayTime += delayPassenger
+                            yield env.timeout(delayPassenger)
+
                         print(vehID + 1, teilumlaufnummer + 1, FromHS_dic[vehID][teilumlaufnummer][fahrtnummer],
                               fahrtstatus, PartStartTime_dic[vehID][teilumlaufnummer][fahrtnummer], env.now,
-                              "-", delayTime, "-",
-                              file=open("Eventqueue5.6.csv", "a"))
+                              delayPassenger, delayTime, delayTypePassenger,
+                              file=open("Eventqueue5.7.csv", "a"))
 
                         # Verspätung auf Fahrt ermitteln
                         delayType = ""
@@ -650,17 +720,15 @@ def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
                             delayTime_perDrive = 0
                             delayType = "-"
                         else:
-                            delayGlobal, delayTypeGlobal = globalDisruption(
-                                DriveDuration_dic[vehID][teilumlaufnummer][fahrtnummer],
-                                env.now)
-                            delaySelection, delayTypeSelection = selectionDisruption(
+
+                            delayTraffic, delayTypeTraffic = trafficDisruption(
                                 FromHS_dic[vehID][teilumlaufnummer][fahrtnummer],
                                 ToHS_dic[vehID][teilumlaufnummer][fahrtnummer],
                                 DriveDuration_dic[vehID][teilumlaufnummer][fahrtnummer],
                                 env.now)
 
-                            delayTime_perDrive = delayGlobal + delaySelection
-                            delayType = delayTypeGlobal + " " + delayTypeSelection
+                            delayTime_perDrive = delayTraffic
+                            delayType = delayTypeTraffic
 
                         # Aufsummieren der Verspätungen im Teilumlauf
                         delayTime += delayTime_perDrive
@@ -688,13 +756,13 @@ def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
                             print(vehID + 1, teilumlaufnummer + 1, ToHS_dic[vehID][teilumlaufnummer][fahrtnummer],
                                   fahrtstatus, PartEndTime_dic[vehID][teilumlaufnummer][fahrtnummer],
                                   env.now, delayTime_perDrive, delayTime, delayType,
-                                  file=open("Eventqueue5.6.csv", "a"))
+                                  file=open("Eventqueue5.7.csv", "a"))
                             umlaufstatus = 0
                         else:
                             print(vehID + 1, teilumlaufnummer + 1, ToHS_dic[vehID][teilumlaufnummer][fahrtnummer],
                                   fahrtstatus, PartEndTime_dic[vehID][teilumlaufnummer][fahrtnummer],
                                   env.now, delayTime_perDrive, delayTime, delayType,
-                                  file=open("Eventqueue5.6.csv", "a"))
+                                  file=open("Eventqueue5.7.csv", "a"))
 
             except:
                 if env.now >= 1440:  # to avoid RunTimeError: GeneratorExit
@@ -707,7 +775,7 @@ def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
 env = simpy.Environment()
 
 # Initialisierung von Fahrzeugen
-for i in range(0, len(numberVeh)):  # Anzahl von Fahrzeugen = len(numberVeh)
+for i in range(0, 1):  # Anzahl von Fahrzeugen = len(numberVeh)
     env.process(vehicle(env, i))  # Inputdaten Eigenschaften Fahrzeugen
 # Simulation starten und Laufzeit festlegen
 env.run(until=1440)  # Ein Tag simulieren: in Minuten ausdrücken. 24h = 1440min
