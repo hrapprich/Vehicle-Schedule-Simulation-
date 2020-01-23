@@ -16,6 +16,7 @@ offene Punkte:
 (x) Störungen aufräumen und mit GUI verknüpfen
 
 ( ) Prioliste erstellen (was muss bis wann stehen?)
+( ) Störungsursache für Pausen removen
 ( ) Möglichkeit, eine Fahrt überspringen, einbauen
 ( ) Staufunktion auskommentieren
 ( ) Simulationsdauer auf eine Woche ausweiten
