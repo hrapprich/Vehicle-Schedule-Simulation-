@@ -17,8 +17,14 @@ offene Punkte:
 
 Prioliste:
 ( ) KPIs einfügen
+  ( ) Pünktlichkeit: Anteil und Anzahl an pünktlichen Fahrten (Ist-Soll = 0)
+  ( ) Verspätungspropagation (Formel in Word)
+  ( ) Wirkungsgrade: 
+    ( ) wieviel Prozent der Zeit sind Servicefahrten und Leerfahrten
+    ( ) wieviel Prozent der Strecke sind SF und LF
 ( ) Störungen zum Laufen bringen
 ( ) Fahrerstörungen raus
+
 
 ( ) wieviele Fahrzeuge haben nur einen Teilumlauf? hier wirken dispositive Entscheidungen nicht
 ( ) Event mit Zeitspanne, die man in GUI festlegen kann
