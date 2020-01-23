@@ -41,12 +41,13 @@ delayRushhour = 2
 #eventOrte = [39]
 
 #Ab zeile 593 kann man die weiteren Funktionen aktivieren (müssten dann später in die GUI)
-
+'''
 # rdmStau-Funktion
 anzahlStaus = 20 # pro Simulationstag
 staudauerMin = 10 # wie lange hält der Stau mindestens an (in Minuten)
 staudauerMax = 50 # wie lange hält der Stau maximal an (in Minuten)
 delayStau = 0.5 # Fahrtdauer verlängert sich bei Stau um 50%
+'''
 # Sturm
 ausmaßSturm = 0.8 # 80 % der Fahrten sind von Störung betroffen
 delaySturm = 0.4 # Fahrtdauer verlänget sich Sturm um 60%
@@ -61,6 +62,8 @@ delayBaustelle = 1 # Fahrtdauer bei Baustelle verdoppelt sich
 ausmaßUnfall = 0.05 # 5% Wahrscheinlichkeit, dass Unfall während der Fahrt passiert (Fahrzeug nicht beteiligt)
 delayUnfall = round(random.uniform(0.5,2),2) # Fahrtdauer bei Unfall variiert zwischen 0.5 & 2
 
+delayEvent = 12 # absolute Zahl
+delayBaustelle = 10 #absolute Zahl
 ######################## GUI Design #############################################
 
 
@@ -307,8 +310,8 @@ df = tableFinal
 
 
 ####################### Daten einlesen ####################################
-#df = pd.read_csv("/home/chris/PythonProjekte/SemProjekt-1920/tableFinal.txt", sep=";")
-df = pd.read_csv("tableFinal.csv", sep=";")
+df = pd.read_csv("/home/chris/PythonProjekte/SemProjekt-1920/tableFinal.txt", sep=";")
+#df = pd.read_csv("tableFinal.csv", sep=";")
 ####################### Daten transformieren und neue Zeitspalten in Dataframe einfügen (Zeit) ########################
 # Umrechnung der Start- & Endzeit in Minuten (für Simulationsuhr)
 StartTime = []
@@ -507,7 +510,7 @@ def event(startHS, endHS):
     delay = 0
     delayType = ""
     if startHS in eventOrte or endHS in eventOrte:
-        delay = 12
+        delay = delayEvent
         delayType = "|Event|"
     else:
         delay = 0
@@ -518,7 +521,7 @@ def baustelle(startHS, endHS):
     delayonTop = 0
     delayType = ""
     if startHS in BaustellenListe or endHS in BaustellenListe:
-        delayonTop = 10
+        delayonTop = delayBaustelle
         delayType = "|Baustelle|"
     else:
         delayonTop = 0
