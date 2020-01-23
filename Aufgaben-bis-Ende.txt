@@ -16,7 +16,8 @@ offene Punkte:
 (x) Störungen aufräumen und mit GUI verknüpfen
 
 ( ) wieviele Fahrzeuge haben nur einen Teilumlauf? hier wirken dispositive Entscheidungen nicht
-( ) Unfall an bestimmter HS (auch wenn rdm bestimmt) muss alle Fahrzeuge beeinflussen, die dort vorbeifahren
+( ) Event mit Zeitspanne, die man in GUI festlegen kann
+( ) Unfall an bestimmter HS (auch wenn rdm bestimmt) muss alle Fahrzeuge beeinflussen, die dort vorbeifahren & die Dauer des daraus resultierenden Staus liegt zwischen x und y (rdmStau-Funktion zum Teil verwenden)
 ( ) Prioliste erstellen (was muss bis wann stehen?)
 ( ) Störungsursache für Pausen removen
 ( ) dispositive Entscheidungen für Verspätungen (z.B. wann Teilumlauf abbrechen) 
