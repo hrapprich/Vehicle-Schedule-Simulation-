@@ -15,8 +15,10 @@ offene Punkte:
 (x) GUI optimieren/verschönern
 (x) Störungen aufräumen und mit GUI verknüpfen
 
+( ) wieviele Fahrzeuge haben nur einen Teilumlauf? hier wirken dispositive Entscheidungen nicht
 ( ) Prioliste erstellen (was muss bis wann stehen?)
 ( ) Störungsursache für Pausen removen
+( ) dispositive Entscheidungen für Verspätungen (z.B. wann Teilumlauf abbrechen) 
 ( ) Möglichkeit, eine Fahrt überspringen, einbauen
 ( ) Staufunktion auskommentieren
 ( ) Simulationsdauer auf eine Woche ausweiten
