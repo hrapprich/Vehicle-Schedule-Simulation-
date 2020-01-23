@@ -9,11 +9,6 @@ Bitte speichern Sie den Ordner "opti", welcher alle Daten inkludiert, am selben 
 Der opti Ordner muss die Unterordner "Mo_Ferien", "Mo_Schule", "Samstag" und "Sonntag" besitzen.
 In den jeweiligen Ordnern müssen eine timetable.txt, timetable-blocks.txt und eine timetable-duties.txt Datei hinterlegt sein.
 """
-"""
-Aus Testzwecken macht es momentan keinen Unterschied welchen Datensatz man in der GUI auswählt. 
-Es wird momentan immer der Datensatz Montag-Freitag keine Ferien verwendet.
-Auch das Eingabefeld und der Regler sind momentan nicht mit dem Code verknüpft.
-"""
 
 ####################### Import Packages ###################################
 import simpy
@@ -29,40 +24,43 @@ import tkinter.ttk as ttk
 # Ausmaß = Anteil an Fahrten, die von der Störung betroffen sind
 # Delay = Verspätung (relativ zur Fahrtdauer der Fahrt), die zur Fahrtdauer hinzukommt
 
-## neue Variablen
-# Rushhour-Funktion
+###### Funktionen, die immer aktiviert sind ##########
+## Rushhour-Funktion
 RushhourStart1 = 390
 RushhourEnde1 = 510
 RushhourStart2 = 870
 RushhourEnde2 = 1110
 delayRushhour = 2
-# Event-Veranstaktungen
-# eventOrte = [39]
 
-# Ab zeile 593 kann man die weiteren Funktionen aktivieren (müssten dann später in die GUI)
-'''
-# rdmStau-Funktion
-anzahlStaus = 20 # pro Simulationstag
+## Unfall-Funktion
+anzahlUnfaelle = 20 # pro Simulationstag
 staudauerMin = 10 # wie lange hält der Stau mindestens an (in Minuten)
 staudauerMax = 50 # wie lange hält der Stau maximal an (in Minuten)
 delayStau = 0.5 # Fahrtdauer verlängert sich bei Stau um 50%
-'''
+
+###### Funktionen, die per GUI aktiviert werden können ############
+
+## Wetter-Funktion
 # Sturm
 ausmaßSturm = 0.8  # 80 % der Fahrten sind von Störung betroffen
-delaySturm = 0.4  # Fahrtdauer verlänget sich Sturm um 60%
+delaySturm = 0.4  # Fahrtdauer verlänget sich Sturm um 40%
 # Regen
 ausmaßRegen = 0.5  # 50 % der Fahrten sind von Störung betroffen
-delayRegen = 0.1  # Fahrtdauer verlänget sich Sturm um 40%
-# Fahrzeugausfall
-ausmaßAusfall = 0.01  # 1% Wahrscheinlichkeit, dass Fahrzeug ausfällt (delay = 1440)
-# Baustelle an bestimmten Haltestellen
-delayBaustelle = 1  # Fahrtdauer bei Baustelle verdoppelt sich
-# Unfall
-ausmaßUnfall = 0.05  # 5% Wahrscheinlichkeit, dass Unfall während der Fahrt passiert (Fahrzeug nicht beteiligt)
-delayUnfall = round(random.uniform(0.5, 2), 2)  # Fahrtdauer bei Unfall variiert zwischen 0.5 & 2
+delayRegen = 0.1  # Fahrtdauer verlänget sich Sturm um 10%
 
-delayEvent = 12  # absolute Zahl
-delayBaustelle = 10  # absolute Zahl
+## Veranstaltungs-Funktion
+delayEvent = 12  # 12 Minuten Verspätung durch das Event bei Haltezeit und Fahrtzeit
+
+## Baustellen-Funktion
+delayBaustelle = 10  # 10 Minuten Verspätung durch das Event bei Fahrtzeit
+
+# Sperrungs-Funktion
+delaySperrung = 10 # 10 Minuten Verspätung durch das Event bei Fahrtzeit
+
+## Fahrzeugausfall während der Fahrt
+ausmaßAusfall = 0.8  # 1% Wahrscheinlichkeit, dass Fahrzeug ausfällt
+    # alle Fahrten danach werden nicht ausgeführt
+
 ######################## GUI Design #############################################
 
 
@@ -93,13 +91,13 @@ label0 = Label(Frame0, text="Einstellungen", width=50, height=1, bg="grey", font
 label1 = Label(Frame1, text="Globale Störungsmuster", width=50, height=1, bg="grey", font=Überschrift).grid(row=5)
 label2 = Label(Frame2, text="Selektive Störungsmuster", width=50, height=1, bg="grey", font=Überschrift).grid(row=11)
 label4 = Label(text="Wetter", width=20, height=1, bg="darkgrey", font=Überschrift2).grid(row=6, column=2)
-label5 = Label(text="Fahrerausfall", width=20, height=1, bg="indian red", font=Überschrift2).grid(row=9, column=2)
+#label5 = Label(text="Fahrerausfall", width=20, height=1, bg="indian red", font=Überschrift2).grid(row=9, column=2)
 label6 = Label(text="Defekt", width=20, height=1, bg="indian red", font=Überschrift2).grid(row=6, column=5)
 label7 = Label(text="Veranstaltung", width=20, height=1, bg="darkgrey", font=Überschrift2).grid(row=13, column=2)
-label8 = Label(text="Unfall", width=20, height=1, bg="indian red", font=Überschrift2).grid(row=15, column=2)
+#label8 = Label(text="Unfall", width=20, height=1, bg="indian red", font=Überschrift2).grid(row=15, column=2)
 label9 = Label(text="Baustelle", width=20, height=1, bg="darkgrey", font=Überschrift2).grid(row=17, column=2)
-label10 = Label(text="Sonstige Streiks", width=20, height=1, bg="indian red", font=Überschrift2).grid(row=19, column=2)
-label11 = Label(text="Defekt", width=20, height=1, bg="indian red", font=Überschrift2).grid(row=22, column=2)
+label10 = Label(text="Sonstige Sperrungen", width=20, height=1, bg="darkgrey", font=Überschrift2).grid(row=19, column=2)
+#label11 = Label(text="Defekt", width=20, height=1, bg="indian red", font=Überschrift2).grid(row=22, column=2)
 
 button = ttk.Button(text="Bestätigen", style='TButton', command=root.destroy)
 button.grid(row=25, column=0, columnspan=5, sticky=S + W)
@@ -124,13 +122,12 @@ Label(root, text="  Folgender Wochentag soll", font=Text).grid(row=1, column=2, 
 Label(root, text="  simuliert werden:", font=Text).grid(row=2, column=2, columnspan=7, sticky=W)
 Label(root, text="  Sollte Pufferzeit zum Abbau von", font=Text).grid(row=3, column=2, columnspan=7, sticky=W)
 Label(root, text="  Verspätungen genutzt werden?", font=Text).grid(row=4, column=2, columnspan=7, sticky=W)
-varKrankheit = IntVar()
-Checkbutton7 = Checkbutton(root, text="Krankheit", font=Text, variable=varKrankheit)
-Checkbutton7.grid(row=10, column=2, columnspan=7, sticky=W)
-
-varStreik = IntVar()
-Checkbutton8 = Checkbutton(root, text="Streik des ÖPNV", font=Text, variable=varStreik)
-Checkbutton8.grid(row=11, column=2, columnspan=7, sticky=W)
+#varKrankheit = IntVar()
+#Checkbutton7 = Checkbutton(root, text="Krankheit", font=Text, variable=varKrankheit)
+#Checkbutton7.grid(row=10, column=2, columnspan=7, sticky=W)
+#varStreik = IntVar()
+#Checkbutton8 = Checkbutton(root, text="Streik des ÖPNV", font=Text, variable=varStreik)
+#Checkbutton8.grid(row=11, column=2, columnspan=7, sticky=W)
 
 varSturm = IntVar()
 Checkbutton9 = Checkbutton(root, text="Sturm", font=Text, variable=varSturm)
@@ -149,9 +146,9 @@ label12 = Label(root, text="  Veranstaltung nahe der Haltestelle:", font=Text).g
 varVeranstaltung = StringVar()
 Entry(root, textvariable=varVeranstaltung).grid(row=14, column=5, sticky=W)
 
-label13 = Label(root, text="  Unfall nahe der Haltestelle:", font=Text).grid(row=16, column=2, columnspan=7, sticky=W)
-varUnfall = StringVar()
-Entry(root, textvariable=varUnfall).grid(row=16, column=5, sticky=W)
+#label13 = Label(root, text="  Unfall nahe der Haltestelle:", font=Text).grid(row=16, column=2, columnspan=7, sticky=W)
+#varUnfall = StringVar()
+#Entry(root, textvariable=varUnfall).grid(row=16, column=5, sticky=W)
 
 label14 = Label(root, text="  Baustelle nahe der Haltestelle:", font=Text).grid(row=18, column=2, columnspan=7,
                                                                                 sticky=W)
@@ -163,11 +160,10 @@ label16 = Label(root, text="  Haltestelle:", font=Text).grid(row=21, column=2, c
 varSperrung = StringVar()
 Entry(root, textvariable=varSperrung).grid(row=21, column=5, sticky=W)
 
-label17 = Label(root, text="  Fahrzeugdefekt während der", font=Text).grid(row=23, column=2, columnspan=7, sticky=W)
-label18 = Label(root, text="  Fahrt nahe der Haltestelle:", font=Text).grid(row=24, column=2, columnspan=7, sticky=W)
-varDefekt = StringVar()
-Entry(root, textvariable=varDefekt).grid(row=24, column=5, sticky=W)
-
+#label17 = Label(root, text="  Fahrzeugdefekt während der", font=Text).grid(row=23, column=2, columnspan=7, sticky=W)
+#label18 = Label(root, text="  Fahrt nahe der Haltestelle:", font=Text).grid(row=24, column=2, columnspan=7, sticky=W)
+#varDefekt = StringVar()
+#Entry(root, textvariable=varDefekt).grid(row=24, column=5, sticky=W)
 root.mainloop()
 
 if varVeranstaltung.get() != (""):
@@ -177,12 +173,12 @@ if varVeranstaltung.get() != (""):
 else:
     eventOrte = []
 
-if varUnfall.get() != (""):
-    varUnfall = varUnfall.get().split(', ')
-    for i in range(len(varUnfall)):
-        varUnfall[i] = int(varUnfall[i])
-else:
-    varUnfall = []
+#if varUnfall.get() != (""):
+    #varUnfall = varUnfall.get().split(', ')
+    #for i in range(len(varUnfall)):
+        #varUnfall[i] = int(varUnfall[i])
+#else:
+    #varUnfall = []
 
 if varBaustelle.get() != (""):
     BaustellenListe = varBaustelle.get().split(', ')
@@ -192,18 +188,18 @@ else:
     BaustellenListe = []
 
 if varSperrung.get() != (""):
-    varSperrung = varSperrung.get().split(', ')
-    for i in range(len(varSperrung)):
-        varSperrung[i] = int(varSperrung[i])
+    SperrungListe = varSperrung.get().split(', ')
+    for i in range(len(SperrungListe)):
+        SperrungListe[i] = int(SperrungListe[i])
 else:
-    varSperrung = []
+    SperrungListe = []
 
-if varDefekt.get() != (""):
-    varDefekt = varDefekt.get().split(', ')
-    for i in range(len(varDefekt)):
-        varDefekt[i] = int(varDefekt[i])
-else:
-    varDefekt = []
+#if varDefekt.get() != (""):
+    #varDefekt = varDefekt.get().split(', ')
+    #for i in range(len(varDefekt)):
+        #varDefekt[i] = int(varDefekt[i])
+#else:
+    #varDefekt = []
 
 if varPufferzeit.get() == "Ja":
     varPufferzeit = 1
@@ -531,33 +527,56 @@ def baustelle(startHS, endHS):
         delayonTop = 0
     return delayonTop, delayType
 
-
-def unfall(driveduration):
+def sperrung(startHS, endHS):
+    delayonTop = 0
     delayType = ""
-    delayactiveU = delayCalculator(ausmaßUnfall, driveduration, delayUnfall)
-    delay = delayactiveU
-    if delayactiveU > 0:
-        delayType = "|Unfall|"
-    return delay, delayType
+    if startHS in SperrungListe or endHS in SperrungListe:
+        delayonTop = delaySperrung
+        delayType = "|Sperrung|"
+    else:
+        delayonTop = 0
+    return delayonTop, delayType
 
-
-def fahrzeugausfall():
+def unfall(startHS, endHS, driveduration, time):
     delay = 0
     delayType = ""
+    if startHS in unfallOrt or endHS in unfallOrt:
+        i = 0
+        while i <= len(unfallOrt):
+            if startHS == unfallOrt[i] or endHS == unfallOrt[i]:
+                if time >= unfallBeginn[i] and time < unfallEnde[i]:
+                    ausmaß = 1
+                    delayonTop = delayStau
+                    coin = numpy.random.choice(numpy.arange(0, 2), p=[1 - ausmaß, ausmaß])
+                    if (coin == 1):
+                        delay = int(driveduration * delayonTop)
+                        delayType = "|Unfall|"
+                        i += 1000
+                    else:
+                        i += 1
+                else:
+                    i += 1
+            else:
+                i += 1
+
+        return delay, delayType
+
+def fahrzeugausfall():
     coin = numpy.random.choice(numpy.arange(0, 2), p=[1 - ausmaßAusfall, ausmaßAusfall])
     if (coin == 1):
         delay = 1440
         delayType = "|Fahrzeugausfall|"
     else:
         delay = 0
+        delayType = ""
     return delay, delayType
 
 
-"""
-############# crazy Staufunktion ##############
 
-####### Funktion: Stauausbruch zu bestimmten Zeiten #########################
-def stauzeitGroup():
+############# Stau durch Unfall ##############
+
+####### Funktion: Unfallausbruch zu bestimmten Zeiten #########################
+def unfallzeitGroup():
     staugroup = numpy.random.choice(numpy.arange(0, 3), p=[0.1, 0.25, 0.65])
     return staugroup
 
@@ -594,56 +613,48 @@ def flatList(list):
             flat_list.append(item)
     return flat_list
 
-def stauEndzeitCalculator(list):
-    stauEndzeiten = []
+def unfallEndzeitCalculator(list):
+    unfallEndzeiten = []
     for item in range(len(list)):
         stauDauer = random.randint(staudauerMin, staudauerMax)
         stauEndzeit = list[item] + stauDauer
-        stauEndzeiten.append(stauEndzeit)
-    return stauEndzeiten
+        unfallEndzeiten.append(stauEndzeit)
+    return unfallEndzeiten
 
-def stauStartzeitCalculator(n):
-    stauStartzeiten = []
-    staugroups = [0, 0, 0]
+def unfallStartzeitCalculator(n):
+    unfallStartzeiten = []
+    unfallgroups = [0, 0, 0]
     for i in range(n):
-        staugroups[stauzeitGroup()] += 1
-    for i in range(len(staugroups)):
-        stauStartzeiten.append(spaced_choice(i, staugroups[i]))
-    stauStartzeiten = flatList(stauStartzeiten)
-    return stauStartzeiten
+        unfallgroups[unfallzeitGroup()] += 1
+    for i in range(len(unfallgroups)):
+        unfallStartzeiten.append(spaced_choice(i, unfallgroups[i]))
+    unfallStartzeiten = flatList(unfallStartzeiten)
+    return unfallStartzeiten
 
 
-def stauOrtCalculator(n):
+def unfallOrtCalculator(n):
     stauOrte = []
     for i in range(n):  ##Anzahl an Haltestellen mit Stau
         x = numpy.random.choice(df.FromStopID)
         stauOrte.append(x)
     return stauOrte
-'''
-from collections import Counter
-a = len(Counter(df.FromStopID).keys())
-print(a)
-b = Counter(df.FromStopID)
-print(b)
-'''
-def stauGenerator(n):
-    stauBeginn = stauStartzeitCalculator(n)
-    stauEnde = stauEndzeitCalculator(stauBeginn)
-    stauOrt = stauOrtCalculator(n)
+
+def unfallGenerator(n):
+    stauBeginn = unfallStartzeitCalculator(n)
+    stauEnde = unfallEndzeitCalculator(stauBeginn)
+    stauOrt = unfallOrtCalculator(n)
     return stauBeginn, stauEnde, stauOrt
 
-stauBeginn, stauEnde, stauOrt = stauGenerator(anzahlStaus)
-"""
+unfallBeginn, unfallEnde, unfallOrt = unfallGenerator(10) #anzahlUnfaelle
+
+print(unfallBeginn)
+print(unfallEnde)
+print(unfallOrt)
 
 ############################ Störgenerator##################################
 # Ausmaß = Anteil an Fahrten, die von Störung betroffen sind
 # delayonTop = Verspätung, die abhängig von Fahrtzeit on Top auf die Fahrtzeit raufkommt
 
-# Werte müssen in die GUi aufgenommen werden (für Testzwecke hier entspannter zum Einstellen)
-varWeather = 1
-varEvent = 1  # Event-Funktion noch nicht funktionstüchtig
-varBaustelle = 1
-varUnfall = 1
 
 
 def passengerDisruption(time, driveduration, startHS, endHS):  # Funktion für die Verlängerung der Haltezeit
@@ -662,6 +673,13 @@ def passengerDisruption(time, driveduration, startHS, endHS):  # Funktion für d
         delayType += delayTypeEvent
     return delay, delayType
 
+# Werte für Testzwecke hier entspannter zum Einstellen
+varWeather = 1
+varEvent = 1
+varBaustelle = 1
+varSperrung = 1
+varUnfall = 0
+varFahrzeugausfall = 0
 
 def trafficDisruption(startHS, endHS, driveduration, time):
     delay = 0
@@ -681,33 +699,20 @@ def trafficDisruption(startHS, endHS, driveduration, time):
         delayBau, delayTypeBau = baustelle(startHS, endHS)
         delay += delayBau
         delayType += delayTypeBau
+    if varSperrung == 1:
+        delaySperrung, delayTypeSperrung = sperrung(startHS, endHS)
+        delay += delaySperrung
+        delayType += delayTypeSperrung
     if varUnfall == 1:
-        delayUnfall, delayTypeUnfall = unfall(driveduration)
+        delayUnfall, delayTypeUnfall = unfall(startHS, endHS, driveduration, time)
         delay += delayUnfall
         delayType += delayTypeUnfall
-    return delay, delayType
-
-
-"""        
-    if varRdmStaus.get() == 1:  # Verkehrsaufkommen
-        if fromhs in stauOrt or tohs in stauOrt:
-            i = 0
-            while i < len(stauBeginn):
-                if time >= stauBeginn[i] and time < stauEnde[i]:
-                    ausmaß = 1
-                    delayonTop = delayStau
-                    coin = numpy.random.choice(numpy.arange(0, 2), p=[1 - ausmaß, ausmaß])
-                    if (coin == 1):
-                        delay += int(driveduration * delayonTop)
-                        delayType += "|rdmStau|"
-                    i += 1000
-                else:
-                    i += 1
-    if varFahrzeugausfall.get() == 1:
+    if varFahrzeugausfall == 1:
         delayAusfall, delayTypeAusfall = fahrzeugausfall()
         delay += delayAusfall
         delayType += delayTypeAusfall
-        """
+    return delay, delayType
+
 
 
 def breaktime(vehID, teilumlaufnummer, fahrtnummer, delayTime):
@@ -833,7 +838,7 @@ def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
 env = simpy.Environment()
 
 # Initialisierung von Fahrzeugen
-for i in range(0, len(numberVeh)):  # Anzahl von Fahrzeugen = len(numberVeh)
+for i in range(0, 1):  # Anzahl von Fahrzeugen = len(numberVeh)
     env.process(vehicle(env, i))  # Inputdaten Eigenschaften Fahrzeugen
 # Simulation starten und Laufzeit festlegen
 env.run(until=1440)  # Ein Tag simulieren: in Minuten ausdrücken. 24h = 1440min
