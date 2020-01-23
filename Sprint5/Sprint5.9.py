@@ -70,7 +70,7 @@ s.theme_use('clam')
 ##Wählbare Themes:'winnative', 'clam', 'alt', 'default', 'classic', 'vista', 'xpnative'
 
 root.resizable(width=False, height= False)
-root.iconbitmap('favicon.ico')
+#root.iconbitmap('favicon.ico')
 root.geometry('+0+0')
 root.title('Simulationstool zur Überprüfung der Robustheit von Fahrzeugeinsatzplänen')
 s.configure('TButton', background='green', padding=(50, 10), font=('Verdana', 10, 'bold'))
@@ -716,7 +716,7 @@ def breaktime(vehID, teilumlaufnummer, fahrtnummer, delayTime):
 # Header für CSV-Datei
 print(
     "vehID Teilumlaufnummer Standort Dep/Arr Uhrzeit(Soll) Uhrzeit(Ist) Fahrtverspätung Gesamtverspätung Verspätungsursache",
-    file=open("Eventqueue5.8.csv", "a"))
+    file=open("Eventqueue5.9.csv", "a"))
 
 
 ########################## Objekt Vehicle #########################################
@@ -758,7 +758,7 @@ def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
                         print(vehID + 1, teilumlaufnummer + 1, FromHS_dic[vehID][teilumlaufnummer][fahrtnummer],
                               fahrtstatus, PartStartTime_dic[vehID][teilumlaufnummer][fahrtnummer], env.now,
                               delayTime_perStop, delayTime, delayType,
-                              file=open("Eventqueue5.8.csv", "a"))
+                              file=open("Eventqueue5.9.csv", "a"))
 
                         # Verspätung auf Fahrt ermitteln
                         if ElementID_dic[vehID][teilumlaufnummer][fahrtnummer] == 9:
@@ -800,13 +800,13 @@ def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
                             print(vehID + 1, teilumlaufnummer + 1, ToHS_dic[vehID][teilumlaufnummer][fahrtnummer],
                                   fahrtstatus, PartEndTime_dic[vehID][teilumlaufnummer][fahrtnummer],
                                   env.now, delayTime_perDrive, delayTime, delayType,
-                                  file=open("Eventqueue5.8.csv", "a"))
+                                  file=open("Eventqueue5.9.csv", "a"))
                             umlaufstatus = 0
                         else:
                             print(vehID + 1, teilumlaufnummer + 1, ToHS_dic[vehID][teilumlaufnummer][fahrtnummer],
                                   fahrtstatus, PartEndTime_dic[vehID][teilumlaufnummer][fahrtnummer],
                                   env.now, delayTime_perDrive, delayTime, delayType,
-                                  file=open("Eventqueue5.8.csv", "a"))
+                                  file=open("Eventqueue5.9.csv", "a"))
 
             except:
                 if env.now >= 1440:  # to avoid RunTimeError: GeneratorExit
