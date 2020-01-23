@@ -15,7 +15,23 @@ offene Punkte:
 (x) GUI optimieren/verschönern
 (x) Störungen aufräumen und mit GUI verknüpfen
 
-( ) Prioliste erstellen (was muss bis wann stehen?)
+Prioliste:
+( ) Störungen zum Laufen bringen
+( ) Fahrerstörungen raus
+( ) ElementType == 8 als Pause
+( ) KPIs einfügen
+  ( ) Pünktlichkeit: Anteil und Anzahl an pünktlichen Fahrten (Ist-Soll = 0)
+  ( ) Verspätungspropagation (Formel in Word)
+  ( ) Wirkungsgrade: 
+    ( ) wieviel Prozent der Zeit sind Servicefahrten und Leerfahrten
+    ( ) wieviel Prozent der Strecke sind SF und LF
+( ) wieviele Fahrzeuge haben nur einen Teilumlauf? hier wirken dispositive Entscheidungen nicht
+( ) Event mit Zeitspanne, die man in GUI festlegen kann
+( ) Unfall an bestimmter HS (auch wenn rdm bestimmt) muss alle Fahrzeuge beeinflussen, die dort vorbeifahren & die Dauer des daraus resultierenden Staus liegt zwischen x und y (rdmStau-Funktion zum Teil verwenden)
+
+( ) Überlegungen: dispositive Entscheidung: Abbruchbindung 
+(x) Prioliste erstellen (was muss bis wann stehen?)
+( ) Störungsursache für Pausen removen
 ( ) Möglichkeit, eine Fahrt überspringen, einbauen
 ( ) Staufunktion auskommentieren
 ( ) Simulationsdauer auf eine Woche ausweiten

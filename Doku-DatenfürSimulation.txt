@@ -2,13 +2,13 @@
 Daten, die in entsprechender Form vorliegen müssen, damit Simulation einwandfrei funktioniert:
 
 Dictionarys:
-- FromHS_dic: {vehID: [[Starthaltestellen von Teilumlauf 1], [Starthaltestellen von Teilumlauf 2],...], ...}
-- ToHS_dic: {vehID: [[Endhaltestellen von Teilumlauf 1], [Endhaltestellen von Teilumlauf 2],...], ...}
-- PartStartTime_dic: {vehID: [[Abfahrtszeiten von HS in Teilumlauf 1], [Abfahrtszeiten von HS in Teilumlauf 2],...],...}
-- PartEndTime_dic: {vehID: [[Ankunftszeiten von HS in Teilumlauf 1], [Ankunftszeiten von HS in Teilumlauf 2],...],...}
-- DriveDuration_dic: {vehID: [[Fahrtdauer von HS zu HS in Teilumlauf 1], [Fahrtdauer von HS zu HS in Teilumlauf 2],...],...}
-- ElementID_dic: {vehID: [[ElementIDs von Teilumlauf 1], [ElementIDs von Teilumlauf 2],...],...}
-- StartTime_dic: {vehID:[Startzeiten der Teilumläufe + 1440], ...}
+- FromHS_dic: {vehID = 1: [[Starthaltestellen von Teilumlauf 1], [Starthaltestellen von Teilumlauf 2],...], ...}
+- ToHS_dic: {vehID = 1: [[Endhaltestellen von Teilumlauf 1], [Endhaltestellen von Teilumlauf 2],...], ...}
+- PartStartTime_dic: {vehID = 1: [[Abfahrtszeiten von HS in Teilumlauf 1], [Abfahrtszeiten von HS in Teilumlauf 2],...],...}
+- PartEndTime_dic: {vehID = 1: [[Ankunftszeiten von HS in Teilumlauf 1], [Ankunftszeiten von HS in Teilumlauf 2],...],...}
+- DriveDuration_dic: {vehID = 1: [[Fahrtdauer von HS zu HS in Teilumlauf 1], [Fahrtdauer von HS zu HS in Teilumlauf 2],...],...}
+- ElementID_dic: {vehID = 1: [[ElementIDs von Teilumlauf 1], [ElementIDs von Teilumlauf 2],...],...}
+- StartTime_dic: {vehID = 1:[Startzeiten der Teilumläufe + 1440], ...}
 
 
 weitere Daten:
