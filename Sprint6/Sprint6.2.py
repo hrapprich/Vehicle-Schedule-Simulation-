@@ -655,14 +655,13 @@ unfallBeginn, unfallEnde, unfallOrt = unfallGenerator(10) #anzahlUnfaelle
 # Ausmaß = Anteil an Fahrten, die von Störung betroffen sind
 # delayonTop = Verspätung, die abhängig von Fahrtzeit on Top auf die Fahrtzeit raufkommt
 
-
-
 def passengerDisruption(time, driveduration, startHS, endHS):  # Funktion für die Verlängerung der Haltezeit
     delay = 0
     delayType = ""
-    #if rushhour(time):
-        #delay += delayRushhour
-        #delayType += "|Hauptverkehrszeit|"
+    if varRushhour == 1:
+        if rushhour(time):
+            delay += delayRushhour
+            delayType += "|Hauptverkehrszeit|"
     if varWeather == 1:
         delayWeather, delayTypeWeather = weather(driveduration)
         delay += delayWeather
@@ -674,6 +673,7 @@ def passengerDisruption(time, driveduration, startHS, endHS):  # Funktion für d
     return delay, delayType
 
 # Werte für Testzwecke hier entspannter zum Einstellen
+varRushhour = 0
 varWeather = 1
 varEvent = 1
 varBaustelle = 1
@@ -684,9 +684,10 @@ varFahrzeugausfall = 0
 def trafficDisruption(startHS, endHS, driveduration, time):
     delay = 0
     delayType = ""
-    #if rushhour(time):
-        #delay += delayRushhour
-        #delayType += "|Hauptverkehrszeit|"
+    if varRushhour == 1:
+        if rushhour(time):
+            delay += delayRushhour
+            delayType += "|Hauptverkehrszeit|"
     if varWeather == 1:
         delayWeather, delayTypeWeather = weather(driveduration)
         delay += delayWeather
@@ -728,10 +729,12 @@ def breaktime(vehID, teilumlaufnummer, fahrtnummer, delayTime):
     return delayTime
 
 ############################ Kennzahlen ###################################
-## Pünktlichkeit
-print("Abfahrten Pünktlich Ankünfte Pünktlich",
-    file=open("Eventqueue6.2.10.csv", "a"))
+print("Simulation wurde gestartet...")
+print(" ")
+print("################ Kennzahlen ###############")
 
+
+# Pünktlichkeit
 global count_abfahrten
 count_abfahrten = 0
 global count_puenktlichAb
@@ -858,7 +861,6 @@ def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
 
             except:
                 if env.now >= 1440:  # to avoid RunTimeError: GeneratorExit
-                    print(count_abfahrten, count_puenktlichAb, count_ankuenfte, count_puenktlichAn)
                     return False
                 continue
 
@@ -872,3 +874,7 @@ for i in range(0, len(numberVeh)):  # Anzahl von Fahrzeugen = len(numberVeh)
     env.process(vehicle(env, i))  # Inputdaten Eigenschaften Fahrzeugen
 # Simulation starten und Laufzeit festlegen
 env.run(until=1440)  # Ein Tag simulieren: in Minuten ausdrücken. 24h = 1440min
+
+# Ausgabe von Kennzahlen:
+print("Anzahl Abfahrten: ", count_abfahrten, "davon pünktlich: ", count_puenktlichAb)
+print("Anzahl Ankünfte: ", count_ankuenfte, "davon pünktlich: ",  count_puenktlichAn)
