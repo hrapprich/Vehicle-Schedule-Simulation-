@@ -9,7 +9,10 @@ Bitte speichern Sie den Ordner "opti", welcher alle Daten inkludiert, am selben 
 Der opti Ordner muss die Unterordner "Mo_Ferien", "Mo_Schule", "Samstag" und "Sonntag" besitzen.
 In den jeweiligen Ordnern müssen eine timetable.txt, timetable-blocks.txt und eine timetable-duties.txt Datei hinterlegt sein.
 """
-
+"""
+In Zeile 678 könnt ihr die Rushhour-Funktion aktivieren, einfach Rushhour = 1.
+Unfall und Fahrzeugausfall funktionieren nicht, also keine = 1 dort reinschreiben!
+"""
 ####################### Import Packages ###################################
 import simpy
 import pandas as pd
