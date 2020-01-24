@@ -31,7 +31,7 @@ Prioliste:
 
 ( ) Überlegungen: dispositive Entscheidung: Abbruchbindung 
 (x) Prioliste erstellen (was muss bis wann stehen?)
-( ) Störungsursache für Pausen removen
+(x) Störungsursache für Pausen removen
 ( ) Möglichkeit, eine Fahrt überspringen, einbauen
 ( ) Staufunktion auskommentieren
 ( ) Simulationsdauer auf eine Woche ausweiten
