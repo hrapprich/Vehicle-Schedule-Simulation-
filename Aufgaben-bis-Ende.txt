@@ -38,6 +38,7 @@ Prioliste:
 ( ) Simulationsdauer auf eine Woche ausweiten
 ( ) Dokumentation über tablefinal.csv (svenno)
 ( ) Code objektorientiert gestalten
+( ) Code Effizienz erhöhen (vor allem Einleseroutine)
 
 ( ) Personaldaten konzeptionell mitdenken bzw. Schnittstelle einfügen
 
