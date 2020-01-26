@@ -14,30 +14,27 @@ offene Punkte:
 (x) Funktionen verschachteln (Grundfunktionen (wie z.B. Stau), die von Spezialfunktionen getriggert werden)
 (x) GUI optimieren/verschönern
 (x) Störungen aufräumen und mit GUI verknüpfen
+(x) Prioliste erstellen (was muss bis wann stehen?)
+(x) Störungsursache für Pausen removen
 
 Prioliste:
 (x) Störungen zum Laufen bringen
 (x) Fahrerstörungen raus
-( ) ElementType == 8 als Pause
+( ) Unfallstörung & Fahrzeugausfall (Depot & während der Fahrt fixen)
 ( ) KPIs einfügen
   (x) Pünktlichkeit: Anteil und Anzahl an pünktlichen Fahrten (Ist-Soll = 0)
   ( ) Verspätungspropagation (Formel in Word)
   ( ) Wirkungsgrade: 
     (x) wieviel Prozent der Zeit sind Servicefahrten und Leerfahrten
-    ( ) wieviel Prozent der Strecke sind SF und LF
-( ) wieviele Fahrzeuge haben nur einen Teilumlauf? hier wirken dispositive Entscheidungen nicht
+    ( ) wieviel Prozent der Strecke sind SF und LF (Distanz in tableFinal einfügen)
+( ) Dateninkonsistenzen ausbessern
 ( ) Event mit Zeitspanne, die man in GUI festlegen kann
-( ) Unfallstörung & Fahrzeugausfall (Depot & während der Fahrt fixen=
-
+( ) ElementType == 8 als Pause (Entscheidung, ob Pause genutzt werden soll, in GUI)
 ( ) Überlegungen: dispositive Entscheidung: Abbruchbindung 
-(x) Prioliste erstellen (was muss bis wann stehen?)
-(x) Störungsursache für Pausen removen
-( ) Möglichkeit, eine Fahrt überspringen, einbauen
+  ( ) wieviele Fahrzeuge haben nur einen Teilumlauf? hier wirken dispositive Entscheidungen nicht
 ( ) Staufunktion auskommentieren
 ( ) Simulationsdauer auf eine Woche ausweiten
 ( ) Dokumentation über tablefinal.csv (svenno)
-( ) Dateninkonsistenzen ausbessern
-( ) Output für KPIs (PK3)
 ( ) Code objektorientiert gestalten
 
 ( ) Personaldaten konzeptionell mitdenken bzw. Schnittstelle einfügen
