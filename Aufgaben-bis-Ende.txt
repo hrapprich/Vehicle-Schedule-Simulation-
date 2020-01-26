@@ -24,6 +24,8 @@ Prioliste:
 ( ) KPIs einfügen
   (x) Pünktlichkeit: Anteil und Anzahl an pünktlichen Fahrten (Ist-Soll = 0)
   ( ) Verspätungspropagation (Formel in Word)
+    Frage: ist das Ergebnis nicht immer: Pufferzeit - delayTime (Gesamtverspätung), wenn ja:
+            dann können wir das wahrscheinlich mit der breaktime-Funktion ausgeben lassen
   ( ) Wirkungsgrade: 
     (x) wieviel Prozent der Zeit sind Servicefahrten und Leerfahrten
     ( ) wieviel Prozent der Strecke sind SF und LF (Distanz in tableFinal einfügen)
