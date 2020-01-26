@@ -1,10 +1,21 @@
 # -*- coding: utf-8 -*-
 """
-Created on Sun Jan 26 16:08:49 2020
+Created on Sun Jan 26 22:02:36 2020
 
-@author: helen
+@author: svenr
 """
 
+"""
+Created on Sun Jan 26 16:08:49 2020
+@author: helen
+"""
+import simpy
+import pandas as pd
+import numpy as np
+from random import randint
+from tkinter import *
+import sys, datetime as dt
+from io import StringIO
 
 #################### Routine zum Auslesen der Textdateien ###############################
 def load_table_data(fullfilepath):
@@ -31,30 +42,36 @@ def load_table_data(fullfilepath):
     for name, t in tab_dict.items():
         tab_df_dict[name] = (pd.read_csv(StringIO(t), sep=';'))
     return tab_df_dict
-def dayChoice(dropdown):
-    if dropdown == "Arbeitstag - Keine Ferien":
-        data = load_table_data('opti/Mo_Schule/timetable.txt')
-        blockdata = load_table_data('opti/Mo_Schule/timetable-blocks.txt')
-        dutydata = load_table_data('opti/Mo_Schule/timetable-duties.txt')
-        return(data, dutydata, blockdata)
-    elif dropdown == "Arbeitstag - Ferien":
-        data = load_table_data('opti/Mo_Ferien/timetable.txt')
-        blockdata = load_table_data('opti/Mo_Ferien/timetable-blocks.txt')
-        dutydata = load_table_data('opti/Mo_Ferien/timetable-duties.txt')
-        return(data, dutydata, blockdata)
-    elif dropdown == "Samstag":
-        data = load_table_data('opti/Samstag/timetable.txt')
-        blockdata = load_table_data('opti/Samstag/timetable-blocks.txt')
-        dutydata = load_table_data('opti/Samstag/timetable-duties.txt')
-        return(data, dutydata, blockdata)
-    elif dropdown == "Sonntag":
-        data = load_table_data('opti/Sonntag/timetable.txt')
-        blockdata = load_table_data('opti/Sonntag/timetable-blocks.txt')
-        dutydata = load_table_data('opti/Sonntag/timetable-duties.txt')
-        return(data, dutydata, blockdata)
-data, dutydata, blockdata = dayChoice(dropdown)
+
+##MoSchule
+
+data = load_table_data('opti/Mo_Schule/timetable.txt')
+blockdata = load_table_data('opti/Mo_Schule/timetable-blocks.txt')
+dutydata = load_table_data('opti/Mo_Schule/timetable-duties.txt')
+
+##MoFerien
+"""
+data = load_table_data('opti/Mo_Ferien/timetable.txt')
+blockdata = load_table_data('opti/Mo_Ferien/timetable-blocks.txt')
+dutydata = load_table_data('opti/Mo_Ferien/timetable-duties.txt')
+"""
+##Samstag
+"""
+data = load_table_data('opti/Samstag/timetable.txt')
+blockdata = load_table_data('opti/Samstag/timetable-blocks.txt')
+dutydata = load_table_data('opti/Samstag/timetable-duties.txt')
+"""
+##Sonntag
+"""
+data = load_table_data('opti/Sonntag/timetable.txt')
+blockdata = load_table_data('opti/Sonntag/timetable-blocks.txt')
+dutydata = load_table_data('opti/Sonntag/timetable-duties.txt')
+"""    
+
+
 #relevante Dataframes extrahieren
 servicefahrten = data["$SERVICEJOURNEY"]
+leerfahrten = data['$DEADRUNTIME']
 dutyelements = dutydata["$DUTYELEMENT"]
 blocks = blockdata["$BLOCK"]
 blockelements = blockdata["$BLOCKELEMENT"]
@@ -68,15 +85,20 @@ Distance = []
 count_rows_duty = dutyelements.shape[0]
 count_rows_dutytype = dutytype.shape[0]
 count_rows_service = servicefahrten.shape[0]
+count_rows_no_service = leerfahrten.shape[0]
 count_blocks = blocks.shape[0]
+
 for x in range(count_rows_duty):
     for y in range(count_rows_service):
         if tableFinal.iat[x,2] == allLines.iat[y,0]:
             LineID.append(allLines.iat[y,1])
-            Distance.append(allLines.iat[y,1])
+            Distance.append(allLines.iat[y,17])
     if tableFinal.iat[x,2] == -1:
-            LineID.append(0)
-            Distance.append(0)
+        LineID.append(0)
+        Distance.append(0)  
+
+
+
 VehTypeID = []
 DepotID = []
 for x in range(count_rows_duty):
@@ -102,4 +124,3 @@ tableFinal["Distance"] = Distance
 df = tableFinal
 
 export_csv = tableFinal.to_csv(r'TESTtableFinal.csv', index=None, header=True)
-
