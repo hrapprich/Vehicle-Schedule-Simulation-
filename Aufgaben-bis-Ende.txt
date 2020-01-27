@@ -39,6 +39,7 @@ Prioliste:
 ( ) Dokumentation über tablefinal.csv (svenno)
 ( ) Code objektorientiert gestalten
 ( ) Code Effizienz erhöhen (vor allem Einleseroutine)
+(x) Leerfahrten werden nicht berücksichtigt, da sie nicht eindeutig zugeordnet werden können aus den gegebenen Daten (Distanz etc einfach auf 0 gesetzt)
 
 ( ) Personaldaten konzeptionell mitdenken bzw. Schnittstelle einfügen
 
