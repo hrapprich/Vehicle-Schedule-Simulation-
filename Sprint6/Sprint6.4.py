@@ -973,4 +973,4 @@ print("Anzahl Ankünfte: ", count_ankuenfte, " davon pünktlich: ",  count_puenk
 print("***Wirkungsgrade***")
 print("Anzahl Fahrten (total): ", count_Fahrten, " davon Servicefahrten: ", count_Servicefahrten)
 
-
+export_csv = VP_df.to_csv(r'VP.csv', index=None, header=True)
