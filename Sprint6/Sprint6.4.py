@@ -241,8 +241,9 @@ else:
     VeranstaltungEnde = VeranstaltungZeit[1].split(':')
     VeranstaltungBeginn = int(VeranstaltungBeginn[0])*60 + int(VeranstaltungBeginn[1])
     VeranstaltungEnde = int(VeranstaltungEnde[0])*60 + int(VeranstaltungEnde[1])    
-"""
+
 #################### Routine zum Auslesen der Textdateien ###############################
+    ################ Dauer: mind. 1 minute ################################
 def load_table_data(fullfilepath):
     ### Read file
     tab_dict = {}
@@ -342,11 +343,10 @@ df = tableFinal
 
 #export_csv = tableFinal.to_csv(r'tableFinal.csv', index=None, header=True)
 
-"""
-
 ####################### Daten einlesen ####################################
 #df = pd.read_csv("/home/chris/PythonProjekte/SemProjekt-1920/tableFinal.txt", sep=";")
 df = pd.read_csv("tableFinal.csv", sep=";")
+df.head()
 ####################### Daten transformieren und neue Zeitspalten in Dataframe einfügen (Zeit) ########################
 # Umrechnung der Start- & Endzeit in Minuten (für Simulationsuhr)
 StartTime = []
@@ -825,7 +825,7 @@ VP_df.loc[0] = [1,2,3]
 # Header für CSV-Datei
 print(
     "vehID Teilumlaufnummer Standort Dep/Arr Uhrzeit(Soll) Uhrzeit(Ist) Fahrtverspätung Gesamtverspätung Verspätungsursache",
-    file=open("Eventqueue6.3.csv", "a"))
+    file=open("Eventqueue6.5-noSt.csv", "a"))
 
 ########################## Objekt Vehicle #########################################
 def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
@@ -884,7 +884,7 @@ def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
                         print(vehID + 1, teilumlaufnummer + 1, FromHS_dic[vehID][teilumlaufnummer][fahrtnummer],
                               fahrtstatus, PartStartTime_dic[vehID][teilumlaufnummer][fahrtnummer], env.now,
                               delayTime_perStop, delayTime, delayType,
-                              file=open("Eventqueue6.3.csv", "a"))
+                              file=open("Eventqueue6.5-noSt.csv", "a"))
 
                         # Verspätung auf Fahrt ermitteln
                         if ElementID_dic[vehID][teilumlaufnummer][fahrtnummer] == 9:
@@ -938,13 +938,13 @@ def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
                             print(vehID + 1, teilumlaufnummer + 1, ToHS_dic[vehID][teilumlaufnummer][fahrtnummer],
                                   fahrtstatus, PartEndTime_dic[vehID][teilumlaufnummer][fahrtnummer],
                                   env.now, delayTime_perDrive, delayTime, delayType,
-                                  file=open("Eventqueue6.3.csv", "a"))
+                                  file=open("Eventqueue6.5-noSt.csv", "a"))
                             umlaufstatus = 0
                         else:
                             print(vehID + 1, teilumlaufnummer + 1, ToHS_dic[vehID][teilumlaufnummer][fahrtnummer],
                                   fahrtstatus, PartEndTime_dic[vehID][teilumlaufnummer][fahrtnummer],
                                   env.now, delayTime_perDrive, delayTime, delayType,
-                                  file=open("Eventqueue6.3.csv", "a"))
+                                  file=open("Eventqueue6.5-noSt.csv", "a"))
                 global counterVP
                 VP_df.loc[counterVP] = [vehID+1, teilumlaufnummer+1,VP]
                 counterVP += 1

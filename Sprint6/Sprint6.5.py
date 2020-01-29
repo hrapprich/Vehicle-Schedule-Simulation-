@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 """
 pip install ttk themes
-
 Damit das Tool genutzt werden kann:
 Zunächst muss simpy installiert werden. Dafür im cmd den Befehl "pip install simpy" ausführen.
 Damit die Daten eingelesen werden können:
@@ -22,6 +21,8 @@ from random import randint
 from tkinter import *
 from tkinter import font
 import tkinter.ttk as ttk
+import sys, datetime as dt
+from io import StringIO
 
 ###################### Interface Störungen ####################################
 # Ausmaß = Anteil an Fahrten, die von der Störung betroffen sind
@@ -36,10 +37,10 @@ RushhourEnde2 = 1110
 delayRushhour = 2
 
 ## Unfall-Funktion
-anzahlUnfaelle = 20 # pro Simulationstag
-staudauerMin = 10 # wie lange hält der Stau mindestens an (in Minuten)
-staudauerMax = 50 # wie lange hält der Stau maximal an (in Minuten)
-delayStau = 0.5 # Fahrtdauer verlängert sich bei Stau um 50%
+anzahlUnfaelle = 20  # pro Simulationstag
+staudauerMin = 10  # wie lange hält der Stau mindestens an (in Minuten)
+staudauerMax = 50  # wie lange hält der Stau maximal an (in Minuten)
+delayStau = 0.5  # Fahrtdauer verlängert sich bei Stau um 50%
 
 ###### Funktionen, die per GUI aktiviert werden können ############
 
@@ -58,11 +59,11 @@ delayEvent = 12  # 12 Minuten Verspätung durch das Event bei Haltezeit und Fahr
 delayBaustelle = 10  # 10 Minuten Verspätung durch das Event bei Fahrtzeit
 
 # Sperrungs-Funktion
-delaySperrung = 10 # 10 Minuten Verspätung durch das Event bei Fahrtzeit
+delaySperrung = 10  # 10 Minuten Verspätung durch das Event bei Fahrtzeit
 
 ## Fahrzeugausfall während der Fahrt
 ausmaßAusfall = 0.8  # 1% Wahrscheinlichkeit, dass Fahrzeug ausfällt
-    # alle Fahrten danach werden nicht ausgeführt
+# alle Fahrten danach werden nicht ausgeführt
 
 ######################## GUI Design #############################################
 
@@ -80,150 +81,178 @@ s.configure('TButton', background='green', padding=(50, 10), font=('Verdana', 10
 Überschrift = font.Font(family='Verdana', size=11, weight='bold')
 Überschrift2 = font.Font(family='Verdana', size=10, weight='bold')
 Text = font.Font(family="Verdana", size=9)
+Text = font.Font(family="Verdana", size=9)
 Bestätigung = font.Font(family="Verdana", size=11, weight="bold")
 
 # 1 Eingabefelder anlegen und positionieren
 Frame0 = Frame(root, bg="grey", padx=6, pady=6)
 Frame0.grid(row=0, columnspan=8)
 Frame1 = Frame(root, bg="grey", padx=6, pady=6)
-Frame1.grid(row=5, columnspan=8)
+Frame1.grid(row=7, columnspan=8)
 Frame2 = Frame(root, bg="grey", padx=6, pady=6)
-Frame2.grid(row=12, columnspan=8)
+Frame2.grid(row=14, columnspan=8)
 
 label0 = Label(Frame0, text="Einstellungen", width=50, height=1, bg="grey", font=Überschrift).grid(row=0)
-label1 = Label(Frame1, text="Globale Störungsmuster", width=50, height=1, bg="grey", font=Überschrift).grid(row=5)
-label2 = Label(Frame2, text="Selektive Störungsmuster", width=50, height=1, bg="grey", font=Überschrift).grid(row=11)
-label4 = Label(text="Wetter", width=20, height=1, bg="darkgrey", font=Überschrift2).grid(row=6, column=2)
-#label5 = Label(text="Fahrerausfall", width=20, height=1, bg="indian red", font=Überschrift2).grid(row=9, column=2)
-label6 = Label(text="Defekt", width=20, height=1, bg="indian red", font=Überschrift2).grid(row=6, column=5)
-label7 = Label(text="Veranstaltung", width=20, height=1, bg="darkgrey", font=Überschrift2).grid(row=13, column=2)
-#label8 = Label(text="Unfall", width=20, height=1, bg="indian red", font=Überschrift2).grid(row=15, column=2)
-label9 = Label(text="Baustelle", width=20, height=1, bg="darkgrey", font=Überschrift2).grid(row=17, column=2)
-label10 = Label(text="Sonstige Sperrungen", width=20, height=1, bg="darkgrey", font=Überschrift2).grid(row=19, column=2)
-#label11 = Label(text="Defekt", width=20, height=1, bg="indian red", font=Überschrift2).grid(row=22, column=2)
+label1 = Label(Frame1, text="Globale Störungsmuster", width=50, height=1, bg="grey", font=Überschrift).grid(row=7)
+label2 = Label(Frame2, text="Selektive Störungsmuster", width=50, height=1, bg="grey", font=Überschrift).grid(row=13)
+label4 = Label(text="Wetter", width=20, height=1, bg="darkgrey", font=Überschrift2).grid(row=8, column=2)
+# label5 = Label(text="Fahrerausfall", width=20, height=1, bg="indian red", font=Überschrift2).grid(row=9, column=2)
+label6 = Label(text="Defekt", width=20, height=1, bg="indian red", font=Überschrift2).grid(row=8, column=5)
+label7 = Label(text="Veranstaltung", width=20, height=1, bg="darkgrey", font=Überschrift2).grid(row=15, column=2)
+# label8 = Label(text="Unfall", width=20, height=1, bg="indian red", font=Überschrift2).grid(row=15, column=2)
+label9 = Label(text="Baustelle", width=20, height=1, bg="darkgrey", font=Überschrift2).grid(row=19, column=2)
+label10 = Label(text="Sonstige Sperrungen", width=20, height=1, bg="darkgrey", font=Überschrift2).grid(row=21, column=2)
+# label11 = Label(text="Defekt", width=20, height=1, bg="indian red", font=Überschrift2).grid(row=22, column=2)
 
 button = ttk.Button(text="Bestätigen", style='TButton', command=root.destroy)
-button.grid(row=25, column=0, columnspan=5, sticky=S + W)
+button.grid(row=26, column=0, columnspan=5, sticky=S + W)
 
 ##############Dropdown##############
 
 
 chosenDay = StringVar()
 day = ttk.Combobox(root, textvariable=chosenDay)
-day['values'] = ["Wochentag - Keine Ferien", "Wochentag Ferien", "Samstag", "Sonntag"]
+day['values'] = ["Arbeitstag - Keine Ferien", "Arbeitstag - Ferien", "Samstag", "Sonntag"]
 day.grid(row=2, column=5, sticky=W)
 day.current(0)
 
 varPufferzeit = StringVar()
-pufferzeit = ttk.Combobox(root, textvariable=varPufferzeit)
+pufferzeit = ttk.Combobox(root, textvariable=varPufferzeit, width=8)
 pufferzeit['values'] = ["Ja", "Nein"]
 pufferzeit.grid(row=4, column=5, sticky=W)
 pufferzeit.current(0)
 
+varPausenzeit = StringVar()
+pausenzeit = ttk.Combobox(root, textvariable=varPausenzeit, width=8)
+pausenzeit['values'] = ["Ja", "Nein"]
+pausenzeit.grid(row=6, column=5, sticky=W)
+pausenzeit.current(1)
+
 ####################################
-Label(root, text="  Folgender Wochentag soll", font=Text).grid(row=1, column=2, columnspan=7, sticky=W)
-Label(root, text="  simuliert werden:", font=Text).grid(row=2, column=2, columnspan=7, sticky=W)
-Label(root, text="  Sollte Pufferzeit zum Abbau von", font=Text).grid(row=3, column=2, columnspan=7, sticky=W)
-Label(root, text="  Verspätungen genutzt werden?", font=Text).grid(row=4, column=2, columnspan=7, sticky=W)
-#varKrankheit = IntVar()
-#Checkbutton7 = Checkbutton(root, text="Krankheit", font=Text, variable=varKrankheit)
-#Checkbutton7.grid(row=10, column=2, columnspan=7, sticky=W)
-#varStreik = IntVar()
-#Checkbutton8 = Checkbutton(root, text="Streik des ÖPNV", font=Text, variable=varStreik)
-#Checkbutton8.grid(row=11, column=2, columnspan=7, sticky=W)
+Label(root, text="  Folgender Wochentag soll", font=Text).grid(row=1, column=2, columnspan=3, sticky=W)
+Label(root, text="  simuliert werden:", font=Text).grid(row=2, column=2, columnspan=3, sticky=W)
+Label(root, text="  Sollten Wartezeiten zum Abbau", font=Text).grid(row=3, column=2, columnspan=3, sticky=W)
+Label(root, text="  von Verspätungen genutzt werden?", font=Text).grid(row=4, column=2, columnspan=3, sticky=W)
+Label(root, text="  Sollten Pausenzeiten zum Abbau", font=Text).grid(row=5, column=2, columnspan=3, sticky=W)
+Label(root, text="  von Verspätungen genutzt werden?", font=Text).grid(row=6, column=2, columnspan=3, sticky=W)
+
+# varKrankheit = IntVar()
+# Checkbutton7 = Checkbutton(root, text="Krankheit", font=Text, variable=varKrankheit)
+# Checkbutton7.grid(row=10, column=2, columnspan=7, sticky=W)
+# varStreik = IntVar()
+# Checkbutton8 = Checkbutton(root, text="Streik des ÖPNV", font=Text, variable=varStreik)
+# Checkbutton8.grid(row=11, column=2, columnspan=7, sticky=W)
 
 varSturm = IntVar()
 Checkbutton9 = Checkbutton(root, text="Sturm", font=Text, variable=varSturm)
-Checkbutton9.grid(row=7, column=2, columnspan=7, sticky=W)
+Checkbutton9.grid(row=9, column=2, columnspan=3, sticky=W)
 
 varRegen = IntVar()
 Checkbutton10 = Checkbutton(root, text="Regen", font=Text, variable=varRegen)
-Checkbutton10.grid(row=8, column=2, columnspan=7, sticky=W)
+Checkbutton10.grid(row=10, column=2, columnspan=3, sticky=W)
 
 varDefekt = IntVar()
 Checkbutton11 = Checkbutton(root, text="Fahrzeugdefekt im Depot", font=Text, variable=varDefekt)
-Checkbutton11.grid(row=7, column=5, columnspan=7, sticky=W)
+Checkbutton11.grid(row=9, column=5, columnspan=3, sticky=W)
 
-label12 = Label(root, text="  Veranstaltung nahe der Haltestelle:", font=Text).grid(row=14, column=2, columnspan=7,
-                                                                                    sticky=W)
+Label(root, text="  Event nahe der Haltestelle(n):", font=Text).grid(row=16, column=2, columnspan=3,
+                                                                     sticky=W)
 varVeranstaltung = StringVar()
-Entry(root, textvariable=varVeranstaltung).grid(row=14, column=5, sticky=W)
+Entry(root, textvariable=varVeranstaltung).grid(row=16, column=5, sticky=W)
 
-#label13 = Label(root, text="  Unfall nahe der Haltestelle:", font=Text).grid(row=16, column=2, columnspan=7, sticky=W)
-#varUnfall = StringVar()
-#Entry(root, textvariable=varUnfall).grid(row=16, column=5, sticky=W)
+Label(root, text="  In welcher Zeitspanne findet", font=Text).grid(row=17, column=2, columnspan=1,
+                                                                   sticky=W)
+Label(root, text="  das Event statt?", font=Text).grid(row=18, column=2, columnspan=1,
+                                                       sticky=W)
 
-label14 = Label(root, text="  Baustelle nahe der Haltestelle:", font=Text).grid(row=18, column=2, columnspan=7,
-                                                                                sticky=W)
+varVeranstaltungZeit = StringVar(value='hh:mm - hh:mm')
+Entry(root, textvariable=varVeranstaltungZeit).grid(row=18, column=5, sticky=W)
+
+# label13 = Label(root, text="  Unfall nahe der Haltestelle:", font=Text).grid(row=16, column=2, columnspan=7, sticky=W)
+# varUnfall = StringVar()
+# Entry(root, textvariable=varUnfall).grid(row=16, column=5, sticky=W)
+
+label14 = Label(root, text="  Baustelle nahe der Haltestelle(n):", font=Text).grid(row=20, column=2, columnspan=3,
+                                                                                   sticky=W)
 varBaustelle = StringVar()
-Entry(root, textvariable=varBaustelle).grid(row=18, column=5, sticky=W)
+Entry(root, textvariable=varBaustelle).grid(row=20, column=5, sticky=W)
 
-label15 = Label(root, text="  Straßensperrungen nahe der:", font=Text).grid(row=20, column=2, columnspan=7, sticky=W)
-label16 = Label(root, text="  Haltestelle:", font=Text).grid(row=21, column=2, columnspan=7, sticky=W)
+label15 = Label(root, text="  Straßensperrungen nahe der:", font=Text).grid(row=22, column=2, columnspan=3, sticky=W)
+label16 = Label(root, text="  Haltestelle(n):", font=Text).grid(row=23, column=2, columnspan=3, sticky=W)
 varSperrung = StringVar()
-Entry(root, textvariable=varSperrung).grid(row=21, column=5, sticky=W)
+Entry(root, textvariable=varSperrung).grid(row=23, column=5, sticky=W)
 
-#label17 = Label(root, text="  Fahrzeugdefekt während der", font=Text).grid(row=23, column=2, columnspan=7, sticky=W)
-#label18 = Label(root, text="  Fahrt nahe der Haltestelle:", font=Text).grid(row=24, column=2, columnspan=7, sticky=W)
-#varDefekt = StringVar()
-#Entry(root, textvariable=varDefekt).grid(row=24, column=5, sticky=W)
+# label17 = Label(root, text="  Fahrzeugdefekt während der", font=Text).grid(row=23, column=2, columnspan=7, sticky=W)
+# label18 = Label(root, text="  Fahrt nahe der Haltestelle:", font=Text).grid(row=24, column=2, columnspan=7, sticky=W)
+# varDefekt = StringVar()
+# Entry(root, textvariable=varDefekt).grid(row=24, column=5, sticky=W)
 root.mainloop()
 
 if varVeranstaltung.get() != (""):
-    eventOrte = varVeranstaltung.get().split(', ')
+    eventOrte = varVeranstaltung.get().split(',')
     for i in range(len(eventOrte)):
         eventOrte[i] = int(eventOrte[i])
 else:
     eventOrte = []
 
-#if varUnfall.get() != (""):
-    #varUnfall = varUnfall.get().split(', ')
-    #for i in range(len(varUnfall)):
-        #varUnfall[i] = int(varUnfall[i])
-#else:
-    #varUnfall = []
+# if varUnfall.get() != (""):
+# varUnfall = varUnfall.get().split(', ')
+# for i in range(len(varUnfall)):
+# varUnfall[i] = int(varUnfall[i])
+# else:
+# varUnfall = []
 
 if varBaustelle.get() != (""):
-    BaustellenListe = varBaustelle.get().split(', ')
+    BaustellenListe = varBaustelle.get().split(',')
     for i in range(len(BaustellenListe)):
         BaustellenListe[i] = int(BaustellenListe[i])
 else:
     BaustellenListe = []
 
 if varSperrung.get() != (""):
-    SperrungListe = varSperrung.get().split(', ')
+    SperrungListe = varSperrung.get().split(',')
     for i in range(len(SperrungListe)):
         SperrungListe[i] = int(SperrungListe[i])
 else:
     SperrungListe = []
 
-#if varDefekt.get() != (""):
-    #varDefekt = varDefekt.get().split(', ')
-    #for i in range(len(varDefekt)):
-        #varDefekt[i] = int(varDefekt[i])
-#else:
-    #varDefekt = []
+# if varDefekt.get() != (""):
+# varDefekt = varDefekt.get().split(', ')
+# for i in range(len(varDefekt)):
+# varDefekt[i] = int(varDefekt[i])
+# else:
+# varDefekt = []
 
 if varPufferzeit.get() == "Ja":
     varPufferzeit = 1
 else:
     varPufferzeit = 0
 
-"""
+if varVeranstaltungZeit.get() == ("") or varVeranstaltungZeit.get() == ("hh:mm - hh:mm"):
+    VeranstatungZeit = []
+else:
+    VeranstaltungZeit = varVeranstaltungZeit.get().split('-')
+    VeranstaltungBeginn = VeranstaltungZeit[0].split(':')
+    VeranstaltungEnde = VeranstaltungZeit[1].split(':')
+    VeranstaltungBeginn = int(VeranstaltungBeginn[0]) * 60 + int(VeranstaltungBeginn[1])
+    VeranstaltungEnde = int(VeranstaltungEnde[0]) * 60 + int(VeranstaltungEnde[1])
+
+
 #################### Routine zum Auslesen der Textdateien ###############################
+################ Dauer: mind. 1 minute ################################
 def load_table_data(fullfilepath):
     ### Read file
     tab_dict = {}
     with open(fullfilepath) as in_file:
-    	### Iterate over rows
+        ### Iterate over rows
         while True:
             try:
                 curr_row = in_file.readline()
             except IOError as e:
                 sys.exit(1)
-            if curr_row == '':      break    ### Empty (last) row found
-            if curr_row[0] == '*':  continue ### Comment found
-            if curr_row[0] == '$':           ### New table found
+            if curr_row == '':      break  ### Empty (last) row found
+            if curr_row[0] == '*':  continue  ### Comment found
+            if curr_row[0] == '$':  ### New table found
                 split_list = curr_row.split(':')
                 curr_row = split_list[1]
                 tab_dict[split_list[0]] = ''
@@ -237,78 +266,86 @@ def load_table_data(fullfilepath):
     return tab_df_dict
 
 
-def dayChoice(dropdown):
-    if dropdown == "Arbeitstag - Keine Ferien":
+def dayChoice(chosenDay):
+    if chosenDay == "Arbeitstag - Keine Ferien":
         data = load_table_data('opti/Mo_Schule/timetable.txt')
         blockdata = load_table_data('opti/Mo_Schule/timetable-blocks.txt')
         dutydata = load_table_data('opti/Mo_Schule/timetable-duties.txt')
-        return(data, dutydata, blockdata)
-    elif dropdown == "Arbeitstag - Ferien":
+        return (data, dutydata, blockdata)
+    elif chosenDay == "Arbeitstag - Ferien":
         data = load_table_data('opti/Mo_Ferien/timetable.txt')
         blockdata = load_table_data('opti/Mo_Ferien/timetable-blocks.txt')
         dutydata = load_table_data('opti/Mo_Ferien/timetable-duties.txt')
-        return(data, dutydata, blockdata)
-    elif dropdown == "Samstag":
+        return (data, dutydata, blockdata)
+    elif chosenDay == "Samstag":
         data = load_table_data('opti/Samstag/timetable.txt')
         blockdata = load_table_data('opti/Samstag/timetable-blocks.txt')
         dutydata = load_table_data('opti/Samstag/timetable-duties.txt')
-        return(data, dutydata, blockdata)
-    elif dropdown == "Sonntag":
+        return (data, dutydata, blockdata)
+    elif chosenDay == "Sonntag":
         data = load_table_data('opti/Sonntag/timetable.txt')
         blockdata = load_table_data('opti/Sonntag/timetable-blocks.txt')
         dutydata = load_table_data('opti/Sonntag/timetable-duties.txt')
-        return(data, dutydata, blockdata)
-data, dutydata, blockdata = dayChoice(dropdown)
-#relevante Dataframes extrahieren
+        return (data, dutydata, blockdata)
+
+
+data, dutydata, blockdata = dayChoice(chosenDay.get())
+# relevante Dataframes extrahieren
 servicefahrten = data["$SERVICEJOURNEY"]
 dutyelements = dutydata["$DUTYELEMENT"]
 blocks = blockdata["$BLOCK"]
 blockelements = blockdata["$BLOCKELEMENT"]
-dutytype = dutydata["$DUTY"]      
-allBlocks = blockelements  
+dutytype = dutydata["$DUTY"]
+allBlocks = blockelements
 tableFinal = dutyelements
 allLines = servicefahrten
-tableFinal = tableFinal.drop(['ServiceJourneyCode', 'TransferType', 'GroupTransferIndex', 'DeadRunTransferBlockID', 'DeadRunTransferDutyID'], axis=1)
+tableFinal = tableFinal.drop(
+    ['ServiceJourneyCode', 'TransferType', 'GroupTransferIndex', 'DeadRunTransferBlockID', 'DeadRunTransferDutyID'],
+    axis=1)
 LineID = []
+Distance = []
 count_rows_duty = dutyelements.shape[0]
 count_rows_dutytype = dutytype.shape[0]
 count_rows_service = servicefahrten.shape[0]
 count_blocks = blocks.shape[0]
 for x in range(count_rows_duty):
     for y in range(count_rows_service):
-        if tableFinal.iat[x,2] == allLines.iat[y,0]:
-            LineID.append(allLines.iat[y,1])
-    if tableFinal.iat[x,2] == -1:
-            LineID.append(0)
+        if tableFinal.iat[x, 2] == allLines.iat[y, 0]:
+            LineID.append(allLines.iat[y, 1])
+            Distance.append(allLines.iat[y, 17])
+    if tableFinal.iat[x, 2] == -1:
+        LineID.append(0)
+        Distance.append(0)
+
 VehTypeID = []
 DepotID = []
 for x in range(count_rows_duty):
-    if tableFinal.iat[x,1] == -1:
-        VehTypeID.append(tableFinal.iat[(x+1),1])
-        DepotID.append(tableFinal.iat[x,4])
+    if tableFinal.iat[x, 1] == -1:
+        VehTypeID.append(tableFinal.iat[(x + 1), 1])
+        DepotID.append(tableFinal.iat[x, 4])
     else:
         for y in range(count_blocks):
-            if tableFinal.iat[x,1] == blocks.iat[y,0]:
-                VehTypeID.append(blocks.iat[y,1])
-                DepotID.append(blocks.iat[y,2])
+            if tableFinal.iat[x, 1] == blocks.iat[y, 0]:
+                VehTypeID.append(blocks.iat[y, 1])
+                DepotID.append(blocks.iat[y, 2])
 ###Routine zum HinzufÃ¼gen des Duty Typs
 df_dutytype = []
 for x in range(count_rows_duty):
     for y in range(count_rows_dutytype):
-        if tableFinal.iat[x,0] == dutytype.iat[y,0]:
-            df_dutytype.append(dutytype.iat[y,1])
-tableFinal["DutyType"] = df_dutytype   
+        if tableFinal.iat[x, 0] == dutytype.iat[y, 0]:
+            df_dutytype.append(dutytype.iat[y, 1])
+tableFinal["DutyType"] = df_dutytype
 tableFinal["DepotID"] = DepotID
 tableFinal["VehTypeID"] = VehTypeID
 tableFinal["LineID"] = LineID
+tableFinal["Distance"] = Distance
 df = tableFinal
-"""
-###export_csv = tableFinal.to_csv(r'TESTtableFinal.csv', index=None, header=True)
 
+# export_csv = tableFinal.to_csv(r'tableFinal.csv', index=None, header=True)
 
 ####################### Daten einlesen ####################################
-df = pd.read_csv("/home/chris/PythonProjekte/SemProjekt-1920/tableFinal.txt", sep=";")
-# df = pd.read_csv("tableFinal.csv", sep=";")
+#df = pd.read_csv("tableFinal.csv", sep=";")
+#df.head()
 ####################### Daten transformieren und neue Zeitspalten in Dataframe einfügen (Zeit) ########################
 # Umrechnung der Start- & Endzeit in Minuten (für Simulationsuhr)
 StartTime = []
@@ -393,6 +430,7 @@ ToHS_dic = {}
 PartStartTime_dic = {}
 PartEndTime_dic = {}
 ElementID_dic = {}
+Distance_dic = {}
 
 for i in range(1, len(numberVeh) + 1):
     DifTime = []
@@ -413,6 +451,9 @@ for i in range(1, len(numberVeh) + 1):
     Umlauf = []
     Teilumlauf = []
 
+    Distanz = []
+    TeilumlaufDistanz = []
+
     for j in range(0, count_row):
         if df.BlockID[j] == i:
 
@@ -422,6 +463,7 @@ for i in range(1, len(numberVeh) + 1):
             stTime = df.StartTime[j]
             eTime = df.EndTime[j]
             elementID = df.ElementType[j]
+            distance = df.Distance[j]
 
             if df.ToStopID[j] == DepotID[i - 1]:
                 PartDif.append(difTime)
@@ -448,6 +490,10 @@ for i in range(1, len(numberVeh) + 1):
                 Umlauf.append(Teilumlauf)
                 Teilumlauf = []
 
+                TeilumlaufDistanz.append(distance)
+                Distanz.append(TeilumlaufDistanz)
+                TeilumlaufDistanz = []
+
             else:
                 PartDif.append(difTime)
                 PartFromHS.append(fromhs)
@@ -455,6 +501,7 @@ for i in range(1, len(numberVeh) + 1):
                 PartStartTime.append(stTime)
                 PartEndTime.append(eTime)
                 Teilumlauf.append(elementID)
+                TeilumlaufDistanz.append(distance)
 
     DriveDuration_dic.update({i - 1: DifTime})
     FromHS_dic.update({i - 1: FromHS})
@@ -462,6 +509,7 @@ for i in range(1, len(numberVeh) + 1):
     PartStartTime_dic.update({i - 1: StartTime})
     PartEndTime_dic.update({i - 1: EndTime})
     ElementID_dic.update({i - 1: Umlauf})
+    Distance_dic.update({i - 1: Distanz})
 
 
 ############################## Funktionen für Objekt Vehicle #############################
@@ -508,10 +556,10 @@ def weather(driveduration):
     return delay, delayType
 
 
-def event(startHS, endHS):
+def event(startHS, endHS, time):
     delay = 0
     delayType = ""
-    if startHS in eventOrte or endHS in eventOrte:
+    if (startHS in eventOrte or endHS in eventOrte) and (time >= VeranstaltungBeginn and time <= VeranstaltungEnde):
         delay = delayEvent
         delayType = "|Event|"
     else:
@@ -530,6 +578,7 @@ def baustelle(startHS, endHS):
         delayonTop = 0
     return delayonTop, delayType
 
+
 def sperrung(startHS, endHS):
     delayonTop = 0
     delayType = ""
@@ -539,6 +588,7 @@ def sperrung(startHS, endHS):
     else:
         delayonTop = 0
     return delayonTop, delayType
+
 
 def unfall(startHS, endHS, driveduration, time):
     delay = 0
@@ -564,6 +614,7 @@ def unfall(startHS, endHS, driveduration, time):
 
         return delay, delayType
 
+
 def fahrzeugausfall():
     coin = numpy.random.choice(numpy.arange(0, 2), p=[1 - ausmaßAusfall, ausmaßAusfall])
     if (coin == 1):
@@ -575,7 +626,6 @@ def fahrzeugausfall():
     return delay, delayType
 
 
-
 ############# Stau durch Unfall ##############
 
 ####### Funktion: Unfallausbruch zu bestimmten Zeiten #########################
@@ -583,12 +633,14 @@ def unfallzeitGroup():
     staugroup = numpy.random.choice(numpy.arange(0, 3), p=[0.1, 0.25, 0.65])
     return staugroup
 
-#Quelle von def choice und def spaced_choice: https://stackoverflow.com/questions/47950131/drawing-random-numbers-with-draws-in-some-pre-defined-interval-numpy-random-ch/47950676
+
+# Quelle von def choice und def spaced_choice: https://stackoverflow.com/questions/47950131/drawing-random-numbers-with-draws-in-some-pre-defined-interval-numpy-random-ch/47950676
 def choice(low, high, delta, n_samples):  # delta = wieviel abstand zwischen den Werten
     draw = numpy.random.choice(high - low - (n_samples - 1) * delta, n_samples, replace=False)
     idx = numpy.argsort(draw)
     draw[idx] += numpy.arange(low, low + delta * n_samples, delta)
     return draw
+
 
 def spaced_choice(i, n_samples):
     stauintervall = random.randint(0, 1)
@@ -609,12 +661,14 @@ def spaced_choice(i, n_samples):
             draw = choice(870, 1110, 1, n_samples)
     return list(draw)
 
+
 def flatList(list):
     flat_list = []
     for sublist in list:
         for item in sublist:
             flat_list.append(item)
     return flat_list
+
 
 def unfallEndzeitCalculator(list):
     unfallEndzeiten = []
@@ -623,6 +677,7 @@ def unfallEndzeitCalculator(list):
         stauEndzeit = list[item] + stauDauer
         unfallEndzeiten.append(stauEndzeit)
     return unfallEndzeiten
+
 
 def unfallStartzeitCalculator(n):
     unfallStartzeiten = []
@@ -642,17 +697,20 @@ def unfallOrtCalculator(n):
         stauOrte.append(x)
     return stauOrte
 
+
 def unfallGenerator(n):
     stauBeginn = unfallStartzeitCalculator(n)
     stauEnde = unfallEndzeitCalculator(stauBeginn)
     stauOrt = unfallOrtCalculator(n)
     return stauBeginn, stauEnde, stauOrt
 
-unfallBeginn, unfallEnde, unfallOrt = unfallGenerator(10) #anzahlUnfaelle
 
-#print(unfallBeginn)
-#print(unfallEnde)
-#print(unfallOrt)
+unfallBeginn, unfallEnde, unfallOrt = unfallGenerator(10)  # anzahlUnfaelle
+
+
+# print(unfallBeginn)
+# print(unfallEnde)
+# print(unfallOrt)
 
 ############################ Störgenerator##################################
 # Ausmaß = Anteil an Fahrten, die von Störung betroffen sind
@@ -670,10 +728,11 @@ def passengerDisruption(time, driveduration, startHS, endHS):  # Funktion für d
         delay += delayWeather
         delayType += delayTypeWeather
     if varEvent == 1:
-        delayEvent, delayTypeEvent = event(startHS, endHS)
+        delayEvent, delayTypeEvent = event(startHS, endHS, time)
         delay += delayEvent
         delayType += delayTypeEvent
     return delay, delayType
+
 
 # Werte für Testzwecke hier entspannter zum Einstellen
 varRushhour = 0
@@ -683,6 +742,7 @@ varBaustelle = 1
 varSperrung = 1
 varUnfall = 0
 varFahrzeugausfall = 0
+
 
 def trafficDisruption(startHS, endHS, driveduration, time):
     delay = 0
@@ -696,7 +756,7 @@ def trafficDisruption(startHS, endHS, driveduration, time):
         delay += delayWeather
         delayType += delayTypeWeather
     if varEvent == 1:
-        delayEvent, delayTypeEvent = event(startHS, endHS)
+        delayEvent, delayTypeEvent = event(startHS, endHS, time)
         delay += delayEvent
         delayType += delayTypeEvent
     if varBaustelle == 1:
@@ -718,10 +778,19 @@ def trafficDisruption(startHS, endHS, driveduration, time):
     return delay, delayType
 
 
-
 def breaktime(vehID, teilumlaufnummer, fahrtnummer, delayTime):
     if varPufferzeit == 1:
-        if ElementID_dic[vehID][teilumlaufnummer][fahrtnummer] == 9:
+        if ElementID_dic[vehID][teilumlaufnummer][fahrtnummer] == 9 or ElementID_dic[vehID][teilumlaufnummer][
+            fahrtnummer] == 8:
+            DriveDuration_dic[vehID][teilumlaufnummer][fahrtnummer] = \
+                DriveDuration_dic[vehID][teilumlaufnummer][fahrtnummer] - delayTime
+            if DriveDuration_dic[vehID][teilumlaufnummer][fahrtnummer] < 0:
+                delayTime = abs(DriveDuration_dic[vehID][teilumlaufnummer][fahrtnummer])
+                DriveDuration_dic[vehID][teilumlaufnummer][fahrtnummer] = 0
+            else:
+                delayTime = 0
+    if varPausenzeit == 1:
+        if ElementID_dic[vehID][teilumlaufnummer][fahrtnummer] == 8:
             DriveDuration_dic[vehID][teilumlaufnummer][fahrtnummer] = \
                 DriveDuration_dic[vehID][teilumlaufnummer][fahrtnummer] - delayTime
             if DriveDuration_dic[vehID][teilumlaufnummer][fahrtnummer] < 0:
@@ -730,6 +799,7 @@ def breaktime(vehID, teilumlaufnummer, fahrtnummer, delayTime):
             else:
                 delayTime = 0
     return delayTime
+
 
 ############################ Kennzahlen ###################################
 print("Simulation wurde gestartet...")
@@ -751,16 +821,29 @@ count_Servicefahrten = 0
 global count_Fahrten
 count_Fahrten = 0
 
+# Verspätungspropagation
+global VP
+global counterVP
+counterVP = 0
+VP = 0
+columnsVP = ['Fahrzeug', 'Umlauf', 'VP']
+VP_df = pd.DataFrame(columns=columnsVP)
+# print(VP_df)
+x = [0, 1, 2]
+VP_df.loc[0] = [1, 2, 3]
 ############################## Daten für CSV-Datei ###############################
 # Header für CSV-Datei
 print(
     "vehID Teilumlaufnummer Standort Dep/Arr Uhrzeit(Soll) Uhrzeit(Ist) Fahrtverspätung Gesamtverspätung Verspätungsursache",
     file=open("Eventqueue6.5-noSt.csv", "a"))
 
+
 ########################## Objekt Vehicle #########################################
 def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
     while True:
         for teilumlaufnummer in range(0, len(StartTime_dic) - 1):  # Loop der durch die einzelnen Teilumläufe führt
+            global VP
+            VP = 0
             try:
                 if StartTime_dic[vehID][teilumlaufnummer] - env.now >= 0:
                     delayTime = 0
@@ -776,13 +859,14 @@ def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
                     for fahrtnummer in range(0, len(FromHS_dic[vehID][teilumlaufnummer])):
 
                         # Kennzahl: Wirkungsgrad (zeitbezogen)
-                        global count_Fahrten #Anzahl aller Fahrten
+                        global count_Fahrten  # Anzahl aller Fahrten
                         count_Fahrten += DriveDuration_dic[vehID][teilumlaufnummer][fahrtnummer]
                         if ElementID_dic[vehID][teilumlaufnummer][fahrtnummer] == 1:
-                            global count_Servicefahrten # Anzahl aller Servicefahrten
+                            global count_Servicefahrten  # Anzahl aller Servicefahrten
                             count_Servicefahrten += DriveDuration_dic[vehID][teilumlaufnummer][fahrtnummer]
 
-                        if ElementID_dic[vehID][teilumlaufnummer][fahrtnummer] == 9:
+                        if ElementID_dic[vehID][teilumlaufnummer][fahrtnummer] == 9 or \
+                                ElementID_dic[vehID][teilumlaufnummer][fahrtnummer] == 8:
                             fahrtstatus = 2
                             delayPassenger = 0
                             delayTypePassenger = "|---|"
@@ -791,9 +875,12 @@ def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
 
                             # Verspätungen durch Haltezeit
                             delayPassenger, delayTypePassenger = passengerDisruption(env.now,
-                                                                    DriveDuration_dic[vehID][teilumlaufnummer][fahrtnummer],
-                                                                    FromHS_dic[vehID][teilumlaufnummer][fahrtnummer],
-                                                                    ToHS_dic[vehID][teilumlaufnummer][fahrtnummer])
+                                                                                     DriveDuration_dic[vehID][
+                                                                                         teilumlaufnummer][fahrtnummer],
+                                                                                     FromHS_dic[vehID][
+                                                                                         teilumlaufnummer][fahrtnummer],
+                                                                                     ToHS_dic[vehID][teilumlaufnummer][
+                                                                                         fahrtnummer])
 
                         delayTime_perStop = delayPassenger
                         delayType = delayTypePassenger
@@ -840,6 +927,9 @@ def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
                         # Abfrage, ob Pausenzeit & Verspätungszeit anpassen
                         delayTime = breaktime(vehID, teilumlaufnummer, fahrtnummer, delayTime)
 
+                        VP += delayTime
+                        # print(VP)
+
                         # Timeout für Fahrtdauer zur nächsten Haltestelle
                         yield (
                             env.timeout(DriveDuration_dic[vehID][teilumlaufnummer][fahrtnummer] + delayTime_perDrive))
@@ -849,14 +939,13 @@ def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
                         else:
                             fahrtstatus = 1
 
-                        #Kennzahl: Pünktlichkeit (Ankunft)
+                        # Kennzahl: Pünktlichkeit (Ankunft)
                         verspaetung = env.now - PartEndTime_dic[vehID][teilumlaufnummer][fahrtnummer]
                         global count_ankuenfte
                         count_ankuenfte += 1
                         if verspaetung == 0:
                             global count_puenktlichAn
                             count_puenktlichAn += 1
-
 
                         # Abfrage ob Bus im Depot angekommen
                         if ToHS_dic[vehID][teilumlaufnummer][fahrtnummer] == DepotID[vehID]:
@@ -870,7 +959,10 @@ def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
                                   fahrtstatus, PartEndTime_dic[vehID][teilumlaufnummer][fahrtnummer],
                                   env.now, delayTime_perDrive, delayTime, delayType,
                                   file=open("Eventqueue6.5-noSt.csv", "a"))
-
+                global counterVP
+                VP_df.loc[counterVP] = [vehID + 1, teilumlaufnummer + 1, VP]
+                counterVP += 1
+                # print("Die Verspätungspropagation für Fahrzeug ", vehID+1, ", Umlauf ", teilumlaufnummer+1, "beträgt: ", VP)
             except:
                 if env.now >= 1440:  # to avoid RunTimeError: GeneratorExit
                     return False
@@ -890,6 +982,8 @@ env.run(until=1440)  # Ein Tag simulieren: in Minuten ausdrücken. 24h = 1440min
 # Ausgabe von Kennzahlen:
 print("***Pünktlichkeit***")
 print("Anzahl Abfahrten: ", count_abfahrten, " davon pünktlich: ", count_puenktlichAb)
-print("Anzahl Ankünfte: ", count_ankuenfte, " davon pünktlich: ",  count_puenktlichAn)
+print("Anzahl Ankünfte: ", count_ankuenfte, " davon pünktlich: ", count_puenktlichAn)
 print("***Wirkungsgrade***")
 print("Anzahl Fahrten (total): ", count_Fahrten, " davon Servicefahrten: ", count_Servicefahrten)
+
+export_csv = VP_df.to_csv(r'VP.csv', index=None, header=True)
