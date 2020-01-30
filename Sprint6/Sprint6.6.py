@@ -45,7 +45,7 @@ RushhourStart1 = 390
 RushhourEnde1 = 510
 RushhourStart2 = 870
 RushhourEnde2 = 1110
-delayRushhour = 2
+delayRushhour = 2 # absolute Zahl , also immer 2min mehr Fahrtzeit oder Haltezeit
 
 ## Unfall-Funktion
 anzahlUnfaelle = 10  # pro Simulationstag
