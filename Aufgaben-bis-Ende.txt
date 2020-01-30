@@ -44,6 +44,8 @@ Fokus auf Dauer der Simulation. DutyID und Swaps konzeptionell überdenken, aber
 ( ) Code objektorientiert gestalten
 ( ) Code Effizienz erhöhen (vor allem Einleseroutine)
 ( ) Dokumentation Code
+( ) GUI ansehnlich machen (niedrige Prio)
+( ) Teilweiser Output in GUI (niedrige Prio) 
 
 ( ) PK1 Paper lesen / Fokus auf Suchprozess
 
