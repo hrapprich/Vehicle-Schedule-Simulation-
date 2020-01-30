@@ -29,8 +29,8 @@ from io import StringIO
 # Delay = Verspätung (relativ zur Fahrtdauer der Fahrt), die zur Fahrtdauer hinzukommt
 
 # Manuelles Ein-/Abstellen einer Störung, die nicht über die GUI abgestellt werden kann
-varRushhour = 1
-varUnfall = 1
+varRushhour = 1 # 0 für aus; 1 für an
+varUnfall = 1 # 0 für aus; 1 für an
 
 ################### nur für Entwickler (bitte nichts verändern!)#####################
 varWeather = 1
