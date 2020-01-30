@@ -825,16 +825,30 @@ count_Servicefahrten = 0
 global count_Fahrten
 count_Fahrten = 0
 
+# Verteilung Pufferzeiten
+counterPausenzeit = 0
+lengthElementDic = len(ElementID_dic)
+columnsPausenzeit = ['Fahrzeug','Umlauf','Haltestelle', 'Pausenzeit', 'Dauer Pufferzeit', 'Haltestellen gesamt']
+Pausenzeit_df = pd.DataFrame(columns = columnsPausenzeit)
+for i in range(lengthElementDic):
+    for j in range(len(ElementID_dic[i])):
+        for k in range(len(ElementID_dic[i][j])):
+            if ElementID_dic[i][j][k] == 9 or ElementID_dic[i][j][k] == 8:
+                Pausenzeit_df.loc[counterPausenzeit] = [i+1,j+1,k+1,1, DriveDuration_dic[i][j][k],len(ElementID_dic[i][j])]
+                counterPausenzeit += 1
+            else:
+                Pausenzeit_df.loc[counterPausenzeit] = [i+1,j+1,k+1,0, 0, len(ElementID_dic[i][j])]
+                counterPausenzeit +=1
+export_csv = Pausenzeit_df.to_csv(r'Verteilung Pausenzeiten.csv', index=None, header=True)
+
 # Verspätungspropagation
 global VP
 global counterVP
 counterVP = 0
 VP = 0
-columnsVP = ['Fahrzeug', 'Umlauf', 'VP']
-VP_df = pd.DataFrame(columns=columnsVP)
-# print(VP_df)
-x = [0, 1, 2]
-VP_df.loc[0] = [1, 2, 3]
+columnsVP = ['Fahrzeug','Umlauf','VP']
+VP_df = pd.DataFrame(columns = columnsVP)
+
 ############################## Daten für CSV-Datei ###############################
 # Header für CSV-Datei
 print(
