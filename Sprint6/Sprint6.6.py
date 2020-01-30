@@ -28,13 +28,16 @@ from io import StringIO
 # Ausmaß = Anteil an Fahrten, die von der Störung betroffen sind
 # Delay = Verspätung (relativ zur Fahrtdauer der Fahrt), die zur Fahrtdauer hinzukommt
 
-# Manuelles Ein-/Abstellen einer Störung
+# Manuelles Ein-/Abstellen einer Störung, die nicht über die GUI abgestellt werden kann
 varRushhour = 1
+varUnfall = 1
+
+################### nur für Entwickler (bitte nichts verändern!)#####################
 varWeather = 1
 varEvent = 1
 varBaustelle = 1
 varSperrung = 1
-varUnfall = 1
+##########################
 
 ###### Funktionen, die immer aktiviert sind ##########
 ## Rushhour-Funktion
