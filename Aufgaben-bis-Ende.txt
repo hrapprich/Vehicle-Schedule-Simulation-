@@ -31,11 +31,12 @@ offene Punkte:
 (nicht sinnvoll erstmal) Überlegungen: dispositive Entscheidung: Abbruchbindung 
   (meist einen) wieviele Fahrzeuge haben nur einen Teilumlauf? hier wirken dispositive Entscheidungen nicht
 (x) Leerfahrten werden nicht berücksichtigt, da sie nicht eindeutig zugeordnet werden können aus den gegebenen Daten (Distanz etc einfach auf 0 gesetzt)
+(x) Unfallstörung fixen 
 
 Prioliste:
 ( ) Idee finden: Personaldaten konzeptionell mitdenken bzw. Schnittstelle einfügen
 ( ) Idee finden: Fahrzeuge miteinander verknüpfen
-( ) Unfallstörung & Fahrzeugausfall (Depot & während der Fahrt fixen)
+( ) Fahrzeugausfall (Depot & während der Fahrt) fixen
 ( ) Dateninkonsistenzen ausbessern
 ( ) Simulationsdauer 1 oder 2h verlängern
 ( ) Code objektorientiert gestalten
