@@ -29,7 +29,7 @@ from io import StringIO
 # Delay = Verspätung (relativ zur Fahrtdauer der Fahrt), die zur Fahrtdauer hinzukommt
 
 # Manuelles Ein-/Abstellen einer Störung, die nicht über die GUI abgestellt werden kann
-varRushhour = 0 # 0 für aus; 1 für an
+varRushhour = 1 # 0 für aus; 1 für an
 varUnfall = 0 # 0 für aus; 1 für an
 
 ################### nur für Entwickler (bitte nichts verändern!)#####################
@@ -45,7 +45,8 @@ RushhourStart1 = 390
 RushhourEnde1 = 510
 RushhourStart2 = 870
 RushhourEnde2 = 1110
-delayRushhour = 2 # absolute Zahl , also immer 2min mehr Fahrtzeit oder Haltezeit
+delayRushhour = 0.1 # relative Zahl, 10% längere Fahrtzeit
+delayRushhour_Halt = 1 # absolute Zahl für Verspätung bei Halt
 
 ## Unfall-Funktion
 anzahlUnfaelle = 10  # pro Simulationstag
@@ -735,7 +736,8 @@ def passengerDisruption(time, driveduration, startHS, endHS):  # Funktion für d
     delayType = ""
     if varRushhour == 1:
         if rushhour(time):
-            delay += delayRushhour
+            delayperdrive = delayRushhour_Halt
+            delay += delayperdrive
             delayType += "|Hauptverkehrszeit|"
     if varWeather == 1:
         delayWeather, delayTypeWeather = weather(driveduration)
@@ -753,7 +755,8 @@ def trafficDisruption(startHS, endHS, driveduration, time):
     delayType = ""
     if varRushhour == 1:
         if rushhour(time):
-            delay += delayRushhour
+            delayperdrive = int(delayRushhour * driveduration)
+            delay += delayperdrive
             delayType += "|Hauptverkehrszeit|"
     if varWeather == 1:
         delayWeather, delayTypeWeather = weather(driveduration)
@@ -986,7 +989,6 @@ def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
                 continue
 
             ########################## Simulationsumgebung ##############################
-
 
 env = simpy.Environment()
 
