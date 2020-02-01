@@ -30,7 +30,7 @@ from io import StringIO
 
 # Manuelles Ein-/Abstellen einer Störung, die nicht über die GUI abgestellt werden kann
 varRushhour = 1 # 0 für aus; 1 für an
-varUnfall = 0 # 0 für aus; 1 für an
+varUnfall = 1 # 0 für aus; 1 für an
 
 ################### nur für Entwickler (bitte nichts verändern!)#####################
 varWeather = 1
@@ -243,7 +243,7 @@ else:
     varPufferzeit = 0
 
 if varVeranstaltungZeit.get() == ("") or varVeranstaltungZeit.get() == ("hh:mm - hh:mm"):
-    VeranstatungZeit = []
+    VeranstaltungZeit = []
 else:
     VeranstaltungZeit = varVeranstaltungZeit.get().split('-')
     VeranstaltungBeginn = VeranstaltungZeit[0].split(':')
