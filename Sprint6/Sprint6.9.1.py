@@ -841,7 +841,6 @@ print(
     "vehID Teilumlaufnummer Standort Dep/Arr Uhrzeit(Soll) Uhrzeit(Ist) Fahrtverspätung Gesamtverspätung Verspätungsursache",
     file=open("Eventqueue6.9.csv", "a"))
 
-
 ########################## Objekt Vehicle #########################################
 def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
     while True:
