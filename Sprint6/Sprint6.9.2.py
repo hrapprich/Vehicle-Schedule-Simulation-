@@ -356,7 +356,7 @@ tableFinal["LineID"] = LineID
 tableFinal["Distance"] = Distance
 df = tableFinal
 
-# export_csv = tableFinal.to_csv(r'tableFinal.csv', index=None, header=True)
+#export_csv = tableFinal.to_csv(r'tableFinal.csv', index=None, header=True)
 
 ####################### Daten einlesen ####################################
 #df = pd.read_csv("tableFinal.csv", sep=";")
@@ -860,10 +860,8 @@ print(
 
 ########################## Objekt Vehicle #########################################
 def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
-    while True:
+
         for teilumlaufnummer in range(0, len(StartTime_dic) - 1):  # Loop der durch die einzelnen Teilumläufe führt
-            global VP
-            VP = 0
             try:
                 if StartTime_dic[vehID][teilumlaufnummer] - env.now >= 0:
                     delayTime = 0
@@ -872,9 +870,7 @@ def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
                 else:
                     yield env.timeout(0)
                     delayTime = env.now - StartTime_dic[vehID][teilumlaufnummer]
-
                 umlaufstatus = 1  # Wenn Startzeit erreicht, Fahrzeug im Umlauf (umlaufstatus = 1)
-
                 while umlaufstatus == 1:  # while Fahrzeug im Umlauf
                     for fahrtnummer in range(0, len(FromHS_dic[vehID][teilumlaufnummer])):
 
@@ -979,10 +975,6 @@ def vehicle(env, vehID):  # Eigenschaften von jedem Fahrzeug
                                   fahrtstatus, PartEndTime_dic[vehID][teilumlaufnummer][fahrtnummer],
                                   env.now, delayTime_perDrive, delayTime, delayType,
                                   file=open("Eventqueue6.9.csv", "a"))
-                global counterVP
-                VP_df.loc[counterVP] = [vehID + 1, teilumlaufnummer + 1, VP]
-                counterVP += 1
-                # print("Die Verspätungspropagation für Fahrzeug ", vehID+1, ", Umlauf ", teilumlaufnummer+1, "beträgt: ", VP)
             except:
                 if env.now >= 1440:  # to avoid RunTimeError: GeneratorExit
                     return False
