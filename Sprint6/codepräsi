@@ -1,0 +1,131 @@
+
+
+def vehicle(env, vehID):
+
+    für jeden Teilumlauf des Fahrzeugs:
+        Fahrzeug wartet im Depot bis Startzeit des Teilumlaufes erreicht ist
+        Startzeitpunkt erreicht: Fahrzeug verlässt Depot
+
+        für jede Fahrt im Teilumlauf:
+            Generierung einer Verspätung an Start-Endhaltestelle
+            Fahrzeug verlässt Start-Haltestelle mit entsprechender Verspätung (print Zeile in Output)
+            Generierung einer Verspätung während der Fahrtzeit zur End-Haltestelle
+            Fahrzeug kommt an End-Haltestelle mit entsprechender Verspätung an (print Zeile in Output)
+            Wenn an End-Haltestelle Wartezeit eingeplant ist:
+                Nutze Wartezeit zum Abbau der bisher eingefangenen Verspätung
+
+
+
+        Fahrzeug fährt los zur ersten Haltestelle (erste Zeile in Output)
+
+
+    for teilumlaufnummer in Teilumlaeufe:  # Loop der durch die einzelnen Teilumläufe führt
+        yield env.timeout(StartTime[vehID][teilumlaufnummer] - env.now)
+        umlaufstatus = 1  # Wenn Startzeit erreicht, Fahrzeug im Umlauf (umlaufstatus = 1)
+        while umlaufstatus == 1:  # while Fahrzeug im Umlauf
+            for fahrtnummer in len(teilumlaufnummer):
+
+                # Kennzahl: Wirkungsgrad (zeitbezogen)
+                global count_Fahrten  # Anzahl aller Fahrten
+                count_Fahrten += DriveDuration_dic[vehID][teilumlaufnummer][fahrtnummer]
+                if ElementID_dic[vehID][teilumlaufnummer][fahrtnummer] == 1:
+                    global count_Servicefahrten  # Anzahl aller Servicefahrten
+                    count_Servicefahrten += DriveDuration_dic[vehID][teilumlaufnummer][fahrtnummer]
+
+                if ElementID_dic[vehID][teilumlaufnummer][fahrtnummer] == 9 or \
+                        ElementID_dic[vehID][teilumlaufnummer][fahrtnummer] == 8:
+                    fahrtstatus = 2
+                    delayPassenger = 0
+                    delayTypePassenger = "|---|"
+                else:
+                    fahrtstatus = 0  # 0 = Abfahrt / 1 = Ankunft / 2 = Pause
+
+                    # Verspätungen durch Haltezeit
+                    delayPassenger, delayTypePassenger = passengerDisruption(env.now,
+                                                                             DriveDuration_dic[vehID][
+                                                                                 teilumlaufnummer][fahrtnummer],
+                                                                             FromHS_dic[vehID][
+                                                                                 teilumlaufnummer][fahrtnummer],
+                                                                             ToHS_dic[vehID][teilumlaufnummer][
+                                                                                 fahrtnummer])
+
+                delayTime_perStop = delayPassenger
+                delayType = delayTypePassenger
+
+                delayTime += delayTime_perStop
+                yield env.timeout(delayTime_perStop)
+
+                # Kennzahl: Pünktlichkeit (Abfahrt)
+                verspaetung = env.now - PartStartTime_dic[vehID][teilumlaufnummer][fahrtnummer]
+                global count_abfahrten
+                count_abfahrten += 1
+                if verspaetung == 0:
+                    global count_puenktlichAb
+                    count_puenktlichAb += 1
+
+                print(vehID + 1, teilumlaufnummer + 1, FromHS_dic[vehID][teilumlaufnummer][fahrtnummer],
+                      fahrtstatus, PartStartTime_dic[vehID][teilumlaufnummer][fahrtnummer], env.now,
+                      delayTime_perStop, delayTime, delayType,
+                      file=open("Eventqueue6.9.csv", "a"))
+
+                # Verspätung auf Fahrt ermitteln
+                if ElementID_dic[vehID][teilumlaufnummer][fahrtnummer] == 9:
+                    delayTime_perDrive = 0
+                    delayType = "|---|"
+                else:
+                    delayTraffic, delayTypeTraffic = trafficDisruption(
+                        FromHS_dic[vehID][teilumlaufnummer][fahrtnummer],
+                        ToHS_dic[vehID][teilumlaufnummer][fahrtnummer],
+                        DriveDuration_dic[vehID][teilumlaufnummer][fahrtnummer],
+                        env.now)
+
+                    delayTime_perDrive = delayTraffic
+                    delayType = delayTypeTraffic
+
+                # Aufsummieren der Verspätungen im Teilumlauf
+                delayTime += delayTime_perDrive
+
+                # Abfrage, ob Fahrt auÃerhalb der Simulationszeit liegen würde
+                if drive_outOfTime(
+                        DriveDuration_dic[vehID][teilumlaufnummer][fahrtnummer], env.now):
+                    yield env.timeout(1440)
+                    break
+
+                # Abfrage, ob Pausenzeit & Verspätungszeit anpassen
+                delayTime = breaktime(vehID, teilumlaufnummer, fahrtnummer, delayTime)
+
+                VP += delayTime
+                # print(VP)
+
+                # Timeout für Fahrtdauer zur nächsten Haltestelle
+                yield (
+                    env.timeout(DriveDuration_dic[vehID][teilumlaufnummer][fahrtnummer] + delayTime_perDrive))
+
+                if ElementID_dic[vehID][teilumlaufnummer][fahrtnummer] == 9:
+                    fahrtstatus = 2
+                else:
+                    fahrtstatus = 1
+
+                # Kennzahl: Pünktlichkeit (Ankunft)
+                verspaetung = env.now - PartEndTime_dic[vehID][teilumlaufnummer][fahrtnummer]
+                global count_ankuenfte
+                count_ankuenfte += 1
+                if verspaetung == 0:
+                    global count_puenktlichAn
+                    count_puenktlichAn += 1
+
+                # Abfrage ob Bus im Depot angekommen
+                if ToHS_dic[vehID][teilumlaufnummer][fahrtnummer] == DepotID[vehID]:
+                    print(vehID + 1, teilumlaufnummer + 1, ToHS_dic[vehID][teilumlaufnummer][fahrtnummer],
+                          fahrtstatus, PartEndTime_dic[vehID][teilumlaufnummer][fahrtnummer],
+                          env.now, delayTime_perDrive, delayTime, delayType,
+                          file=open("Eventqueue6.9.csv", "a"))
+                    umlaufstatus = 0
+                else:
+                    print(vehID + 1, teilumlaufnummer + 1, ToHS_dic[vehID][teilumlaufnummer][fahrtnummer],
+                          fahrtstatus, PartEndTime_dic[vehID][teilumlaufnummer][fahrtnummer],
+                          env.now, delayTime_perDrive, delayTime, delayType,
+                          file=open("Eventqueue6.9.csv", "a"))
+        global counterVP
+        VP_df.loc[counterVP] = [vehID + 1, teilumlaufnummer + 1, VP]
+        counterVP += 1
