@@ -8,10 +8,47 @@ Bitte speichern Sie den Ordner "opti", welcher alle Daten inkludiert, am selben 
 Der opti Ordner muss die Unterordner "Mo_Ferien", "Mo_Schule", "Samstag" und "Sonntag" besitzen.
 In den jeweiligen Ordnern müssen eine timetable.txt, timetable-blocks.txt und eine timetable-duties.txt Datei hinterlegt sein.
 """
-"""
-In Zeile 678 könnt ihr die Rushhour-Funktion aktivieren, einfach Rushhour = 1.
-Unfall und Fahrzeugausfall funktionieren nicht, also keine = 1 dort reinschreiben!
-"""
+###################### Interface Störungen ####################################
+# Delay = Verspätung (relativ zur Fahrtdauer der Fahrt), die zur Fahrtdauer hinzukommt
+varPufferzeit = 1 # 0 für aus; 1 für an
+varPausenzeit = 1 # 0 für aus; 1 für an
+# **************** Wetter *******************
+varWeather = 1 # 0 für aus; 1 für an
+# Sturm
+varSturm = 1 # 0 für aus; 1 für an
+wktSturm_Min, wktSturm_Max = 0.6, 1 # 60%-100% Wahrscheinlichkeit, dass Sturm Fahrt- & Haltezeit beeinl
+delaySturm_Min, delaySturm_Max = 0.4, 0.8 # Fahrt- & Haltedauer verlängert sich um 10-20%
+# Regen
+varRegen = 1 # 0 für aus; 1 für an
+wktRegen_Min, wktRegen_Max = 0.1, 0.3  # 10%-20% Wahrscheinlichkeit, dass Regen Fahrt- & Haltezeit beeinlusst
+delayRegen_Min, delayRegen_Max = 0.1, 0.2 # Fahrt- & Haltedauer verlängert sich um 10-20%
+# ***************** Rushhour *******************
+varRushhour = 1 # 0 für aus; 1 für an
+RushhourStart1, RushhourEnde1  = 390, 510 # Rushhour zwischen 6:30 und 8:30
+RushhourStart2, RushhourEnde2 = 870, 1110 # Rushhour zwischen 14:30 und 18:30
+delayRushhour_Min, delayRushhour_Max = 0.1, 0.3  # Fahrtdauer verlängert sich um 10-30%
+delayRushhour_Halt_Min, delayRushhour_Halt_Max = 0, 2 # 0-2 Minuten mehr Haltezeit
+# ****************** Event ************************
+varEvent = 1 # 0 für aus; 1 für an
+delayEvent_Min, delayEvent_Max = 0.2, 0.8   # Fahrtdauer verlängert sich um 20-80%
+delayEvent_Halt_Min, delayEvent_Halt_Max = 1, 4 # 1-4 Minuten mehr Haltezeit
+eventOrte = [132] # !durch Zeitbeschränkung momentan nur ein Event möglich!
+eventStarttime, eventEndtime = 240, 360 # Event zwischen 04:00 und 06:00
+# ***************** Baustelle **********************
+varBaustelle = 1 # 0 für aus; 1 für an
+delayBaustelle_Min, delayBaustelle_Max = 4, 8 # 4-8 Minuten mehr Fahrtzeit
+BaustellenListe = [85] # mehrere Elemente möglich
+# **************** Sperrung ************************
+varSperrung = 1 # 0 für aus; 1 für an
+delaySperrung_Min, delaySperrung_Max = 0.1, 0.3  # Fahrtdauer verlängert sich um 10-30%
+SperrungListe = [105] # mehrere Elemente möglich
+# **************** Unfall **************************
+varUnfall = 1 # 0 für aus; 1 für an
+anzahlUnfaelle = 10  # 10 Unfälle pro Simulationstag
+staudauerMin = 30  # wie lange hält der Stau mindestens an (in Minuten)
+staudauerMax = 120  # wie lange hält der Stau maximal an (in Minuten)
+delayStau_Min, delayStau_Max = 0.3, 0.6 # Fahrtdauer verlängert sich um 30-60%
+
 ####################### Import Packages ###################################
 import simpy
 import pandas as pd
@@ -187,46 +224,7 @@ for i in range(1, len(numberVeh) + 1):
     Distance_dic.update({i - 1: Distanz})
 
 print("********* Dateneinleseroutine abgeschlossen. Daten in Dictionarys übertragen *******")
-###################### Interface Störungen ####################################
-# Delay = Verspätung (relativ zur Fahrtdauer der Fahrt), die zur Fahrtdauer hinzukommt
-varPufferzeit = 1 # 0 für aus; 1 für an
-varPausenzeit = 1 # 0 für aus; 1 für an
-# **************** Wetter *******************
-varWeather = 1 # 0 für aus; 1 für an
-# Sturm
-varSturm = 1 # 0 für aus; 1 für an
-wktSturm_Min, wktSturm_Max = 0.6, 1 # 60%-100% Wahrscheinlichkeit, dass Sturm Fahrt- & Haltezeit beeinl
-delaySturm_Min, delaySturm_Max = 0.4, 0.8 # Fahrt- & Haltedauer verlängert sich um 10-20%
-# Regen
-varRegen = 1 # 0 für aus; 1 für an
-wktRegen_Min, wktRegen_Max = 0.1, 0.3  # 10%-20% Wahrscheinlichkeit, dass Regen Fahrt- & Haltezeit beeinlusst
-delayRegen_Min, delayRegen_Max = 0.1, 0.2 # Fahrt- & Haltedauer verlängert sich um 10-20%
-# ***************** Rushhour *******************
-varRushhour = 1 # 0 für aus; 1 für an
-RushhourStart1, RushhourEnde1  = 390, 510 # Rushhour zwischen 6:30 und 8:30
-RushhourStart2, RushhourEnde2 = 870, 1110 # Rushhour zwischen 14:30 und 18:30
-delayRushhour_Min, delayRushhour_Max = 0.1, 0.3  # Fahrtdauer verlängert sich um 10-30%
-delayRushhour_Halt_Min, delayRushhour_Halt_Max = 0, 2 # 0-2 Minuten mehr Haltezeit
-# ****************** Event ************************
-varEvent = 1 # 0 für aus; 1 für an
-delayEvent_Min, delayEvent_Max = 0.2, 0.8   # Fahrtdauer verlängert sich um 20-80%
-delayEvent_Halt_Min, delayEvent_Halt_Max = 1, 4 # 1-4 Minuten mehr Haltezeit
-eventOrte = [132] # !durch Zeitbeschränkung momentan nur ein Event möglich!
-eventStarttime, eventEndtime = 240, 360 # Event zwischen 04:00 und 06:00
-# ***************** Baustelle **********************
-varBaustelle = 1 # 0 für aus; 1 für an
-delayBaustelle_Min, delayBaustelle_Max = 4, 8 # 4-8 Minuten mehr Fahrtzeit
-BaustellenListe = [85] # mehrere Elemente möglich
-# **************** Sperrung ************************
-varSperrung = 1 # 0 für aus; 1 für an
-delaySperrung_Min, delaySperrung_Max = 0.1, 0.3  # Fahrtdauer verlängert sich um 10-30%
-SperrungListe = [105] # mehrere Elemente möglich
-# **************** Unfall **************************
-varUnfall = 1 # 0 für aus; 1 für an
-anzahlUnfaelle = 10  # 10 Unfälle pro Simulationstag
-staudauerMin = 10  # wie lange hält der Stau mindestens an (in Minuten)
-staudauerMax = 60  # wie lange hält der Stau maximal an (in Minuten)
-delayStau_Min, delayStau_Max = 0.3, 0.6 # Fahrtdauer verlängert sich um 30-60%
+############################################################################################
 
 ############################## Funktionen für Objekt Vehicle #############################
 # Abfrage: Fahrtzeit über Simulationsdauer
