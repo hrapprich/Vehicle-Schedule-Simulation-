@@ -82,7 +82,7 @@ df["StartTime"] = StartTime
 numberVeh = df["BlockID"].unique()
 numberVeh = numberVeh.tolist()  # von Array in Liste formatieren
 numberVeh = [elem for elem in numberVeh if elem >= 0]  # -1 entfernen
-print("Die Gesamtanzahl von Fahrzeugen beträgt %d." % len(numberVeh))
+print("Fahrzeuge: %d " % len(numberVeh))
 
 # DepotID (jedem Fahrzeug die unique DepotID zuordnen)
 DepotID = []
@@ -92,7 +92,7 @@ for i in range(1, len(numberVeh) + 1):
         if df.BlockID[j] == i and counter == i:
             DepotID.append(df.DepotID[j])
             counter += 1
-print("Es gibt %d verschiedene Depots." % (len(set(DepotID))))
+print("Depots: %d " % (len(set(DepotID))))
 print("Jedes Fahrzeug wurde einem Depot zugeordnet: %s." % (
         len(DepotID) == len(numberVeh)))
 
