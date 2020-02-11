@@ -32,6 +32,7 @@ offene Punkte:
   (meist einen) wieviele Fahrzeuge haben nur einen Teilumlauf? hier wirken dispositive Entscheidungen nicht
 (x) Leerfahrten werden nicht berücksichtigt, da sie nicht eindeutig zugeordnet werden können aus den gegebenen Daten (Distanz etc einfach auf 0 gesetzt)
 (x) Unfallstörung fixen 
+(x) Dateninkonsistenzen ausbessern
 
 Prioliste:
 Fokus auf Dauer der Simulation. DutyID und Swaps konzeptionell überdenken, aber erstmal nicht so relevant (beschlossen am 29.1.20 mit David und Lena). Simulation mehrere Tage laufen lassen können!
@@ -40,7 +41,6 @@ Fokus auf Dauer der Simulation. DutyID und Swaps konzeptionell überdenken, aber
 ( ) Idee finden: Personaldaten konzeptionell mitdenken bzw. Schnittstelle einfügen
 ( ) Idee finden: Fahrzeuge miteinander verknüpfen
 ( ) Fahrzeugausfall (Depot & während der Fahrt) fixen (Funktion funktioniert. Ausgabe fehlt, dass Fahrzeug ausgefallen ist!)
-( ) Dateninkonsistenzen ausbessern
 ( ) Code objektorientiert gestalten
 ( ) Code Effizienz erhöhen (vor allem Einleseroutine)
 ( ) Dokumentation Code
