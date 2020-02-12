@@ -84,7 +84,7 @@ varSperrung = 1 # 0 für aus; 1 für an: Hierdurch wird die Störung "Sperrung" 
 delaySperrung_Min, delaySperrung_Max = 0.1, 0.3
 
 # **************** Unfall *******************
-varUnfall = 0 # 0 für aus; 1 für an: Hierdurch wird die Störung "Unfall" gesteuert.
+varUnfall = 1 # 0 für aus; 1 für an: Hierdurch wird die Störung "Unfall" gesteuert.
 
 anzahlUnfaelle = 10  # Hierdurch wird festgelegt, wie viele Unfälle zufällig generiert werden. (Funktion siehe weiter unten)
 staudauerMin = 30  # Hierdurch wird festgelegt, wie lange ein Unfall mindestens auftritt.
