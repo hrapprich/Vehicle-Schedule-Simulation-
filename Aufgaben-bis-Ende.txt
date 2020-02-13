@@ -33,6 +33,7 @@ offene Punkte:
 (x) Leerfahrten werden nicht berücksichtigt, da sie nicht eindeutig zugeordnet werden können aus den gegebenen Daten (Distanz etc einfach auf 0 gesetzt)
 (x) Unfallstörung fixen 
 (x) Dateninkonsistenzen ausbessern
+(x) Leerfahrten Geschwindigkeit erhöhen
 
 Prioliste:
 Fokus auf Dauer der Simulation. DutyID und Swaps konzeptionell überdenken, aber erstmal nicht so relevant (beschlossen am 29.1.20 mit David und Lena). Simulation mehrere Tage laufen lassen können!
@@ -46,7 +47,7 @@ Fokus auf Dauer der Simulation. DutyID und Swaps konzeptionell überdenken, aber
 ( ) Dokumentation Code
 ( ) GUI ansehnlich machen (niedrige Prio)
 ( ) Teilweiser Output in GUI (niedrige Prio) 
-( ) Leerfahrten Geschwindigkeit erhöhen
+
 
 ( ) PK1 Paper lesen / Fokus auf Suchprozess
 
