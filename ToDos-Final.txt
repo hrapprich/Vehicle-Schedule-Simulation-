@@ -1,10 +1,11 @@
 
 Memo zu Skype-Meeting mit David am 13.02.20 um 11:30 (Dauer 30min)
 
-
 Code wird berücksichtigt für Projektbericht (trotzdem 3500 Wörter p.P. für Abschlussbericht)
 
+
 Code kommentieren (aber nur auf Funktionsebene)
+	offen: Unfallfunktion (Chris)
 
 Code-Doku:
 	unwissenschaftlich
