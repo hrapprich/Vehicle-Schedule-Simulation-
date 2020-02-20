@@ -362,7 +362,7 @@ for x in range(count_rows_duty):
                 VehTypeID.append(blocks.iat[y, 1])
                 DepotID.append(blocks.iat[y, 2])
                 
-# nicht benötigt, rausnehmen? Für Laufzeit?
+# für diese Simulation nicht notwendig, da Dienstplandaten nicht erhalten
 df_dutytype = []
 for x in range(count_rows_duty):
     for y in range(count_rows_dutytype):
