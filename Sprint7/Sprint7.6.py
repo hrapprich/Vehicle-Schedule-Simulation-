@@ -35,7 +35,7 @@ delaySturm_Min, delaySturm_Max = 0.4, 0.8 #
 wktRegen_Min, wktRegen_Max = 0.1, 0.3  # 10%-30% Wahrscheinlichkeit, dass Regen Fahrt- & Haltezeit beeinlusst
 delayRegen_Min, delayRegen_Max = 0.1, 0.2 # Fahrt- & Haltedauer verlängert sich um 10-20%
 
-# **************** Rushhour *****************
+# **************** Rushhour Ferien*****************
 
 varRushhour = 1 # 0 für aus; 1 für an: Hierdurch wird die Störung "Berufsverkehr" gesteuert.
 # Im Folgenden werden die Start- & Endzeiten der Rushhour festgelegt.
@@ -50,7 +50,14 @@ delayRushhour_Min, delayRushhour_Max = 0.05, 0.15
 # Diese Variablen legen die absolute Erhöhung der Zeiten durch die Störung "Berufsverkehr" fest. 
 # Fahrt- & Haltedauer werden hier mindestens um 2 Minuten und maximal um 2 Minuten erhöht.
 delayRushhour_Halt_Min, delayRushhour_Halt_Max = 0, 1 
-
+'''
+# ***************** Rushhour keine Ferien *******************
+varRushhour = 1 # 0 für aus; 1 für an
+RushhourStart1, RushhourEnde1  = 390, 510 # Rushhour zwischen 6:30 und 8:30
+RushhourStart2, RushhourEnde2 = 870, 1110 # Rushhour zwischen 14:30 und 18:30
+delayRushhour_Min, delayRushhour_Max = 0.1, 0.3  # Fahrtdauer verlängert sich um 10-30%
+delayRushhour_Halt_Min, delayRushhour_Halt_Max = 0, 2 # 0-2 Minuten mehr Haltezeit
+'''
 # **************** Event ********************
 
 varEvent = 1 # 0 für aus; 1 für an: Hierdurch wird die Störung "Veranstaltung" gesteuert.
