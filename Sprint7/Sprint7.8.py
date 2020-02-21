@@ -379,14 +379,7 @@ df = tableFinal
 ###############################################################################
 ######################## Data Preparation #####################################
 ###############################################################################
-
-# Im Datensatz "Arbeitstag - Keine Ferien" gab es eine Dateninkonsistenz.
-# Das Fahrzeug ist fälschlicherweise nach einem Teilumlauf nicht zurück ins Depot gefahren.
-# Damit die Simulation den Teilumlauf abschließen kann, wird hier manuell die Haltestelle
-# durch das Depot ersetzt.
-pd.set_option('mode.chained_assignment', None)
-if (chosenDay.get() == "Arbeitstag - Keine Ferien"):
-    df.ToStopID[111] = 323    
+ 
     
 # **************** Daten einlesen ***********
 
@@ -578,6 +571,14 @@ for i in range(1, len(numberVeh) + 1):
 
 
 # **************** Datenbereinigung *********
+
+# Im Datensatz "Arbeitstag - Keine Ferien" gab es eine Dateninkonsistenz.
+# Das Fahrzeug ist fälschlicherweise nach einem Teilumlauf nicht zurück ins Depot gefahren.
+# Damit die Simulation den Teilumlauf abschließen kann, wird hier manuell die Haltestelle
+# durch das Depot ersetzt.
+pd.set_option('mode.chained_assignment', None)
+if (chosenDay.get() == "Arbeitstag - Keine Ferien"):
+    df.ToStopID[111] = 323   
 
 # Die Daten weisen einige Fehler auf, in der Form, dass gelegentlich Teilumläufe
 # nicht zeitlich geordnet sind. Das heißt es kommt vor, dass bspw. Teilumlauf 2
