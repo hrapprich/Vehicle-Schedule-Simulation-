@@ -779,6 +779,8 @@ def choice(low, high, delta, n_samples):  # delta = wieviel abstand zwischen den
     return draw
 
 # 3. Unfallfunktion:
+# Generierung der genauen Startzeit jedes Unfälls entsprechend der ermittelten Staugruppen
+# Verkehrszeiten sind Annahmen und können angepasst werden
 def spaced_choice(i, n_samples):
     stauintervall = random.randint(0, 1)
     if i == 0:  # Schwachverkehrszeit
@@ -799,6 +801,7 @@ def spaced_choice(i, n_samples):
     return list(draw)
 
 # 4. Unfallfunktion:
+# Generierung einer "flachen" Liste, also Eliminierung der Unterlisten
 def flatList(list):
     flat_list = []
     for sublist in list:
@@ -808,7 +811,7 @@ def flatList(list):
 
 # 5. Unfallfunktion:
 # Diese Funktion wird durch die Funktion unfallGenerator aufgerufen und ermittelt die
-# verschiedenen Endzeiten der n Unfälle.
+# verschiedenen Endzeiten der n Unfälle durch minimale bis maximale Staudauer (einstellbar im Interface)
 def unfallEndzeitCalculator(list):
     unfallEndzeiten = []
     for item in range(len(list)):
