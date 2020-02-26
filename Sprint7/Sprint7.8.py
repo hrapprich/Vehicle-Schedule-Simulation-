@@ -762,6 +762,7 @@ def unfall(startHS, endHS, driveduration, time):
     return delay, delayType
 
 # Funktionen zur Unfallsimulation: Dies besteht aus mehreren einzelnen Funktionen
+# Funktionsweise in Benutzerhandbuch ausführlich beschrieben
 
 # 1. Unfallfunktion: Diese Funktion spiegelt den Punkt wider, dass Unfälle an verschiedenen
 # Orten verschieden lang dauern. In der Innenstadt dauern Staus durch Unfälle durchschnittlich
@@ -771,7 +772,7 @@ def unfallzeitGroup():
     return staugroup
 
 # Quelle von def choice und def spaced_choice: https://stackoverflow.com/questions/47950131/drawing-random-numbers-with-draws-in-some-pre-defined-interval-numpy-random-ch/47950676
-# 2. Unfallfunktion:
+# 2. Unfallfunktion: Bestimmung bestimmter Zeitpunkte in einer Range mit Abstand von delta
 def choice(low, high, delta, n_samples):  # delta = wieviel abstand zwischen den Werten
     draw = numpy.random.choice(high - low - (n_samples - 1) * delta, n_samples, replace=False)
     idx = numpy.argsort(draw)
@@ -801,7 +802,7 @@ def spaced_choice(i, n_samples):
     return list(draw)
 
 # 4. Unfallfunktion:
-# Generierung einer "flachen" Liste, also Eliminierung der Unterlisten
+# Generierung einer "flachen" Liste, also Eliminierung der Unterlisten (wichtig für Nutzung in Simulation)
 def flatList(list):
     flat_list = []
     for sublist in list:
@@ -822,7 +823,7 @@ def unfallEndzeitCalculator(list):
 
 # 6. Unfallfunktion:
 # Diese Funktion wird durch die Funktion unfallGenerator aufgerufen und ermittelt die
-# verschiedenen Startzeiten der n Unfälle.
+# verschiedenen Startzeiten der n Unfälle mit hilfe verschiedener Hilfsfunktionen.
 def unfallStartzeitCalculator(n):
     unfallStartzeiten = []
     unfallgroups = [0, 0, 0]
@@ -964,8 +965,8 @@ if (varUnfall == 1 and varUnfallGUI.get() == 1):
     print("")
 
 # Hier werden Variablen für die Kennzahlen initialisiert:
-    
-# Pünktlichkeit
+#  globale Variablen, da über alle Fahrzeuge iteriert werden muss
+# Pünktlichkeit 
 global count_abfahrten
 count_abfahrten = 0
 global count_puenktlichAb
@@ -1006,7 +1007,7 @@ for i in range(len(ElementID_dic)):
                 counterPausenzeit +=1
 export_csv = Pausenzeit_df.to_csv(r'Verteilung Pausenzeiten.csv', index=None, header=True)
 
-# Daten für CSV-Datei
+# Header für CSV-Datei, die Output der Simulation beinhaltet bzw. Events enthält (Whitebox)
 
 print(
     "vehID Teilumlaufnummer Standort Dep/Arr Uhrzeit(Soll) Uhrzeit(Ist) Fahrtverspätung Gesamtverspätung Verspätungsursache",
@@ -1014,11 +1015,11 @@ print(
 
 # Objekt Vehicle für die Simulation, die weiter unten gestartet wird
 def vehicle(env, vehID):    # Eigenschaften von jedem Fahrzeug; folgender Code wird für jedes Fahrzeug einzeln ausgeführt
-    while True:             # Solange die Uhrzeit <= 1440 ist, läuft diese Schleife. Wird unten durch "except" abgebrochen.
+    while True:             # Solange die Uhrzeit <= 1440 ist, läuft diese Schleife. 
         for teilumlaufnummer in range(0, len(StartTime_dic) - 1):  # Loop der durch die einzelnen Teilumläufe führt
             global VP
             VP = 0
-            try:
+            try: # Wenn negative Zahl auftritt, wird Teilumlauf überbrückt (except), da in der Vergangenheit
                 if StartTime_dic[vehID][teilumlaufnummer] - env.now >= 0:   # Bedeutet, dass die Startzeit zu diesem Zeitpunkt noch nicht erreicht ist
                     delayTime = 0
                     yield env.timeout(
