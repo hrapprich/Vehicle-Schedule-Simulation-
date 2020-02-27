@@ -52,6 +52,8 @@ delayRushhour_Min, delayRushhour_Max = 0.05, 0.15
 delayRushhour_Halt_Min, delayRushhour_Halt_Max = 0, 1 
 '''
 # ***************** Rushhour keine Ferien *******************
+# da zur Schulzeit die Rushhour höher ist, sollte dieser Codeabschnitt 
+# für den Datensatz "Arbeitstag - keine Ferien" verwendet werden
 varRushhour = 1 # 0 für aus; 1 für an
 RushhourStart1, RushhourEnde1  = 390, 510 # Rushhour zwischen 6:30 und 8:30
 RushhourStart2, RushhourEnde2 = 870, 1110 # Rushhour zwischen 14:30 und 18:30
