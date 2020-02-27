@@ -84,30 +84,21 @@ varSperrung = 1 # 0 für aus; 1 für an: Hierdurch wird die Störung "Sperrung" 
 #Fahrtzeiten werden hier mindestens um 10% und maximal um 30% erhöht.
 delaySperrung_Min, delaySperrung_Max = 0.1, 0.3
 
-# **************** Unfall *******************
-varUnfall = 1 # 0 für aus; 1 für an: Hierdurch wird die Störung "Unfall" gesteuert.
-
-anzahlUnfaelle = 10  # Hierdurch wird festgelegt, wie viele Unfälle zufällig generiert werden. (Funktion siehe weiter unten)
-staudauerMin = 30  # Hierdurch wird festgelegt, wie lange ein Unfall mindestens auftritt.
-staudauerMax = 120  # Hierdurch wird festgelegt, wie lang ein Unfall maximal auftritt.
-
-# Diese Variablen legen die Stärke der Störung "Unfall" für Fahrtzeiten fest. 
-# Fahrtzeiten werden hier mindestens um 30% und maximal um 60% erhöht.
-delayStau_Min, delayStau_Max = 0.3, 0.6
-
 # **************** Leerfahrten **************
 
 varLeerfahrt = 1 #0, wenn Leerfahrten nicht zum Pufferabbau genutzt werden sollen
 avgPaceIncrease = 0.2 # um wie viel % fährt ein Fahrzeug schneller bei Leerfahrten
 
-'''
-# ****************2 Unfälle am Tag **************************
-varUnfall = 1 # 0 für aus; 1 für an
-anzahlUnfaelle = 2  # 2 Unfälle pro Simulationstag
-staudauerMin = 15  # wie lange hält der Stau mindestens an (in Minuten)
-staudauerMax = 60  # wie lange hält der Stau maximal an (in Minuten)
-delayStau_Min, delayStau_Max = 0.2, 0.6 # Fahrtdauer verlängert sich um 20-60%
-'''
+
+# ****************Unfall**************************
+varUnfall = 1 # 0 für aus; 1 für an: Hierdurch wird die Störung "Unfall" gesteuert.
+anzahlUnfaelle = 2  # Hierdurch wird festgelegt, wie viele Unfälle zufällig generiert werden. (Funktion siehe weiter unten)
+staudauerMin = 15  # Hierdurch wird festgelegt, wie lange ein Unfall mindestens auftritt.
+staudauerMax = 60  # Hierdurch wird festgelegt, wie lang ein Unfall maximal auftritt.
+# Diese Variablen legen die Stärke der Störung "Unfall" für Fahrtzeiten fest. 
+# Fahrtzeiten werden hier mindestens um 20% und maximal um 60% erhöht.
+delayStau_Min, delayStau_Max = 0.2, 0.6 
+
 
 ###############################################################################
 ########################### Import Packages ###################################
